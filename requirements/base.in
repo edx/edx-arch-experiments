@@ -4,3 +4,6 @@
 Django             # Web application framework
 edx_django_utils
 setuptools
+fastavro
+confluent_kafka
+edx_toggles
