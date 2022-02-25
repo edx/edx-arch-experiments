@@ -7,3 +7,5 @@ def plugin_settings(settings):
     settings.KAFKA_BOOTSTRAP_SERVER = env_tokens.get('KAFKA_BOOTSTRAP_SERVER', '')
     settings.KAFKA_API_KEY = env_tokens.get('KAFKA_API_KEY', '')
     settings.KAFKA_API_SECRET = env_tokens.get('KAFKA_API_SECRET', '')
+    settings.KAFKA_CONSUMERS_ENABLED = True
+    settings.LICENSE_EVENT_TOPIC_NAME = env_tokens.get('LICENSE_EVENT_TOPIC_NAME', '')

@@ -27,6 +27,10 @@ click==8.0.4
     #   -r requirements/test.txt
     #   code-annotations
 code-annotations==1.3.0
+    # via
+    #   -r requirements/test.txt
+    #   edx-toggles
+confluent-kafka==1.8.2
     # via -r requirements/test.txt
 coverage[toml]==6.3.2
     # via
@@ -38,14 +42,17 @@ django==3.2.12
     #   -r requirements/test.txt
     #   django-crum
     #   edx-django-utils
+    #   edx-toggles
 django-crum==0.7.9
     # via
     #   -r requirements/test.txt
     #   edx-django-utils
+    #   edx-toggles
 django-waffle==2.3.0
     # via
     #   -r requirements/test.txt
     #   edx-django-utils
+    #   edx-toggles
 doc8==0.10.1
     # via -r requirements/doc.in
 docutils==0.17.1
@@ -55,9 +62,15 @@ docutils==0.17.1
     #   restructuredtext-lint
     #   sphinx
 edx-django-utils==4.5.0
-    # via -r requirements/test.txt
+    # via
+    #   -r requirements/test.txt
+    #   edx-toggles
 edx-sphinx-theme==3.0.0
     # via -r requirements/doc.in
+edx-toggles==4.3.1
+    # via -r requirements/test.txt
+fastavro==1.4.9
+    # via -r requirements/test.txt
 idna==3.3
     # via requests
 imagesize==1.3.0
@@ -138,7 +151,7 @@ readme-renderer==32.0
     # via -r requirements/doc.in
 requests==2.27.1
     # via sphinx
-restructuredtext-lint==1.3.2
+restructuredtext-lint==1.4.0
     # via doc8
 six==1.16.0
     # via

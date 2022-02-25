@@ -110,6 +110,7 @@ setup(
     url='https://github.com/edx/edx-arch-experiments',
     packages=[
         'edx_arch_experiments',
+        'edx_arch_experiments.kafka_consumer'
     ],
     include_package_data=True,
     install_requires=load_requirements('requirements/base.in'),
@@ -130,6 +131,7 @@ setup(
     entry_points={
         "lms.djangoapp": [
             "arch_experiments = edx_arch_experiments.apps:EdxArchExperimentsConfig",
+            "kafka_consumer = edx_arch_experiments.kafka_consumer.apps:KafkaConsumerApp"
         ],
     },
 )
