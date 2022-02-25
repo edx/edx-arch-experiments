@@ -20,3 +20,4 @@ Decision
 New functionality under development by the ARCHBOM team that is not ready to be released to the OpenEdX community
 will be developed in this optional plugin, which will be installed on the edX.org production servers. This will allow
 the ARCHBOM teams to quickly test new ideas in a production setting with lower risk to edx-platform as a whole and without any new requirements for the community.
+
