@@ -11,10 +11,6 @@ Overview
 
 This plugin is meant to house experimental and in-development applications from the architecture team at edX that are either not appropriate (i.e. edX/2U specific) or not yet ready for community consumption. 
 
-Documentation
--------------
-
-(TODO: `Set up documentation <https://openedx.atlassian.net/wiki/spaces/DOC/pages/21627535/Publish+Documentation+on+Read+the+Docs>`_)
 
 Development Workflow
 --------------------
@@ -117,10 +113,6 @@ For more information about these options, see the `Getting Help`_ page.
 .. |codecov-badge| image:: https://codecov.io/github/edx/edx-arch-experiments/coverage.svg?branch=main
     :target: https://codecov.io/github/edx/edx-arch-experiments?branch=main
     :alt: Codecov
-
-.. |doc-badge| image:: https://readthedocs.org/projects/edx-arch-experiments/badge/?version=latest
-    :target: https://edx-arch-experiments.readthedocs.io/en/latest/
-    :alt: Documentation
 
 .. |pyversions-badge| image:: https://img.shields.io/pypi/pyversions/edx-arch-experiments.svg
     :target: https://pypi.python.org/pypi/edx-arch-experiments/

@@ -39,8 +39,6 @@ LOCALE_PATHS = [
     root('edx_arch_experiments', 'conf', 'locale'),
 ]
 
-ROOT_URLCONF = 'edx_arch_experiments.urls'
-
 SECRET_KEY = 'insecure-secret-key'
 
 MIDDLEWARE = (
