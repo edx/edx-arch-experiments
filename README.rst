@@ -29,6 +29,10 @@ One Time Setup
 
   # Set up a virtualenv using virtualenvwrapper with the same name as the repo and activate it
   mkvirtualenv -p python3.8 edx-arch-experiments
+  
+Local testing
+~~~~~~~~~~~~~
+In an lms or cms shell, ``pip install git+https://github.com/edx/edx-arch-experiments.git@mybranch``. Make sure to uninstall and reinstall after every change to your local branch.
 
 
 Every time you develop something in this repo
