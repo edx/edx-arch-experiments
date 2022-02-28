@@ -11,10 +11,6 @@ Overview
 
 This plugin is meant to house experimental and in-development applications from the architecture team at edX that are either not appropriate (i.e. edX/2U specific) or not yet ready for community consumption. 
 
-Documentation
--------------
-
-(TODO: `Set up documentation <https://openedx.atlassian.net/wiki/spaces/DOC/pages/21627535/Publish+Documentation+on+Read+the+Docs>`_)
 
 Development Workflow
 --------------------
