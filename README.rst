@@ -114,10 +114,6 @@ For more information about these options, see the `Getting Help`_ page.
     :target: https://codecov.io/github/edx/edx-arch-experiments?branch=main
     :alt: Codecov
 
-.. |doc-badge| image:: https://readthedocs.org/projects/edx-arch-experiments/badge/?version=latest
-    :target: https://edx-arch-experiments.readthedocs.io/en/latest/
-    :alt: Documentation
-
 .. |pyversions-badge| image:: https://img.shields.io/pypi/pyversions/edx-arch-experiments.svg
     :target: https://pypi.python.org/pypi/edx-arch-experiments/
     :alt: Supported Python versions
