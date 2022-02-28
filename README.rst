@@ -32,7 +32,7 @@ One Time Setup
   
 Local testing
 ~~~~~~~~~~~~~
-In an lms or cms shell, ``pip install git+https://github.com/edx/edx-arch-experiments.git@mybranch``. Make sure to uninstall and reinstall after every change to your local branch.
+To test your changes locally, you will need to install the package from your local branch into edx-platform. For example, in devstack, copy or clone your branch into <devstack-parent>/src/edx-arch-experiments. Then, in an lms or cms shell, run ``pip install -e /edx/src/edx-arch-experiments ``. 
 
 
 Every time you develop something in this repo
