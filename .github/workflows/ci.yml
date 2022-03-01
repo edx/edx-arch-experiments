@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        tox-env: [quality, docs, django22, django30, django31, django32]
+        tox-env: [quality, docs, django32]
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-python@v2
@@ -24,6 +24,4 @@ jobs:
         env:
           TOXENV: ${{ matrix.tox-env }}
         run: tox
-      - name: Run coverage
-        if: ${{ matrix.tox-env == 'django22' }}
-        run: codecov
+
