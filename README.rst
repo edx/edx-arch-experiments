@@ -32,7 +32,7 @@ One Time Setup
   
 Local testing
 ~~~~~~~~~~~~~
-To test your changes locally, you will need to install the package from your local branch into edx-platform. For example, if using devstack, copy or clone your branch into <devstack-parent>/src/edx-arch-experiments. Then, in an lms or cms shell, run ``pip install -e /edx/src/edx-arch-experiments ``. 
+To test your changes locally, you will need to install the package from your local branch into edx-platform. For example, if using devstack, copy or clone your branch into <devstack-parent>/src/edx-arch-experiments. Then, in an lms or cms shell, run ``pip install -e /edx/src/edx-arch-experiments ``.  The plug-in configuration will automatically be picked up once installed, and changes will be hot reloaded.
 
 
 Every time you develop something in this repo
