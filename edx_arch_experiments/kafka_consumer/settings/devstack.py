@@ -1,12 +1,14 @@
+"""Devstack settings values."""
+
 import os
-from os.path import join, abspath, dirname
+from os.path import abspath, dirname, join
 
 
 def plugin_settings(settings):
-    """Devstack settings values."""
+    """ Override/set kafka_consumer devstack settings"""
     settings.KAFKA_BOOTSTRAP_SERVER = "edx.devstack.kafka:29092"
     settings.SCHEMA_REGISTRY_URL = "http://edx.devstack.schema-registry:8081"
     settings.LICENSE_EVENT_TOPIC_NAME = "license-event-dev"
     if os.path.isfile(join(dirname(abspath(__file__)), 'private.py')):
-        from .private import plugin_settings  # pylint: disable=import-error
-        plugin_settings(settings)
+        from .private import plugin_settings_override  # pylint: disable=import-error,import-outside-toplevel
+        plugin_settings_override(settings)

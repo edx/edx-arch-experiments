@@ -5,11 +5,11 @@ from edx_django_utils.plugins.constants import PluginSettings
 
 
 class KafkaConsumerApp(AppConfig):
-    name = 'edx_arch_experiments.kafka_consumer'
-
     """
     Configuration for the KafkaConsumer Django application.
     """
+
+    name = 'edx_arch_experiments.kafka_consumer'
 
     plugin_app = {
         PluginSettings.CONFIG: {
