@@ -13,7 +13,7 @@ logger = logging.getLogger(__name__)
 class TrackingEvent:
 
     """
-        Data class for license-manager subscription events
+    Data class for license-manager subscription events
     """
 
     def __init__(self, *args, **kwargs):
