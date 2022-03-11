@@ -3,7 +3,7 @@
 
 def plugin_settings(settings):
     """
-        Get kafka_consumer settings from calling application
+    Get kafka_consumer settings from calling application
     """
     # kafka_consumer settings
     env_tokens = getattr(settings, 'ENV_TOKENS', {})

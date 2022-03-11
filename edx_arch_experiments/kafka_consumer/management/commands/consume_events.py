@@ -65,9 +65,9 @@ class Command(BaseCommand):
 
     def create_consumer(self, group_id):
         """
-            Create a consumer for TrackingEvents
-            :param group_id: id of the consumer group this consumer will be part of
-            :return: DeserializingConsumer
+        Create a consumer for TrackingEvents
+        :param group_id: id of the consumer group this consumer will be part of
+        :return: DeserializingConsumer
         """
 
         KAFKA_SCHEMA_REGISTRY_CONFIG = {
@@ -105,7 +105,7 @@ class Command(BaseCommand):
 
     def handle_message(self, msg):
         """
-            Place holder methods for how to handle an incoming message from the event bus
+        Place holder methods for how to handle an incoming message from the event bus
         """
         # TODO (EventBus):
         # Rewrite this to construct and/or emit the signal eventually specified in the message.
@@ -113,7 +113,7 @@ class Command(BaseCommand):
 
     def process_single_message(self, msg):
         """
-            Handle message error or pass along for processing (separated out for easier testing)
+        Handle message error or pass along for processing (separated out for easier testing)
         """
         if msg is None:
             return

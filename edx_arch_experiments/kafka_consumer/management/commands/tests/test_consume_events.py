@@ -11,7 +11,7 @@ from edx_arch_experiments.kafka_consumer.management.commands.consume_events impo
 
 class TestConsumeEventCommand(TestCase):
     """
-        Tests for the consume_events management command
+    Tests for the consume_events management command
     """
 
     @override_settings(KAFKA_CONSUMERS_ENABLED=False)
