@@ -1,11 +1,18 @@
+""" Tests for event consumer management command """
+
+from unittest.mock import patch
+
 from django.core.management import call_command
 from django.test import TestCase
 from django.test.utils import override_settings
-from unittest.mock import patch
+
 from edx_arch_experiments.kafka_consumer.management.commands.consume_events import Command
 
 
 class TestConsumeEventCommand(TestCase):
+    """
+    Tests for the consume_events management command
+    """
 
     @override_settings(KAFKA_CONSUMERS_ENABLED=False)
     @patch('edx_arch_experiments.kafka_consumer.management.commands.consume_events.Command.create_consumer')

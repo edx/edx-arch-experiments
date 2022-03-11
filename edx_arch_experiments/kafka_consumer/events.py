@@ -12,6 +12,10 @@ logger = logging.getLogger(__name__)
 # Use TrackingEvent class from openedx_events and use Attr <-> Avro bridge to deserialize
 class TrackingEvent:
 
+    """
+    Data class for license-manager subscription events
+    """
+
     def __init__(self, *args, **kwargs):
         self.license_uuid = kwargs.get('license_uuid', None)
         self.license_activation_key = kwargs.get('license_activation_key', None)

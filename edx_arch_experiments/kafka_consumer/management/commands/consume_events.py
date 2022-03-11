@@ -4,16 +4,16 @@ Management command for listening to license-manager events and logging them
 
 import logging
 
-from confluent_kafka.schema_registry.avro import AvroDeserializer
-from django.conf import settings
-
 from confluent_kafka import DeserializingConsumer, KafkaError
 from confluent_kafka.schema_registry import SchemaRegistryClient
+from confluent_kafka.schema_registry.avro import AvroDeserializer
 from confluent_kafka.serialization import StringDeserializer
 from django.conf import settings
 from django.core.management.base import BaseCommand
 from edx_toggles.toggles import SettingToggle
+
 from edx_arch_experiments.kafka_consumer.events import TrackingEvent
+
 logger = logging.getLogger(__name__)
 
 
@@ -64,6 +64,11 @@ class Command(BaseCommand):
         )
 
     def create_consumer(self, group_id):
+        """
+        Create a consumer for TrackingEvents
+        :param group_id: id of the consumer group this consumer will be part of
+        :return: DeserializingConsumer
+        """
 
         KAFKA_SCHEMA_REGISTRY_CONFIG = {
             'url': settings.SCHEMA_REGISTRY_URL,
@@ -99,11 +104,17 @@ class Command(BaseCommand):
         return DeserializingConsumer(consumer_config)
 
     def handle_message(self, msg):
+        """
+        Place holder methods for how to handle an incoming message from the event bus
+        """
         # TODO (EventBus):
         # Rewrite this to construct and/or emit the signal eventually specified in the message.
         logger.info(f"Received message with key {msg.key()} and value {TrackingEvent.to_dict(msg.value())}")
 
     def process_single_message(self, msg):
+        """
+        Handle message error or pass along for processing (separated out for easier testing)
+        """
         if msg is None:
             return
         if msg.error():
