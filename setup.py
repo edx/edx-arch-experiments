@@ -103,7 +103,7 @@ CHANGELOG = open(os.path.join(os.path.dirname(__file__), 'CHANGELOG.rst'), encod
 setup(
     name='edx-arch-experiments',
     version=VERSION,
-    description="""A plugin to include applications under development by the architecture team at edx """,
+    description='A plugin to include applications under development by the architecture team at edx',
     long_description=README + '\n\n' + CHANGELOG,
     author='edX',
     author_email='oscm@edx.org',
