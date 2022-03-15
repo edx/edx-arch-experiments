@@ -104,7 +104,7 @@ setup(
     name='edx-arch-experiments',
     version=VERSION,
     description='A plugin to include applications under development by the architecture team at edx',
-    long_description=README + '\n\n' + CHANGELOG,
+    long_description=f"{README}\n\n{CHANGELOG}",
     author='edX',
     author_email='oscm@edx.org',
     url='https://github.com/edx/edx-arch-experiments',
