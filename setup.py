@@ -106,7 +106,7 @@ setup(
     description='A plugin to include applications under development by the architecture team at edx',
     long_description=README + '\n\n' + CHANGELOG,
     author='edX',
-    author_email='arch-bom@edx.org',
+    author_email='oscm@edx.org',
     url='https://github.com/edx/edx-arch-experiments',
     packages=[
         'edx_arch_experiments',
