@@ -1,7 +1,7 @@
 edx-arch-experiments
 =============================
 
-|pypi-badge| |ci-badge| |codecov-badge| |doc-badge| |pyversions-badge|
+|pypi-badge| |ci-badge| |codecov-badge| |pyversions-badge|
 |license-badge|
 
 A plugin to include applications under development by the architecture team at edX
@@ -28,7 +28,7 @@ One Time Setup
   
 Local testing
 ~~~~~~~~~~~~~
-To test your changes locally, you will need to install the package from your local branch into edx-platform. For example, if using devstack, copy or clone your branch into <devstack-parent>/src/edx-arch-experiments. Then, in an lms or cms shell, run ``pip install -e /edx/src/edx-arch-experiments ``.  The plug-in configuration will automatically be picked up once installed, and changes will be hot reloaded.
+To test your changes locally, you will need to install the package from your local branch into edx-platform. For example, if using devstack, copy or clone your branch into <devstack-parent>/src/edx-arch-experiments. Then, in an lms or cms shell, run ``pip install -e /edx/src/edx-arch-experiments``.  The plug-in configuration will automatically be picked up once installed, and changes will be hot reloaded.
 
 
 Every time you develop something in this repo

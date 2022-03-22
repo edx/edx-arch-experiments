@@ -4,7 +4,6 @@ on:
   push:
     branches: [main]
   pull_request:
-    branches: [main]
 
 jobs:
   testing:
@@ -24,4 +23,3 @@ jobs:
         env:
           TOXENV: ${{ matrix.tox-env }}
         run: tox
-
