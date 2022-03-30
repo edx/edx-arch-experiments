@@ -1,10 +1,9 @@
-
-===============
+==============
 Kafka Consumer
-===============
+==============
 
 Purpose
-=======
+-------
 
 This is a (likely temporary) app created to test and iterate on event bus consumer patterns. The goal is to eventually
 have a flexible event bus that can be easily brought into other apps and repositories to produce and consume arbitrary
