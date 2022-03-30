@@ -9,7 +9,7 @@ A plugin to include applications under development by the architecture team at e
 Overview
 ------------------------
 
-This plugin is meant to house experimental and in-development applications from the architecture team at edX that are either not appropriate (i.e. edX/2U specific) or not yet ready for community consumption. 
+This plugin is meant to house experimental and in-development applications from the architecture team at edX that are either not appropriate (i.e. edX/2U specific) or not yet ready for community consumption.
 
 
 Development Workflow
@@ -25,7 +25,7 @@ One Time Setup
 
   # Set up a virtualenv using virtualenvwrapper with the same name as the repo and activate it
   mkvirtualenv -p python3.8 edx-arch-experiments
-  
+
 Local testing
 ~~~~~~~~~~~~~
 To test your changes locally, you will need to install the package from your local branch into edx-platform. For example, if using devstack, copy or clone your branch into <devstack-parent>/src/edx-arch-experiments. Then, in an lms or cms shell, run ``pip install -e /edx/src/edx-arch-experiments``.  The plug-in configuration will automatically be picked up once installed, and changes will be hot reloaded.
