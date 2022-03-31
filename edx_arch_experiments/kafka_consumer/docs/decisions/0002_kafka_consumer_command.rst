@@ -20,10 +20,22 @@ Decision
 --------
 edX.org will use Kubernetes to manage containers whose sole purpose is to run a management command, which in turn will run a polling loop against the specified topic. This will enable standard horizontal scaling of Kafka consumer groups.
 
+The loop will both listen for new events and run any necessary processing code for each event.
+
 Rejected Alternatives
 ---------------------
 
+#. Use a recurring/scheduled celery task to consume and process Kafka events
+
+  * Celery has several disadvantages, including the difficulty of managing priorities for a queue, that it would be nice to avoid.
+  * Horizontal scaling of consumer groups would not work correctly using our existing group of celery workers.
+  * A fixed schedule for processing events would run into issues if the time to process events ever gets longer than the schedule.
+  * Note: this may be used as a temporary solution for the purpose of iterating, but not as a long-term production solution.
+
 #. Create a new ASG of EC2 instances dedicated to running a consumer management command, similar to how we create instances dedicated to running celery workers
-    * edX and the industry in general we are moving away from the ASG pattern and on to Kubernetes. Both the ASG approach and the Kubernetes approach would require a substantial amount of work in order to make the number of instances scalable based on number of topics rather than built-in measurements like CPU load. Based on this, it makes more sense to put in the effort in Kubernetes rather than creating more outdated infrastructure.
+
+  * edX and the industry in general we are moving away from the ASG pattern and on to Kubernetes. Both the ASG approach and the Kubernetes approach would require a substantial amount of work in order to make the number of instances scalable based on number of topics rather than built-in measurements like CPU load. Based on this, it makes more sense to put in the effort in Kubernetes rather than creating more outdated infrastructure.
+
 #. Django-channels
-    * Research turned up the possibility of using django-channels (websocket equivalent for Django) for use with Kafka, but the design and potential benefit was unclear so this was not pursued further
+
+  * Research turned up the possibility of using django-channels (websocket equivalent for Django) for use with Kafka, but the design and potential benefit was unclear so this was not pursued further
