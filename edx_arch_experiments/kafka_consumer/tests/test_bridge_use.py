@@ -53,11 +53,3 @@ class BridgeTest(TestCase):
         course_enrollment_data_deserialized = deserializer(bytes, None)
 
         assert course_enrollment_data == course_enrollment_data_deserialized
-
-
-
-
-
-
-
-
