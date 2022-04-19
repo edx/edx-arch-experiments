@@ -54,3 +54,4 @@ class BridgeTest(TestCase):
         course_enrollment_data_deserialized = deserializer(as_bytes, None)
 
         assert event_data == course_enrollment_data_deserialized
+        COURSE_ENROLLMENT_CREATED.send_event(**course_enrollment_data_deserialized)
