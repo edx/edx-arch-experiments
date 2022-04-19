@@ -42,7 +42,9 @@ class BridgeTest(TestCase):
             created_by=user_data,
         )
 
-        as_bytes = serializer(course_enrollment_data, None)
+        event_data = { "enrollment": course_enrollment_data }
+
+        as_bytes = serializer(event_data, None)
 
         mock_src.get_schema = Mock(return_value=serializer._schema)
         deserializer = AvroDeserializer(schema_str=bridge.schema_str(),
@@ -51,4 +53,4 @@ class BridgeTest(TestCase):
 
         course_enrollment_data_deserialized = deserializer(as_bytes, None)
 
-        assert course_enrollment_data == course_enrollment_data_deserialized
+        assert event_data == course_enrollment_data_deserialized
