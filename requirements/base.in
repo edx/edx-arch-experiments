@@ -6,5 +6,6 @@ confluent_kafka
 edx_django_utils
 edx_toggles
 fastavro
+openedx_events
 requests
 setuptools
