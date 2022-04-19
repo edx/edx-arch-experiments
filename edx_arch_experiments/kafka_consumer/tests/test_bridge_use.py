@@ -17,7 +17,7 @@ class BridgeTest(TestCase):
         mock_src = SchemaRegistryClient({'url': 'https://www.example.com'})
         mock_src.register_schema = Mock(return_value=3)
 
-        serializer = AvroSerializer(schema_str=bridge.get_schema_str(),
+        serializer = AvroSerializer(schema_str=bridge.schema_str(),
                                     schema_registry_client=mock_src,
                                     to_dict=bridge.to_dict)
 
@@ -45,7 +45,7 @@ class BridgeTest(TestCase):
         as_bytes = serializer(course_enrollment_data, None)
 
         mock_src.get_schema = Mock(return_value=serializer._schema)
-        deserializer = AvroDeserializer(schema_str=bridge.get_schema_str(),
+        deserializer = AvroDeserializer(schema_str=bridge.schema_str(),
                                         schema_registry_client=mock_src,
                                         from_dict=bridge.from_dict)
 
