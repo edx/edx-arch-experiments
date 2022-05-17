@@ -5,3 +5,5 @@ coverage.xml
 build/
 .tox/
 **/private.py
+.coverage
+dist/

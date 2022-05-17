@@ -8,3 +8,4 @@ edx_toggles
 fastavro
 requests
 setuptools
+openedx-events
