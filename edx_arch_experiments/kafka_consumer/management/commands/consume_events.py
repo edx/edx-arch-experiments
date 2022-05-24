@@ -70,7 +70,7 @@ class Command(BaseCommand):
 
     def create_consumer(self, group_id):
         """
-        Create a consumer for TrackingEvents
+        Create a consumer for SUBSCRIPTION_LICENSE_MODIFIED events
         :param group_id: id of the consumer group this consumer will be part of
         :return: DeserializingConsumer
         """
