@@ -116,22 +116,27 @@ class Command(BaseCommand):
         Determine the correct signal and send the event from the message
         """
         if msg.headers():
-            # headers() is actually a list of (key, value) tuples rather than a real dictionary
+            # TODO (EventBus): iterate on error handling for missing or multiple event_type headers
+            #  (headers() is actually a list of (key, value) tuples rather than a dictionary)
             event_types = [value for key, value in msg.headers() if key == EVENT_TYPE_HEADER]
             if len(event_types) == 0:
-                # TODO (EventBus): iterate on error handling for missing signal type
                 logger.error(f"Missing {EVENT_TYPE_HEADER} header on message, cannot determine signal")
-            # there really should only be one event type but theoretically we can have multiple
-            for event_type in event_types:
-                # TODO (EventBus): Figure out who is doing the encoding and get the
-                #  right one instead of just guessing utf-8
-                event_type_str = event_type.decode("utf-8")
-                try:
-                    signal = OpenEdxPublicSignal.get_signal_by_type(event_type_str)
-                    if signal:
-                        signal.send_event(**msg.value())
-                except KeyError:
-                    logger.exception(f"Signal not found: {event_type_str}")
+                return
+            if len(event_types) > 1:
+                logger.error(f"Multiple {EVENT_TYPE_HEADER}s found on message, cannot determine signal")
+                return
+
+            event_type = event_types[0]
+
+            # TODO (EventBus): Figure out who is doing the encoding and get the
+            #  right one instead of just guessing utf-8
+            event_type_str = event_type.decode("utf-8")
+            try:
+                signal = OpenEdxPublicSignal.get_signal_by_type(event_type_str)
+                if signal:
+                    signal.send_event(**msg.value())
+            except KeyError:
+                logger.exception(f"Signal not found: {event_type_str}")
 
     def process_single_message(self, msg):
         """
