@@ -10,5 +10,5 @@ def plugin_settings(settings):
     settings.SCHEMA_REGISTRY_URL = "http://edx.devstack.schema-registry:8081"
     settings.LICENSE_EVENT_TOPIC_NAME = "license-event-dev"
     if os.path.isfile(join(dirname(abspath(__file__)), 'private.py')):
-        from .private import plugin_settings_override  # pylint: disable=import-error,import-outside-toplevel
+        from .private import plugin_settings_override  # pylint: disable=import-outside-toplevel,import-error
         plugin_settings_override(settings)

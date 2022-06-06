@@ -26,3 +26,4 @@ class KafkaConsumerApp(AppConfig):
             }
         }
     }
+    from .signals import receivers  # pylint: disable=import-outside-toplevel

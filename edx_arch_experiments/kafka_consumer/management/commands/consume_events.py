@@ -11,8 +11,9 @@ from confluent_kafka.serialization import StringDeserializer
 from django.conf import settings
 from django.core.management.base import BaseCommand
 from edx_toggles.toggles import SettingToggle
-
-from edx_arch_experiments.kafka_consumer.events import TrackingEvent
+from openedx_events.bridge.avro_attrs_bridge import AvroAttrsBridge
+from openedx_events.enterprise.signals import SUBSCRIPTION_LICENSE_MODIFIED
+from openedx_events.tooling import OpenEdxPublicSignal
 
 logger = logging.getLogger(__name__)
 
@@ -29,6 +30,10 @@ logger = logging.getLogger(__name__)
 KAFKA_CONSUMERS_ENABLED = SettingToggle('KAFKA_CONSUMERS_ENABLED', default=False)
 
 CONSUMER_POLL_TIMEOUT = getattr(settings, 'CONSUMER_POLL_TIMEOUT', 1.0)
+
+# CloudEvent standard name for the event type header, see
+# https://github.com/cloudevents/spec/blob/v1.0.1/kafka-protocol-binding.md#325-example
+EVENT_TYPE_HEADER = "ce_type"
 
 
 class Command(BaseCommand):
@@ -65,7 +70,7 @@ class Command(BaseCommand):
 
     def create_consumer(self, group_id):
         """
-        Create a consumer for TrackingEvents
+        Create a consumer for SUBSCRIPTION_LICENSE_MODIFIED events
         :param group_id: id of the consumer group this consumer will be part of
         :return: DeserializingConsumer
         """
@@ -79,17 +84,20 @@ class Command(BaseCommand):
 
         # TODO (EventBus):
         # 1. Reevaluate if all consumers should listen for the earliest unprocessed offset (auto.offset.reset)
-        # 2. Use Avro <-> Attr bridge to deserialize and/or throw an error if we don't know how to
-        #    deserialize messages in a particular topic. This will depend heavily on the exact API of the
-        #    Avro <-> Attr bridge, which is still under development
+        # 2. Consider how to make sure the signal used in the bridge is the same one sent over in the message header
+
+        bridge = AvroAttrsBridge(SUBSCRIPTION_LICENSE_MODIFIED)
+
+        def inner_from_dict(event_data_dict, ctx=None):  # pylint: disable=unused-argument
+            return bridge.from_dict(event_data_dict)
 
         consumer_config = {
             'bootstrap.servers': settings.KAFKA_BOOTSTRAP_SERVER,
             'group.id': group_id,
             'key.deserializer': StringDeserializer('utf-8'),
-            'value.deserializer': AvroDeserializer(schema_str=TrackingEvent.TRACKING_EVENT_AVRO_SCHEMA,
+            'value.deserializer': AvroDeserializer(schema_str=bridge.schema_str(),
                                                    schema_registry_client=schema_registry_client,
-                                                   from_dict=TrackingEvent.from_dict),
+                                                   from_dict=inner_from_dict),
             'auto.offset.reset': 'earliest'
         }
 
@@ -103,17 +111,36 @@ class Command(BaseCommand):
 
         return DeserializingConsumer(consumer_config)
 
-    def handle_message(self, msg):
+    def emit_signals_from_message(self, msg):
         """
-        Place holder methods for how to handle an incoming message from the event bus
+        Determine the correct signal and send the event from the message
         """
-        # TODO (EventBus):
-        # Rewrite this to construct and/or emit the signal eventually specified in the message.
-        logger.info(f"Received message with key {msg.key()} and value {TrackingEvent.to_dict(msg.value())}")
+        if msg.headers():
+            # TODO (EventBus): iterate on error handling for missing or multiple event_type headers
+            #  (headers() is actually a list of (key, value) tuples rather than a dictionary)
+            event_types = [value for key, value in msg.headers() if key == EVENT_TYPE_HEADER]
+            if len(event_types) == 0:
+                logger.error(f"Missing {EVENT_TYPE_HEADER} header on message, cannot determine signal")
+                return
+            if len(event_types) > 1:
+                logger.error(f"Multiple {EVENT_TYPE_HEADER}s found on message, cannot determine signal")
+                return
+
+            event_type = event_types[0]
+
+            # TODO (EventBus): Figure out who is doing the encoding and get the
+            #  right one instead of just guessing utf-8
+            event_type_str = event_type.decode("utf-8")
+            try:
+                signal = OpenEdxPublicSignal.get_signal_by_type(event_type_str)
+                if signal:
+                    signal.send_event(**msg.value())
+            except KeyError:
+                logger.exception(f"Signal not found: {event_type_str}")
 
     def process_single_message(self, msg):
         """
-        Handle message error or pass along for processing (separated out for easier testing)
+        Emit signal with message data
         """
         if msg is None:
             return
@@ -125,7 +152,7 @@ class Command(BaseCommand):
             else:
                 logger.exception(msg.error())
             return
-        self.handle_message(msg)
+        self.emit_signals_from_message(msg)
 
     def handle(self, *args, **options):
         if not KAFKA_CONSUMERS_ENABLED.is_enabled():

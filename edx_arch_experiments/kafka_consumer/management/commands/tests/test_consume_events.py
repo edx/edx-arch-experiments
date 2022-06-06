@@ -9,6 +9,7 @@ from django.test.utils import override_settings
 from edx_arch_experiments.kafka_consumer.management.commands.consume_events import Command
 
 
+# TODO (EventBus): Figure out how to mock messages for more thorough testing
 class TestConsumeEventCommand(TestCase):
     """
     Tests for the consume_events management command
@@ -20,7 +21,7 @@ class TestConsumeEventCommand(TestCase):
         call_command(Command(), topic='test', group_id='test')
         assert not mock_create_consumer.called
 
-    @patch('edx_arch_experiments.kafka_consumer.management.commands.consume_events.Command.handle_message')
+    @patch('edx_arch_experiments.kafka_consumer.management.commands.consume_events.Command.emit_signals_from_message')
     def test_process_single_message_null(self, mock_handle):
         consume_command = Command()
         consume_command.process_single_message(None)
