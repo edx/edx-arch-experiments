@@ -52,7 +52,6 @@ upgrade: ## update the requirements/*.txt files with the latest packages satisfy
 	mv requirements/test.tmp requirements/test.txt
 
 
-upgrade_package: export CUSTOM_COMPILE_COMMAND=make upgrade
 upgrade_package: ## update the requirements/*.txt file with the latest version of $package
 	@test -n "$(package)" || { echo "\nUsage: make upgrade_package package=...\n"; exit 1; }
 	PIP_COMPILE_LIBRARIES="pip-compile --rebuild --upgrade-package $(package)" make upgrade
