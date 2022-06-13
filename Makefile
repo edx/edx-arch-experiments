@@ -52,7 +52,7 @@ upgrade: ## update the requirements/*.txt files with the latest packages satisfy
 
 
 upgrade_package: export CUSTOM_COMPILE_COMMAND=make upgrade
-upgrade_package:
+upgrade_package: ## update the requirements/*.txt file with the latest version of $package 
 	PIP_COMPILE="pip-compile --rebuild --upgrade-package $(package)"
 	make upgrade
 
