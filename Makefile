@@ -1,6 +1,6 @@
 .PHONY: clean compile_translations coverage diff_cover docs dummy_translations \
         extract_translations fake_translations help pii_check pull_translations push_translations \
-        quality requirements selfcheck test test-all upgrade validate
+        quality requirements selfcheck test test-all upgrade validate upgrade_package
 
 .DEFAULT_GOAL := help
 
@@ -30,7 +30,7 @@ docs: ## generate Sphinx HTML documentation, including API docs
 	$(BROWSER)docs/_build/html/index.html
 
 # Define PIP_COMPILE_OPTS=-v to get more information during make upgrade.
-PIP_COMPILE = pip-compile --rebuild --upgrade $(PIP_COMPILE_OPTS)
+PIP_COMPILE = pip-compile --rebuild --upgrade-package $(package)
 
 upgrade: export CUSTOM_COMPILE_COMMAND=make upgrade
 upgrade: ## update the requirements/*.txt files with the latest packages satisfying requirements/*.in
@@ -49,6 +49,12 @@ upgrade: ## update the requirements/*.txt files with the latest packages satisfy
 	# Let tox control the Django version for tests
 	sed '/^[dD]jango==/d' requirements/test.txt > requirements/test.tmp
 	mv requirements/test.tmp requirements/test.txt
+
+
+upgrade_package: export CUSTOM_COMPILE_COMMAND=make upgrade
+upgrade_package:
+	PIP_COMPILE="pip-compile --rebuild --upgrade-package $(package)"
+	make upgrade
 
 quality: ## check coding style with pycodestyle and pylint
 	tox -e quality
