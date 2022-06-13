@@ -11,8 +11,8 @@ from confluent_kafka.serialization import StringDeserializer
 from django.conf import settings
 from django.core.management.base import BaseCommand
 from edx_toggles.toggles import SettingToggle
-from openedx_events.event_bus.avro.deserializer import AvroSignalDeserializer
 from openedx_events.enterprise.signals import SUBSCRIPTION_LICENSE_MODIFIED
+from openedx_events.event_bus.avro.deserializer import AvroSignalDeserializer
 from openedx_events.tooling import OpenEdxPublicSignal
 
 logger = logging.getLogger(__name__)
