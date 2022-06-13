@@ -30,7 +30,8 @@ docs: ## generate Sphinx HTML documentation, including API docs
 	$(BROWSER)docs/_build/html/index.html
 
 # Define PIP_COMPILE_OPTS=-v to get more information during make upgrade.
-PIP_COMPILE = pip-compile --rebuild --upgrade $(PIP_COMPILE_OPTS)
+PIP_COMPILE ?= pip-compile --rebuild --upgrade $(PIP_COMPILE_OPTS)
+PIP_COMPILE_LIBRARIES ?= $(PIP_COMPILE)
 
 upgrade: export CUSTOM_COMPILE_COMMAND=make upgrade
 upgrade: ## update the requirements/*.txt files with the latest packages satisfying requirements/*.in
@@ -40,21 +41,21 @@ upgrade: ## update the requirements/*.txt files with the latest packages satisfy
 	$(PIP_COMPILE) -o requirements/pip-tools.txt requirements/pip-tools.in
 	pip install -qr requirements/pip.txt
 	pip install -qr requirements/pip-tools.txt
-	$(PIP_COMPILE) -o requirements/base.txt requirements/base.in
-	$(PIP_COMPILE) -o requirements/test.txt requirements/test.in
-	$(PIP_COMPILE) -o requirements/doc.txt requirements/doc.in
-	$(PIP_COMPILE) -o requirements/quality.txt requirements/quality.in
-	$(PIP_COMPILE) -o requirements/ci.txt requirements/ci.in
-	$(PIP_COMPILE) -o requirements/dev.txt requirements/dev.in
+	$(PIP_COMPILE_LIBRARIES) -o requirements/base.txt requirements/base.in
+	$(PIP_COMPILE_LIBRARIES) -o requirements/test.txt requirements/test.in
+	$(PIP_COMPILE_LIBRARIES) -o requirements/doc.txt requirements/doc.in
+	$(PIP_COMPILE_LIBRARIES) -o requirements/quality.txt requirements/quality.in
+	$(PIP_COMPILE_LIBRARIES) -o requirements/ci.txt requirements/ci.in
+	$(PIP_COMPILE_LIBRARIES) -o requirements/dev.txt requirements/dev.in
 	# Let tox control the Django version for tests
 	sed '/^[dD]jango==/d' requirements/test.txt > requirements/test.tmp
 	mv requirements/test.tmp requirements/test.txt
 
 
 upgrade_package: export CUSTOM_COMPILE_COMMAND=make upgrade
-upgrade_package: ## update the requirements/*.txt file with the latest version of $package 
-	PIP_COMPILE="pip-compile --rebuild --upgrade-package $(package)"
-	make upgrade
+upgrade_package: ## update the requirements/*.txt file with the latest version of $package
+	@test -n "$(package)" || { echo "\nUsage: make upgrade_package package=...\n"; exit 1; }
+	PIP_COMPILE_LIBRARIES="pip-compile --rebuild --upgrade-package $(package)" make upgrade
 
 quality: ## check coding style with pycodestyle and pylint
 	tox -e quality
