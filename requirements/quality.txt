@@ -118,7 +118,7 @@ newrelic==7.4.0.172
     # via
     #   -r requirements/test.txt
     #   edx-django-utils
-openedx-events==0.9.1
+openedx-events==0.10.0
     # via -r requirements/test.txt
 packaging==21.3
     # via

@@ -11,8 +11,8 @@ from confluent_kafka.serialization import StringDeserializer
 from django.conf import settings
 from django.core.management.base import BaseCommand
 from edx_toggles.toggles import SettingToggle
-from openedx_events.bridge.avro_attrs_bridge import AvroAttrsBridge
 from openedx_events.enterprise.signals import SUBSCRIPTION_LICENSE_MODIFIED
+from openedx_events.event_bus.avro.deserializer import AvroSignalDeserializer
 from openedx_events.tooling import OpenEdxPublicSignal
 
 logger = logging.getLogger(__name__)
@@ -84,18 +84,18 @@ class Command(BaseCommand):
 
         # TODO (EventBus):
         # 1. Reevaluate if all consumers should listen for the earliest unprocessed offset (auto.offset.reset)
-        # 2. Consider how to make sure the signal used in the bridge is the same one sent over in the message header
+        # 2. Ensure the signal used in the signal_deserializer is the same one sent over in the message header
 
-        bridge = AvroAttrsBridge(SUBSCRIPTION_LICENSE_MODIFIED)
+        signal_deserializer = AvroSignalDeserializer(SUBSCRIPTION_LICENSE_MODIFIED)
 
         def inner_from_dict(event_data_dict, ctx=None):  # pylint: disable=unused-argument
-            return bridge.from_dict(event_data_dict)
+            return signal_deserializer.from_dict(event_data_dict)
 
         consumer_config = {
             'bootstrap.servers': settings.KAFKA_BOOTSTRAP_SERVER,
             'group.id': group_id,
             'key.deserializer': StringDeserializer('utf-8'),
-            'value.deserializer': AvroDeserializer(schema_str=bridge.schema_str(),
+            'value.deserializer': AvroDeserializer(schema_str=signal_deserializer.schema_string(),
                                                    schema_registry_client=schema_registry_client,
                                                    from_dict=inner_from_dict),
             'auto.offset.reset': 'earliest'
