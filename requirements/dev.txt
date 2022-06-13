@@ -160,7 +160,7 @@ newrelic==7.4.0.172
     # via
     #   -r requirements/quality.txt
     #   edx-django-utils
-openedx-events==0.9.1
+openedx-events==0.10.0
     # via -r requirements/quality.txt
 packaging==21.3
     # via
@@ -179,7 +179,7 @@ pep517==0.12.0
     # via
     #   -r requirements/pip-tools.txt
     #   pip-tools
-pip-tools==6.5.1
+pip-tools==6.6.2
     # via -r requirements/pip-tools.txt
 pkginfo==1.8.2
     # via
