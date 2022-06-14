@@ -15,6 +15,12 @@ Unreleased
 ~~~~~~~~~~
 *
 
+[0.2.1] - 2022-06-14
+~~~~~~~~~~~~~~~~~~~~
+
+* Add new target to Makefile
+* Update openedx-events
+
 [0.2.0] - 2022-03-16
 ~~~~~~~~~~~~~~~~~~~~
 
