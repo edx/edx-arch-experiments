@@ -27,7 +27,7 @@ The new consumer containers will share access to the database and the same codeb
 Consequences
 ------------
 
-* If the new consumer is supporting a backend service that is not yet deployed using Kubernetes, care must be taken to ensure consumers are deployed with the rest of the app. For example, if the backend service is deployed to AWS instance. Considerations need to be made if one part of this deployment breaks, but not another part.
+* If the new consumer is supporting a backend service that is not yet deployed using Kubernetes, for example, as an AWS instance, care must be taken to ensure consumers are deployed with the rest of the app. Considerations need to be made if one part of this deployment breaks, but not another.
 
 Rejected Alternatives
 ---------------------
