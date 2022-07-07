@@ -20,7 +20,14 @@ Decision
 --------
 edX.org will use Kubernetes to manage containers whose sole purpose is to run a management command, which in turn will run a polling loop against the specified topic. This will enable standard horizontal scaling of Kafka consumer groups.
 
-The loop will both listen for new events and run any necessary processing code for each event.
+The loop will listen for new events and then kick off the processing code for each event.
+
+The new consumer containers will share access to the database and the same codebase as the backend service it supports. These would all be considered part of the same bounded context (from Domain-Driven Design).
+
+Consequences
+------------
+
+* If the new consumer is supporting a backend service that is not yet deployed using Kubernetes, for example, as an AWS instance, care must be taken to ensure consumers are deployed with the rest of the app. Considerations need to be made if one part of this deployment breaks, but not another.
 
 Rejected Alternatives
 ---------------------
