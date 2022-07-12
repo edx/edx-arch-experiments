@@ -47,8 +47,7 @@ class Command(BaseCommand):
     example:
         manage.py ... consume_events -t license-event-prod -g license-event-consumers
 
-    # TODO (EventBus): Add pointer to relevant future docs around topics and consumer groups, and potentially
-    update example topic and group names to follow any future naming conventions.
+    See https://github.com/edx/edx-arch-experiments/issues/43 for topic/consumer group administration
 
     """
 
