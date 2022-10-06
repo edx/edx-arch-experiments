@@ -15,6 +15,11 @@ Unreleased
 ~~~~~~~~~~
 *
 
+[1.0.0] - 2022-10-06
+~~~~~~~~~~~~~~~~~~~~
+
+* **Breaking change**: Remove ``kafka_consumer`` package and plugin (migrated to ``edx-event-bus-kafka``)
+
 [0.2.1] - 2022-06-14
 ~~~~~~~~~~~~~~~~~~~~
 
