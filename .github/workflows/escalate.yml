@@ -16,7 +16,7 @@ jobs:
         uses: atlassian/gajira-create@v3
         with:
           project: PSRE
-          issuetype: Task
+          issuetype: Story
           summary: rgraber is testing things, ignore this
-          description: ignore me. if rgraber doesn't close this you can yell at her. 
-          fields: '{ "labels": ["dos-request"], "customfield_10008": "PSRE-1950" }'
+          description: ignore me. if rgraber doesn't close this you can yell at her.
+          fields: '{ "labels": ["dos-request"] }'
