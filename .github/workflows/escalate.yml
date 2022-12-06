@@ -1,9 +1,6 @@
 name: Escalate to pSRE
 
-on:
-  - issues:
-      types:
-        - labeled
+on: [pull_request, workflow_dispatch]
 
 jobs:
   file-jira:
@@ -23,3 +20,4 @@ jobs:
           issuetype: Task
           summary: ${{ github.event.issue.title }}
           description: ${{ github.event.issue.body }}
+          fields: { "labels": "dos-request" }
