@@ -8,6 +8,7 @@ on:
 jobs:
   file-jira:
     runs-on: ubuntu-latest
+    if: ${{ github.event.label.name == 'escalate-to-psre' }}
     steps:
       - name: Login
         uses: atlassian/gajira-login@v3
