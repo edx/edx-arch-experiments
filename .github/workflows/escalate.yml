@@ -15,8 +15,8 @@ jobs:
       - name: Create ticket
         uses: atlassian/gajira-create@v3
         with:
-          project: ARCHBOM
+          project: PSRE
           issuetype: Task
-          summary: rgraber is still testing things, ignore
-          description: ignore me
+          summary: rgraber is testing things, ignore this
+          description: ignore me. if rgraber doesn't close this you can yell at her. 
           fields: '{ "labels": ["dos-request"], "customfield_10008": "PSRE-1950" }'
