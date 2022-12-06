@@ -19,4 +19,4 @@ jobs:
           issuetype: Task
           summary: rgraber is still testing things, ignore
           description: ignore me
-          fields: '{ "labels": ["dos-request"] }'
+          fields: '{ "labels": ["dos-request"], "customfield_10008": "PSRE-1950" }'
