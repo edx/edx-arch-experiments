@@ -1,0 +1,25 @@
+name: Escalate to pSRE
+
+on:
+  - issues:
+      types:
+        - labeled
+
+jobs:
+  file-jira:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Login
+        uses: atlassian/gajira-login@v3
+        env:
+          JIRA_BASE_URL: ${{ secrets.JIRA_BASE_URL }}
+          JIRA_USER_EMAIL: 'rgraber@edx.org'
+          JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
+      - name: Create ticket
+        uses: atlassian/gajira-create@v3
+        with:
+          project: ARCHBOM
+          issuetype: Story
+          summary: ${{ github.event.issue.title }}
+          description: ${{ github.event.issue.body }}
+          fields: '{ "labels": ["esre-request"] }'
