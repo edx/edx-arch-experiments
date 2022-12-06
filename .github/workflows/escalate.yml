@@ -22,4 +22,4 @@ jobs:
           issuetype: Story
           summary: ${{ github.event.issue.title }}
           description: ${{ github.event.issue.body }}
-          fields: '{ "labels": ["dos-request"] }'
+          fields: '{ "labels": ["esre-request"] }'
