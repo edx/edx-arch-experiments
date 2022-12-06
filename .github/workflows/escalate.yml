@@ -1,6 +1,9 @@
 name: Escalate to pSRE
 
-on: [pull_request, workflow_dispatch]
+on:
+  - issues:
+      types:
+        - labeled
 
 jobs:
   file-jira:
@@ -15,8 +18,8 @@ jobs:
       - name: Create ticket
         uses: atlassian/gajira-create@v3
         with:
-          project: PSRE
+          project: ARCHBOM
           issuetype: Story
-          summary: rgraber is testing things, ignore this
-          description: ignore me. if rgraber doesn't close this you can yell at her.
+          summary: ${{ github.event.issue.title }}
+          description: ${{ github.event.issue.body }}
           fields: '{ "labels": ["dos-request"] }'
