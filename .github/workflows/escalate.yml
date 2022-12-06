@@ -1,9 +1,8 @@
 name: Escalate to pSRE
 
 on:
-  - issues:
-      types:
-        - labeled
+  issues:
+    types: labeled
 
 jobs:
   file-jira:
