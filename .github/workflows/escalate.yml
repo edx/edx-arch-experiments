@@ -13,7 +13,7 @@ jobs:
         uses: atlassian/gajira-login@v3
         env:
           JIRA_BASE_URL: ${{ secrets.JIRA_BASE_URL }}
-          JIRA_USER_EMAIL: 'rgraber@edx.org'
+          JIRA_USER_EMAIL: 'productivitysysops@2u.com'
           JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
       - name: Create ticket
         uses: atlassian/gajira-create@v3
