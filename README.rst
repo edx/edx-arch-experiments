@@ -1,4 +1,4 @@
-edx-arch-experiments
+edx-arch-experimints
 =============================
 
 |pypi-badge| |ci-badge| |codecov-badge| |pyversions-badge|
