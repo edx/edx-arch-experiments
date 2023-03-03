@@ -110,6 +110,7 @@ setup(
     url='https://github.com/edx/edx-arch-experiments',
     packages=[
         'edx_arch_experiments',
+        'edx_arch_experiments.summaryhook_aside',
     ],
     include_package_data=True,
     install_requires=load_requirements('requirements/base.in'),
@@ -130,6 +131,10 @@ setup(
     entry_points={
         "lms.djangoapp": [
             "arch_experiments = edx_arch_experiments.apps:EdxArchExperimentsConfig",
+            "summaryhook = edx_arch_experiments.summaryhook_aside.apps:SummaryHookConfig",
+        ],
+        "xblock_asides.v1": [
+            "summaryhook_aside = edx_arch_experiments.summaryhook_aside.block:SummaryHookAside",
         ],
     },
 )
