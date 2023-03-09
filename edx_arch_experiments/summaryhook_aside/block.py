@@ -9,10 +9,14 @@ from edx_arch_experiments.summaryhook_aside.waffle import summary_enabled
 
 summary_fragment = """
 <div class="summary-hook">
-  <div id="ai-spot-root"
-    data-url-api="{{data_url_api}}"
-    data-text-identifier="{{data_text_identifier}}"
-  ></div>
+  <div summary-launch>
+    <div id="launch-summary-button"
+      data-url-api="{{data_url_api}}"
+      data-text-identifier="{{data_text_identifier}}"
+    >
+    </div>
+  </div>
+  <div id="ai-spot-root"></div>
   <script type="text/javascript" src="{{js_url}}" defer="defer"></script>
 </div>
 """
