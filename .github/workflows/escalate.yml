@@ -28,5 +28,4 @@ jobs:
         uses: peter-evans/create-or-update-comment@v2
         with:
           body: This is now https://2u-internal.atlassian.net/browse/${{ steps.jiracreate.outputs.issue }}
-
-
+          issue-number: ${{ github.event.issue.number }}
