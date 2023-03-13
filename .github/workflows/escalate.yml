@@ -17,9 +17,16 @@ jobs:
           JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
       - name: Create ticket
         uses: atlassian/gajira-create@v3
+        id: jiracreate
         with:
-          project: PSRE
+          project: ARCHBOM
           issuetype: Story
           summary: ${{ github.event.issue.title }}
           description: ${{ github.event.issue.body }}
           fields: '{ "labels": ["esre-request"] }'
+      - name: Comment with JIRA issue link
+        uses: peter-evans/create-or-update-comment@v2
+        with:
+          body: This is now https://2u-internal.atlassian.net/browse/${{ steps.jiracreate.outputs.issue }}
+
+
