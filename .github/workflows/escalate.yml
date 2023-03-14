@@ -19,7 +19,7 @@ jobs:
         uses: atlassian/gajira-create@v3
         id: jiracreate
         with:
-          project: ARCHBOM
+          project: PSRE
           issuetype: Story
           summary: ${{ github.event.issue.title }}
           description: |
