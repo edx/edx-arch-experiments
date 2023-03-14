@@ -19,10 +19,12 @@ jobs:
         uses: atlassian/gajira-create@v3
         id: jiracreate
         with:
-          project: PSRE
+          project: ARCHBOM
           issuetype: Story
           summary: ${{ github.event.issue.title }}
-          description: ${{ github.event.issue.body }}
+          description: |
+            ${{ github.event.issue.body }}
+            The original issue is at ${{ github.event.issue.url }}
           fields: '{ "labels": ["esre-request"] }'
       - name: Comment with JIRA issue link
         uses: peter-evans/create-or-update-comment@v2
