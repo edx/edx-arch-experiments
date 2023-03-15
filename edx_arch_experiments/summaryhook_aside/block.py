@@ -5,7 +5,7 @@ from django.template import Context, Template
 from web_fragments.fragment import Fragment
 from xblock.core import XBlockAside
 
-from edx_arch_experiments.summaryhook_aside.waffle import summary_enabled
+from edx_arch_experiments.summaryhook_aside.waffle import summary_enabled, summary_staff_only
 
 summary_fragment = """
 <div class="summary-hook">
@@ -74,11 +74,12 @@ class SummaryHookAside(XBlockAside):
     def should_apply_to_block(cls, block):
         """
         Overrides base XBlockAside implementation. Indicates whether this aside should
-        apply to a given block type. Also checks whether the waffle flag is on for this
-        course.
+        apply to a given block type, course, and user.
         """
         if getattr(block, 'category', None) != 'vertical':
             return False
-        if not summary_enabled(block.scope_ids.usage_id.course_key):
-            return False
-        return True
+        course_key = block.scope_ids.usage_id.course_key
+        if (getattr(block.runtime, 'user_is_staff', False)
+                and summary_staff_only(course_key)):
+            return True
+        return summary_enabled(course_key)
