@@ -15,6 +15,11 @@ Unreleased
 ~~~~~~~~~~
 *
 
+[1.2.0] - 2023-04-03
+~~~~~~~~~~~~~~~~~~~~
+
+* Added Content-Security-Policy response header middleware under ``csp`` submodule
+
 [1.1.2] - 2023-03-14
 ~~~~~~~~~~~~~~~~~~~~
 
