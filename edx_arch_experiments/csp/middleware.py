@@ -133,7 +133,7 @@ def content_security_policy_middleware(get_response):
     # Constant across all requests, since they're based on static settings.
     csp_headers = _load_headers()
     if not csp_headers:
-        raise MiddlewareNotUsed()
+        raise MiddlewareNotUsed()  # tell Django to skip this middleware
 
     def middleware_handler(request):
         response = get_response(request)
