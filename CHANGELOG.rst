@@ -15,6 +15,14 @@ Unreleased
 ~~~~~~~~~~
 *
 
+[1.1.3] - 2023-04-05
+~~~~~~~~~~~~~~~~~~~~
+
+Fixed
+_____
+
+* Removed ``default_app_config`` (deprecated in Django 3)
+
 [1.1.2] - 2023-03-14
 ~~~~~~~~~~~~~~~~~~~~
 

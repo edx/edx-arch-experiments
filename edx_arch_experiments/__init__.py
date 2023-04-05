@@ -1,7 +1,5 @@
 """
-A plugin to include applications under development by the architecture team at edx .
+A plugin to include applications under development by the architecture team at 2U.
 """
 
-__version__ = '1.1.2'
-
-default_app_config = 'edx_arch_experiments.apps.EdxArchExperimentsConfig'  # pylint: disable=invalid-name
+__version__ = '1.1.3'
