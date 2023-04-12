@@ -8,6 +8,7 @@ from xblock.core import XBlockAside
 from edx_arch_experiments.summaryhook_aside.waffle import summary_enabled, summary_staff_only
 
 summary_fragment = """
+<div>&nbsp;</div>
 <div class="summary-hook">
   <div summary-launch>
     <div id="launch-summary-button"
