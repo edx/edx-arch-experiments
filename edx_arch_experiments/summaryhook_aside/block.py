@@ -14,6 +14,8 @@ summary_fragment = """
     <div id="launch-summary-button"
       data-url-api="{{data_url_api}}"
       data-text-identifier="{{data_text_identifier}}"
+      data-course-id="{{data_course_id}}"
+      data-content-id="{{data_content_id}}"
     >
     </div>
   </div>
@@ -65,6 +67,8 @@ class SummaryHookAside(XBlockAside):
                 {
                     'data_url_api': settings.SUMMARY_HOOK_HOST,
                     'data_text_identifier': '.xblock-student_view-html',
+                    'data_course_id': block.scope_ids.usage_id.course_key,
+                    'data_content_id': block.scope_ids.usage_id,
                     'js_url': settings.SUMMARY_HOOK_HOST + settings.SUMMARY_HOOK_JS_PATH,
                 }
             )
