@@ -8,11 +8,14 @@ from xblock.core import XBlockAside
 from edx_arch_experiments.summaryhook_aside.waffle import summary_enabled, summary_staff_only
 
 summary_fragment = """
+<div>&nbsp;</div>
 <div class="summary-hook">
   <div summary-launch>
     <div id="launch-summary-button"
       data-url-api="{{data_url_api}}"
       data-text-identifier="{{data_text_identifier}}"
+      data-course-id="{{data_course_id}}"
+      data-content-id="{{data_content_id}}"
     >
     </div>
   </div>
@@ -64,6 +67,8 @@ class SummaryHookAside(XBlockAside):
                 {
                     'data_url_api': settings.SUMMARY_HOOK_HOST,
                     'data_text_identifier': '.xblock-student_view-html',
+                    'data_course_id': block.scope_ids.usage_id.course_key,
+                    'data_content_id': block.scope_ids.usage_id,
                     'js_url': settings.SUMMARY_HOOK_HOST + settings.SUMMARY_HOOK_JS_PATH,
                 }
             )
