@@ -2,13 +2,13 @@ name: Upgrade Requirements
 
 on:
   schedule:
-    - cron: "5 4 * * 7"
+    - cron: "5 4 * * 0"
   workflow_dispatch:
     inputs:
       branch:
         description: "Target branch to create requirements PR against"
         required: true
-        default: master
+        default: main
 
 jobs:
   call-upgrade-python-requirements-workflow:
