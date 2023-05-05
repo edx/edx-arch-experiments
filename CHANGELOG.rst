@@ -15,6 +15,12 @@ Unreleased
 ~~~~~~~~~~
 *
 
+[1.2.0] - 2023-05-08
+~~~~~~~~~~~~~~~~~~~~
+
+* Update summary hook to trigger on videos
+* Remove text selection data key from summary hook html
+
 [1.1.4] - 2023-04-14
 ~~~~~~~~~~~~~~~~~~~~
 

@@ -13,7 +13,6 @@ summary_fragment = """
   <div summary-launch>
     <div id="launch-summary-button"
       data-url-api="{{data_url_api}}"
-      data-text-identifier="{{data_text_identifier}}"
       data-course-id="{{data_course_id}}"
       data-content-id="{{data_content_id}}"
     >
@@ -37,13 +36,16 @@ def _children_have_summarizable_content(block):
     """
     children = block.get_children()
     for child in children:
+        category = getattr(child, 'category', None)
         if (
-                getattr(child, 'category', None) == 'html'
+                category == 'html'
                 and hasattr(child, 'get_html')
                 and len(child.get_html()) > settings.SUMMARY_HOOK_MIN_SIZE
         ):
             return True
-
+        # we will eventually require there to be transcripts available to trigger but not yet
+        if category == 'video':
+            return True
     return False
 
 
@@ -66,7 +68,6 @@ class SummaryHookAside(XBlockAside):
             _render_summary(
                 {
                     'data_url_api': settings.SUMMARY_HOOK_HOST,
-                    'data_text_identifier': '.xblock-student_view-html',
                     'data_course_id': block.scope_ids.usage_id.course_key,
                     'data_content_id': block.scope_ids.usage_id,
                     'js_url': settings.SUMMARY_HOOK_HOST + settings.SUMMARY_HOOK_JS_PATH,
