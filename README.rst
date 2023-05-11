@@ -55,6 +55,7 @@ Every time you develop something in this repo
   vim …
 
   # Run your new tests
+  pip install pytest
   pytest ./path/to/new/tests
 
   # Run all the tests and quality checks
