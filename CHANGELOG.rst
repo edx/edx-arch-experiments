@@ -15,6 +15,11 @@ Unreleased
 ~~~~~~~~~~
 *
 
+[2.0.0] - 2023-06-01
+~~~~~~~~~~~~~~~~~~~~
+
+* Removes summary hook aside, now in the ai-aside repo
+
 [1.2.0] - 2023-05-08
 ~~~~~~~~~~~~~~~~~~~~
 
