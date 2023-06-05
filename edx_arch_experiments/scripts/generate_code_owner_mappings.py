@@ -3,7 +3,8 @@ This script generates code owner mappings for monitoring LMS.
 
 Sample usage::
 
-    python lms/djangoapps/monitoring/scripts/generate_code_owner_mappings.py --repo-csv "Own Repos.csv" --app-csv "Own edx-platform Apps.csv" --dep-csv "Reference edx-platform Libs.csv"
+    python lms/djangoapps/monitoring/scripts/generate_code_owner_mappings.py --repo-csv "Own Repos.csv"
+     --app-csv "Own edx-platform Apps.csv" --dep-csv "Reference edx-platform Libs.csv"
 
 Or for more details::
 
@@ -22,6 +23,7 @@ import click
 #
 # The URLs here must match the URLs in the "Own: Repos" sheet:
 # https://docs.google.com/spreadsheets/d/1qpWfbPYLSaE_deaumWSEZfz91CshWd3v3B7xhOk5M4U/view#gid=1990273504
+# These applications are the ones which contain views we want to monitor
 EDX_REPO_APPS = {
     'bulk_grades': 'https://github.com/openedx/edx-bulk-grades',
     'coaching': 'https://github.com/edx/platform-plugin-coaching',
@@ -51,6 +53,7 @@ EDX_REPO_APPS = {
 #
 # The URLs here must match the URLs in the "Reference: edx-platform Libs" sheet:
 # https://docs.google.com/spreadsheets/d/1qpWfbPYLSaE_deaumWSEZfz91CshWd3v3B7xhOk5M4U/view#gid=506252353
+# These applications are the ones which contain views we want to monitor
 THIRD_PARTY_APPS = {
     'corsheaders': 'https://github.com/adamchainz/django-cors-headers',
     'django': 'https://github.com/django/django',
@@ -83,7 +86,7 @@ THIRD_PARTY_APPS = {
 )
 def main(repo_csv, app_csv, dep_csv):
     """
-    Reads CSV of ownership data and outputs config.yml setting to system.out.
+    Reads CSVs of ownership data and outputs config.yml setting to system.out.
 
     Expected Repo CSV format:
 
@@ -148,6 +151,9 @@ def _map_repo_apps(csv_type, repo_csv, app_to_repo_map, owner_map, owner_to_path
     """
     Reads CSV of repo ownership and uses app_to_repo_map to update owner_map and owner_to_paths_map
 
+    Only the paths in app_to_repo_map will be added to owner_to_paths_map. All repositories not corresponding to an
+    app in app_to_repo_map will be ignored.
+
     Arguments:
         csv_type (string): Either 'edx-repo' or '3rd-party' for error message
         repo_csv (string): File name for the edx-repo or 3rd-party repo csv
@@ -166,7 +172,7 @@ def _map_repo_apps(csv_type, repo_csv, app_to_repo_map, owner_map, owner_to_path
         csv_repo_to_owner_map[row.get('repo url')] = owner
 
     for app, repo_url in app_to_repo_map.items():
-        # special case: enterprise-quokkas owns integrated channels but not the rest of edx-enterprise
+        # special case: enterprise-quokkas owns integrated channels but not the rest of the edx-enterprise repo
         if app == "integrated_channels":
             owner = "enterprise-quokkas"
         else:
