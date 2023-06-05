@@ -166,7 +166,11 @@ def _map_repo_apps(csv_type, repo_csv, app_to_repo_map, owner_map, owner_to_path
         csv_repo_to_owner_map[row.get('repo url')] = owner
 
     for app, repo_url in app_to_repo_map.items():
-        owner = csv_repo_to_owner_map.get(repo_url, None)
+        # special case: enterprise-quokkas owns integrated channels but not the rest of edx-enterprise
+        if app == "integrated_channels":
+            owner = "enterprise-quokkas"
+        else:
+            owner = csv_repo_to_owner_map.get(repo_url, None)
         if owner:
             if owner not in owner_to_paths_map:
                 owner_to_paths_map[owner] = []
