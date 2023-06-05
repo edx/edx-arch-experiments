@@ -1,6 +1,9 @@
 """
 This script generates code owner mappings for monitoring LMS.
 
+The script also contains a list of hardcoded overrides for certain external apps. Any owner listed here will override
+the owner indicated by the repo-csv or app-csv spreadsheet.
+
 Sample usage::
 
     python lms/djangoapps/monitoring/scripts/generate_code_owner_mappings.py --repo-csv "Own Repos.csv"
@@ -65,6 +68,11 @@ THIRD_PARTY_APPS = {
     'rest_framework': 'https://github.com/encode/django-rest-framework',
     'simple_history': 'https://github.com/treyhunner/django-simple-history',
     'social_django': 'https://github.com/python-social-auth/social-app-django',
+}
+
+# Hardcoded map of apps to owners for external apps. Overrides any ownership determined by the spreadsheet.
+EXTERNAL_APP_OWNERSHIP_OVERRIDES = {
+    'integrated_channels': 'enterprise-quokkas',
 }
 
 
@@ -172,10 +180,9 @@ def _map_repo_apps(csv_type, repo_csv, app_to_repo_map, owner_map, owner_to_path
         csv_repo_to_owner_map[row.get('repo url')] = owner
 
     for app, repo_url in app_to_repo_map.items():
-        # special case: enterprise-quokkas owns integrated channels but not the rest of the edx-enterprise repo
-        if app == "integrated_channels":
-            owner = "enterprise-quokkas"
-        else:
+        # look for any overrides in the override map before looking in the spreadsheet
+        owner = EXTERNAL_APP_OWNERSHIP_OVERRIDES.get(app, None)
+        if not owner:
             owner = csv_repo_to_owner_map.get(repo_url, None)
         if owner:
             if owner not in owner_to_paths_map:
