@@ -1,8 +1,8 @@
 """
 This script generates code owner mappings for monitoring LMS.
 
-The script also contains a list of hardcoded overrides for certain external apps. Any owner listed here will override
-the owner indicated by the repo-csv or app-csv spreadsheet.
+The script also contains a list of hardcoded overrides for certain external apps. Any owner listed
+in ``EXTERNAL_APP_OWNERSHIP_OVERRIDES`` will override the owner indicated by the repo-csv or app-csv spreadsheet.
 
 Sample usage::
 
