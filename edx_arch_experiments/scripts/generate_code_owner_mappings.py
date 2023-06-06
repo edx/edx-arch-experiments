@@ -1,13 +1,10 @@
 """
 This script generates code owner mappings for monitoring LMS.
 
-The script also contains a list of hardcoded overrides for certain external apps. Any owner listed
-in ``EXTERNAL_APP_OWNERSHIP_OVERRIDES`` will override the owner indicated by the repo-csv or app-csv spreadsheet.
-
 Sample usage::
 
     python lms/djangoapps/monitoring/scripts/generate_code_owner_mappings.py --repo-csv "Own Repos.csv"
-     --app-csv "Own edx-platform Apps.csv" --dep-csv "Reference edx-platform Libs.csv"
+     --app-csv "Own edx-platform Apps.csv" --dep-csv "Reference edx-platform Libs.csv" --override-csv "Overrides.csv"
 
 Or for more details::
 
@@ -70,11 +67,6 @@ THIRD_PARTY_APPS = {
     'social_django': 'https://github.com/python-social-auth/social-app-django',
 }
 
-# Hardcoded map of apps to owners for external apps. Overrides any ownership determined by the spreadsheet.
-EXTERNAL_APP_OWNERSHIP_OVERRIDES = {
-    'integrated_channels': 'enterprise-quokkas',
-}
-
 
 @click.command()
 @click.option(
@@ -92,29 +84,42 @@ EXTERNAL_APP_OWNERSHIP_OVERRIDES = {
     help="File name of .csv file with edx-platform 3rd-party dependency ownership details.",
     required=True
 )
-def main(repo_csv, app_csv, dep_csv):
+@click.option(
+    '--override-csv',
+    help="File name of .csv file with ownership override details. Entries here will override entries in app-csv and"
+         " dep-csv",
+    required=False
+)
+def main(repo_csv, app_csv, dep_csv, override_csv=None):
     """
     Reads CSVs of ownership data and outputs config.yml setting to system.out.
 
     Expected Repo CSV format:
 
         \b
-        repo url,owner.squad
-        https://github.com/openedx/edx-bulk-grades,team-red
+        repo url,owner.theme,owner.squad
+        https://github.com/openedx/edx-bulk-grades,theme-a,team-red
         ...
 
     Expected App CSV format:
 
         \b
-        Path,owner.squad
-        ./openedx/core/djangoapps/user_authn,team-blue
+        Path,owner.theme,owner.squad
+        ./openedx/core/djangoapps/user_authn,theme-b,team-blue
         ...
 
     Expected 3rd-party Dependency CSV format:
 
         \b
-        repo url,owner.squad
-        https://github.com/django/django,team-red
+        repo url,owner.theme,owner.squad
+        https://github.com/django/django,theme-a,team-red
+        ...
+
+    Expected Override CSV format:
+
+        \b
+        app_name,owner.theme,owner.squad
+        integrated_channels,theme-b,team-blue
         ...
 
     Final output only includes paths which might contain views.
@@ -126,8 +131,8 @@ def main(repo_csv, app_csv, dep_csv):
     # Maps owner names to a list of dotted module paths.
     # For example: { 'team-red': [ 'openedx.core.djangoapps.api_admin', 'openedx.core.djangoapps.auth_exchange' ] }
     owner_to_paths_map = {}
-    _map_repo_apps('edx-repo', repo_csv, EDX_REPO_APPS, owner_map, owner_to_paths_map)
-    _map_repo_apps('3rd-party', dep_csv, THIRD_PARTY_APPS, owner_map, owner_to_paths_map)
+    _map_repo_apps('edx-repo', repo_csv, override_csv, EDX_REPO_APPS, owner_map, owner_to_paths_map)
+    _map_repo_apps('3rd-party', dep_csv, override_csv, THIRD_PARTY_APPS, owner_map, owner_to_paths_map)
     _map_edx_platform_apps(app_csv, owner_map, owner_to_paths_map)
 
     # NB: An automated script looks for this comment when updating config files,
@@ -155,7 +160,7 @@ def main(repo_csv, app_csv, dep_csv):
                 print(f"  - {owner}")
 
 
-def _map_repo_apps(csv_type, repo_csv, app_to_repo_map, owner_map, owner_to_paths_map):
+def _map_repo_apps(csv_type, repo_csv, override_csv, app_to_repo_map, owner_map, owner_to_paths_map):
     """
     Reads CSV of repo ownership and uses app_to_repo_map to update owner_map and owner_to_paths_map
 
@@ -165,6 +170,7 @@ def _map_repo_apps(csv_type, repo_csv, app_to_repo_map, owner_map, owner_to_path
     Arguments:
         csv_type (string): Either 'edx-repo' or '3rd-party' for error message
         repo_csv (string): File name for the edx-repo or 3rd-party repo csv
+        override_csv (string): File name for the override csv (which may be None)
         app_to_repo_map (dict): Dict mapping Django apps to repo urls
         owner_map (dict): Dict of owner details
         owner_to_paths_map (dict): Holds results mapping owner to paths
@@ -174,6 +180,16 @@ def _map_repo_apps(csv_type, repo_csv, app_to_repo_map, owner_map, owner_to_path
         csv_data = file.read()
     reader = csv.DictReader(csv_data.splitlines())
 
+    overrides = {}
+    if override_csv:
+        with open(override_csv) as override_file:
+            override_data = override_file.read()
+        override_reader = csv.DictReader(override_data.splitlines())
+        for row in override_reader:
+            # transform "app, owner" rows into a dict of {app: owner}
+            owner = _get_and_map_code_owner(row, owner_map)
+            overrides[row['app']] = owner
+
     csv_repo_to_owner_map = {}
     for row in reader:
         owner = _get_and_map_code_owner(row, owner_map)
@@ -181,7 +197,7 @@ def _map_repo_apps(csv_type, repo_csv, app_to_repo_map, owner_map, owner_to_path
 
     for app, repo_url in app_to_repo_map.items():
         # look for any overrides in the override map before looking in the spreadsheet
-        owner = EXTERNAL_APP_OWNERSHIP_OVERRIDES.get(app, None)
+        owner = overrides.get(app, None)
         if not owner:
             owner = csv_repo_to_owner_map.get(repo_url, None)
         if owner:
