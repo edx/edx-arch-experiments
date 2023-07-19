@@ -22,7 +22,7 @@ cffi==1.15.1
     #   pynacl
 charset-normalizer==3.2.0
     # via requests
-click==8.1.4
+click==8.1.5
     # via
     #   -r requirements/test.txt
     #   code-annotations
@@ -194,5 +194,5 @@ urllib3==2.0.3
     # via requests
 webencodings==0.5.1
     # via bleach
-zipp==3.16.0
+zipp==3.16.2
     # via importlib-metadata
