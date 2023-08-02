@@ -1,8 +1,13 @@
 """
 Script to get the annotations from all failed checks in edx-platform after a given date
 
-This script takes a pretty long time to run (15m for 2 months)
-and there is a risk if you look too far back you will hit your API limit
+Gets all the commits to master after the date, then for each commit gets each check suite, then for each failed check
+suite gets each run. Collects the annotations for all the failed runs. The annotations will sometimes contain useful
+error messages, sometimes just the exit code. Getting the full logs requires admin permissions to edx-platform so it's
+not included in this script.
+
+This script takes a pretty long time to run (15m for 2 months) and there is a risk if you look too far back you will hit
+your API limit.
 """
 
 from csv import DictWriter
