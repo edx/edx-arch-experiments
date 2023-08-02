@@ -13,7 +13,7 @@ Change Log
 
 Unreleased
 ~~~~~~~~~~
-*
+* Add script to get github action errors
 
 [2.0.0] - 2023-06-01
 ~~~~~~~~~~~~~~~~~~~~
