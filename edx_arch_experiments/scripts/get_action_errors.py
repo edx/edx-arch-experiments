@@ -5,6 +5,11 @@ Gets all the commits to master after the date, then for each commit gets each ch
 suite gets each run. Collects the annotations for all the failed runs. The annotations will sometimes contain useful
 error messages, sometimes just the exit code. Getting the full logs requires admin permissions to edx-platform so it's
 not included in this script.
+Example output row:
+commit_date,run_started_at,run_completed_at,commit_hash,name,message
+2023-07-26T20:59:01Z,2023-07-27T06:56:23Z,2023-07-27T07:01:58Z,06e738e64a3485ecec037a9b8a36cf4ae145ea8a,
+upgrade-one-python-dependency-workflow,Process completed with exit code 2.
+
 
 This script takes a pretty long time to run (15m for 2 months) and there is a risk if you look too far back you will hit
 your API limit.
