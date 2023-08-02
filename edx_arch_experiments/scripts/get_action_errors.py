@@ -58,6 +58,16 @@ def get_errors_from_date(token, start_date, filename):
 
 
 def get_commits_after_date(cut_off_date, headers):
+    """
+    Get API data for all commits to edx-platform/master after the given date
+
+    Parameters:
+        cut_off_date (date): Earliest date to look
+        headers (dict): Authentication headers for GH requests
+
+    Returns:
+        A list of all the API responses for each commit after the date
+    """
     base_url = "https://api.github.com/repos/openedx/edx-platform/commits?sha=master&per_page=100"
     # will keep track of whether we've hit our start_date. the API automatically returns commits ordered
     # by date, descending
@@ -86,6 +96,14 @@ def get_commits_after_date(cut_off_date, headers):
 
 
 def add_commit_check_suites(current_commit, current_suites, headers):
+    """
+    Add API information from all check suites performed for a given commit to the given list
+
+    Parameters:
+        current_commit (str): the SHA of the commit to check
+        current_suites (list): list to be extended
+        headers (dict): Authentication headers for connecting to GitHub
+    """
     sha = current_commit['sha']
     check_url = f"https://api.github.com/repos/openedx/edx-platform/commits/{sha}/check-suites?per_page=100"
     page = 1
