@@ -91,7 +91,7 @@ def get_commits_after_date(cut_off_date, headers):
             break
         for single_commit in response_json:
             # if present, take off the "Z" at the end of the date to make it proper ISO format
-            commit_date = datetime.fromisoformat(single_commit['commit']['committer']['date'].replace("Z",""))
+            commit_date = datetime.fromisoformat(single_commit['commit']['committer']['date'].replace("Z", ""))
             if commit_date < cut_off_date:
                 found_last = True
                 break
