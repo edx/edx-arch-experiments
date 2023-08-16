@@ -54,12 +54,11 @@ def read_and_send_events(filename):
                     print(f'Missing required fields in row {reader.line_num}: {empties}. Will not continue publishing.')
                     sys.exit(1)
 
-                # Strip single quotation marks off everything (Splunk adds them on all fields)
-                topic = row['initial_topic'].replace("'", "")
-                event_type = row['event_type'].replace("'", "")
-                event_data = json.loads(row['event_data_as_json'].replace("'", ""))
-                event_key_field = row['event_key_field'].replace("'", "")
-                events_metadata_json = row['event_metadata_as_json'].replace("'", "")
+                topic = row['initial_topic']
+                event_type = row['event_type']
+                event_data = json.loads(row['event_data_as_json'])
+                event_key_field = row['event_key_field']
+                events_metadata_json = row['event_metadata_as_json']
                 metadata = EventsMetadata.from_json(events_metadata_json)
                 signal = OpenEdxPublicSignal.get_signal_by_type(event_type)
                 if metadata.id in ids:
