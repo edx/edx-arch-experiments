@@ -5,12 +5,14 @@ This is meant to help republish failed events. The CSV may be an export from Spl
 long as it has 'initial_topic', 'event_type', 'event_data_as_json', 'event_key_field', and 'event_metadata_as_json'
 columns.
 
-Example row:
-initial_topic,event_type,event_data_as_json,event_key_field,event_metadata_as_json
-test-topic,org.openedx.test.event,{"test_data": {"course_key": "ABCx"}},test_data.course_key,
-    {"event_type": "org.openedx.test.event","id": "12345", "minorversion": 0, "source": "openedx/cms/web",
-     "sourcehost": "ip-10-3-16-4", "time"": ""2023-08-10T17:55:22.088808+00:00", ""sourcelib"": [8, 5, 0]}
+If the CSV is manually created, you will need to use the python __repr__ of all fields. For strings, including
+json dumps, this means enclosing them in single quotes
 
+Example row (second line split up for readability, in the csv it should be all one line)
+initial_topic,event_type,event_data_as_json,event_key_field,event_metadata_as_json
+'test-topic','org.openedx.test.event','{"user_data": {"id": 1, "is_active": True}}','user_data.id',
+'{"event_type": "org.openedx.test.event", "id": "12345", "minorversion": 0, "source": "openedx/cms/web",
+ "sourcehost": "ip-10-3-16-25", "time": "2023-08-10T17:15:38.549331+00:00", "sourcelib": [8, 5, 0]}'
 
 This is created as a script instead of a management command because it's meant to be used as a one-off and not to
 require pip installing this package into anything else to run. However, since edx-event-bus-kafka does expect certain
@@ -24,6 +26,7 @@ tox -e scripts -- python edx_arch_experiments/scripts/republish_failed_events.py
 import csv
 import json
 import sys
+from ast import literal_eval
 
 import click
 from edx_event_bus_kafka.internal.producer import create_producer
@@ -46,20 +49,20 @@ def read_and_send_events(filename):
                 sys.exit(1)
             ids = set()
             for row in reader:
-                # An empty field may end up in Splunk as the string "None". That is not a valid value for any of the
-                # fields we care about, so just treat it the same as empty
-                empties = [key for key, value in row.items() if key in log_columns and value in [None, '', 'None']]
+                # We log everything using __repr__, so strings get quotes around them and "None" gets
+                # written literally. Use literal_eval to go from "None" to None and remove the extraneous quotes
+                # from the logs
+                empties = [key for key, value in row.items() if key in log_columns and literal_eval(value) is None]
                 # If any row is missing data, stop processing the whole file to avoid sending events out of order
                 if len(empties) > 0:
                     print(f'Missing required fields in row {reader.line_num}: {empties}. Will not continue publishing.')
                     sys.exit(1)
 
-                topic = row['initial_topic']
-                event_type = row['event_type']
-                event_data = json.loads(row['event_data_as_json'])
-                event_key_field = row['event_key_field']
-                events_metadata_json = row['event_metadata_as_json']
-                metadata = EventsMetadata.from_json(events_metadata_json)
+                topic = literal_eval(row['initial_topic'])
+                event_type = literal_eval(row['event_type'])
+                event_data = json.loads(literal_eval(row['event_data_as_json']))
+                event_key_field = literal_eval(row['event_key_field'])
+                metadata = EventsMetadata.from_json(literal_eval(row['event_metadata_as_json']))
                 signal = OpenEdxPublicSignal.get_signal_by_type(event_type)
                 if metadata.id in ids:
                     print(f"Skipping duplicate id {metadata.id}")
