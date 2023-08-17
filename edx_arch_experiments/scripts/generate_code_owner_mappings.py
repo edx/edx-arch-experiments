@@ -33,6 +33,7 @@ EDX_REPO_APPS = {
     'csrf': 'https://github.com/openedx/edx-drf-extensions',
     'edx_name_affirmation': 'https://github.com/edx/edx-name-affirmation',
     'edx_proctoring': 'https://github.com/openedx/edx-proctoring',
+    'edx_recommendations': 'https://github.com/edx/edx-recommendations',
     'edxval': 'https://github.com/openedx/edx-val',
     'enterprise': 'https://github.com/openedx/edx-enterprise',
     'enterprise_learner_portal': 'https://github.com/openedx/edx-enterprise',
