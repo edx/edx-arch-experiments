@@ -1,5 +1,5 @@
 """
-Publish events from a csv
+Publish events from a CSV to the Event Bus.
 
 This is meant to help republish failed events. The CSV may be an export from Splunk, or it may be manually created, as
 long as it has 'initial_topic', 'event_type', 'event_data_as_json', 'event_key_field', and 'event_metadata_as_json'
