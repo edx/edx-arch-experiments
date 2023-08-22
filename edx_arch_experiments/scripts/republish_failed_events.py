@@ -71,8 +71,8 @@ def read_and_send_events(filename):
 
                 producer.send(signal=signal, event_data=event_data, event_key_field=event_key_field, topic=topic,
                               event_metadata=metadata)
-                print(f'Successfuly published event to event bus. {event_data=} {topic=} {event_key_field=}'
-                      f' metadata={metadata.to_json()}')
+                print(f'Successfully published event to event bus. line={reader.line_num} {event_data=} {topic=}'
+                      f' {event_key_field=} metadata={metadata.to_json()}')
     finally:
         producer.prepare_for_shutdown()
 
