@@ -43,9 +43,9 @@ def read_and_send_events(filename):
         with open(filename) as log_file:
             reader = csv.DictReader(log_file)
             # Make sure csv contains all necessary columns for republishing
-            if not all(column in reader.fieldnames for column in log_columns):
-                print(f'Missing required columns {set(log_columns).difference(set(reader.fieldnames))}. Cannot'
-                      f' republish events.')
+            missing_columns = set(log_columns).difference(set(reader.fieldnames))
+            if len(missing_columns) > 0:
+                print(f'Missing required columns {missing_columns}. Cannot republish events.')
                 sys.exit(1)
             ids = set()
             for row in reader:
@@ -71,6 +71,8 @@ def read_and_send_events(filename):
 
                 producer.send(signal=signal, event_data=event_data, event_key_field=event_key_field, topic=topic,
                               event_metadata=metadata)
+                print(f'Successfuly published event to event bus. {event_data=} {topic=} {event_key_field=}'
+                      f' metadata={metadata.to_json()}')
     finally:
         producer.prepare_for_shutdown()
 
