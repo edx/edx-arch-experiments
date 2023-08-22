@@ -43,6 +43,7 @@ upgrade: ## update the requirements/*.txt files with the latest packages satisfy
 	$(CMD_PIP_COMPILE) -o requirements/base.txt requirements/base.in
 	$(CMD_PIP_COMPILE) -o requirements/test.txt requirements/test.in
 	$(CMD_PIP_COMPILE) -o requirements/doc.txt requirements/doc.in
+	$(CMD_PIP_COMPILE) -o requirements/scripts.txt requirements/scripts.in
 	$(CMD_PIP_COMPILE) -o requirements/quality.txt requirements/quality.in
 	$(CMD_PIP_COMPILE) -o requirements/ci.txt requirements/ci.in
 	$(CMD_PIP_COMPILE) -o requirements/dev.txt requirements/dev.in
