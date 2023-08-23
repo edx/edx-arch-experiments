@@ -47,6 +47,7 @@ EDX_REPO_APPS = {
     'search': 'https://github.com/openedx/edx-search',
     'super_csv': 'https://github.com/openedx/super-csv',
     'wiki': 'https://github.com/openedx/django-wiki',
+    'learning_assistant': 'https://github.com/edx/learning-assistant',
 }
 
 # Maps edx-platform installed Django apps to the third-party repo that contains
