@@ -41,13 +41,13 @@ EDX_REPO_APPS = {
     'help_tokens': 'https://github.com/openedx/help-tokens',
     'integrated_channels': 'https://github.com/openedx/edx-enterprise',
     'learner_pathway_progress': 'https://github.com/edx/learner-pathway-progress',
+    'learning_assistant': 'https://github.com/edx/learning-assistant',
     'lti_consumer': 'https://github.com/openedx/xblock-lti-consumer',
     'notices': 'https://github.com/edx/platform-plugin-notices',
     'organizations': 'https://github.com/openedx/edx-organizations',
     'search': 'https://github.com/openedx/edx-search',
     'super_csv': 'https://github.com/openedx/super-csv',
     'wiki': 'https://github.com/openedx/django-wiki',
-    'learning_assistant': 'https://github.com/edx/learning-assistant',
 }
 
 # Maps edx-platform installed Django apps to the third-party repo that contains
