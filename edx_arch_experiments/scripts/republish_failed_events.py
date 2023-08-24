@@ -29,8 +29,8 @@ import sys
 from ast import literal_eval
 
 import click
-from openedx_events.tooling import EventsMetadata, OpenEdxPublicSignal, load_all_signals
 from openedx_events.event_bus import get_producer
+from openedx_events.tooling import EventsMetadata, OpenEdxPublicSignal, load_all_signals
 
 
 @click.command()
