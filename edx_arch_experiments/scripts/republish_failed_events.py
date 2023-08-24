@@ -31,13 +31,14 @@ from ast import literal_eval
 import click
 from edx_event_bus_kafka.internal.producer import create_producer
 from openedx_events.tooling import EventsMetadata, OpenEdxPublicSignal, load_all_signals
+from openedx_events.event_bus import get_producer
 
 
 @click.command()
 @click.option('--filename', type=click.Path(exists=True))
 def read_and_send_events(filename):
     load_all_signals()
-    producer = create_producer()
+    producer = get_producer()
     try:
         log_columns = ['initial_topic', 'event_type', 'event_data_as_json', 'event_key_field', 'event_metadata_as_json']
         with open(filename) as log_file:
