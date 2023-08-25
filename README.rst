@@ -4,13 +4,13 @@ edx-arch-experiments
 |pypi-badge| |ci-badge| |codecov-badge| |pyversions-badge|
 |license-badge|
 
-A plugin to include applications under development by the architecture team at 2U.
+A plugin to include applications under development by and useful utility scripts for the architecture team at 2U.
 
 Overview
 ------------------------
 
 This plugin is meant to house experimental and in-development applications from the edX architecture team at 2U that are either not appropriate (i.e. 2U-specific) or not yet ready for community consumption.
-
+It also includes some one-off scripts meant to reduce toil for the team.
 
 Development Workflow
 --------------------
