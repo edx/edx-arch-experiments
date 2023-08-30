@@ -16,6 +16,11 @@ Unreleased
 * Add script to get github action errors
 * Add script to republish failed events
 
+[2.1.0] - 2023-06-01
+~~~~~~~~~~~~~~~~~~~~
+
+* Adds test factory
+
 [2.0.0] - 2023-06-01
 ~~~~~~~~~~~~~~~~~~~~
 
