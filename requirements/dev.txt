@@ -17,7 +17,7 @@ bleach==6.0.0
     # via
     #   -r requirements/quality.txt
     #   readme-renderer
-build==0.10.0
+build==1.0.0
     # via
     #   -r requirements/pip-tools.txt
     #   pip-tools
@@ -53,7 +53,7 @@ code-annotations==1.5.0
     # via
     #   -r requirements/quality.txt
     #   edx-lint
-coverage[toml]==7.3.0
+coverage[toml]==7.3.1
     # via
     #   -r requirements/quality.txt
     #   pytest-cov
@@ -71,7 +71,7 @@ distlib==0.3.7
     # via
     #   -r requirements/ci.txt
     #   virtualenv
-django==3.2.20
+django==3.2.21
     # via
     #   -c https://raw.githubusercontent.com/edx/edx-lint/master/edx_lint/files/common_constraints.txt
     #   -r requirements/quality.txt
@@ -101,7 +101,7 @@ exceptiongroup==1.1.3
     # via
     #   -r requirements/quality.txt
     #   pytest
-filelock==3.12.2
+filelock==3.12.3
     # via
     #   -r requirements/ci.txt
     #   tox
@@ -112,7 +112,9 @@ idna==3.4
     #   requests
 importlib-metadata==6.8.0
     # via
+    #   -r requirements/pip-tools.txt
     #   -r requirements/quality.txt
+    #   build
     #   keyring
     #   twine
 importlib-resources==6.0.1
@@ -169,7 +171,7 @@ more-itertools==10.1.0
     # via
     #   -r requirements/quality.txt
     #   jaraco-classes
-newrelic==8.11.0
+newrelic==9.0.0
     # via
     #   -r requirements/quality.txt
     #   edx-django-utils
@@ -199,7 +201,7 @@ platformdirs==3.10.0
     #   -r requirements/quality.txt
     #   pylint
     #   virtualenv
-pluggy==1.2.0
+pluggy==1.3.0
     # via
     #   -r requirements/ci.txt
     #   -r requirements/quality.txt
@@ -258,7 +260,7 @@ pyproject-hooks==1.0.0
     # via
     #   -r requirements/pip-tools.txt
     #   build
-pytest==7.4.0
+pytest==7.4.1
     # via
     #   -r requirements/quality.txt
     #   pytest-cov
@@ -271,7 +273,7 @@ python-slugify==8.0.1
     # via
     #   -r requirements/quality.txt
     #   code-annotations
-pytz==2023.3
+pytz==2023.3.post1
     # via
     #   -r requirements/quality.txt
     #   django
@@ -356,9 +358,11 @@ twine==4.0.2
     # via -r requirements/quality.txt
 typing-extensions==4.7.1
     # via
+    #   -r requirements/ci.txt
     #   -r requirements/quality.txt
     #   asgiref
     #   astroid
+    #   filelock
     #   pylint
     #   rich
 urllib3==2.0.4
@@ -366,7 +370,7 @@ urllib3==2.0.4
     #   -r requirements/quality.txt
     #   requests
     #   twine
-virtualenv==20.24.3
+virtualenv==20.24.4
     # via
     #   -r requirements/ci.txt
     #   tox
@@ -384,6 +388,7 @@ wrapt==1.15.0
     #   astroid
 zipp==3.16.2
     # via
+    #   -r requirements/pip-tools.txt
     #   -r requirements/quality.txt
     #   importlib-metadata
     #   importlib-resources
