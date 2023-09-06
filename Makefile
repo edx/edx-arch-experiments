@@ -105,3 +105,8 @@ dummy_translations: ## generate dummy translation (.po) files
 build_dummy_translations: extract_translations dummy_translations compile_translations ## generate and compile dummy translation files
 
 validate_translations: build_dummy_translations detect_changed_source_translations ## validate translations
+
+## Docker in this repo is only supported for running tests locally
+## as an alternative to virtualenv natively - johnnagro 2023-09-06
+test-shell: ## Run a shell, as root, on the specified service container
+	docker-compose run -u 0 test-shell env TERM=$(TERM) /bin/bash
