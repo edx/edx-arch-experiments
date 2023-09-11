@@ -12,17 +12,7 @@ from django.core.management.base import BaseCommand, CommandError, SystemCheckEr
 from django.db import connections
 from factory.declarations import SubFactory
 
-# We have to import the enterprise test factories to ensure it's loaded and found by __subclasses__
-# To ensure factories outside of the enterprise package are loaded and found by the script,
-# add any additionally desired factories as an import to this file. Make sure to catch the ImportError
-# incase other consumers of the command do not have the same factories installed.
-# For example:
-# try:
-#     import common.djangoapps.student.tests.factories  # pylint: disable=unused-import
-
-#     from test_utils import factories  # pylint: disable=unused-import
-# except ImportError:
-#     pass
+# TODO: Document usage
 
 log = logging.getLogger(__name__)
 
@@ -216,7 +206,7 @@ def build_tree_from_field_list(list_of_fields, provided_factory, base_node, cust
     return base_node
 
 
-class ManufactureDataCommand(BaseCommand):
+class Command(BaseCommand):
     """
     Management command for generating Django records from factories with custom attributes
 

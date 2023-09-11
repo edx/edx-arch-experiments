@@ -60,7 +60,7 @@ edx-opaque-keys[django]==2.5.0
     # via openedx-events
 edx-toggles==5.1.0
     # via edx-event-bus-kafka
-fastavro==1.8.2
+fastavro==1.8.3
     # via
     #   confluent-kafka
     #   openedx-events
