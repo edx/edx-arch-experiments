@@ -5,13 +5,12 @@ Test management commands and related functions.
 from argparse import _AppendConstAction, _CountAction, _StoreConstAction, _SubParsersAction
 from pytest import mark
 
-from django.test.utils import isolate_apps
 from django.core.management import get_commands, load_command_class
 from django.core.management.base import BaseCommand, CommandError
 from django.test import TestCase
 
-import factory
-from django.db import models
+from edx_arch_experiments.tests.test_management.models import TestPerson, TestPersonContactInfo
+from edx_arch_experiments.tests.test_management.factories import TestPersonFactory, TestPersonContactInfoFactory
 
 
 # Copied from django.core.management.__init__.py
@@ -154,45 +153,15 @@ class ManufactureDataCommandTests(TestCase):
         with self.assertRaises(CommandError):
             call_command(self.command, model='FakeModel')
     
-    @isolate_apps("edx_arch_experiments")
+    # @isolate_apps("edx_arch_experiments")
     def test_model_definition(self):
-        class TestPerson(models.Model):
-            first_name = models.CharField(max_length=30)
-            last_name = models.CharField(max_length=30)
-
-
-        class TestPersonContactInfo(models.Model):
-            person = models.ForeignKey(TestPerson, on_delete=models.CASCADE)
-            address = models.CharField(max_length=100)
-
-
-        class TestPersonUserFactory(factory.django.DjangoModelFactory):
-            """
-            Test Factory for TestPerson
-            """
-            class Meta:
-                model = TestPerson
-
-            first_name = 'John'
-            last_name = 'Doe'
-
-
-        class TestPersonContactInfoFactory(factory.django.DjangoModelFactory):
-            """
-            Test Factory for TestPersonContactInfo
-            """
-            class Meta:
-                model = TestPersonContactInfo
-
-            address = '123 4th st, Fiveville, AZ, 67890'
-            command = 'manufacture_data'
 
         # def test_single_object_create_no_customizations(self):
         """
         Test that the manufacture_data command will create a single object with no customizations.
         """
         assert TestPerson.objects.all().count() == 0
-        created_object = call_command(self.command, model='TestPerson')
+        created_object = call_command(self.command, model='edx_arch_experiments.tests.test_management.models.TestPerson')
         assert TestPerson.objects.all().count() == 1
         assert TestPerson.objects.filter(pk=created_object).exists()
 
@@ -214,7 +183,7 @@ class ManufactureDataCommandTests(TestCase):
         assert TestPerson.objects.all().count() == 0
         created_object = call_command(
             self.command,
-            model='TestPerson',
+            model='edx_arch_experiments.tests.test_management.models.TestPerson',
             field_customizations={'first_name': 'Steve'},
         )
         assert TestPerson.objects.all().count() == 1
@@ -229,7 +198,7 @@ class ManufactureDataCommandTests(TestCase):
         assert TestPersonContactInfo.objects.all().count() == 0
         created_object = call_command(
             self.command,
-            model='TestPersonContactInfo',
+            model='edx_arch_experiments.tests.test_management.models.TestPersonContactInfo',
             field_customizations={'person__last_name': 'Nowhere'},
         )
         assert TestPerson.objects.all().count() == 1
