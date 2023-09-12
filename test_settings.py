@@ -33,7 +33,6 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.sessions',
     'edx_arch_experiments',
-    # 'tests.management'
 )
 
 LOCALE_PATHS = [

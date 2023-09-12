@@ -12,8 +12,6 @@ from django.core.management.base import BaseCommand, CommandError, SystemCheckEr
 from django.db import connections
 from factory.declarations import SubFactory
 
-# TODO: Document usage
-
 log = logging.getLogger(__name__)
 
 

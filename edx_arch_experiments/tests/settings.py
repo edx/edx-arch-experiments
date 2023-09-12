@@ -1,5 +1,10 @@
+"""
+These settings are here to use during manufacture_data tests
+
+In a real-world use case, apps in this project are installed into other
+Django applications, so these settings will not be used.
+"""
 import os
-from edx_arch_experiments.settings import *  # noqa
 
 INSTALLED_APPS = [
     'edx_arch_experiments',

@@ -3,14 +3,15 @@ Test management commands and related functions.
 """
 
 from argparse import _AppendConstAction, _CountAction, _StoreConstAction, _SubParsersAction
-from pytest import mark
 
 from django.core.management import get_commands, load_command_class
 from django.core.management.base import BaseCommand, CommandError
 from django.test import TestCase
+from pytest import mark
 
+# pylint: disable=unused-import
+from edx_arch_experiments.tests.test_management.factories import TestPersonContactInfoFactory, TestPersonFactory
 from edx_arch_experiments.tests.test_management.models import TestPerson, TestPersonContactInfo
-from edx_arch_experiments.tests.test_management.factories import TestPersonFactory, TestPersonContactInfoFactory
 
 
 # Copied from django.core.management.__init__.py
@@ -152,20 +153,20 @@ class ManufactureDataCommandTests(TestCase):
         """
         with self.assertRaises(CommandError):
             call_command(self.command, model='FakeModel')
-    
-    # @isolate_apps("edx_arch_experiments")
-    def test_model_definition(self):
 
-        # def test_single_object_create_no_customizations(self):
+    def test_single_object_create_no_customizations(self):
         """
         Test that the manufacture_data command will create a single object with no customizations.
         """
         assert TestPerson.objects.all().count() == 0
-        created_object = call_command(self.command, model='edx_arch_experiments.tests.test_management.models.TestPerson')
+        created_object = call_command(
+            self.command,
+            model='edx_arch_experiments.tests.test_management.models.TestPerson'
+        )
         assert TestPerson.objects.all().count() == 1
         assert TestPerson.objects.filter(pk=created_object).exists()
 
-        # def test_command_requires_valid_field(self):
+    def test_command_requires_valid_field(self):
         """
         Test that the manufacture_data command will raise an error if the provided field is invalid.
         """
@@ -176,7 +177,7 @@ class ManufactureDataCommandTests(TestCase):
                 field_customizations={"fake_field": 'fake_value'}
             )
 
-        # def test_command_can_customize_fields(self):
+    def test_command_can_customize_fields(self):
         """
         Test that the manufacture_data command will create a single object with customizations.
         """
@@ -190,7 +191,7 @@ class ManufactureDataCommandTests(TestCase):
         assert TestPerson.objects.filter(pk=created_object).exists()
         assert TestPerson.objects.filter(pk=created_object).first().first_name == 'Steve'
 
-        # def test_command_can_customize_nested_objects(self):
+    def test_command_can_customize_nested_objects(self):
         """
         Test that the manufacture_data command supports customizing nested objects.
         """
@@ -199,10 +200,10 @@ class ManufactureDataCommandTests(TestCase):
         created_object = call_command(
             self.command,
             model='edx_arch_experiments.tests.test_management.models.TestPersonContactInfo',
-            field_customizations={'person__last_name': 'Nowhere'},
+            field_customizations={'test_person__last_name': 'Nowhere'},
         )
         assert TestPerson.objects.all().count() == 1
         assert TestPersonContactInfo.objects.all().count() == 1
         assert TestPersonContactInfo.objects.filter(
             pk=created_object
-        ).first().person.last_name == 'Nowhere'
+        ).first().test_person.last_name == 'Nowhere'

@@ -1,4 +1,8 @@
+"""
+Models used in testing manufacture_data command
+"""
 from django.db import models
+
 
 class TestPerson(models.Model):
     first_name = models.CharField(max_length=30)
@@ -6,5 +10,5 @@ class TestPerson(models.Model):
 
 
 class TestPersonContactInfo(models.Model):
-    person = models.ForeignKey(TestPerson, on_delete=models.CASCADE)
+    test_person = models.ForeignKey(TestPerson, on_delete=models.CASCADE)
     address = models.CharField(max_length=100)
