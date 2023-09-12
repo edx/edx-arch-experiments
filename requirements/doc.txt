@@ -12,8 +12,6 @@ asgiref==3.7.2
     #   django
 babel==2.12.1
     # via sphinx
-bleach==6.0.0
-    # via readme-renderer
 certifi==2023.7.22
     # via requests
 cffi==1.15.1
@@ -70,7 +68,7 @@ factory-boy==3.3.0
     # via
     #   -r requirements/doc.in
     #   -r requirements/test.txt
-faker==19.4.0
+faker==19.6.1
     # via
     #   -r requirements/test.txt
     #   factory-boy
@@ -97,6 +95,8 @@ newrelic==9.0.0
     # via
     #   -r requirements/test.txt
     #   edx-django-utils
+nh3==0.2.14
+    # via readme-renderer
 packaging==23.1
     # via
     #   -r requirements/test.txt
@@ -154,7 +154,7 @@ pyyaml==6.0.1
     # via
     #   -r requirements/test.txt
     #   code-annotations
-readme-renderer==41.0
+readme-renderer==42.0
     # via -r requirements/doc.in
 requests==2.31.0
     # via sphinx
@@ -163,7 +163,6 @@ restructuredtext-lint==1.4.0
 six==1.16.0
     # via
     #   -r requirements/test.txt
-    #   bleach
     #   edx-sphinx-theme
     #   python-dateutil
 snowballstemmer==2.2.0
@@ -211,7 +210,5 @@ typing-extensions==4.7.1
     #   faker
 urllib3==2.0.4
     # via requests
-webencodings==0.5.1
-    # via bleach
 zipp==3.16.2
     # via importlib-metadata

@@ -13,10 +13,6 @@ astroid==2.15.6
     #   -r requirements/quality.txt
     #   pylint
     #   pylint-celery
-bleach==6.0.0
-    # via
-    #   -r requirements/quality.txt
-    #   readme-renderer
 build==1.0.3
     # via
     #   -r requirements/pip-tools.txt
@@ -105,7 +101,7 @@ exceptiongroup==1.1.3
     #   pytest
 factory-boy==3.3.0
     # via -r requirements/quality.txt
-faker==19.4.0
+faker==19.6.1
     # via
     #   -r requirements/quality.txt
     #   factory-boy
@@ -183,6 +179,10 @@ newrelic==9.0.0
     # via
     #   -r requirements/quality.txt
     #   edx-django-utils
+nh3==0.2.14
+    # via
+    #   -r requirements/quality.txt
+    #   readme-renderer
 packaging==23.1
     # via
     #   -r requirements/ci.txt
@@ -294,7 +294,7 @@ pyyaml==6.0.1
     #   -r requirements/quality.txt
     #   code-annotations
     #   edx-i18n-tools
-readme-renderer==41.0
+readme-renderer==42.0
     # via
     #   -r requirements/quality.txt
     #   twine
@@ -323,7 +323,6 @@ six==1.16.0
     # via
     #   -r requirements/ci.txt
     #   -r requirements/quality.txt
-    #   bleach
     #   edx-lint
     #   python-dateutil
     #   tox
@@ -384,14 +383,10 @@ urllib3==2.0.4
     #   -r requirements/quality.txt
     #   requests
     #   twine
-virtualenv==20.24.4
+virtualenv==20.24.5
     # via
     #   -r requirements/ci.txt
     #   tox
-webencodings==0.5.1
-    # via
-    #   -r requirements/quality.txt
-    #   bleach
 wheel==0.41.2
     # via
     #   -r requirements/pip-tools.txt
