@@ -1,5 +1,60 @@
 """
 Management command for making things with test factories
+
+Arguments
+========
+
+--model: complete path to a model that has a corresponding test factory
+--{model_attribute}: (Optional) Value of a model's attribute that will override test factory's default attribute value
+--{model_foreignkey__foreignkey_attribute}: (Optional) Value of a model's attribute
+    that will override test factory's default attribute value
+
+
+Examples
+========
+
+./manage.py lms manufacture_data --model enterprise.models.EnterpriseCustomer
+This will generate an enterprise customer record with placeholder values according to the test factory
+
+./manage.py lms manufacture_data --model enterprise.models.EnterpriseCustomer --name "FRED"
+will produce the customized record:
+'EnterpriseCustomer' fields: {'name': 'FRED'}
+
+./manage.py lms manufacture_data --model enterprise.models.EnterpriseCustomerCatalog /
+    --enterprise_customer__site__name "Fred" --enterprise_catalog_query__title "JOE SHMO" --title "who?"
+will result in:
+'EnterpriseCustomerCatalog' fields: {'title': 'who?'}
+    'EnterpriseCustomer' fields: {}
+        'Site' fields: {'name': 'Fred'}
+    'EnterpriseCatalogQuery' fields: {'title': 'JOE SHMO'}
+
+To supply an existing record as a FK to our object:
+./manage.py lms manufacture_data --model enterprise.models.EnterpriseCustomerUser /
+    --enterprise_customer 994599e6-3787-48ba-a2d1-42d1bdf6c46e
+'EnterpriseCustomerUser' fields: {}
+    'EnterpriseCustomer' PK: 994599e6-3787-48ba-a2d1-42d1bdf6c46e
+
+or we can do something like:
+./manage.py lms manufacture_data --model enterprise.models.EnterpriseCustomerUser /
+    --enterprise_customer__site 9 --enterprise_customer__name "joe"
+which would yield:
+'EnterpriseCustomerUser' fields: {}
+    'EnterpriseCustomer' fields: {'name': 'joe'}
+        'Site' PK: 9
+
+
+Errors
+======
+
+But if you try and get something that doesn't exist...
+./manage.py lms manufacture_data --model enterprise.models.EnterpriseCustomerUser --enterprise_customer <SOMETHING BAD>
+we'd get:
+CommandError: Provided FK value: <SOMETHING BAD> does not exist on EnterpriseCustomer
+
+Another limitation of this script is that it can only fetch or customize, you cannot customize a specified, existing FK
+ ./manage.py lms manufacture_data --model enterprise.models.EnterpriseCustomerUser /
+    --enterprise_customer__site__name "fred" --enterprise_customer 994599e6-3787-48ba-a2d1-42d1bdf6c46e
+would yield CommandError: This script does not support customizing provided existing objects
 """
 
 import logging
