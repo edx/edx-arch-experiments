@@ -6,7 +6,7 @@
 #
 asgiref==3.7.2
     # via django
-cffi==1.15.1
+cffi==1.16.0
     # via pynacl
 click==8.1.7
     # via edx-django-utils
@@ -23,7 +23,7 @@ django-waffle==4.0.0
     # via edx-django-utils
 edx-django-utils==5.7.0
     # via -r requirements/base.in
-newrelic==9.0.0
+newrelic==9.1.0
     # via edx-django-utils
 pbr==5.11.1
     # via stevedore
@@ -39,5 +39,5 @@ sqlparse==0.4.4
     # via django
 stevedore==5.1.0
     # via edx-django-utils
-typing-extensions==4.7.1
+typing-extensions==4.8.0
     # via asgiref
