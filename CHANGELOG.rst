@@ -16,6 +16,11 @@ Unreleased
 * Add script to get github action errors
 * Add script to republish failed events
 
+[2.1.0] - 2023-10-10
+~~~~~~~~~~~~~~~~~~~~
+
+* Add ORA2 to our code owner mapping script.
+
 [2.0.0] - 2023-06-01
 ~~~~~~~~~~~~~~~~~~~~
 
