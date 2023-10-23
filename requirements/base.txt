@@ -20,7 +20,9 @@ django==3.2.22
 django-crum==0.7.9
     # via edx-django-utils
 django-waffle==4.0.0
-    # via edx-django-utils
+    # via
+    #   -r requirements/base.in
+    #   edx-django-utils
 edx-django-utils==5.7.0
     # via -r requirements/base.in
 newrelic==9.1.0
