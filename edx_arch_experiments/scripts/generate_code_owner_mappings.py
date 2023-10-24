@@ -44,6 +44,7 @@ EDX_REPO_APPS = {
     'learning_assistant': 'https://github.com/edx/learning-assistant',
     'lti_consumer': 'https://github.com/openedx/xblock-lti-consumer',
     'notices': 'https://github.com/edx/platform-plugin-notices',
+    'openassessment': 'https://github.com/openedx/edx-ora2',
     'ora2': 'https://github.com/openedx/edx-ora2',
     'organizations': 'https://github.com/openedx/edx-organizations',
     'search': 'https://github.com/openedx/edx-search',
