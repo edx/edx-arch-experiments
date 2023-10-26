@@ -44,20 +44,33 @@ def _send_to_slack(message):
 
 
 def _report_config_change(message):
+    """
+    Report this message string as a configuration change.
+
+    Sends to logs and to Slack.
+    """
     log.info(message)
     _send_to_slack(message)
 
 
 def _report_waffle_change(model_short_name, instance, created, fields):
+    """
+    Report that a model instance has been created or updated.
+    """
     verb = "created" if created else "updated"
     state_desc = ", ".join(f"{field}={repr(getattr(instance, field))}" for field in fields)
     _report_config_change(f"Waffle {model_short_name} {instance.name!r} was {verb}. New config: {state_desc}")
 
 
 def _report_waffle_delete(model_short_name, instance):
+    """
+    Report that a model instance has been deleted.
+    """
     _report_config_change(f"Waffle {model_short_name} {instance.name!r} was deleted")
 
 
+# List of models to observe. Each is a dictionary that matches the
+# keyword args of _register_waffle_observation.
 _WAFFLE_MODELS_TO_OBSERVE = [
     {
         'model': waffle.models.Flag,
@@ -79,7 +92,7 @@ _WAFFLE_MODELS_TO_OBSERVE = [
 
 def _register_waffle_observation(*, model, short_name, fields):
     """
-    Register a Waffle model for observation.
+    Register a Waffle model for observation according to config values.
 
     Args:
         model (class): The model class to monitor
@@ -107,5 +120,4 @@ def connect_receivers():
     Initialize application's receivers.
     """
     for config in _WAFFLE_MODELS_TO_OBSERVE:
-        # Pass config to function to capture value properly.
         _register_waffle_observation(**config)
