@@ -162,6 +162,7 @@ setup(
     entry_points={
         "lms.djangoapp": [
             "arch_experiments = edx_arch_experiments.apps:EdxArchExperimentsConfig",
+            "config_watcher = edx_arch_experiments.config_watcher.apps:ConfigWatcher",
         ],
     },
 )

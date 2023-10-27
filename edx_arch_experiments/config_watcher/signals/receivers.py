@@ -75,7 +75,7 @@ _WAFFLE_MODELS_TO_OBSERVE = [
     {
         'model': waffle.models.Flag,
         'short_name': 'flag',
-        'fields': ['everyone', 'percent', 'superusers', 'staff', 'authenticated', 'note', 'languages'],
+        'fields': ['everyone', 'percent', 'note'],
     },
     {
         'model': waffle.models.Switch,
