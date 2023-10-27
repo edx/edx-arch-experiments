@@ -13,6 +13,14 @@ Change Log
 
 Unreleased
 ~~~~~~~~~~
+
+[2.2.0] - 2023-10-27
+~~~~~~~~~~~~~~~~~~~~
+
+Added
+_____
+
+* Add ``edx_arch_experiments.config_watcher`` Django app for monitoring Waffle changes
 * Add script to get github action errors
 * Add script to republish failed events
 
