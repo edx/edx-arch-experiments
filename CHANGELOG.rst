@@ -14,6 +14,15 @@ Change Log
 Unreleased
 ~~~~~~~~~~
 
+[3.1.0] - 2023-10-31
+~~~~~~~~~~~~~~~~~~~~
+
+Changed
+_______
+
+* Add log message for each model the ConfigWatcher is listening to
+* Ensure that ConfigWatcher only attaches receivers once
+
 [3.0.0] - 2023-10-30
 ~~~~~~~~~~~~~~~~~~~~
 
