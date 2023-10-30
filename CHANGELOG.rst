@@ -14,6 +14,15 @@ Change Log
 Unreleased
 ~~~~~~~~~~
 
+[3.0.0] - 2023-10-30
+~~~~~~~~~~~~~~~~~~~~
+
+Changed
+_______
+
+* Renamed ``ConfigWatcherApp`` to ``ConfigWatcher`` to be less redundant. This is technically a breaking change but the app was not in use yet.
+* Enabled ``ConfigWatcher`` as a plugin for LMS
+
 [2.2.0] - 2023-10-27
 ~~~~~~~~~~~~~~~~~~~~
 
