@@ -99,7 +99,7 @@ def _register_waffle_observation(*, model, short_name, fields):
         short_name (str): A short descriptive name for an instance of the model, e.g. "flag"
         fields (list): Names of fields to report on in the Slack message
     """
-    @receiver(signals.post_save, sender=model)
+    @receiver(signals.post_save, sender=model, dispatch_uid=f"config_watcher_{short_name}_change")
     def report_waffle_change(*args, instance, created, **kwargs):
         try:
             _report_waffle_change(short_name, instance, created, fields)
@@ -107,12 +107,14 @@ def _register_waffle_observation(*, model, short_name, fields):
             # Log and suppress error so Waffle change can proceed
             log.exception(f"Failed to report change to waffle {short_name}")
 
-    @receiver(signals.post_delete, sender=model)
+    @receiver(signals.post_delete, sender=model, dispatch_uid=f"config_watcher_{short_name}_delete")
     def report_waffle_delete(*args, instance, **kwargs):
         try:
             _report_waffle_delete(short_name, instance)
         except:  # noqa pylint: disable=bare-except
             log.exception(f"Failed to report deletion of waffle {short_name}")
+
+    log.info(f"Watching {model.__module__}.{model.__qualname__} for changes")
 
 
 def connect_receivers():
