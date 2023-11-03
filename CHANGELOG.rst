@@ -14,6 +14,12 @@ Change Log
 Unreleased
 ~~~~~~~~~~
 
+[3.1.1] - 2023-11-06
+~~~~~~~~~~~~~~~~~~~~
+Fixed
+_____
+* ConfigWatcher should now respond to model events properly now that it registers receivers with strong references. (Tested in sandbox.)
+
 [3.1.0] - 2023-10-31
 ~~~~~~~~~~~~~~~~~~~~
 

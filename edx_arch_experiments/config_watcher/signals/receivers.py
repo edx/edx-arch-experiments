@@ -99,7 +99,16 @@ def _register_waffle_observation(*, model, short_name, fields):
         short_name (str): A short descriptive name for an instance of the model, e.g. "flag"
         fields (list): Names of fields to report on in the Slack message
     """
-    @receiver(signals.post_save, sender=model, dispatch_uid=f"config_watcher_{short_name}_change")
+
+    # Note that weak=False is required here. Django by default only
+    # holds weak references to receiver functions. But these inner
+    # functions would then be garbage-collected, and Django would drop
+    # them. So pass weak=False to make Django hold strong references
+    # instead. (It works either way in devstack, apparently due to an
+    # interaction with settings.DEBUG causing a reference to be held:
+    # <https://stackoverflow.com/a/70651310>.)
+
+    @receiver(signals.post_save, sender=model, weak=False, dispatch_uid=f"config_watcher_{short_name}_change")
     def report_waffle_change(*args, instance, created, **kwargs):
         try:
             _report_waffle_change(short_name, instance, created, fields)
@@ -107,7 +116,7 @@ def _register_waffle_observation(*, model, short_name, fields):
             # Log and suppress error so Waffle change can proceed
             log.exception(f"Failed to report change to waffle {short_name}")
 
-    @receiver(signals.post_delete, sender=model, dispatch_uid=f"config_watcher_{short_name}_delete")
+    @receiver(signals.post_delete, sender=model, weak=False, dispatch_uid=f"config_watcher_{short_name}_delete")
     def report_waffle_delete(*args, instance, **kwargs):
         try:
             _report_waffle_delete(short_name, instance)
