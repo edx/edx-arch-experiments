@@ -8,7 +8,7 @@ asgiref==3.7.2
     # via
     #   -r requirements/quality.txt
     #   django
-astroid==2.15.8
+astroid==3.0.1
     # via
     #   -r requirements/quality.txt
     #   pylint
@@ -28,7 +28,7 @@ cffi==1.16.0
     #   pynacl
 chardet==5.2.0
     # via diff-cover
-charset-normalizer==3.3.0
+charset-normalizer==3.3.1
     # via
     #   -r requirements/quality.txt
     #   requests
@@ -52,12 +52,13 @@ code-annotations==1.5.0
 coverage[toml]==7.3.2
     # via
     #   -r requirements/quality.txt
+    #   coverage
     #   pytest-cov
 cryptography==41.0.4
     # via
     #   -r requirements/quality.txt
     #   secretstorage
-diff-cover==7.7.0
+diff-cover==8.0.0
     # via -r requirements/dev.in
 dill==0.3.7
     # via
@@ -143,10 +144,6 @@ keyring==24.2.0
     # via
     #   -r requirements/quality.txt
     #   twine
-lazy-object-proxy==1.9.0
-    # via
-    #   -r requirements/quality.txt
-    #   astroid
 lxml==4.9.3
     # via edx-i18n-tools
 markdown-it-py==3.0.0
@@ -169,7 +166,7 @@ more-itertools==10.1.0
     # via
     #   -r requirements/quality.txt
     #   jaraco-classes
-newrelic==9.1.0
+newrelic==9.1.1
     # via
     #   -r requirements/quality.txt
     #   edx-django-utils
@@ -212,7 +209,7 @@ pluggy==1.3.0
     #   tox
 polib==1.2.0
     # via edx-i18n-tools
-psutil==5.9.5
+psutil==5.9.6
     # via
     #   -r requirements/quality.txt
     #   edx-django-utils
@@ -220,7 +217,7 @@ py==1.11.0
     # via
     #   -r requirements/ci.txt
     #   tox
-pycodestyle==2.11.0
+pycodestyle==2.11.1
     # via -r requirements/quality.txt
 pycparser==2.21
     # via
@@ -234,7 +231,7 @@ pygments==2.16.1
     #   diff-cover
     #   readme-renderer
     #   rich
-pylint==2.17.7
+pylint==3.0.2
     # via
     #   -r requirements/quality.txt
     #   edx-lint
@@ -245,7 +242,7 @@ pylint-celery==0.3
     # via
     #   -r requirements/quality.txt
     #   edx-lint
-pylint-django==2.5.3
+pylint-django==2.5.4
     # via
     #   -r requirements/quality.txt
     #   edx-lint
@@ -352,9 +349,6 @@ tox==3.28.0
     # via
     #   -c https://raw.githubusercontent.com/edx/edx-lint/master/edx_lint/files/common_constraints.txt
     #   -r requirements/ci.txt
-    #   tox-battery
-tox-battery==0.6.2
-    # via -r requirements/dev.in
 twine==4.0.2
     # via -r requirements/quality.txt
 typing-extensions==4.8.0
@@ -364,7 +358,7 @@ typing-extensions==4.8.0
     #   astroid
     #   pylint
     #   rich
-urllib3==2.0.6
+urllib3==2.0.7
     # via
     #   -r requirements/quality.txt
     #   requests
@@ -377,10 +371,6 @@ wheel==0.41.2
     # via
     #   -r requirements/pip-tools.txt
     #   pip-tools
-wrapt==1.15.0
-    # via
-    #   -r requirements/quality.txt
-    #   astroid
 zipp==3.17.0
     # via
     #   -r requirements/pip-tools.txt
