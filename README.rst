@@ -4,13 +4,13 @@ edx-arch-experiments
 |pypi-badge| |ci-badge| |codecov-badge| |pyversions-badge|
 |license-badge|
 
-A plugin to include applications under development by the architecture team at 2U.
+A plugin to include applications under development by and useful utility scripts for the architecture team at 2U.
 
 Overview
 ------------------------
 
 This plugin is meant to house experimental and in-development applications from the edX architecture team at 2U that are either not appropriate (i.e. 2U-specific) or not yet ready for community consumption.
-
+It also includes some one-off scripts meant to reduce toil for the team.
 
 Development Workflow
 --------------------
@@ -28,7 +28,11 @@ One Time Setup
 
 Local testing
 ~~~~~~~~~~~~~
-To test your changes locally, you will need to install the package from your local branch into edx-platform. For example, if using devstack, copy or clone your branch into <devstack-parent>/src/edx-arch-experiments. Then, in an lms or cms shell, run ``pip install -e /edx/src/edx-arch-experiments``.  The plug-in configuration will automatically be picked up once installed, and changes will be hot reloaded.
+Two options are available for testing changes locally:
+
+First, via `make test-shell` a dockerized development envrionment can be launched to run `pytest` and do basic migration work.
+
+Second, a local copy of the package can be installed into edx-platform. For example, if using devstack, copy or clone your branch into <devstack-parent>/src/edx-arch-experiments. Then, in an lms or cms shell, run ``pip install -e /edx/src/edx-arch-experiments``.  The plug-in configuration will automatically be picked up once installed, and changes will be hot reloaded.
 
 
 Every time you develop something in this repo

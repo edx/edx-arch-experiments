@@ -13,7 +13,56 @@ Change Log
 
 Unreleased
 ~~~~~~~~~~
-*
+
+[3.1.1] - 2023-11-06
+~~~~~~~~~~~~~~~~~~~~
+Fixed
+_____
+* ConfigWatcher should now respond to model events properly now that it registers receivers with strong references. (Tested in sandbox.)
+
+[3.1.0] - 2023-10-31
+~~~~~~~~~~~~~~~~~~~~
+
+Changed
+_______
+
+* Add log message for each model the ConfigWatcher is listening to
+* Ensure that ConfigWatcher only attaches receivers once
+
+[3.0.0] - 2023-10-30
+~~~~~~~~~~~~~~~~~~~~
+
+Changed
+_______
+
+* Renamed ``ConfigWatcherApp`` to ``ConfigWatcher`` to be less redundant. This is technically a breaking change but the app was not in use yet.
+* Enabled ``ConfigWatcher`` as a plugin for LMS
+
+[2.2.0] - 2023-10-27
+~~~~~~~~~~~~~~~~~~~~
+
+Added
+_____
+
+* Add ``edx_arch_experiments.config_watcher`` Django app for monitoring Waffle changes
+* Add script to get github action errors
+* Add script to republish failed events
+
+[2.1.0] - 2023-10-10
+~~~~~~~~~~~~~~~~~~~~
+
+* Add ORA2 to our code owner mapping script.
+
+[2.0.0] - 2023-06-01
+~~~~~~~~~~~~~~~~~~~~
+
+* Removes summary hook aside, now in the ai-aside repo
+
+[1.2.0] - 2023-05-08
+~~~~~~~~~~~~~~~~~~~~
+
+* Update summary hook to trigger on videos
+* Remove text selection data key from summary hook html
 
 [1.1.4] - 2023-04-14
 ~~~~~~~~~~~~~~~~~~~~
