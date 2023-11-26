@@ -64,7 +64,7 @@ fastavro==1.9.0
     # via
     #   confluent-kafka
     #   openedx-events
-idna==3.4
+idna==3.6
     # via requests
 jinja2==3.1.2
     # via code-annotations
