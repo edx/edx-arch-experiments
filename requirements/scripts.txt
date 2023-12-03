@@ -49,7 +49,7 @@ django-waffle==4.0.0
     #   -r requirements/base.txt
     #   edx-django-utils
     #   edx-toggles
-edx-django-utils==5.8.0
+edx-django-utils==5.9.0
     # via
     #   -r requirements/base.txt
     #   edx-event-bus-kafka
@@ -64,7 +64,7 @@ fastavro==1.9.0
     # via
     #   confluent-kafka
     #   openedx-events
-idna==3.4
+idna==3.6
     # via requests
 jinja2==3.1.2
     # via code-annotations
