@@ -60,7 +60,7 @@ colorama==0.4.6
     # via
     #   -r requirements/ci.txt
     #   tox
-coverage[toml]==7.3.3
+coverage[toml]==7.4.0
     # via
     #   -r requirements/quality.txt
     #   coverage
@@ -118,7 +118,7 @@ idna==3.6
     # via
     #   -r requirements/quality.txt
     #   requests
-importlib-metadata==7.0.0
+importlib-metadata==7.0.1
     # via
     #   -r requirements/pip-tools.txt
     #   -r requirements/quality.txt
@@ -155,7 +155,7 @@ keyring==24.3.0
     # via
     #   -r requirements/quality.txt
     #   twine
-lxml==4.9.3
+lxml==5.0.0
     # via edx-i18n-tools
 markdown-it-py==3.0.0
     # via
@@ -222,7 +222,7 @@ pluggy==1.3.0
     #   tox
 polib==1.2.0
     # via edx-i18n-tools
-psutil==5.9.6
+psutil==5.9.7
     # via
     #   -r requirements/quality.txt
     #   edx-django-utils
