@@ -14,6 +14,12 @@ Change Log
 Unreleased
 ~~~~~~~~~~
 
+[3.2.0] - 2024-01-09
+~~~~~~~~~~~~~~~~~~~~
+Added
+_____
+* Add ``codejail_service`` app for transition to containerized codejail
+
 [3.1.1] - 2023-11-06
 ~~~~~~~~~~~~~~~~~~~~
 Fixed

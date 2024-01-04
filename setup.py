@@ -163,6 +163,7 @@ setup(
         "lms.djangoapp": [
             "arch_experiments = edx_arch_experiments.apps:EdxArchExperimentsConfig",
             "config_watcher = edx_arch_experiments.config_watcher.apps:ConfigWatcher",
+            "codejail_service = edx_arch_experiments.codejail_service.apps:CodejailService",
         ],
     },
 )
