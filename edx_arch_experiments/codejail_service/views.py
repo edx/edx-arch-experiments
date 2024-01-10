@@ -104,6 +104,18 @@ def code_exec_view_v0(request):
     if not CODEJAIL_SERVICE_ENABLED.is_enabled():
         return Response("Codejail service not enabled", status=500)
 
+    # There's a risk of getting into a loop if e.g. the CMS asks the
+    # LMS to run codejail executions on its behalf, and the LMS is
+    # *also* inadvertently configured to call the LMS (itself).
+    # There's no good reason to have a chain of >2 services passing
+    # codejail requests along, so only allow execution here if we
+    # aren't going to pass it along to someone else.
+    if getattr(settings, 'ENABLE_CODEJAIL_REST_SERVICE', False):
+        raise Exception(
+            "Refusing to run codejail request from over the network "
+            "when we're going to pass it to another IDA anyway"
+        )
+
     params_json = request.data['payload']
     params = json.loads(params_json)
     jsonschema.validate(params, payload_schema)
@@ -116,18 +128,6 @@ def code_exec_view_v0(request):
     unsafely = params.get('unsafely')
 
     extra_files = request.FILES
-
-    # There's a risk of getting into a loop if e.g. the CMS asks the
-    # LMS to run codejail executions on its behalf, and the LMS is
-    # *also* inadvertently configured to call the LMS (itself).
-    # There's no good reason to have a chain of >2 services passing
-    # codejail requests along, so only allow execution here if we
-    # aren't going to pass it along to someone else.
-    if getattr(settings, 'ENABLE_CODEJAIL_REST_SERVICE', False):
-        raise Exception(
-            "Refusing to run codejail request from over the network "
-            "when we're going to pass it to another IDA anyway"
-        )
 
     # Far too dangerous to allow unsafe executions to come in over the
     # network, no matter who we think the caller is. The caller is the
