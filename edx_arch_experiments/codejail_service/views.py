@@ -59,7 +59,7 @@ payload_schema = {
         },
         'unsafely': {'type': 'boolean'},
     },
-    'required': ['code'],
+    'required': ['code', 'globals_dict'],
 }
 
 # A note on the authorization model used here:
@@ -121,7 +121,7 @@ def code_exec_view_v0(request):
     jsonschema.validate(params, payload_schema)
 
     complete_code = params['code']  # includes standard prolog
-    input_globals_dict = params.get('globals_dict') or {}
+    input_globals_dict = params['globals_dict']
     python_path = params.get('python_path') or []
     limit_overrides_context = params.get('limit_overrides_context')
     slug = params.get('slug')
