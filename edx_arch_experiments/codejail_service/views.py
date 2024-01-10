@@ -111,10 +111,11 @@ def code_exec_view_v0(request):
     # codejail requests along, so only allow execution here if we
     # aren't going to pass it along to someone else.
     if getattr(settings, 'ENABLE_CODEJAIL_REST_SERVICE', False):
-        raise Exception(
+        log.error(
             "Refusing to run codejail request from over the network "
             "when we're going to pass it to another IDA anyway"
         )
+        return Response("Codejail service is misconfigured. (Refusing to act as relay.)", status=500)
 
     params_json = request.data['payload']
     params = json.loads(params_json)
@@ -133,7 +134,7 @@ def code_exec_view_v0(request):
     # network, no matter who we think the caller is. The caller is the
     # one who has the context on safety.
     if unsafely:
-        raise Exception("Refusing to run codejail request from over the network with unsafely=true")
+        return Response("Refusing codejail execution with unsafely=true", status=400)
 
     output_globals_dict = deepcopy(input_globals_dict)  # Output dict will be mutated by safe_exec
     try:
