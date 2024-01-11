@@ -100,9 +100,16 @@ def code_exec_view_v0(request):
     safe_exec (aside from `extra_files`). See payload_schema for type information.
 
     This API does not permit `unsafely=true`.
+
+    If the response is a 200, the codejail execution completed. The response
+    will be JSON containing either a single key `globals_dict` (containing
+    the global scope values at the end of a run to completion) or `emsg` (the
+    exception the submitted code raised).
+
+    Other responses are errors, with a JSON body containing further details.
     """
     if not CODEJAIL_SERVICE_ENABLED.is_enabled():
-        return Response("Codejail service not enabled", status=500)
+        return Response({'error': "Codejail service not enabled"}, status=500)
 
     # There's a risk of getting into a loop if e.g. the CMS asks the
     # LMS to run codejail executions on its behalf, and the LMS is
@@ -115,7 +122,7 @@ def code_exec_view_v0(request):
             "Refusing to run codejail request from over the network "
             "when we're going to pass it to another IDA anyway"
         )
-        return Response("Codejail service is misconfigured. (Refusing to act as relay.)", status=500)
+        return Response({'error': "Codejail service is misconfigured. (Refusing to act as relay.)"}, status=500)
 
     params_json = request.data['payload']
     params = json.loads(params_json)
@@ -134,7 +141,7 @@ def code_exec_view_v0(request):
     # network, no matter who we think the caller is. The caller is the
     # one who has the context on safety.
     if unsafely:
-        return Response("Refusing codejail execution with unsafely=true", status=400)
+        return Response({'error': "Refusing codejail execution with unsafely=true"}, status=400)
 
     output_globals_dict = deepcopy(input_globals_dict)  # Output dict will be mutated by safe_exec
     try:
