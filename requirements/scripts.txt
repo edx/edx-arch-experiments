@@ -85,7 +85,7 @@ edx-django-utils==5.9.0
     #   edx-drf-extensions
     #   edx-event-bus-kafka
     #   edx-toggles
-edx-drf-extensions==9.0.1
+edx-drf-extensions==9.1.2
     # via -r requirements/base.txt
 edx-event-bus-kafka==5.5.0
     # via -r requirements/scripts.in
@@ -98,7 +98,7 @@ edx-toggles==5.1.0
     # via
     #   -r requirements/base.txt
     #   edx-event-bus-kafka
-fastavro==1.9.2
+fastavro==1.9.3
     # via
     #   confluent-kafka
     #   openedx-events
@@ -111,7 +111,7 @@ importlib-resources==6.1.1
     #   -r requirements/base.txt
     #   jsonschema
     #   jsonschema-specifications
-jinja2==3.1.2
+jinja2==3.1.3
     # via
     #   -r requirements/base.txt
     #   code-annotations
@@ -125,7 +125,7 @@ markupsafe==2.1.3
     # via
     #   -r requirements/base.txt
     #   jinja2
-newrelic==9.3.0
+newrelic==9.4.0
     # via
     #   -r requirements/base.txt
     #   edx-django-utils
@@ -174,7 +174,7 @@ pyyaml==6.0.1
     # via
     #   -r requirements/base.txt
     #   code-annotations
-referencing==0.32.0
+referencing==0.32.1
     # via
     #   -r requirements/base.txt
     #   jsonschema

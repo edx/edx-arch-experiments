@@ -6,10 +6,11 @@ import json
 import logging
 from copy import deepcopy
 
-import jsonschema
 from codejail.safe_exec import SafeExecException, safe_exec
 from django.conf import settings
 from edx_toggles.toggles import SettingToggle
+from jsonschema.exceptions import best_match as json_error_best_match
+from jsonschema.validators import Draft202012Validator
 from rest_framework.decorators import api_view, parser_classes, permission_classes
 from rest_framework.parsers import FormParser, MultiPartParser
 from rest_framework.permissions import IsAdminUser
@@ -61,6 +62,11 @@ payload_schema = {
     },
     'required': ['code', 'globals_dict'],
 }
+# Use this rather than jsonschema.validate, since that would check the schema
+# every time it is called. Best to do it just once at startup.
+Draft202012Validator.check_schema(payload_schema)
+payload_validator = Draft202012Validator(payload_schema)
+
 
 # A note on the authorization model used here:
 #
@@ -126,7 +132,9 @@ def code_exec_view_v0(request):
 
     params_json = request.data['payload']
     params = json.loads(params_json)
-    jsonschema.validate(params, payload_schema)
+
+    if json_error := json_error_best_match(payload_validator.iter_errors(params)):
+        return Response({'error': f"Payload JSON did not match schema: {json_error.message}"}, status=400)
 
     complete_code = params['code']  # includes standard prolog
     input_globals_dict = params['globals_dict']
@@ -135,7 +143,9 @@ def code_exec_view_v0(request):
     slug = params.get('slug')
     unsafely = params.get('unsafely')
 
-    extra_files = request.FILES
+    # Convert to a list of (string, bytestring) pairs. Any duplicated file names
+    # are resolved as last-wins.
+    extra_files = [(filename, file.read()) for filename, file in request.FILES.items()]
 
     # Far too dangerous to allow unsafe executions to come in over the
     # network, no matter who we think the caller is. The caller is the
@@ -154,8 +164,8 @@ def code_exec_view_v0(request):
             slug=slug,
         )
     except SafeExecException as e:
-        log.debug("CodejailService execution failed with: {e!r}")
+        log.debug("CodejailService execution failed for {slug=} with: {e!r}")
         return Response({'emsg': f"Code jail execution failed: {e!r}"})
 
-    log.debug("CodejailService execution succeeded, with globals={output_globals_dict!r}")
+    log.debug("CodejailService execution succeeded for {slug=}, with globals={output_globals_dict!r}")
     return Response({'globals_dict': output_globals_dict})
