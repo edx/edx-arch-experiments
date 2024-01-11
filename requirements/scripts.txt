@@ -8,34 +8,52 @@ asgiref==3.7.2
     # via
     #   -r requirements/base.txt
     #   django
-attrs==23.1.0
-    # via openedx-events
+attrs==23.2.0
+    # via
+    #   -r requirements/base.txt
+    #   jsonschema
+    #   openedx-events
+    #   referencing
 avro==1.11.3
     # via confluent-kafka
 certifi==2023.11.17
-    # via requests
+    # via
+    #   -r requirements/base.txt
+    #   requests
 cffi==1.16.0
     # via
     #   -r requirements/base.txt
+    #   cryptography
     #   pynacl
 charset-normalizer==3.3.2
-    # via requests
+    # via
+    #   -r requirements/base.txt
+    #   requests
 click==8.1.7
     # via
     #   -r requirements/base.txt
     #   code-annotations
     #   edx-django-utils
 code-annotations==1.5.0
-    # via edx-toggles
+    # via
+    #   -r requirements/base.txt
+    #   edx-toggles
 confluent-kafka[avro]==2.3.0
     # via -r requirements/scripts.in
+cryptography==41.0.7
+    # via
+    #   -r requirements/base.txt
+    #   pyjwt
 django==3.2.23
     # via
     #   -c https://raw.githubusercontent.com/edx/edx-lint/master/edx_lint/files/common_constraints.txt
     #   -r requirements/base.txt
     #   django-crum
     #   django-waffle
+    #   djangorestframework
+    #   drf-jwt
     #   edx-django-utils
+    #   edx-drf-extensions
     #   edx-event-bus-kafka
     #   edx-toggles
     #   openedx-events
@@ -48,29 +66,66 @@ django-waffle==4.1.0
     # via
     #   -r requirements/base.txt
     #   edx-django-utils
+    #   edx-drf-extensions
     #   edx-toggles
+djangorestframework==3.14.0
+    # via
+    #   -r requirements/base.txt
+    #   drf-jwt
+    #   edx-drf-extensions
+drf-jwt==1.19.2
+    # via
+    #   -r requirements/base.txt
+    #   edx-drf-extensions
+edx-codejail==3.3.3
+    # via -r requirements/base.txt
 edx-django-utils==5.9.0
     # via
     #   -r requirements/base.txt
+    #   edx-drf-extensions
     #   edx-event-bus-kafka
     #   edx-toggles
+edx-drf-extensions==9.1.2
+    # via -r requirements/base.txt
 edx-event-bus-kafka==5.5.0
     # via -r requirements/scripts.in
 edx-opaque-keys[django]==2.5.1
-    # via openedx-events
+    # via
+    #   -r requirements/base.txt
+    #   edx-drf-extensions
+    #   openedx-events
 edx-toggles==5.1.0
-    # via edx-event-bus-kafka
-fastavro==1.9.1
+    # via
+    #   -r requirements/base.txt
+    #   edx-event-bus-kafka
+fastavro==1.9.3
     # via
     #   confluent-kafka
     #   openedx-events
 idna==3.6
-    # via requests
-jinja2==3.1.2
-    # via code-annotations
+    # via
+    #   -r requirements/base.txt
+    #   requests
+importlib-resources==6.1.1
+    # via
+    #   -r requirements/base.txt
+    #   jsonschema
+    #   jsonschema-specifications
+jinja2==3.1.3
+    # via
+    #   -r requirements/base.txt
+    #   code-annotations
+jsonschema==4.20.0
+    # via -r requirements/base.txt
+jsonschema-specifications==2023.12.1
+    # via
+    #   -r requirements/base.txt
+    #   jsonschema
 markupsafe==2.1.3
-    # via jinja2
-newrelic==9.3.0
+    # via
+    #   -r requirements/base.txt
+    #   jinja2
+newrelic==9.4.0
     # via
     #   -r requirements/base.txt
     #   edx-django-utils
@@ -80,7 +135,11 @@ pbr==6.0.0
     # via
     #   -r requirements/base.txt
     #   stevedore
-psutil==5.9.6
+pkgutil-resolve-name==1.3.10
+    # via
+    #   -r requirements/base.txt
+    #   jsonschema
+psutil==5.9.7
     # via
     #   -r requirements/base.txt
     #   edx-django-utils
@@ -88,22 +147,56 @@ pycparser==2.21
     # via
     #   -r requirements/base.txt
     #   cffi
+pyjwt[crypto]==2.8.0
+    # via
+    #   -r requirements/base.txt
+    #   drf-jwt
+    #   edx-drf-extensions
+    #   pyjwt
 pymongo==3.13.0
-    # via edx-opaque-keys
+    # via
+    #   -r requirements/base.txt
+    #   edx-opaque-keys
 pynacl==1.5.0
     # via
     #   -r requirements/base.txt
     #   edx-django-utils
 python-slugify==8.0.1
-    # via code-annotations
+    # via
+    #   -r requirements/base.txt
+    #   code-annotations
 pytz==2023.3.post1
     # via
     #   -r requirements/base.txt
     #   django
+    #   djangorestframework
 pyyaml==6.0.1
-    # via code-annotations
+    # via
+    #   -r requirements/base.txt
+    #   code-annotations
+referencing==0.32.1
+    # via
+    #   -r requirements/base.txt
+    #   jsonschema
+    #   jsonschema-specifications
 requests==2.31.0
-    # via confluent-kafka
+    # via
+    #   -r requirements/base.txt
+    #   confluent-kafka
+    #   edx-drf-extensions
+rpds-py==0.16.2
+    # via
+    #   -r requirements/base.txt
+    #   jsonschema
+    #   referencing
+semantic-version==2.10.0
+    # via
+    #   -r requirements/base.txt
+    #   edx-drf-extensions
+six==1.16.0
+    # via
+    #   -r requirements/base.txt
+    #   edx-codejail
 sqlparse==0.4.4
     # via
     #   -r requirements/base.txt
@@ -115,11 +208,19 @@ stevedore==5.1.0
     #   edx-django-utils
     #   edx-opaque-keys
 text-unidecode==1.3
-    # via python-slugify
+    # via
+    #   -r requirements/base.txt
+    #   python-slugify
 typing-extensions==4.9.0
     # via
     #   -r requirements/base.txt
     #   asgiref
     #   edx-opaque-keys
 urllib3==2.1.0
-    # via requests
+    # via
+    #   -r requirements/base.txt
+    #   requests
+zipp==3.17.0
+    # via
+    #   -r requirements/base.txt
+    #   importlib-resources
