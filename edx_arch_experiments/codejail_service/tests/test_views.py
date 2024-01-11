@@ -32,12 +32,15 @@ class TestExecService(TestCase):
         self.other_user = user_model.objects.create_user('student', is_staff=False)
         self.standard_params = {'code': 'retval = 3 + 4', 'globals_dict': {}}
 
-    def _test_codejail_api(self, *, user=None, files=None, skip_auth=False, params=None, exp_status, exp_body):
+    def _test_codejail_api(self, *, user=None, skip_auth=False, params=None, files=None, exp_status, exp_body):
         """
         Call the view and make assertions.
 
-        Arguments:
-            user: User to authenticate as when calling view (None for unauthenticated)
+        Args:
+            user: User to authenticate as when calling view, defaulting to an is_staff user
+            skip_auth: If true, do not send authentication headers (incompatible with `user` argument)
+            params: Payload of codejail parameters, defaulting to a simple arithmetic check
+            files: Files to include in the API call, as dict of filenames to file objects
             exp_status: Assert that the response HTTP status code is this value
             exp_body: Assert that the response body JSON is this value
         """
