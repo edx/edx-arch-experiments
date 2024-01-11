@@ -105,7 +105,7 @@ class TestExecService(TestCase):
         ({}, 'code'),
     )
     def test_missing_params(self, params, missing):
-        """code and globals_dict are required"""
+        """Two code and globals_dict params are required."""
         self._test_codejail_api(
             params=params,
             exp_status=400, exp_body={
@@ -114,6 +114,7 @@ class TestExecService(TestCase):
         )
 
     def test_extra_files(self):
+        """Check that we can include a course library."""
         # "Course library" containing `course_library.triangular_number`.
         #
         # It's tempting to use zipfile to write to an io.BytesIO so
@@ -139,3 +140,10 @@ class TestExecService(TestCase):
                 files={'python_lib.zip': lib_zip},
                 exp_status=200, exp_body={'globals_dict': {'result': 21}},
             )
+
+    def test_exception(self):
+        """Report exceptions from jailed code."""
+        self._test_codejail_api(
+            params={'code': '1/0', 'globals_dict': {}},
+            exp_status=200, exp_body={'emsg': 'ZeroDivisionError: division by zero'},
+        )

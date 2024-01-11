@@ -164,8 +164,8 @@ def code_exec_view_v0(request):
             slug=slug,
         )
     except SafeExecException as e:
-        log.debug("CodejailService execution failed for {slug=} with: {e!r}")
-        return Response({'emsg': f"Code jail execution failed: {e!r}"})
+        log.debug("CodejailService execution failed for {slug=} with: {e}")
+        return Response({'emsg': str(e)})
 
     log.debug("CodejailService execution succeeded for {slug=}, with globals={output_globals_dict!r}")
     return Response({'globals_dict': output_globals_dict})
