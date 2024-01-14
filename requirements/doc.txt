@@ -142,7 +142,7 @@ markupsafe==2.1.3
     # via
     #   -r requirements/test.txt
     #   jinja2
-newrelic==9.4.0
+newrelic==9.5.0
     # via
     #   -r requirements/test.txt
     #   edx-django-utils
@@ -229,7 +229,7 @@ requests==2.31.0
     #   sphinx
 restructuredtext-lint==1.4.0
     # via doc8
-rpds-py==0.16.2
+rpds-py==0.17.1
     # via
     #   -r requirements/test.txt
     #   jsonschema

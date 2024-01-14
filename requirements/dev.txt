@@ -223,7 +223,7 @@ more-itertools==10.2.0
     # via
     #   -r requirements/quality.txt
     #   jaraco-classes
-newrelic==9.4.0
+newrelic==9.5.0
     # via
     #   -r requirements/quality.txt
     #   edx-django-utils
@@ -382,7 +382,7 @@ rich==13.7.0
     # via
     #   -r requirements/quality.txt
     #   twine
-rpds-py==0.16.2
+rpds-py==0.17.1
     # via
     #   -r requirements/quality.txt
     #   jsonschema
@@ -435,7 +435,7 @@ tomlkit==0.12.3
     # via
     #   -r requirements/quality.txt
     #   pylint
-tox==4.11.4
+tox==4.12.0
     # via -r requirements/ci.txt
 twine==4.0.2
     # via -r requirements/quality.txt
