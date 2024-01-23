@@ -14,6 +14,13 @@ Change Log
 Unreleased
 ~~~~~~~~~~
 
+[3.3.0] - 2024-01-23
+~~~~~~~~~~~~~~~~~~~~
+Changed
+_______
+* Updated ``ConfigWatcher`` to include the IDA's name in change messages if ``CONFIG_WATCHER_SERVICE_NAME`` is set
+* Enabled ``ConfigWatcher`` as a plugin for CMS
+
 [3.2.0] - 2024-01-11
 ~~~~~~~~~~~~~~~~~~~~
 Added
