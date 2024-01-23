@@ -9,10 +9,10 @@ import json
 import logging
 import urllib.request
 
-import waffle.models
 from django.conf import settings
 from django.db.models import signals
 from django.dispatch import receiver
+from django.utils.module_loading import import_string
 
 log = logging.getLogger(__name__)
 
@@ -22,11 +22,22 @@ log = logging.getLogger(__name__)
 #   If not configured, this functionality is disabled.
 CONFIG_WATCHER_SLACK_WEBHOOK_URL = getattr(settings, 'CONFIG_WATCHER_SLACK_WEBHOOK_URL', None)
 
+# .. setting_name: CONFIG_WATCHER_SERVICE_NAME
+# .. setting_default: None
+# .. setting_description: Name of service, to be included in Slack messages in
+#   in order to distinguish messages from multiple services being aggregated in
+#   one channel. Can be a regular name ("LMS"), hostname, ("courses.example.com"),
+#   or any other string. Optional.
+CONFIG_WATCHER_SERVICE_NAME = getattr(settings, 'CONFIG_WATCHER_SERVICE_NAME', None)
+
 
 def _send_to_slack(message):
     """Send this message as plain text to the configured Slack channel."""
     if not CONFIG_WATCHER_SLACK_WEBHOOK_URL:
         return
+
+    if CONFIG_WATCHER_SERVICE_NAME:
+        message = f"[{CONFIG_WATCHER_SERVICE_NAME}] {message}"
 
     # https://api.slack.com/reference/surfaces/formatting
     body_data = {
@@ -73,17 +84,17 @@ def _report_waffle_delete(model_short_name, instance):
 # keyword args of _register_waffle_observation.
 _WAFFLE_MODELS_TO_OBSERVE = [
     {
-        'model': waffle.models.Flag,
+        'model': 'waffle.models.Flag',
         'short_name': 'flag',
         'fields': ['everyone', 'percent', 'note'],
     },
     {
-        'model': waffle.models.Switch,
+        'model': 'waffle.models.Switch',
         'short_name': 'switch',
         'fields': ['active', 'note'],
     },
     {
-        'model': waffle.models.Sample,
+        'model': 'waffle.models.Sample',
         'short_name': 'sample',
         'fields': ['percent', 'note'],
     },
@@ -95,10 +106,12 @@ def _register_waffle_observation(*, model, short_name, fields):
     Register a Waffle model for observation according to config values.
 
     Args:
-        model (class): The model class to monitor
+        model (str): The model class to monitor, as a dotted string reference
         short_name (str): A short descriptive name for an instance of the model, e.g. "flag"
         fields (list): Names of fields to report on in the Slack message
     """
+
+    model = import_string(model)
 
     # Note that weak=False is required here. Django by default only
     # holds weak references to receiver functions. But these inner
