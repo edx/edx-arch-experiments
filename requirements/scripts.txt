@@ -40,7 +40,7 @@ code-annotations==1.5.0
     #   edx-toggles
 confluent-kafka[avro]==2.3.0
     # via -r requirements/scripts.in
-cryptography==41.0.7
+cryptography==42.0.1
     # via
     #   -r requirements/base.txt
     #   pyjwt
@@ -85,9 +85,9 @@ edx-django-utils==5.10.1
     #   edx-drf-extensions
     #   edx-event-bus-kafka
     #   edx-toggles
-edx-drf-extensions==9.1.2
+edx-drf-extensions==10.0.0
     # via -r requirements/base.txt
-edx-event-bus-kafka==5.5.0
+edx-event-bus-kafka==5.6.0
     # via -r requirements/scripts.in
 edx-opaque-keys[django]==2.5.1
     # via
@@ -125,11 +125,11 @@ markupsafe==2.1.4
     # via
     #   -r requirements/base.txt
     #   jinja2
-newrelic==9.5.0
+newrelic==9.6.0
     # via
     #   -r requirements/base.txt
     #   edx-django-utils
-openedx-events==9.2.0
+openedx-events==9.3.0
     # via edx-event-bus-kafka
 pbr==6.0.0
     # via
@@ -161,7 +161,7 @@ pynacl==1.5.0
     # via
     #   -r requirements/base.txt
     #   edx-django-utils
-python-slugify==8.0.1
+python-slugify==8.0.2
     # via
     #   -r requirements/base.txt
     #   code-annotations
