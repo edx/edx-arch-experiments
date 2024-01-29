@@ -24,7 +24,7 @@ click==8.1.7
     #   edx-django-utils
 code-annotations==1.5.0
     # via edx-toggles
-cryptography==41.0.7
+cryptography==42.0.1
     # via pyjwt
 django==3.2.23
     # via
@@ -61,7 +61,7 @@ edx-django-utils==5.10.1
     #   -r requirements/base.in
     #   edx-drf-extensions
     #   edx-toggles
-edx-drf-extensions==9.1.2
+edx-drf-extensions==10.0.0
     # via -r requirements/base.in
 edx-opaque-keys==2.5.1
     # via edx-drf-extensions
@@ -81,7 +81,7 @@ jsonschema-specifications==2023.12.1
     # via jsonschema
 markupsafe==2.1.4
     # via jinja2
-newrelic==9.5.0
+newrelic==9.6.0
     # via edx-django-utils
 pbr==6.0.0
     # via stevedore
@@ -100,7 +100,7 @@ pymongo==3.13.0
     # via edx-opaque-keys
 pynacl==1.5.0
     # via edx-django-utils
-python-slugify==8.0.1
+python-slugify==8.0.2
     # via code-annotations
 pytz==2023.3.post1
     # via
