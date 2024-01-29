@@ -27,7 +27,7 @@ jobs:
             The original issue is at ${{ github.event.issue.html_url }}
           fields: '{ "labels": ["esre-request"] }'
       - name: Comment with JIRA issue link
-        uses: peter-evans/create-or-update-comment@v2
+        uses: peter-evans/create-or-update-comment@v4
         with:
           body: This is now https://2u-internal.atlassian.net/browse/${{ steps.jiracreate.outputs.issue }}
           issue-number: ${{ github.event.issue.number }}
