@@ -14,6 +14,12 @@ Change Log
 Unreleased
 ~~~~~~~~~~
 
+[3.4.0] - 2024-02-01
+~~~~~~~~~~~~~~~~~~~~
+Changed
+_______
+* GitHub Actions downloader script now pulls all attempts and records in JSON. CLI has changed.
+
 [3.3.0] - 2024-01-23
 ~~~~~~~~~~~~~~~~~~~~
 Changed
