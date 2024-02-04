@@ -26,7 +26,7 @@ cachetools==5.3.2
     # via
     #   -r requirements/ci.txt
     #   tox
-certifi==2023.11.17
+certifi==2024.2.2
     # via
     #   -r requirements/quality.txt
     #   requests
@@ -57,7 +57,7 @@ click-log==0.4.0
     # via
     #   -r requirements/quality.txt
     #   edx-lint
-code-annotations==1.5.0
+code-annotations==1.6.0
     # via
     #   -r requirements/quality.txt
     #   edx-lint
@@ -71,7 +71,7 @@ coverage[toml]==7.4.1
     #   -r requirements/quality.txt
     #   coverage
     #   pytest-cov
-cryptography==42.0.1
+cryptography==42.0.2
     # via
     #   -r requirements/quality.txt
     #   pyjwt
@@ -131,7 +131,7 @@ edx-django-utils==5.10.1
     #   -r requirements/quality.txt
     #   edx-drf-extensions
     #   edx-toggles
-edx-drf-extensions==10.0.0
+edx-drf-extensions==10.1.0
     # via -r requirements/quality.txt
 edx-i18n-tools==1.3.0
     # via -r requirements/dev.in
@@ -141,7 +141,7 @@ edx-opaque-keys==2.5.1
     # via
     #   -r requirements/quality.txt
     #   edx-drf-extensions
-edx-toggles==5.1.0
+edx-toggles==5.1.1
     # via -r requirements/quality.txt
 exceptiongroup==1.2.0
     # via
@@ -207,7 +207,7 @@ markdown-it-py==3.0.0
     # via
     #   -r requirements/quality.txt
     #   rich
-markupsafe==2.1.4
+markupsafe==2.1.5
     # via
     #   -r requirements/quality.txt
     #   jinja2
@@ -240,7 +240,7 @@ packaging==23.2
     #   pyproject-api
     #   pytest
     #   tox
-path==16.9.0
+path==16.10.0
     # via edx-i18n-tools
 pbr==6.0.0
     # via
@@ -256,7 +256,7 @@ pkgutil-resolve-name==1.3.10
     # via
     #   -r requirements/quality.txt
     #   jsonschema
-platformdirs==4.1.0
+platformdirs==4.2.0
     # via
     #   -r requirements/ci.txt
     #   -r requirements/quality.txt
@@ -339,13 +339,13 @@ pytest==8.0.0
     #   pytest-django
 pytest-cov==4.1.0
     # via -r requirements/quality.txt
-pytest-django==4.7.0
+pytest-django==4.8.0
     # via -r requirements/quality.txt
-python-slugify==8.0.2
+python-slugify==8.0.3
     # via
     #   -r requirements/quality.txt
     #   code-annotations
-pytz==2023.3.post1
+pytz==2024.1
     # via
     #   -r requirements/quality.txt
     #   django
@@ -359,7 +359,7 @@ readme-renderer==42.0
     # via
     #   -r requirements/quality.txt
     #   twine
-referencing==0.32.1
+referencing==0.33.0
     # via
     #   -r requirements/quality.txt
     #   jsonschema
@@ -447,7 +447,7 @@ typing-extensions==4.9.0
     #   edx-opaque-keys
     #   pylint
     #   rich
-urllib3==2.1.0
+urllib3==2.2.0
     # via
     #   -r requirements/quality.txt
     #   requests

@@ -16,7 +16,7 @@ attrs==23.2.0
     #   referencing
 avro==1.11.3
     # via confluent-kafka
-certifi==2023.11.17
+certifi==2024.2.2
     # via
     #   -r requirements/base.txt
     #   requests
@@ -34,13 +34,13 @@ click==8.1.7
     #   -r requirements/base.txt
     #   code-annotations
     #   edx-django-utils
-code-annotations==1.5.0
+code-annotations==1.6.0
     # via
     #   -r requirements/base.txt
     #   edx-toggles
 confluent-kafka[avro]==2.3.0
     # via -r requirements/scripts.in
-cryptography==42.0.1
+cryptography==42.0.2
     # via
     #   -r requirements/base.txt
     #   pyjwt
@@ -85,7 +85,7 @@ edx-django-utils==5.10.1
     #   edx-drf-extensions
     #   edx-event-bus-kafka
     #   edx-toggles
-edx-drf-extensions==10.0.0
+edx-drf-extensions==10.1.0
     # via -r requirements/base.txt
 edx-event-bus-kafka==5.6.0
     # via -r requirements/scripts.in
@@ -94,7 +94,7 @@ edx-opaque-keys[django]==2.5.1
     #   -r requirements/base.txt
     #   edx-drf-extensions
     #   openedx-events
-edx-toggles==5.1.0
+edx-toggles==5.1.1
     # via
     #   -r requirements/base.txt
     #   edx-event-bus-kafka
@@ -121,7 +121,7 @@ jsonschema-specifications==2023.12.1
     # via
     #   -r requirements/base.txt
     #   jsonschema
-markupsafe==2.1.4
+markupsafe==2.1.5
     # via
     #   -r requirements/base.txt
     #   jinja2
@@ -129,7 +129,7 @@ newrelic==9.6.0
     # via
     #   -r requirements/base.txt
     #   edx-django-utils
-openedx-events==9.3.0
+openedx-events==9.4.0
     # via edx-event-bus-kafka
 pbr==6.0.0
     # via
@@ -161,11 +161,11 @@ pynacl==1.5.0
     # via
     #   -r requirements/base.txt
     #   edx-django-utils
-python-slugify==8.0.2
+python-slugify==8.0.3
     # via
     #   -r requirements/base.txt
     #   code-annotations
-pytz==2023.3.post1
+pytz==2024.1
     # via
     #   -r requirements/base.txt
     #   django
@@ -174,7 +174,7 @@ pyyaml==6.0.1
     # via
     #   -r requirements/base.txt
     #   code-annotations
-referencing==0.32.1
+referencing==0.33.0
     # via
     #   -r requirements/base.txt
     #   jsonschema
@@ -216,7 +216,7 @@ typing-extensions==4.9.0
     #   -r requirements/base.txt
     #   asgiref
     #   edx-opaque-keys
-urllib3==2.1.0
+urllib3==2.2.0
     # via
     #   -r requirements/base.txt
     #   requests
