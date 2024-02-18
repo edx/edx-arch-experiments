@@ -40,7 +40,7 @@ code-annotations==1.6.0
     #   edx-toggles
 confluent-kafka[avro]==2.3.0
     # via -r requirements/scripts.in
-cryptography==42.0.2
+cryptography==42.0.3
     # via
     #   -r requirements/base.txt
     #   pyjwt
@@ -99,7 +99,7 @@ edx-toggles==5.1.1
     # via
     #   -r requirements/base.txt
     #   edx-event-bus-kafka
-fastavro==1.9.3
+fastavro==1.9.4
     # via
     #   confluent-kafka
     #   openedx-events
@@ -130,7 +130,7 @@ newrelic==9.6.0
     # via
     #   -r requirements/base.txt
     #   edx-django-utils
-openedx-events==9.5.0
+openedx-events==9.5.1
     # via edx-event-bus-kafka
 pbr==6.0.0
     # via
@@ -153,7 +153,6 @@ pyjwt[crypto]==2.8.0
     #   -r requirements/base.txt
     #   drf-jwt
     #   edx-drf-extensions
-    #   pyjwt
 pymongo==3.13.0
     # via
     #   -r requirements/base.txt
@@ -185,7 +184,7 @@ requests==2.31.0
     #   -r requirements/base.txt
     #   confluent-kafka
     #   edx-drf-extensions
-rpds-py==0.17.1
+rpds-py==0.18.0
     # via
     #   -r requirements/base.txt
     #   jsonschema
@@ -217,7 +216,7 @@ typing-extensions==4.9.0
     #   -r requirements/base.txt
     #   asgiref
     #   edx-opaque-keys
-urllib3==2.2.0
+urllib3==2.2.1
     # via
     #   -r requirements/base.txt
     #   requests

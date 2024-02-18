@@ -47,9 +47,8 @@ code-annotations==1.6.0
 coverage[toml]==7.4.1
     # via
     #   -r requirements/test.txt
-    #   coverage
     #   pytest-cov
-cryptography==42.0.2
+cryptography==42.0.3
     # via
     #   -r requirements/test.txt
     #   pyjwt
@@ -211,7 +210,6 @@ pyjwt[crypto]==2.8.0
     #   -r requirements/test.txt
     #   drf-jwt
     #   edx-drf-extensions
-    #   pyjwt
 pylint==3.0.3
     # via
     #   edx-lint
@@ -234,7 +232,7 @@ pynacl==1.5.0
     # via
     #   -r requirements/test.txt
     #   edx-django-utils
-pytest==8.0.0
+pytest==8.0.1
     # via
     #   -r requirements/test.txt
     #   pytest-cov
@@ -275,7 +273,7 @@ rfc3986==2.0.0
     # via twine
 rich==13.7.0
     # via twine
-rpds-py==0.17.1
+rpds-py==0.18.0
     # via
     #   -r requirements/test.txt
     #   jsonschema
@@ -315,7 +313,7 @@ tomli==2.0.1
     #   pytest
 tomlkit==0.12.3
     # via pylint
-twine==4.0.2
+twine==5.0.0
     # via -r requirements/quality.in
 typing-extensions==4.9.0
     # via
@@ -325,7 +323,7 @@ typing-extensions==4.9.0
     #   edx-opaque-keys
     #   pylint
     #   rich
-urllib3==2.2.0
+urllib3==2.2.1
     # via
     #   -r requirements/test.txt
     #   requests
