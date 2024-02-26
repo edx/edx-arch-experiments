@@ -30,13 +30,13 @@ docs: ## generate Sphinx HTML documentation, including API docs
 	$(BROWSER)docs/_build/html/index.html
 
 # Define CMD_PIP_COMPILE_OPTS=-v to get more information during make upgrade.
-CMD_PIP_COMPILE ?= pip-compile --rebuild --upgrade $(CMD_PIP_COMPILE_OPTS)
+CMD_PIP_COMPILE ?= pip-compile --rebuild --upgrade --allow-unsafe $(CMD_PIP_COMPILE_OPTS)
 
 upgrade: export CUSTOM_COMPILE_COMMAND=make upgrade
 upgrade: ## update the requirements/*.txt files with the latest packages satisfying requirements/*.in
 	pip install -qr requirements/pip-tools.txt
 	# Make sure to compile files after any other files they include!
-	$(CMD_PIP_COMPILE) --allow-unsafe --rebuild -o requirements/pip.txt requirements/pip.in
+	$(CMD_PIP_COMPILE) --rebuild -o requirements/pip.txt requirements/pip.in
 	$(CMD_PIP_COMPILE) -o requirements/pip-tools.txt requirements/pip-tools.in
 	pip install -qr requirements/pip.txt
 	pip install -qr requirements/pip-tools.txt

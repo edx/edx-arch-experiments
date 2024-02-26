@@ -9,3 +9,4 @@ djangorestframework      # Used by codejail_service app
 edx-drf-extensions       # Used by codejail_service app
 edx-toggles              # Used by codejail_service app
 jsonschema               # Parse and validate JSON; used by codejail_service app
+setuptools

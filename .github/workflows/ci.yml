@@ -10,16 +10,17 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        tox-env: [django32, quality]
+        python-version: ['3.8', '3.12']
+        tox-env: [quality, django42]
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v4
-        with:
-          python-version: '3.8'
-          architecture: x64
-      - name: Install requirements
-        run: pip install -r requirements/ci.txt
-      - name: Run tox
-        env:
-          TOXENV: ${{ matrix.tox-env }}
-        run: tox
+    - uses: actions/checkout@v4
+    - uses: actions/setup-python@v4
+      with:
+        python-version: ${{ matrix.python-version }}
+        architecture: x64
+    - name: Install requirements
+      run: pip install -r requirements/ci.txt
+    - name: Run tox
+      env:
+        TOXENV: ${{ matrix.tox-env }}
+      run: tox
