@@ -43,6 +43,6 @@ class TestConfigWatcherReceivers(TestCase):
         if expected_message is None:
             mock_req.assert_not_called()
         else:
-            assert mock_req.called_once()
+            mock_req.assert_called_once()
             (call_args, call_kwargs) = mock_req.call_args_list[0]
             assert json.loads(call_kwargs['data'])['text'] == expected_message
