@@ -14,6 +14,13 @@ Change Log
 Unreleased
 ~~~~~~~~~~
 
+[3.3.2] - 2024-04-19
+~~~~~~~~~~~~~~~~~~~~
+Changed
+-------
+* Added ``translatable-xblocks`` to the generate_code_owners script.
+
+
 [3.3.1] - 2024-02-26
 ~~~~~~~~~~~~~~~~~~~~
 Added

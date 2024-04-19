@@ -49,6 +49,7 @@ EDX_REPO_APPS = {
     'organizations': 'https://github.com/openedx/edx-organizations',
     'search': 'https://github.com/openedx/edx-search',
     'super_csv': 'https://github.com/openedx/super-csv',
+    'translatable_xblocks': 'https://github.com/edx/translatable-xblocks',
     'wiki': 'https://github.com/openedx/django-wiki',
 }
 
