@@ -164,6 +164,7 @@ setup(
             "arch_experiments = edx_arch_experiments.apps:EdxArchExperimentsConfig",
             "config_watcher = edx_arch_experiments.config_watcher.apps:ConfigWatcher",
             "codejail_service = edx_arch_experiments.codejail_service.apps:CodejailService",
+            "datadog_diagnostics = edx_arch_experiments.datadog_diagnostics.apps:DatadogDiagnostics",
         ],
         "cms.djangoapp": [
             "config_watcher = edx_arch_experiments.config_watcher.apps:ConfigWatcher",
