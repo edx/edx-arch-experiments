@@ -9,7 +9,7 @@ from django.apps import AppConfig
 log = logging.getLogger(__name__)
 
 
-class MissingSpanProccessor:
+class MissingSpanProcessor:
     """Datadog span processor that logs unfinished spans at shutdown."""
     spans_started = 0
     spans_finished = 0
@@ -41,10 +41,10 @@ class DatadogDiagnostics(AppConfig):
     def ready(self):
         try:
             from ddtrace import tracer  # pylint: disable=import-outside-toplevel
-            tracer._span_processors.append(MissingSpanProccessor())  # pylint: disable=protected-access
-            log.info("Attached MissingSpanProccessor for Datadog diagnostics")
+            tracer._span_processors.append(MissingSpanProcessor())  # pylint: disable=protected-access
+            log.info("Attached MissingSpanProcessor for Datadog diagnostics")
         except ImportError:
             log.warning(
-                "Unable to attach MissingSpanProccessor for Datadog diagnostics"
+                "Unable to attach MissingSpanProcessor for Datadog diagnostics"
                 " -- ddtrace module not found."
             )
