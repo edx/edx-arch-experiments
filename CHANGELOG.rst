@@ -14,6 +14,12 @@ Change Log
 Unreleased
 ~~~~~~~~~~
 
+[3.4.0] - 2024-07-10
+~~~~~~~~~~~~~~~~~~~~
+Added
+-----
+* Added ``datadog_diagnostics`` plugin app
+
 [3.3.2] - 2024-04-19
 ~~~~~~~~~~~~~~~~~~~~
 Changed
