@@ -14,6 +14,17 @@ Change Log
 Unreleased
 ~~~~~~~~~~
 
+[3.5.0] - 2024-07-11
+~~~~~~~~~~~~~~~~~~~~
+Added
+-----
+* Toggle ``DATADOG_DIAGNOSTICS_ENABLE`` for disabling that plugin quickly if needed. (Feature remains enabled by default.)
+
+Fixed
+-----
+* Limit the number of spans collected via new setting ``DATADOG_DIAGNOSTICS_MAX_SPANS``, defaulting to 100. This may help avoid memory leaks.
+* Make accidental class variables into member variables in ``datadog_diagnostics``
+
 [3.4.0] - 2024-07-10
 ~~~~~~~~~~~~~~~~~~~~
 Added
