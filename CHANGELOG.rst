@@ -14,6 +14,12 @@ Change Log
 Unreleased
 ~~~~~~~~~~
 
+[3.5.1] - 2024-07-15
+~~~~~~~~~~~~~~~~~~~~
+Changed
+-------
+* Added ``federated-content-connector`` to the generate_code_owners script.
+
 [3.5.0] - 2024-07-11
 ~~~~~~~~~~~~~~~~~~~~
 Added
