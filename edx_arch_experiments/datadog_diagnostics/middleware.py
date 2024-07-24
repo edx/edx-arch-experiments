@@ -12,7 +12,7 @@ log = logging.getLogger(__name__)
 # .. toggle_name: datadog.diagnostics.log_root_span
 # .. toggle_implementation: WaffleFlag
 # .. toggle_default: False
-# .. toggle_description: Enables logging of Dataodog root span IDs for web requests.
+# .. toggle_description: Enables logging of Datadog root span IDs for web requests.
 # .. toggle_warning: This is a noisy feature and so it should only be enabled
 #   for a percentage of requests.
 # .. toggle_use_cases: temporary
