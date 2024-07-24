@@ -14,6 +14,12 @@ Change Log
 Unreleased
 ~~~~~~~~~~
 
+[3.6.0] - 2024-07-24
+~~~~~~~~~~~~~~~~~~~~
+Added
+-----
+* New middleware ``edx_arch_experiments.datadog_diagnostics.middleware.DatadogDiagnosticMiddleware`` for logging diagnostics on traces in Datadog.
+
 [3.5.1] - 2024-07-15
 ~~~~~~~~~~~~~~~~~~~~
 Changed
