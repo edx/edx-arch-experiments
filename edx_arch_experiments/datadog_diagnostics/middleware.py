@@ -1,13 +1,30 @@
 """
 Diagnostic middleware for Datadog.
+
+To use, install edx-arch-experiments and add
+``edx_arch_experiments.datadog_diagnostics.middleware.DatadogDiagnosticMiddleware``
+to ``MIDDLEWARE``, then set the below settings as needed.
 """
 
 import logging
+import time
 
 from django.core.exceptions import MiddlewareNotUsed
 from edx_toggles.toggles import WaffleFlag
 
 log = logging.getLogger(__name__)
+
+# .. toggle_name: datadog.diagnostics.detect_anomalous_trace
+# .. toggle_implementation: WaffleFlag
+# .. toggle_default: False
+# .. toggle_description: Enables logging of anomalous Datadog traces for web requests.
+# .. toggle_warning: This is a noisy feature and so it should only be enabled
+#   for a percentage of requests.
+# .. toggle_use_cases: temporary
+# .. toggle_creation_date: 2024-08-01
+# .. toggle_target_removal_date: 2024-11-01
+# .. toggle_tickets: https://github.com/edx/edx-arch-experiments/issues/692
+DETECT_ANOMALOUS_TRACE = WaffleFlag('datadog.diagnostics.detect_anomalous_trace', module_name=__name__)
 
 # .. toggle_name: datadog.diagnostics.log_root_span
 # .. toggle_implementation: WaffleFlag
@@ -43,6 +60,8 @@ class DatadogDiagnosticMiddleware:
             # If import fails, don't even load this middleware.
             raise MiddlewareNotUsed  # pylint: disable=raise-missing-from
 
+        self.worker_start_epoch = time.time()
+
     def __call__(self, request):
         return self.get_response(request)
 
@@ -63,9 +82,21 @@ class DatadogDiagnosticMiddleware:
         """
         Contains all the actual logging logic.
         """
+        local_root_span = self.dd_tracer.current_root_span()
+
+        if DETECT_ANOMALOUS_TRACE.is_enabled():
+            root_duration_s = local_root_span.duration
+            if root_duration_s is not None:
+                worker_run_time_s = time.time() - self.worker_start_epoch
+                log.warning(
+                    f"Anomalous Datadog local root span (duration already set): "
+                    f"id = {local_root_span.trace_id:x}; "
+                    f"duration = {root_duration_s:0.3f} sec; "
+                    f"worker age = {worker_run_time_s:0.3f} sec"
+                )
+
         if LOG_ROOT_SPAN.is_enabled():
             route_pattern = getattr(request.resolver_match, 'route', None)
-            local_root_span = self.dd_tracer.current_root_span()
             current_span = self.dd_tracer.current_span()
             # pylint: disable=protected-access
             log.info(

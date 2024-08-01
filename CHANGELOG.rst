@@ -14,6 +14,12 @@ Change Log
 Unreleased
 ~~~~~~~~~~
 
+[3.7.0] - 2024-08-02
+~~~~~~~~~~~~~~~~~~~~
+Added
+-----
+* ``DatadogDiagnosticMiddleware`` can now detect and log anomalous traces, enabled by Waffle flag ``datadog.diagnostics.detect_anomalous_trace``
+
 [3.6.0] - 2024-07-24
 ~~~~~~~~~~~~~~~~~~~~
 Added
