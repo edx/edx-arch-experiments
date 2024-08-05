@@ -14,6 +14,16 @@ Change Log
 Unreleased
 ~~~~~~~~~~
 
+[4.0.0] - 2024-08-05
+~~~~~~~~~~~~~~~~~~~~
+Changed
+-------
+* Dropped support for Python 3.8; only testing with 3.11 and above now.
+
+Added
+-----
+* ``DatadogDiagnosticMiddleware`` can now detect and log anomalous traces, enabled by Waffle flag ``datadog.diagnostics.detect_anomalous_trace``
+
 [3.6.0] - 2024-07-24
 ~~~~~~~~~~~~~~~~~~~~
 Added
