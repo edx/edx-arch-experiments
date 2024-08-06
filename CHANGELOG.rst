@@ -14,6 +14,12 @@ Change Log
 Unreleased
 ~~~~~~~~~~
 
+[4.1.0] - 2024-08-07
+~~~~~~~~~~~~~~~~~~~~
+Changed
+-------
+* Datadog diagnostics will now log all span-starts for the first minute after server startup
+
 [4.0.0] - 2024-08-05
 ~~~~~~~~~~~~~~~~~~~~
 Changed

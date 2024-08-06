@@ -3,6 +3,7 @@ App for emitting additional diagnostic information for the Datadog integration.
 """
 
 import logging
+import time
 
 from django.apps import AppConfig
 from django.conf import settings
@@ -26,7 +27,18 @@ DATADOG_DIAGNOSTICS_ENABLE = getattr(settings, 'DATADOG_DIAGNOSTICS_ENABLE', Tru
 #   avoids logging more data than is actually needed for diagnosis.
 DATADOG_DIAGNOSTICS_MAX_SPANS = getattr(settings, 'DATADOG_DIAGNOSTICS_MAX_SPANS', 100)
 
+# .. setting_name: DATADOG_DIAGNOSTICS_LOG_ALL_SPAN_STARTS_PERIOD
+# .. setting_default: 60
+# .. setting_description: Log all span starts for this many seconds after worker
+#   startup.
+DATADOG_DIAGNOSTICS_LOG_ALL_SPAN_STARTS_PERIOD = getattr(
+    settings,
+    'DATADOG_DIAGNOSTICS_LOG_ALL_SPAN_STARTS_PERIOD',
+    60
+)
 
+
+# pylint: disable=missing-function-docstring
 class MissingSpanProcessor:
     """Datadog span processor that logs unfinished spans at shutdown."""
 
@@ -34,11 +46,19 @@ class MissingSpanProcessor:
         self.spans_started = 0
         self.spans_finished = 0
         self.open_spans = {}
+        self.log_all_until = time.time() + DATADOG_DIAGNOSTICS_LOG_ALL_SPAN_STARTS_PERIOD
 
     def on_span_start(self, span):
         self.spans_started += 1
         if len(self.open_spans) < DATADOG_DIAGNOSTICS_MAX_SPANS:
             self.open_spans[span.span_id] = span
+
+        # We believe that the anomalous traces always come from a
+        # single span that is created early in the lifetime of a
+        # gunicorn worker. If we log *every* span-start in this early
+        # period, we may be able to observe something interesting.
+        if time.time() <= self.log_all_until:
+            log.info(f"Early span-start sample: {span._pprint()}")  # pylint: disable=protected-access
 
     def on_span_finish(self, span):
         self.spans_finished += 1
