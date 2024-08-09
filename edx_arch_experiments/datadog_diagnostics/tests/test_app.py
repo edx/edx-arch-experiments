@@ -2,7 +2,7 @@
 Tests for plugin app.
 """
 
-from unittest.mock import patch
+from unittest.mock import call, patch
 
 from django.test import TestCase
 
@@ -47,5 +47,30 @@ class TestMissingSpanProcessor(TestCase):
         proc.on_span_start(FakeSpan(17))
         proc.shutdown(0)
 
-        mock_log_info.assert_called_once_with("Spans created = 1; spans finished = 0")
+        assert mock_log_info.call_args_list == [
+            call("Early span-start sample: span_id=17"),
+            call("Spans created = 1; spans finished = 0"),
+        ]
         mock_log_error.assert_called_once_with("Span created but not finished: span_id=17")
+
+    @patch('edx_arch_experiments.datadog_diagnostics.apps.log.info')
+    def test_early_span_logging_cutoff(self, mock_log_info):
+        with patch('edx_arch_experiments.datadog_diagnostics.apps.time.time', side_effect=[
+                # Setup
+                1700000000,
+                # Span-start time checks
+                1700000020,
+                1700000040,
+                1700010000,
+        ]):
+            proc = apps.MissingSpanProcessor()
+            # Three spans are started
+            proc.on_span_start(FakeSpan(44))
+            proc.on_span_start(FakeSpan(45))
+            proc.on_span_start(FakeSpan(46))
+
+        # Just two early span-starts are logged
+        assert mock_log_info.call_args_list == [
+            call("Early span-start sample: span_id=44"),
+            call("Early span-start sample: span_id=45"),
+        ]
