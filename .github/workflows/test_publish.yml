@@ -1,22 +1,24 @@
-name: Test Publish
+name: Test-publish package to PyPI
 
 on:
   pull_request:
 
 jobs:
-  testing:
-    runs-on: ubuntu-latest
+  test-publish:
+    runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v4
         with:
           python-version: '3.11'
-          architecture: x64
+
       - name: Install pip
         run: pip install -r requirements/pip.txt
+
       - name: Build package
         run: python setup.py sdist bdist_wheel
-      - name: Test publish
+
+      - name: Publish to PyPI (test server)
         uses: pypa/gh-action-pypi-publish@release/v1
         with:
           user: __token__

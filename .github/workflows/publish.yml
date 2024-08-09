@@ -1,4 +1,4 @@
-name: Publish package to PyPi
+name: Publish package to PyPI
 
 on:
   push:
@@ -6,17 +6,13 @@ on:
       - '*'
 
 jobs:
-
-  push:
-    runs-on: ubuntu-20.04
-
+  publish:
+    runs-on: ubuntu-22.04
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-      - name: setup python
-        uses: actions/setup-python@v4
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v4
         with:
-          python-version: 3.11
+          python-version: '3.11'
 
       - name: Install pip
         run: pip install -r requirements/pip.txt
@@ -24,7 +20,7 @@ jobs:
       - name: Build package
         run: python setup.py sdist bdist_wheel
 
-      - name: Publish to PyPi
+      - name: Publish to PyPI
         uses: pypa/gh-action-pypi-publish@release/v1
         with:
           user: __token__
