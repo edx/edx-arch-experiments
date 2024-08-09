@@ -6,6 +6,13 @@ on:
 jobs:
   test-publish:
     runs-on: ubuntu-22.04
+
+    environment:
+      name: testpypi
+      url: https://test.pypi.org/p/edx-arch-experiments
+    permissions:
+      id-token: write  # used by pypi-publish
+
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v4
@@ -21,8 +28,6 @@ jobs:
       - name: Publish to PyPI (test server)
         uses: pypa/gh-action-pypi-publish@release/v1
         with:
-          user: __token__
-          password: ${{ secrets.PYPI_TEST_UPLOAD_TOKEN }}
           repository_url: https://test.pypi.org/legacy/
           skip_existing: true
 
