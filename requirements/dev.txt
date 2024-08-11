@@ -13,7 +13,7 @@ astroid==3.2.4
     #   -r requirements/quality.txt
     #   pylint
     #   pylint-celery
-attrs==23.2.0
+attrs==24.2.0
     # via
     #   -r requirements/quality.txt
     #   cattrs
@@ -44,7 +44,7 @@ certifi==2024.7.4
     # via
     #   -r requirements/quality.txt
     #   requests
-cffi==1.16.0
+cffi==1.17.0
     # via
     #   -r requirements/quality.txt
     #   cryptography
@@ -80,7 +80,7 @@ colorama==0.4.6
     # via
     #   -r requirements/ci.txt
     #   tox
-coverage[toml]==7.6.0
+coverage[toml]==7.6.1
     # via
     #   -r requirements/quality.txt
     #   pytest-cov
@@ -95,7 +95,7 @@ ddsketch==3.0.1
     #   ddtrace
 ddt==1.7.2
     # via -r requirements/quality.txt
-ddtrace==2.10.1
+ddtrace==2.10.4
     # via -r requirements/quality.txt
 deprecated==1.2.14
     # via
@@ -111,7 +111,7 @@ distlib==0.3.8
     # via
     #   -r requirements/ci.txt
     #   virtualenv
-django==4.2.14
+django==4.2.15
     # via
     #   -c https://raw.githubusercontent.com/edx/edx-lint/master/edx_lint/files/common_constraints.txt
     #   -r requirements/quality.txt
@@ -183,9 +183,8 @@ idna==3.7
     # via
     #   -r requirements/quality.txt
     #   requests
-importlib-metadata==6.11.0
+importlib-metadata==8.0.0
     # via
-    #   -c https://raw.githubusercontent.com/edx/edx-lint/master/edx_lint/files/common_constraints.txt
     #   -r requirements/quality.txt
     #   keyring
     #   opentelemetry-api
@@ -226,11 +225,11 @@ jsonschema-specifications==2023.12.1
     # via
     #   -r requirements/quality.txt
     #   jsonschema
-keyring==25.2.1
+keyring==25.3.0
     # via
     #   -r requirements/quality.txt
     #   twine
-lxml==5.2.2
+lxml==5.3.0
     # via edx-i18n-tools
 markdown-it-py==3.0.0
     # via
@@ -248,12 +247,12 @@ mdurl==0.1.2
     # via
     #   -r requirements/quality.txt
     #   markdown-it-py
-more-itertools==10.3.0
+more-itertools==10.4.0
     # via
     #   -r requirements/quality.txt
     #   jaraco-classes
     #   jaraco-functools
-newrelic==9.12.0
+newrelic==9.13.0
     # via
     #   -r requirements/quality.txt
     #   edx-django-utils
@@ -310,7 +309,7 @@ psutil==6.0.0
     # via
     #   -r requirements/quality.txt
     #   edx-django-utils
-pycodestyle==2.12.0
+pycodestyle==2.12.1
     # via -r requirements/quality.txt
 pycparser==2.22
     # via
@@ -379,7 +378,7 @@ python-slugify==8.0.4
     # via
     #   -r requirements/quality.txt
     #   code-annotations
-pyyaml==6.0.1
+pyyaml==6.0.2
     # via
     #   -r requirements/quality.txt
     #   code-annotations
@@ -411,7 +410,7 @@ rich==13.7.1
     # via
     #   -r requirements/quality.txt
     #   twine
-rpds-py==0.19.1
+rpds-py==0.20.0
     # via
     #   -r requirements/quality.txt
     #   jsonschema
@@ -453,7 +452,7 @@ tomlkit==0.13.0
     # via
     #   -r requirements/quality.txt
     #   pylint
-tox==4.16.0
+tox==4.17.1
     # via -r requirements/ci.txt
 twine==5.1.1
     # via -r requirements/quality.txt
@@ -471,7 +470,7 @@ virtualenv==20.26.3
     # via
     #   -r requirements/ci.txt
     #   tox
-wheel==0.43.0
+wheel==0.44.0
     # via
     #   -r requirements/pip-tools.txt
     #   pip-tools

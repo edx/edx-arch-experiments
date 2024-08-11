@@ -10,14 +10,14 @@ asgiref==3.8.1
     # via
     #   -r requirements/test.txt
     #   django
-attrs==23.2.0
+attrs==24.2.0
     # via
     #   -r requirements/test.txt
     #   cattrs
     #   ddtrace
     #   jsonschema
     #   referencing
-babel==2.15.0
+babel==2.16.0
     # via sphinx
 bytecode==0.15.1
     # via
@@ -31,7 +31,7 @@ certifi==2024.7.4
     # via
     #   -r requirements/test.txt
     #   requests
-cffi==1.16.0
+cffi==1.17.0
     # via
     #   -r requirements/test.txt
     #   cryptography
@@ -49,7 +49,7 @@ code-annotations==1.8.0
     # via
     #   -r requirements/test.txt
     #   edx-toggles
-coverage[toml]==7.6.0
+coverage[toml]==7.6.1
     # via
     #   -r requirements/test.txt
     #   pytest-cov
@@ -63,13 +63,13 @@ ddsketch==3.0.1
     #   ddtrace
 ddt==1.7.2
     # via -r requirements/test.txt
-ddtrace==2.10.1
+ddtrace==2.10.4
     # via -r requirements/test.txt
 deprecated==1.2.14
     # via
     #   -r requirements/test.txt
     #   opentelemetry-api
-django==4.2.14
+django==4.2.15
     # via
     #   -c https://raw.githubusercontent.com/edx/edx-lint/master/edx_lint/files/common_constraints.txt
     #   -r requirements/test.txt
@@ -139,9 +139,8 @@ idna==3.7
     #   requests
 imagesize==1.4.1
     # via sphinx
-importlib-metadata==6.11.0
+importlib-metadata==8.0.0
     # via
-    #   -c https://raw.githubusercontent.com/edx/edx-lint/master/edx_lint/files/common_constraints.txt
     #   -r requirements/test.txt
     #   opentelemetry-api
 iniconfig==2.0.0
@@ -163,7 +162,7 @@ markupsafe==2.1.5
     # via
     #   -r requirements/test.txt
     #   jinja2
-newrelic==9.12.0
+newrelic==9.13.0
     # via
     #   -r requirements/test.txt
     #   edx-django-utils
@@ -229,7 +228,7 @@ python-slugify==8.0.4
     # via
     #   -r requirements/test.txt
     #   code-annotations
-pyyaml==6.0.1
+pyyaml==6.0.2
     # via
     #   -r requirements/test.txt
     #   code-annotations
@@ -247,7 +246,7 @@ requests==2.32.3
     #   sphinx
 restructuredtext-lint==1.4.0
     # via doc8
-rpds-py==0.19.1
+rpds-py==0.20.0
     # via
     #   -r requirements/test.txt
     #   jsonschema

@@ -12,7 +12,7 @@ astroid==3.2.4
     # via
     #   pylint
     #   pylint-celery
-attrs==23.2.0
+attrs==24.2.0
     # via
     #   -r requirements/test.txt
     #   cattrs
@@ -33,7 +33,7 @@ certifi==2024.7.4
     # via
     #   -r requirements/test.txt
     #   requests
-cffi==1.16.0
+cffi==1.17.0
     # via
     #   -r requirements/test.txt
     #   cryptography
@@ -56,7 +56,7 @@ code-annotations==1.8.0
     #   -r requirements/test.txt
     #   edx-lint
     #   edx-toggles
-coverage[toml]==7.6.0
+coverage[toml]==7.6.1
     # via
     #   -r requirements/test.txt
     #   pytest-cov
@@ -71,7 +71,7 @@ ddsketch==3.0.1
     #   ddtrace
 ddt==1.7.2
     # via -r requirements/test.txt
-ddtrace==2.10.1
+ddtrace==2.10.4
     # via -r requirements/test.txt
 deprecated==1.2.14
     # via
@@ -79,7 +79,7 @@ deprecated==1.2.14
     #   opentelemetry-api
 dill==0.3.8
     # via pylint
-django==4.2.14
+django==4.2.15
     # via
     #   -c https://raw.githubusercontent.com/edx/edx-lint/master/edx_lint/files/common_constraints.txt
     #   -r requirements/test.txt
@@ -141,9 +141,8 @@ idna==3.7
     # via
     #   -r requirements/test.txt
     #   requests
-importlib-metadata==6.11.0
+importlib-metadata==8.0.0
     # via
-    #   -c https://raw.githubusercontent.com/edx/edx-lint/master/edx_lint/files/common_constraints.txt
     #   -r requirements/test.txt
     #   keyring
     #   opentelemetry-api
@@ -176,7 +175,7 @@ jsonschema-specifications==2023.12.1
     # via
     #   -r requirements/test.txt
     #   jsonschema
-keyring==25.2.1
+keyring==25.3.0
     # via twine
 markdown-it-py==3.0.0
     # via rich
@@ -188,11 +187,11 @@ mccabe==0.7.0
     # via pylint
 mdurl==0.1.2
     # via markdown-it-py
-more-itertools==10.3.0
+more-itertools==10.4.0
     # via
     #   jaraco-classes
     #   jaraco-functools
-newrelic==9.12.0
+newrelic==9.13.0
     # via
     #   -r requirements/test.txt
     #   edx-django-utils
@@ -226,7 +225,7 @@ psutil==6.0.0
     # via
     #   -r requirements/test.txt
     #   edx-django-utils
-pycodestyle==2.12.0
+pycodestyle==2.12.1
     # via -r requirements/quality.in
 pycparser==2.22
     # via
@@ -278,7 +277,7 @@ python-slugify==8.0.4
     # via
     #   -r requirements/test.txt
     #   code-annotations
-pyyaml==6.0.1
+pyyaml==6.0.2
     # via
     #   -r requirements/test.txt
     #   code-annotations
@@ -301,7 +300,7 @@ rfc3986==2.0.0
     # via twine
 rich==13.7.1
     # via twine
-rpds-py==0.19.1
+rpds-py==0.20.0
     # via
     #   -r requirements/test.txt
     #   jsonschema
