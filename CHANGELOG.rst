@@ -14,6 +14,12 @@ Change Log
 Unreleased
 ~~~~~~~~~~
 
+[4.3.0] - 2024-08-22
+~~~~~~~~~~~~~~~~~~~~
+Added
+-----
+* Added celery lifecycle logging for Datadog diagnostics, to be enabled using ``DATADOG_DIAGNOSTICS_CELERY_LOG_SIGNALS``.
+
 [4.2.0] - 2024-08-13
 ~~~~~~~~~~~~~~~~~~~~
 Fixed
