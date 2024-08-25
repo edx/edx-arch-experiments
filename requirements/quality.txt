@@ -141,7 +141,7 @@ edx-django-utils==5.15.0
     #   edx-toggles
 edx-drf-extensions==10.3.0
     # via -r requirements/test.txt
-edx-lint==5.3.7
+edx-lint==5.4.0
     # via -r requirements/quality.in
 edx-opaque-keys==2.10.0
     # via
@@ -153,7 +153,7 @@ envier==0.5.2
     # via
     #   -r requirements/test.txt
     #   ddtrace
-idna==3.7
+idna==3.8
     # via
     #   -r requirements/test.txt
     #   requests
@@ -351,7 +351,7 @@ sqlparse==0.5.1
     # via
     #   -r requirements/test.txt
     #   django
-stevedore==5.2.0
+stevedore==5.3.0
     # via
     #   -r requirements/test.txt
     #   code-annotations
