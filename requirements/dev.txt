@@ -44,7 +44,7 @@ cachetools==5.5.0
     #   tox
 celery==5.4.0
     # via -r requirements/quality.txt
-certifi==2024.7.4
+certifi==2024.8.30
     # via
     #   -r requirements/quality.txt
     #   requests
@@ -111,7 +111,7 @@ cryptography==43.0.0
     #   secretstorage
 ddt==1.7.2
     # via -r requirements/quality.txt
-ddtrace==2.11.1
+ddtrace==2.11.2
     # via -r requirements/quality.txt
 deprecated==1.2.14
     # via
@@ -178,7 +178,7 @@ edx-drf-extensions==10.3.0
     # via -r requirements/quality.txt
 edx-i18n-tools==1.6.2
     # via -r requirements/dev.in
-edx-lint==5.3.7
+edx-lint==5.4.0
     # via -r requirements/quality.txt
 edx-opaque-keys==2.10.0
     # via
@@ -195,11 +195,11 @@ filelock==3.15.4
     #   -r requirements/ci.txt
     #   tox
     #   virtualenv
-idna==3.7
+idna==3.8
     # via
     #   -r requirements/quality.txt
     #   requests
-importlib-metadata==8.0.0
+importlib-metadata==8.4.0
     # via
     #   -r requirements/quality.txt
     #   keyring
@@ -280,7 +280,7 @@ nh3==0.2.18
     # via
     #   -r requirements/quality.txt
     #   readme-renderer
-opentelemetry-api==1.26.0
+opentelemetry-api==1.27.0
     # via
     #   -r requirements/quality.txt
     #   ddtrace
@@ -295,7 +295,7 @@ packaging==24.1
     #   tox
 path==16.16.0
     # via edx-i18n-tools
-pbr==6.0.0
+pbr==6.1.0
     # via
     #   -r requirements/quality.txt
     #   stevedore
@@ -325,7 +325,7 @@ prompt-toolkit==3.0.47
     # via
     #   -r requirements/quality.txt
     #   click-repl
-protobuf==5.27.3
+protobuf==5.28.0
     # via
     #   -r requirements/quality.txt
     #   ddtrace
@@ -352,7 +352,7 @@ pyjwt[crypto]==2.9.0
     #   -r requirements/quality.txt
     #   drf-jwt
     #   edx-drf-extensions
-pylint==3.2.6
+pylint==3.2.7
     # via
     #   -r requirements/quality.txt
     #   edx-lint
@@ -434,7 +434,7 @@ rfc3986==2.0.0
     # via
     #   -r requirements/quality.txt
     #   twine
-rich==13.7.1
+rich==13.8.0
     # via
     #   -r requirements/quality.txt
     #   twine
@@ -465,7 +465,7 @@ sqlparse==0.5.1
     # via
     #   -r requirements/quality.txt
     #   django
-stevedore==5.2.0
+stevedore==5.3.0
     # via
     #   -r requirements/quality.txt
     #   code-annotations
@@ -523,7 +523,7 @@ xmltodict==0.13.0
     # via
     #   -r requirements/quality.txt
     #   ddtrace
-zipp==3.20.0
+zipp==3.20.1
     # via
     #   -r requirements/quality.txt
     #   importlib-metadata
@@ -533,7 +533,7 @@ pip==24.2
     # via
     #   -r requirements/pip-tools.txt
     #   pip-tools
-setuptools==73.0.1
+setuptools==74.0.0
     # via
     #   -r requirements/pip-tools.txt
     #   -r requirements/quality.txt
