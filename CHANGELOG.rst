@@ -14,6 +14,29 @@ Change Log
 Unreleased
 ~~~~~~~~~~
 
+[4.3.0] - 2024-08-22
+~~~~~~~~~~~~~~~~~~~~
+Added
+-----
+* Added celery lifecycle logging for Datadog diagnostics, to be enabled using ``DATADOG_DIAGNOSTICS_CELERY_LOG_SIGNALS``.
+
+[4.2.0] - 2024-08-13
+~~~~~~~~~~~~~~~~~~~~
+Fixed
+-----
+* Fixed loading of ``DATADOG_DIAGNOSTICS_ENABLE``, which was previously not loaded properly and therefore was always True. Also fixed loading of ``DATADOG_DIAGNOSTICS_MAX_SPANS``, which was presumably broken as well.
+
+Removed
+-------
+* Removed early span-start logging. It never worked properly, possibly because workers are continually being destroyed and created, leading to high log volume.
+
+[4.1.0] - 2024-08-09
+~~~~~~~~~~~~~~~~~~~~
+Changed
+-------
+* Datadog diagnostics will now log all span-starts for the first minute after server startup
+* **WARNING**: Do not use this version; see 4.2.0 release notes.
+
 [4.0.0] - 2024-08-05
 ~~~~~~~~~~~~~~~~~~~~
 Changed

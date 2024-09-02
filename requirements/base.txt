@@ -6,13 +6,13 @@
 #
 asgiref==3.8.1
     # via django
-attrs==23.2.0
+attrs==24.2.0
     # via
     #   jsonschema
     #   referencing
 certifi==2024.7.4
     # via requests
-cffi==1.16.0
+cffi==1.17.0
     # via
     #   cryptography
     #   pynacl
@@ -26,7 +26,7 @@ code-annotations==1.8.0
     # via edx-toggles
 cryptography==43.0.0
     # via pyjwt
-django==4.2.14
+django==4.2.15
     # via
     #   -c https://raw.githubusercontent.com/edx/edx-lint/master/edx_lint/files/common_constraints.txt
     #   -r requirements/base.in
@@ -79,7 +79,7 @@ jsonschema-specifications==2023.12.1
     # via jsonschema
 markupsafe==2.1.5
     # via jinja2
-newrelic==9.12.0
+newrelic==9.13.0
     # via edx-django-utils
 pbr==6.0.0
     # via stevedore
@@ -97,7 +97,7 @@ pynacl==1.5.0
     # via edx-django-utils
 python-slugify==8.0.4
     # via code-annotations
-pyyaml==6.0.1
+pyyaml==6.0.2
     # via code-annotations
 referencing==0.35.1
     # via
@@ -105,7 +105,7 @@ referencing==0.35.1
     #   jsonschema-specifications
 requests==2.32.3
     # via edx-drf-extensions
-rpds-py==0.19.1
+rpds-py==0.20.0
     # via
     #   jsonschema
     #   referencing
@@ -128,5 +128,5 @@ urllib3==2.2.2
     # via requests
 
 # The following packages are considered to be unsafe in a requirements file:
-setuptools==72.1.0
+setuptools==73.0.1
     # via -r requirements/base.in
