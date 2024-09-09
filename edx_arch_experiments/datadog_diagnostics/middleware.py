@@ -9,6 +9,7 @@ to ``MIDDLEWARE``, then set the below settings as needed.
 import logging
 import time
 
+from django.conf import settings
 from django.core.exceptions import MiddlewareNotUsed
 from edx_toggles.toggles import WaffleFlag
 
@@ -61,6 +62,13 @@ class DatadogDiagnosticMiddleware:
             raise MiddlewareNotUsed  # pylint: disable=raise-missing-from
 
         self.worker_start_epoch = time.time()
+        # .. setting_name: DATADOG_DIAGNOSTICS_LOG_SPAN_DEPTH
+        # .. setting_default: 10
+        # .. setting_description: Controls how many ancestors spans are logged
+        #   when anomalous traces are detected. This limits log size when very
+        #   deep span trees are present (such as in anomalous traces, or even
+        #   just when each middleware is given a span).
+        self.log_span_ancestors_depth = getattr(settings, "DATADOG_DIAGNOSTICS_LOG_SPAN_DEPTH", 10)
 
     def __call__(self, request):
         return self.get_response(request)
@@ -82,25 +90,49 @@ class DatadogDiagnosticMiddleware:
         """
         Contains all the actual logging logic.
         """
+        current_span = self.dd_tracer.current_span()
         local_root_span = self.dd_tracer.current_root_span()
 
         if DETECT_ANOMALOUS_TRACE.is_enabled():
+            # For testing, uncomment this line to fake an anomalous span:
+            # local_root_span.finish()
             root_duration_s = local_root_span.duration
             if root_duration_s is not None:
-                worker_run_time_s = time.time() - self.worker_start_epoch
-                log.warning(
-                    f"Anomalous Datadog local root span (duration already set): "
-                    f"id = {local_root_span.trace_id:x}; "
-                    f"duration = {root_duration_s:0.3f} sec; "
-                    f"worker age = {worker_run_time_s:0.3f} sec"
-                )
+                self.log_anomalous_trace(current_span, local_root_span)
 
         if LOG_ROOT_SPAN.is_enabled():
             route_pattern = getattr(request.resolver_match, 'route', None)
-            current_span = self.dd_tracer.current_span()
             # pylint: disable=protected-access
             log.info(
                 f"Datadog span diagnostics: Route = {route_pattern}; "
                 f"local root span = {local_root_span._pprint()}; "
                 f"current span = {current_span._pprint()}"
             )
+
+    def log_anomalous_trace(self, current_span, local_root_span):
+        worker_run_time_s = time.time() - self.worker_start_epoch
+
+        # Build up a list of spans from current back towards the root, up to a limit.
+        ancestors = []
+        walk_span = current_span
+        while len(ancestors) < self.log_span_ancestors_depth and walk_span is not None:
+            ancestors.insert(0, walk_span._pprint())  # pylint: disable=protected-access
+            walk_span = walk_span._parent  # pylint: disable=protected-access
+
+        trunc = "(ancestors truncated)\n" if walk_span else ""
+
+        if local_root_span.duration:
+            duration_msg = f"duration={local_root_span.duration:0.3f}"
+        else:
+            # Should only occur during local testing of this
+            # middleware, when forcing this code path to run.
+            duration_msg = "duration not set"
+
+        msg = (
+            "Anomalous Datadog local root span: "
+            f"trace_id={local_root_span.trace_id:x}; "
+            f"{duration_msg}; "
+            f"worker_age={worker_run_time_s:0.3f}; span ancestry:"
+        )
+
+        log.warning(msg + "\n" + trunc + "\n".join(ancestors))  # pylint: disable=logging-not-lazy
