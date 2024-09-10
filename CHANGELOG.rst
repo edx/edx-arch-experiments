@@ -14,6 +14,12 @@ Change Log
 Unreleased
 ~~~~~~~~~~
 
+[4.4.0] - 2024-09-10
+~~~~~~~~~~~~~~~~~~~~
+Changed
+-------
+* Datadog diagnostics now logs ancestor spans when an anomaly is encountered, up to a limit of 10 (controlled by new Django setting ``DATADOG_DIAGNOSTICS_LOG_SPAN_DEPTH``). Spans are logged in full and on separate lines, so this logging is now much more verbose; consider only enabling this logging for short periods. Log format of first line has also changed slightly.
+
 [4.3.0] - 2024-08-22
 ~~~~~~~~~~~~~~~~~~~~
 Added
