@@ -21,11 +21,11 @@ bytecode==0.15.1
     # via ddtrace
 celery==5.4.0
     # via -r requirements/test.in
-certifi==2024.7.4
+certifi==2024.8.30
     # via
     #   -r requirements/base.txt
     #   requests
-cffi==1.17.0
+cffi==1.17.1
     # via
     #   -r requirements/base.txt
     #   cryptography
@@ -56,13 +56,13 @@ code-annotations==1.8.0
     #   edx-toggles
 coverage[toml]==7.6.1
     # via pytest-cov
-cryptography==43.0.0
+cryptography==43.0.1
     # via
     #   -r requirements/base.txt
     #   pyjwt
 ddt==1.7.2
     # via -r requirements/test.in
-ddtrace==2.11.1
+ddtrace==2.12.2
     # via -r requirements/test.in
 deprecated==1.2.14
     # via opentelemetry-api
@@ -107,9 +107,9 @@ edx-django-utils==5.15.0
     #   -r requirements/base.txt
     #   edx-drf-extensions
     #   edx-toggles
-edx-drf-extensions==10.3.0
+edx-drf-extensions==10.4.0
     # via -r requirements/base.txt
-edx-opaque-keys==2.10.0
+edx-opaque-keys==2.11.0
     # via
     #   -r requirements/base.txt
     #   edx-drf-extensions
@@ -117,11 +117,11 @@ edx-toggles==5.2.0
     # via -r requirements/base.txt
 envier==0.5.2
     # via ddtrace
-idna==3.7
+idna==3.9
     # via
     #   -r requirements/base.txt
     #   requests
-importlib-metadata==8.0.0
+importlib-metadata==8.4.0
     # via opentelemetry-api
 iniconfig==2.0.0
     # via pytest
@@ -135,7 +135,7 @@ jsonschema-specifications==2023.12.1
     # via
     #   -r requirements/base.txt
     #   jsonschema
-kombu==5.4.0
+kombu==5.4.1
     # via celery
 markupsafe==2.1.5
     # via
@@ -145,11 +145,11 @@ newrelic==9.13.0
     # via
     #   -r requirements/base.txt
     #   edx-django-utils
-opentelemetry-api==1.26.0
+opentelemetry-api==1.27.0
     # via ddtrace
 packaging==24.1
     # via pytest
-pbr==6.0.0
+pbr==6.1.0
     # via
     #   -r requirements/base.txt
     #   stevedore
@@ -157,7 +157,7 @@ pluggy==1.5.0
     # via pytest
 prompt-toolkit==3.0.47
     # via click-repl
-protobuf==5.27.3
+protobuf==5.28.1
     # via ddtrace
 psutil==6.0.0
     # via
@@ -180,13 +180,13 @@ pynacl==1.5.0
     # via
     #   -r requirements/base.txt
     #   edx-django-utils
-pytest==8.3.2
+pytest==8.3.3
     # via
     #   pytest-cov
     #   pytest-django
 pytest-cov==5.0.0
     # via -r requirements/test.in
-pytest-django==4.8.0
+pytest-django==4.9.0
     # via -r requirements/test.in
 python-dateutil==2.9.0.post0
     # via celery
@@ -225,7 +225,7 @@ sqlparse==0.5.1
     # via
     #   -r requirements/base.txt
     #   django
-stevedore==5.2.0
+stevedore==5.3.0
     # via
     #   -r requirements/base.txt
     #   code-annotations
@@ -242,7 +242,7 @@ typing-extensions==4.12.2
     #   edx-opaque-keys
 tzdata==2024.1
     # via celery
-urllib3==2.2.2
+urllib3==2.2.3
     # via
     #   -r requirements/base.txt
     #   requests
@@ -254,12 +254,14 @@ vine==5.1.0
 wcwidth==0.2.13
     # via prompt-toolkit
 wrapt==1.16.0
-    # via deprecated
+    # via
+    #   ddtrace
+    #   deprecated
 xmltodict==0.13.0
     # via ddtrace
-zipp==3.20.0
+zipp==3.20.2
     # via importlib-metadata
 
 # The following packages are considered to be unsafe in a requirements file:
-setuptools==73.0.1
+setuptools==74.1.2
     # via -r requirements/base.txt
