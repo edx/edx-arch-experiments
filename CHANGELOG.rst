@@ -14,6 +14,12 @@ Change Log
 Unreleased
 ~~~~~~~~~~
 
+[4.5.0] - 2024-09-18
+~~~~~~~~~~~~~~~~~~~~
+Added
+-----
+* Datadog diagnostics middleware can now attempt to close anomalous spans. Can be enabled via Waffle flag ``datadog.diagnostics.close_anomalous_spans`` (controlled separately from logging feature).
+
 [4.4.0] - 2024-09-10
 ~~~~~~~~~~~~~~~~~~~~
 Changed

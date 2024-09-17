@@ -27,6 +27,16 @@ log = logging.getLogger(__name__)
 # .. toggle_tickets: https://github.com/edx/edx-arch-experiments/issues/692
 DETECT_ANOMALOUS_TRACE = WaffleFlag('datadog.diagnostics.detect_anomalous_trace', module_name=__name__)
 
+# .. toggle_name: datadog.diagnostics.close_anomalous_spans
+# .. toggle_implementation: WaffleFlag
+# .. toggle_default: False
+# .. toggle_description: Close anomalous spans that are ancestors of the django.request span.
+# .. toggle_use_cases: temporary
+# .. toggle_creation_date: 2024-09-18
+# .. toggle_target_removal_date: 2024-12-01
+# .. toggle_tickets: https://github.com/edx/edx-arch-experiments/issues/692
+CLOSE_ANOMALOUS_SPANS = WaffleFlag('datadog.diagnostics.close_anomalous_spans', module_name=__name__)
+
 # .. toggle_name: datadog.diagnostics.log_root_span
 # .. toggle_implementation: WaffleFlag
 # .. toggle_default: False
@@ -76,6 +86,8 @@ class DatadogDiagnosticMiddleware:
     def process_view(self, request, _view_func, _view_args, _view_kwargs):
         try:
             self.log_diagnostics(request)
+            if CLOSE_ANOMALOUS_SPANS.is_enabled():
+                self.close_anomalous_spans(request)
         except BaseException as e:
             # If there's an error, it will probably hit every request,
             # so let's just log it once.
@@ -85,6 +97,57 @@ class DatadogDiagnosticMiddleware:
                     "Encountered error in DatadogDiagnosticMiddleware "
                     f"(suppressing further errors): {e!r}"
                 )
+
+    # pylint: disable=protected-access
+    def close_anomalous_spans(self, request):
+        """
+        Detect anomalous spans and close them.
+
+        This closes any open spans that are ancestors of the current
+        request. The trace will still have two requests concatenated
+        together, but the problematic spans should not affect
+        future requests.
+
+        Only activates if the root span is itself closed, which is a
+        cheap thing to check.
+        """
+        # If the root span is still open, probably not an anomalous trace.
+        if self.dd_tracer.current_root_span().duration is None:
+            return  # nothing to do!
+
+        # Walk upwards until we find the django.request span.
+        walk_span = self.dd_tracer.current_span()
+        while walk_span.name != 'django.request':
+            walk_span = walk_span._parent
+            if walk_span is None:
+                # If we can't find the django.request root, there's
+                # something bad about our assumptions and we should
+                # not attempt a fix.
+                log.error(
+                    "Did not find django.request span when walking anomalous trace "
+                    "to root. Not attempting a fix."
+                )
+                return
+
+        # Go "above" the request span
+        walk_span = walk_span._parent
+
+        # Now close everything above the current request span that's
+        # still open, logging as we go.
+        while walk_span is not None:
+            # We call finish() individually rather than
+            # finish_with_ancestors() because this gives us a chance
+            # to log each one.
+            if walk_span.duration is None:
+                walk_span.finish()
+                log.info(
+                    f"Closed span in anomalous trace: name={walk_span.name} "
+                    f"id={walk_span.span_id:x} trace={walk_span.trace_id:x}"
+                )
+            # Keep walking up even if we discover closed spans; we've
+            # previously seen multiple contiguous segments of open
+            # spans separated by closed ones.
+            walk_span = walk_span._parent
 
     def log_diagnostics(self, request):
         """
