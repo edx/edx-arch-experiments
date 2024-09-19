@@ -32,7 +32,7 @@ DETECT_ANOMALOUS_TRACE = WaffleFlag('datadog.diagnostics.detect_anomalous_trace'
 # .. toggle_default: False
 # .. toggle_description: Close anomalous spans that are ancestors of the django.request span.
 # .. toggle_use_cases: temporary
-# .. toggle_creation_date: 2024-09-18
+# .. toggle_creation_date: 2024-09-19
 # .. toggle_target_removal_date: 2024-12-01
 # .. toggle_tickets: https://github.com/edx/edx-arch-experiments/issues/692
 CLOSE_ANOMALOUS_SPANS = WaffleFlag('datadog.diagnostics.close_anomalous_spans', module_name=__name__)
