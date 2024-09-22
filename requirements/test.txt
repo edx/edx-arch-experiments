@@ -15,7 +15,7 @@ attrs==24.2.0
     #   -r requirements/base.txt
     #   jsonschema
     #   referencing
-billiard==4.2.0
+billiard==4.2.1
     # via celery
 bytecode==0.15.1
     # via ddtrace

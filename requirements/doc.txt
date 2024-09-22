@@ -21,7 +21,7 @@ attrs==24.2.0
     #   referencing
 babel==2.16.0
     # via sphinx
-billiard==4.2.0
+billiard==4.2.1
     # via
     #   -r requirements/test.txt
     #   celery
