@@ -79,7 +79,7 @@ jsonschema-specifications==2023.12.1
     # via jsonschema
 markupsafe==2.1.5
     # via jinja2
-newrelic==9.13.0
+newrelic==10.0.0
     # via edx-django-utils
 pbr==6.1.0
     # via stevedore

@@ -21,7 +21,7 @@ attrs==24.2.0
     #   referencing
 babel==2.16.0
     # via sphinx
-billiard==4.2.0
+billiard==4.2.1
     # via
     #   -r requirements/test.txt
     #   celery
@@ -79,7 +79,7 @@ cryptography==43.0.1
     #   pyjwt
 ddt==1.7.2
     # via -r requirements/test.txt
-ddtrace==2.12.2
+ddtrace==2.14.0
     # via -r requirements/test.txt
 deprecated==1.2.14
     # via
@@ -182,7 +182,7 @@ markupsafe==2.1.5
     # via
     #   -r requirements/test.txt
     #   jinja2
-newrelic==9.13.0
+newrelic==10.0.0
     # via
     #   -r requirements/test.txt
     #   edx-django-utils
@@ -205,7 +205,7 @@ pluggy==1.5.0
     # via
     #   -r requirements/test.txt
     #   pytest
-prompt-toolkit==3.0.47
+prompt-toolkit==3.0.48
     # via
     #   -r requirements/test.txt
     #   click-repl
@@ -330,7 +330,7 @@ typing-extensions==4.12.2
     #   -r requirements/test.txt
     #   ddtrace
     #   edx-opaque-keys
-tzdata==2024.1
+tzdata==2024.2
     # via
     #   -r requirements/test.txt
     #   celery
