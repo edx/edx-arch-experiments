@@ -24,6 +24,11 @@ class FakeSpan:
 class TestMissingSpanProcessor(TestCase):
     """Tests for MissingSpanProcessor."""
 
+    def setUp(self):
+        # Remove custom span processor from previous runs.
+        # pylint: disable=protected-access
+        tracer._span_processors = [sp for sp in tracer._span_processors if type(sp).__name__ != 'MissingSpanProcessor']
+
     def test_feature_switch(self):
         """
         Regression test -- the use of override_settings ensures that we read
