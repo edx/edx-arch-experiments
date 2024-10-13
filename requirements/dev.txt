@@ -12,7 +12,7 @@ asgiref==3.8.1
     # via
     #   -r requirements/quality.txt
     #   django
-astroid==3.2.4
+astroid==3.3.5
     # via
     #   -r requirements/quality.txt
     #   pylint
@@ -26,11 +26,11 @@ backports-tarfile==1.2.0
     # via
     #   -r requirements/quality.txt
     #   jaraco-context
-billiard==4.2.0
+billiard==4.2.1
     # via
     #   -r requirements/quality.txt
     #   celery
-build==1.2.2
+build==1.2.2.post1
     # via
     #   -r requirements/pip-tools.txt
     #   pip-tools
@@ -58,7 +58,7 @@ chardet==5.2.0
     #   -r requirements/ci.txt
     #   diff-cover
     #   tox
-charset-normalizer==3.3.2
+charset-normalizer==3.4.0
     # via
     #   -r requirements/quality.txt
     #   requests
@@ -100,7 +100,7 @@ colorama==0.4.6
     # via
     #   -r requirements/ci.txt
     #   tox
-coverage[toml]==7.6.1
+coverage[toml]==7.6.2
     # via
     #   -r requirements/quality.txt
     #   pytest-cov
@@ -111,7 +111,7 @@ cryptography==43.0.1
     #   secretstorage
 ddt==1.7.2
     # via -r requirements/quality.txt
-ddtrace==2.12.2
+ddtrace==2.14.2
     # via -r requirements/quality.txt
 deprecated==1.2.14
     # via
@@ -119,11 +119,11 @@ deprecated==1.2.14
     #   opentelemetry-api
 diff-cover==9.2.0
     # via -r requirements/dev.in
-dill==0.3.8
+dill==0.3.9
     # via
     #   -r requirements/quality.txt
     #   pylint
-distlib==0.3.8
+distlib==0.3.9
     # via
     #   -r requirements/ci.txt
     #   virtualenv
@@ -155,7 +155,7 @@ djangorestframework==3.15.2
     #   -r requirements/quality.txt
     #   drf-jwt
     #   edx-drf-extensions
-dnspython==2.6.1
+dnspython==2.7.0
     # via
     #   -r requirements/quality.txt
     #   pymongo
@@ -169,7 +169,7 @@ drf-jwt==1.19.2
     #   edx-drf-extensions
 edx-codejail==3.4.1
     # via -r requirements/quality.txt
-edx-django-utils==5.15.0
+edx-django-utils==6.0.0
     # via
     #   -r requirements/quality.txt
     #   edx-drf-extensions
@@ -221,7 +221,7 @@ jaraco-context==6.0.1
     # via
     #   -r requirements/quality.txt
     #   keyring
-jaraco-functools==4.0.2
+jaraco-functools==4.1.0
     # via
     #   -r requirements/quality.txt
     #   keyring
@@ -237,11 +237,11 @@ jinja2==3.1.4
     #   diff-cover
 jsonschema==4.23.0
     # via -r requirements/quality.txt
-jsonschema-specifications==2023.12.1
+jsonschema-specifications==2024.10.1
     # via
     #   -r requirements/quality.txt
     #   jsonschema
-keyring==25.4.0
+keyring==25.4.1
     # via
     #   -r requirements/quality.txt
     #   twine
@@ -253,13 +253,13 @@ lxml[html-clean,html_clean]==5.3.0
     # via
     #   edx-i18n-tools
     #   lxml-html-clean
-lxml-html-clean==0.2.2
+lxml-html-clean==0.3.1
     # via lxml
 markdown-it-py==3.0.0
     # via
     #   -r requirements/quality.txt
     #   rich
-markupsafe==2.1.5
+markupsafe==3.0.1
     # via
     #   -r requirements/quality.txt
     #   jinja2
@@ -276,7 +276,7 @@ more-itertools==10.5.0
     #   -r requirements/quality.txt
     #   jaraco-classes
     #   jaraco-functools
-newrelic==9.13.0
+newrelic==10.1.0
     # via
     #   -r requirements/quality.txt
     #   edx-django-utils
@@ -325,7 +325,7 @@ pluggy==1.5.0
     #   tox
 polib==1.2.0
     # via edx-i18n-tools
-prompt-toolkit==3.0.47
+prompt-toolkit==3.0.48
     # via
     #   -r requirements/quality.txt
     #   click-repl
@@ -356,7 +356,7 @@ pyjwt[crypto]==2.9.0
     #   -r requirements/quality.txt
     #   drf-jwt
     #   edx-drf-extensions
-pylint==3.2.7
+pylint==3.3.1
     # via
     #   -r requirements/quality.txt
     #   edx-lint
@@ -367,7 +367,7 @@ pylint-celery==0.3
     # via
     #   -r requirements/quality.txt
     #   edx-lint
-pylint-django==2.5.5
+pylint-django==2.6.1
     # via
     #   -r requirements/quality.txt
     #   edx-lint
@@ -376,7 +376,7 @@ pylint-plugin-utils==0.8.2
     #   -r requirements/quality.txt
     #   pylint-celery
     #   pylint-django
-pymongo==4.9.1
+pymongo==4.10.1
     # via
     #   -r requirements/quality.txt
     #   edx-opaque-keys
@@ -388,7 +388,7 @@ pyproject-api==1.8.0
     # via
     #   -r requirements/ci.txt
     #   tox
-pyproject-hooks==1.1.0
+pyproject-hooks==1.2.0
     # via
     #   -r requirements/pip-tools.txt
     #   build
@@ -441,7 +441,7 @@ rfc3986==2.0.0
     # via
     #   -r requirements/quality.txt
     #   twine
-rich==13.8.1
+rich==13.9.2
     # via
     #   -r requirements/quality.txt
     #   twine
@@ -486,7 +486,7 @@ tomlkit==0.13.2
     # via
     #   -r requirements/quality.txt
     #   pylint
-tox==4.20.0
+tox==4.21.2
     # via -r requirements/ci.txt
 twine==5.1.1
     # via -r requirements/quality.txt
@@ -495,7 +495,7 @@ typing-extensions==4.12.2
     #   -r requirements/quality.txt
     #   ddtrace
     #   edx-opaque-keys
-tzdata==2024.1
+tzdata==2024.2
     # via
     #   -r requirements/quality.txt
     #   celery
@@ -511,7 +511,7 @@ vine==5.1.0
     #   amqp
     #   celery
     #   kombu
-virtualenv==20.26.5
+virtualenv==20.26.6
     # via
     #   -r requirements/ci.txt
     #   tox
@@ -528,7 +528,7 @@ wrapt==1.16.0
     #   -r requirements/quality.txt
     #   ddtrace
     #   deprecated
-xmltodict==0.13.0
+xmltodict==0.14.1
     # via
     #   -r requirements/quality.txt
     #   ddtrace

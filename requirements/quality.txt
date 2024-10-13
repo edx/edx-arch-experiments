@@ -12,7 +12,7 @@ asgiref==3.8.1
     # via
     #   -r requirements/test.txt
     #   django
-astroid==3.2.4
+astroid==3.3.5
     # via
     #   pylint
     #   pylint-celery
@@ -23,7 +23,7 @@ attrs==24.2.0
     #   referencing
 backports-tarfile==1.2.0
     # via jaraco-context
-billiard==4.2.0
+billiard==4.2.1
     # via
     #   -r requirements/test.txt
     #   celery
@@ -42,7 +42,7 @@ cffi==1.17.1
     #   -r requirements/test.txt
     #   cryptography
     #   pynacl
-charset-normalizer==3.3.2
+charset-normalizer==3.4.0
     # via
     #   -r requirements/test.txt
     #   requests
@@ -76,7 +76,7 @@ code-annotations==1.8.0
     #   -r requirements/test.txt
     #   edx-lint
     #   edx-toggles
-coverage[toml]==7.6.1
+coverage[toml]==7.6.2
     # via
     #   -r requirements/test.txt
     #   pytest-cov
@@ -87,13 +87,13 @@ cryptography==43.0.1
     #   secretstorage
 ddt==1.7.2
     # via -r requirements/test.txt
-ddtrace==2.12.2
+ddtrace==2.14.2
     # via -r requirements/test.txt
 deprecated==1.2.14
     # via
     #   -r requirements/test.txt
     #   opentelemetry-api
-dill==0.3.8
+dill==0.3.9
     # via pylint
 django==4.2.16
     # via
@@ -122,7 +122,7 @@ djangorestframework==3.15.2
     #   -r requirements/test.txt
     #   drf-jwt
     #   edx-drf-extensions
-dnspython==2.6.1
+dnspython==2.7.0
     # via
     #   -r requirements/test.txt
     #   pymongo
@@ -134,7 +134,7 @@ drf-jwt==1.19.2
     #   edx-drf-extensions
 edx-codejail==3.4.1
     # via -r requirements/test.txt
-edx-django-utils==5.15.0
+edx-django-utils==6.0.0
     # via
     #   -r requirements/test.txt
     #   edx-drf-extensions
@@ -175,7 +175,7 @@ jaraco-classes==3.4.0
     # via keyring
 jaraco-context==6.0.1
     # via keyring
-jaraco-functools==4.0.2
+jaraco-functools==4.1.0
     # via keyring
 jeepney==0.8.0
     # via
@@ -187,11 +187,11 @@ jinja2==3.1.4
     #   code-annotations
 jsonschema==4.23.0
     # via -r requirements/test.txt
-jsonschema-specifications==2023.12.1
+jsonschema-specifications==2024.10.1
     # via
     #   -r requirements/test.txt
     #   jsonschema
-keyring==25.4.0
+keyring==25.4.1
     # via twine
 kombu==5.4.2
     # via
@@ -199,7 +199,7 @@ kombu==5.4.2
     #   celery
 markdown-it-py==3.0.0
     # via rich
-markupsafe==2.1.5
+markupsafe==3.0.1
     # via
     #   -r requirements/test.txt
     #   jinja2
@@ -211,7 +211,7 @@ more-itertools==10.5.0
     # via
     #   jaraco-classes
     #   jaraco-functools
-newrelic==9.13.0
+newrelic==10.1.0
     # via
     #   -r requirements/test.txt
     #   edx-django-utils
@@ -237,7 +237,7 @@ pluggy==1.5.0
     # via
     #   -r requirements/test.txt
     #   pytest
-prompt-toolkit==3.0.47
+prompt-toolkit==3.0.48
     # via
     #   -r requirements/test.txt
     #   click-repl
@@ -266,7 +266,7 @@ pyjwt[crypto]==2.9.0
     #   -r requirements/test.txt
     #   drf-jwt
     #   edx-drf-extensions
-pylint==3.2.7
+pylint==3.3.1
     # via
     #   edx-lint
     #   pylint-celery
@@ -274,13 +274,13 @@ pylint==3.2.7
     #   pylint-plugin-utils
 pylint-celery==0.3
     # via edx-lint
-pylint-django==2.5.5
+pylint-django==2.6.1
     # via edx-lint
 pylint-plugin-utils==0.8.2
     # via
     #   pylint-celery
     #   pylint-django
-pymongo==4.9.1
+pymongo==4.10.1
     # via
     #   -r requirements/test.txt
     #   edx-opaque-keys
@@ -329,7 +329,7 @@ requests-toolbelt==1.0.0
     # via twine
 rfc3986==2.0.0
     # via twine
-rich==13.8.1
+rich==13.9.2
     # via twine
 rpds-py==0.20.0
     # via
@@ -373,7 +373,7 @@ typing-extensions==4.12.2
     #   -r requirements/test.txt
     #   ddtrace
     #   edx-opaque-keys
-tzdata==2024.1
+tzdata==2024.2
     # via
     #   -r requirements/test.txt
     #   celery
@@ -398,7 +398,7 @@ wrapt==1.16.0
     #   -r requirements/test.txt
     #   ddtrace
     #   deprecated
-xmltodict==0.13.0
+xmltodict==0.14.1
     # via
     #   -r requirements/test.txt
     #   ddtrace
