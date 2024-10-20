@@ -21,7 +21,7 @@ attrs==24.2.0
     #   referencing
 babel==2.16.0
     # via sphinx
-billiard==4.2.0
+billiard==4.2.1
     # via
     #   -r requirements/test.txt
     #   celery
@@ -40,7 +40,7 @@ cffi==1.17.1
     #   -r requirements/test.txt
     #   cryptography
     #   pynacl
-charset-normalizer==3.3.2
+charset-normalizer==3.4.0
     # via
     #   -r requirements/test.txt
     #   requests
@@ -69,17 +69,17 @@ code-annotations==1.8.0
     # via
     #   -r requirements/test.txt
     #   edx-toggles
-coverage[toml]==7.6.1
+coverage[toml]==7.6.3
     # via
     #   -r requirements/test.txt
     #   pytest-cov
-cryptography==43.0.1
+cryptography==43.0.3
     # via
     #   -r requirements/test.txt
     #   pyjwt
 ddt==1.7.2
     # via -r requirements/test.txt
-ddtrace==2.12.2
+ddtrace==2.14.2
     # via -r requirements/test.txt
 deprecated==1.2.14
     # via
@@ -112,7 +112,7 @@ djangorestframework==3.15.2
     #   -r requirements/test.txt
     #   drf-jwt
     #   edx-drf-extensions
-dnspython==2.6.1
+dnspython==2.7.0
     # via
     #   -r requirements/test.txt
     #   pymongo
@@ -130,7 +130,7 @@ drf-jwt==1.19.2
     #   edx-drf-extensions
 edx-codejail==3.4.1
     # via -r requirements/test.txt
-edx-django-utils==5.15.0
+edx-django-utils==7.0.0
     # via
     #   -r requirements/test.txt
     #   edx-drf-extensions
@@ -170,7 +170,7 @@ jinja2==3.1.4
     #   sphinx
 jsonschema==4.23.0
     # via -r requirements/test.txt
-jsonschema-specifications==2023.12.1
+jsonschema-specifications==2024.10.1
     # via
     #   -r requirements/test.txt
     #   jsonschema
@@ -178,11 +178,11 @@ kombu==5.4.2
     # via
     #   -r requirements/test.txt
     #   celery
-markupsafe==2.1.5
+markupsafe==3.0.2
     # via
     #   -r requirements/test.txt
     #   jinja2
-newrelic==9.13.0
+newrelic==10.2.0
     # via
     #   -r requirements/test.txt
     #   edx-django-utils
@@ -205,7 +205,7 @@ pluggy==1.5.0
     # via
     #   -r requirements/test.txt
     #   pytest
-prompt-toolkit==3.0.47
+prompt-toolkit==3.0.48
     # via
     #   -r requirements/test.txt
     #   click-repl
@@ -213,7 +213,7 @@ protobuf==5.28.2
     # via
     #   -r requirements/test.txt
     #   ddtrace
-psutil==6.0.0
+psutil==6.1.0
     # via
     #   -r requirements/test.txt
     #   edx-django-utils
@@ -231,7 +231,7 @@ pyjwt[crypto]==2.9.0
     #   -r requirements/test.txt
     #   drf-jwt
     #   edx-drf-extensions
-pymongo==4.9.1
+pymongo==4.10.1
     # via
     #   -r requirements/test.txt
     #   edx-opaque-keys
@@ -330,7 +330,7 @@ typing-extensions==4.12.2
     #   -r requirements/test.txt
     #   ddtrace
     #   edx-opaque-keys
-tzdata==2024.1
+tzdata==2024.2
     # via
     #   -r requirements/test.txt
     #   celery
@@ -354,7 +354,7 @@ wrapt==1.16.0
     #   -r requirements/test.txt
     #   ddtrace
     #   deprecated
-xmltodict==0.13.0
+xmltodict==0.14.2
     # via
     #   -r requirements/test.txt
     #   ddtrace
@@ -364,7 +364,7 @@ zipp==3.20.2
     #   importlib-metadata
 
 # The following packages are considered to be unsafe in a requirements file:
-setuptools==75.1.0
+setuptools==75.2.0
     # via
     #   -r requirements/test.txt
     #   sphinx
