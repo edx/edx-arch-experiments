@@ -4,10 +4,6 @@
 #
 #    make upgrade
 #
-amqp==5.2.0
-    # via
-    #   -r requirements/quality.txt
-    #   kombu
 asgiref==3.8.1
     # via
     #   -r requirements/quality.txt
@@ -26,24 +22,14 @@ backports-tarfile==1.2.0
     # via
     #   -r requirements/quality.txt
     #   jaraco-context
-billiard==4.2.0
-    # via
-    #   -r requirements/quality.txt
-    #   celery
 build==1.2.2
     # via
     #   -r requirements/pip-tools.txt
     #   pip-tools
-bytecode==0.15.1
-    # via
-    #   -r requirements/quality.txt
-    #   ddtrace
 cachetools==5.5.0
     # via
     #   -r requirements/ci.txt
     #   tox
-celery==5.4.0
-    # via -r requirements/quality.txt
 certifi==2024.8.30
     # via
     #   -r requirements/quality.txt
@@ -66,31 +52,15 @@ click==8.1.7
     # via
     #   -r requirements/pip-tools.txt
     #   -r requirements/quality.txt
-    #   celery
-    #   click-didyoumean
     #   click-log
-    #   click-plugins
-    #   click-repl
     #   code-annotations
     #   edx-django-utils
     #   edx-lint
     #   pip-tools
-click-didyoumean==0.3.1
-    # via
-    #   -r requirements/quality.txt
-    #   celery
 click-log==0.4.0
     # via
     #   -r requirements/quality.txt
     #   edx-lint
-click-plugins==1.1.1
-    # via
-    #   -r requirements/quality.txt
-    #   celery
-click-repl==0.3.0
-    # via
-    #   -r requirements/quality.txt
-    #   celery
 code-annotations==1.8.0
     # via
     #   -r requirements/quality.txt
@@ -111,12 +81,6 @@ cryptography==43.0.1
     #   secretstorage
 ddt==1.7.2
     # via -r requirements/quality.txt
-ddtrace==2.12.2
-    # via -r requirements/quality.txt
-deprecated==1.2.14
-    # via
-    #   -r requirements/quality.txt
-    #   opentelemetry-api
 diff-cover==9.2.0
     # via -r requirements/dev.in
 dill==0.3.8
@@ -186,10 +150,6 @@ edx-opaque-keys==2.11.0
     #   edx-drf-extensions
 edx-toggles==5.2.0
     # via -r requirements/quality.txt
-envier==0.5.2
-    # via
-    #   -r requirements/quality.txt
-    #   ddtrace
 filelock==3.16.1
     # via
     #   -r requirements/ci.txt
@@ -203,7 +163,6 @@ importlib-metadata==8.4.0
     # via
     #   -r requirements/quality.txt
     #   keyring
-    #   opentelemetry-api
     #   twine
 iniconfig==2.0.0
     # via
@@ -245,10 +204,6 @@ keyring==25.4.0
     # via
     #   -r requirements/quality.txt
     #   twine
-kombu==5.4.2
-    # via
-    #   -r requirements/quality.txt
-    #   celery
 lxml[html-clean,html_clean]==5.3.0
     # via
     #   edx-i18n-tools
@@ -284,10 +239,6 @@ nh3==0.2.18
     # via
     #   -r requirements/quality.txt
     #   readme-renderer
-opentelemetry-api==1.27.0
-    # via
-    #   -r requirements/quality.txt
-    #   ddtrace
 packaging==24.1
     # via
     #   -r requirements/ci.txt
@@ -325,14 +276,6 @@ pluggy==1.5.0
     #   tox
 polib==1.2.0
     # via edx-i18n-tools
-prompt-toolkit==3.0.47
-    # via
-    #   -r requirements/quality.txt
-    #   click-repl
-protobuf==5.28.2
-    # via
-    #   -r requirements/quality.txt
-    #   ddtrace
 psutil==6.0.0
     # via
     #   -r requirements/quality.txt
@@ -405,10 +348,6 @@ pytest-django==4.9.0
     # via -r requirements/quality.txt
 pytest-randomly==3.15.0
     # via -r requirements/quality.txt
-python-dateutil==2.9.0.post0
-    # via
-    #   -r requirements/quality.txt
-    #   celery
 python-slugify==8.0.4
     # via
     #   -r requirements/quality.txt
@@ -463,7 +402,6 @@ six==1.16.0
     #   -r requirements/quality.txt
     #   edx-codejail
     #   edx-lint
-    #   python-dateutil
 snowballstemmer==2.2.0
     # via
     #   -r requirements/quality.txt
@@ -493,45 +431,20 @@ twine==5.1.1
 typing-extensions==4.12.2
     # via
     #   -r requirements/quality.txt
-    #   ddtrace
     #   edx-opaque-keys
-tzdata==2024.1
-    # via
-    #   -r requirements/quality.txt
-    #   celery
-    #   kombu
 urllib3==2.2.3
     # via
     #   -r requirements/quality.txt
     #   requests
     #   twine
-vine==5.1.0
-    # via
-    #   -r requirements/quality.txt
-    #   amqp
-    #   celery
-    #   kombu
 virtualenv==20.26.5
     # via
     #   -r requirements/ci.txt
     #   tox
-wcwidth==0.2.13
-    # via
-    #   -r requirements/quality.txt
-    #   prompt-toolkit
 wheel==0.44.0
     # via
     #   -r requirements/pip-tools.txt
     #   pip-tools
-wrapt==1.16.0
-    # via
-    #   -r requirements/quality.txt
-    #   ddtrace
-    #   deprecated
-xmltodict==0.13.0
-    # via
-    #   -r requirements/quality.txt
-    #   ddtrace
 zipp==3.20.2
     # via
     #   -r requirements/quality.txt

@@ -14,6 +14,12 @@ Change Log
 Unreleased
 ~~~~~~~~~~
 
+[5.0.0] - 2024-10-22
+~~~~~~~~~~~~~~~~~~~~
+Removed
+-------
+* Deleted Datadog diagnostics plugin app and middleware, which are no longer in use in edxapp.
+
 [4.5.0] - 2024-09-19
 ~~~~~~~~~~~~~~~~~~~~
 Added
