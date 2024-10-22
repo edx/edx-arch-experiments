@@ -8,5 +8,3 @@ pytest-django             # pytest extension for better Django support
 pytest-randomly           # pytest extension for discovering order-sensitive tests
 code-annotations          # provides commands used by the pii_check make target.
 ddt                       # data-driven tests
-ddtrace                   # Required for testing datadog_diagnostics app and middleware
-celery                    # Required for testing datadog_diagnostics app
