@@ -8,37 +8,30 @@ Update Monitoring for Squad or Theme Changes
 Understanding code owner custom attributes
 ------------------------------------------
 
-If you first need some background on the ``code_owner_squad`` and ``code_owner_theme`` custom attributes, see :doc:`add_code_owner_custom_attribute_to_an_ida`.
+If you first need some background on the ``code_owner_2_squad`` and ``code_owner_2_theme`` custom attributes, see `Using Code_Owner Custom Span Tags`_.
+
+.. _Using Code_Owner Custom Span Tags: https://github.com/openedx/edx-arch-experiments/blob/master/edx_arch_experiments/datadog_monitoring/docs/how_tos/add_code_owner_custom_attribute_to_an_ida.rst
 
 Expand and contract name changes
 --------------------------------
 
-NRQL (New Relic Query Language) statements that use the ``code_owner_squad`` or ``code_owner_theme`` (or ``code_owner``) custom attributes may be found in alert conditions or dashboards.
+Datadog monitors or dashboards may use the ``code_owner_2_squad`` or ``code_owner_2_theme`` (or ``code_owner_2``) custom span tags.
 
-To change a squad or theme name, you should *expand* the NRQL before the change, and *contract* the NRQL after the change.
+To change a squad or theme name, you should *expand* before the change, and *contract* after the change.
 
-.. note::
+Example expand phase::
 
-    For edx.org, it is useful to wait a month before implementing the contract phase of the monitoring update.
-
-Example expand phase NRQL::
-
-    code_owner_squad IN ('old-squad-name', 'new-squad-name')
-    code_owner_theme IN ('old-theme-name', 'new-theme-name')
+    code_owner_2_squad:('old-squad-name', 'new-squad-name')
+    code_owner_2_theme:('old-theme-name', 'new-theme-name')
 
 Example contract phase NRQL::
 
-    code_owner_squad = 'new-squad-name'
-    code_owner_theme = 'new-theme-name'
+    code_owner_2_squad:'new-squad-name'
+    code_owner_2_theme:'new-theme-name'
 
-To find the relevant NRQL to update, see `Searching New Relic NRQL`_.
+To find relevant usage of these span tags, see `Searching Datadog monitors and dashboards`_.
 
-Searching New Relic NRQL
-------------------------
+Searching Datadog monitors and dashboards
+-----------------------------------------
 
-See :doc:`search_new_relic` for general information about the ``new_relic_search.py`` script.
-
-This script can be especially useful for helping with the expand/contract phase when changing squad or theme names. For example, you could use the following::
-
-    new_relic_search.py --regex old-squad-name
-    new_relic_search.py --regex new-squad-name
+TODO: This section needs to be updated as part of https://github.com/edx/edx-arch-experiments/issues/786, once the script has been migrated for use with Datadog.

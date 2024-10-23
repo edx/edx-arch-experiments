@@ -1,5 +1,5 @@
 """
-Utilities for monitoring code_owner
+Utilities for monitoring code_owner_2
 """
 import logging
 import re
@@ -7,7 +7,7 @@ from functools import wraps
 
 from django.conf import settings
 
-from ..utils import set_custom_attribute
+from edx_django_utils.monitoring import set_custom_attribute
 
 log = logging.getLogger(__name__)
 
@@ -88,7 +88,9 @@ def get_code_owner_mappings():
     # .. setting_description: Used for monitoring and reporting of ownership. Use a
     #      dict with keys of code owner name and value as a list of dotted path
     #      module names owned by the code owner.
-    code_owner_mappings = getattr(settings, 'CODE_OWNER_MAPPINGS', {})
+    code_owner_mappings = getattr(settings, 'CODE_OWNER_MAPPINGS', None)
+    if code_owner_mappings is None:
+        return None
 
     try:
         for code_owner in code_owner_mappings:
@@ -110,42 +112,23 @@ def get_code_owner_mappings():
     return _PATH_TO_CODE_OWNER_MAPPINGS
 
 
-def _get_catch_all_code_owner():
-    """
-    If the catch-all module "*" is configured, return the code_owner.
-
-    Returns:
-        (str): code_owner or None if no catch-all configured.
-
-    """
-    try:
-        code_owner = get_code_owner_from_module('*')
-        return code_owner
-    except Exception as e:  # pragma: no cover
-        # will remove broad exceptions after ensuring all proper cases are covered
-        set_custom_attribute('deprecated_broad_except___get_module_from_current_transaction', e.__class__)
-        return None
-
-
 def set_code_owner_attribute_from_module(module):
     """
-    Updates the code_owner and code_owner_module custom attributes.
+    Updates the code_owner_2 and code_owner_2_module custom attributes.
 
     Celery tasks or other non-web functions do not use middleware, so we need
-        an alternative way to set the code_owner custom attribute.
+        an alternative way to set the code_owner_2 custom attribute.
 
     Note: These settings will be overridden by the CodeOwnerMonitoringMiddleware.
         This method can't be used to override web functions at this time.
 
     Usage::
 
-        set_code_owner_attribute_from_module(__name__)
+        set_code_owner_2_attribute_from_module(__name__)
 
     """
-    set_custom_attribute('code_owner_module', module)
+    set_custom_attribute('code_owner_2_module', module)
     code_owner = get_code_owner_from_module(module)
-    if not code_owner:
-        code_owner = _get_catch_all_code_owner()
 
     if code_owner:
         set_code_owner_custom_attributes(code_owner)
@@ -153,30 +136,30 @@ def set_code_owner_attribute_from_module(module):
 
 def set_code_owner_custom_attributes(code_owner):
     """
-    Sets custom metrics for code_owner, code_owner_theme, and code_owner_squad
+    Sets custom metrics for code_owner_2, code_owner_2_theme, and code_owner_2_squad
     """
     if not code_owner:  # pragma: no cover
         return
-    set_custom_attribute('code_owner', code_owner)
+    set_custom_attribute('code_owner_2', code_owner)
     theme = _get_theme_from_code_owner(code_owner)
     if theme:
-        set_custom_attribute('code_owner_theme', theme)
+        set_custom_attribute('code_owner_2_theme', theme)
     squad = _get_squad_from_code_owner(code_owner)
     if squad:
-        set_custom_attribute('code_owner_squad', squad)
+        set_custom_attribute('code_owner_2_squad', squad)
 
 
 def set_code_owner_attribute(wrapped_function):
     """
-    Decorator to set the code_owner and code_owner_module custom attributes.
+    Decorator to set the code_owner_2 and code_owner_2_module custom attributes.
 
     Celery tasks or other non-web functions do not use middleware, so we need
-        an alternative way to set the code_owner custom attribute.
+        an alternative way to set the code_owner_2 custom attribute.
 
     Usage::
 
         @task()
-        @set_code_owner_attribute
+        @set_code_owner_2_attribute
         def example_task():
             ...
 
