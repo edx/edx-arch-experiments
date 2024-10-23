@@ -1,54 +1,38 @@
-Add Code_Owner Custom Attributes to an IDA
-==========================================
+Using Code_Owner Custom Span Tags
+=================================
 
 .. contents::
    :local:
    :depth: 2
 
-What are the code owner custom attributes?
+What are the code owner custom span tags?
 ------------------------------------------
 
-The code owner custom attributes can be used to create custom dashboards and alerts for monitoring the things that you own. It was originally introduced for the LMS, as is described in this `ADR on monitoring by code owner`_.
+The code owner custom span tags can be used to create custom dashboards and alerts for monitoring the things that you own. It was originally introduced for the LMS, as is described in this `ADR on monitoring by code owner`_. However, it was first moved to edx-django-utils to be used in any IDA. It was later moved to this 2U-specific plugin because it is for 2U.
 
 The code owner custom attributes consist of:
 
-* code_owner: The owner name. When themes and squads are used, this will be the theme and squad names joined by a hyphen.
-* code_owner_theme: The theme name of the owner.
-* code_owner_squad: The squad name of the owner. Use this to avoid issues when theme name changes.
+* code_owner_2: The owner name. When themes and squads are used, this will be the theme and squad names joined by a hyphen.
+* code_owner_2_theme: The theme name of the owner.
+* code_owner_2_squad: The squad name of the owner. Use this to avoid issues when theme name changes.
 
-You can now easily add this same attribute to any IDA so that your dashboards and alerts can work across multiple IDAs at once.
+Note: The ``_2`` of the code_owner_2 naming is for initial rollout to compare with edx-django-utils span tags. Ultimately, we will use adjusted names, which may include dropping the theme.
 
-If you want to know about custom attributes in general, see :doc:`using_custom_attributes`.
+If you want to learn more about custom span tags in general, see `Enhanced Monitoring and Custom Attributes`_.
 
 .. _ADR on monitoring by code owner: https://github.com/openedx/edx-platform/blob/master/lms/djangoapps/monitoring/docs/decisions/0001-monitoring-by-code-owner.rst
+.. _Enhanced Monitoring and Custom Attributes: https://edx.readthedocs.io/projects/edx-django-utils/en/latest/monitoring/how_tos/using_custom_attributes.html
 
 Setting up the Middleware
 -------------------------
 
-You simply need to add ``edx_django_utils.monitoring.CodeOwnerMonitoringMiddleware`` as described in the README to make this functionality available. Then it is ready to be configured.
+You simply need to add ``edx_arch_experiments/datadog_monitoring/code_owner/middleware.CodeOwnerMonitoringMiddleware`` to get code owner span tags on Django requests.
 
 Handling celery tasks
 ---------------------
 
-Celery tasks require use of a special decorator to set the ``code_owner`` custom attributes because no middleware will be run.
+For celery tasks, this plugin will automatically detect and add code owner span tags to any span with ``operation_name:celery.run``.
 
-Here is an example::
-
-  @task()
-  @set_code_owner_attribute
-  def example_task():
-      ...
-
-If the task is not compatible with additional decorators, you can use the following alternative::
-
-  @task()
-  def example_task():
-      set_code_owner_attribute_from_module(__name__)
-      ...
-
-An untested potential alternative to the decorator is documented in the `Code Owner for Celery Tasks ADR`_, should we run into maintenance issues using the decorator.
-
-.. _Code Owner for Celery Tasks ADR: https://github.com/openedx/edx-django-utils/blob/master/edx_django_utils/monitoring/docs/decisions/0003-code-owner-for-celery-tasks.rst
 Configuring your app settings
 -----------------------------
 
@@ -75,11 +59,11 @@ The following example shows how you can include an optional config for a catch-a
 How to find and fix code_owner mappings
 ---------------------------------------
 
-If you are missing the ``code_owner`` custom attributes on a particular Transaction or Error, or if ``code_owner`` is matching the catch-all, but you want to add a more specific mapping, you can use the other `code_owner supporting attributes`_ to determine what the appropriate mappings should be.
+If you are missing the ``code_owner_2`` custom attributes on a particular Transaction or Error, or if ``code_owner`` is matching the catch-all, but you want to add a more specific mapping, you can use the other supporting tags like ``code_owner_2_module`` and ``code_owner_2_path_error`` to determine what the appropriate mappings should be.
 
-.. _code_owner supporting attributes: https://github.com/openedx/edx-django-utils/blob/c022565/edx_django_utils/monitoring/internal/code_owner/middleware.py#L30-L34
+Updating Datadog monitoring
+---------------------------
 
-Updating New Relic monitoring
------------------------------
+To update monitoring in the event of a squad or theme name change, see `Update Monitoring for Squad or Theme Changes`_.
 
-To update monitoring in the event of a squad or theme name change, see :doc:`update_monitoring_for_squad_or_theme_changes`.
+.. _Update Monitoring for Squad or Theme Changes:

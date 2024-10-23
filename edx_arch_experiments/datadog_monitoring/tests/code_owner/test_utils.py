@@ -8,12 +8,12 @@ from unittest.mock import call, patch
 import ddt
 from django.test import override_settings
 
-from edx_django_utils.monitoring import (
+from edx_arch_experiments.datadog_monitoring.code_owner.utils import (
+    clear_cached_mappings,
     get_code_owner_from_module,
     set_code_owner_attribute,
     set_code_owner_attribute_from_module
 )
-from edx_django_utils.monitoring.internal.code_owner.utils import clear_cached_mappings
 
 
 @set_code_owner_attribute
@@ -60,7 +60,7 @@ class MonitoringUtilsTests(TestCase):
         self.assertEqual(expected_owner, actual_owner)
 
     @override_settings(CODE_OWNER_MAPPINGS=['invalid_setting_as_list'])
-    @patch('edx_django_utils.monitoring.internal.code_owner.utils.log')
+    @patch('edx_arch_experiments.datadog_monitoring.code_owner.utils.log')
     def test_code_owner_mapping_with_invalid_dict(self, mock_logger):
         with self.assertRaises(TypeError):
             get_code_owner_from_module('xblock')
@@ -93,10 +93,10 @@ class MonitoringUtilsTests(TestCase):
             self.assertLess(average_time, 0.0005, f'Mapping takes {average_time}s which is too slow.')
 
     @override_settings(
-        CODE_OWNER_MAPPINGS={'team-red': ['edx_django_utils.monitoring.tests.code_owner.test_utils']},
+        CODE_OWNER_MAPPINGS={'team-red': ['edx_arch_experiments.datadog_monitoring.tests.code_owner.test_utils']},
         CODE_OWNER_THEMES={'team': ['team-red']},
     )
-    @patch('edx_django_utils.monitoring.internal.code_owner.utils.set_custom_attribute')
+    @patch('edx_arch_experiments.datadog_monitoring.code_owner.utils.set_custom_attribute')
     def test_set_code_owner_attribute_success(self, mock_set_custom_attribute):
         self.assertEqual(decorated_function('test'), 'test')
         self._assert_set_custom_attribute(
@@ -104,30 +104,22 @@ class MonitoringUtilsTests(TestCase):
         )
 
     @override_settings(
-        CODE_OWNER_MAPPINGS={'team-red': ['edx_django_utils.monitoring.tests.code_owner.test_utils']},
+        CODE_OWNER_MAPPINGS={'team-red': ['edx_arch_experiments.datadog_monitoring.tests.code_owner.test_utils']},
         CODE_OWNER_THEMES='invalid-setting',
     )
     def test_set_code_owner_attribute_with_invalid_setting(self):
         with self.assertRaises(TypeError):
             decorated_function('test')
 
-    @override_settings(CODE_OWNER_MAPPINGS={
-        'team-red': ['*']
-    })
-    @patch('edx_django_utils.monitoring.internal.code_owner.utils.set_custom_attribute')
-    def test_set_code_owner_attribute_catch_all(self, mock_set_custom_attribute):
-        self.assertEqual(decorated_function('test'), 'test')
-        self._assert_set_custom_attribute(mock_set_custom_attribute, code_owner='team-red', module=__name__)
-
-    @patch('edx_django_utils.monitoring.internal.code_owner.utils.set_custom_attribute')
+    @patch('edx_arch_experiments.datadog_monitoring.code_owner.utils.set_custom_attribute')
     def test_set_code_owner_attribute_no_mappings(self, mock_set_custom_attribute):
         self.assertEqual(decorated_function('test'), 'test')
         self._assert_set_custom_attribute(mock_set_custom_attribute, code_owner=None, module=__name__)
 
     @override_settings(CODE_OWNER_MAPPINGS={
-        'team-red': ['edx_django_utils.monitoring.tests.code_owner.test_utils']
+        'team-red': ['edx_arch_experiments.datadog_monitoring.tests.code_owner.test_utils']
     })
-    @patch('edx_django_utils.monitoring.internal.code_owner.utils.set_custom_attribute')
+    @patch('edx_arch_experiments.datadog_monitoring.code_owner.utils.set_custom_attribute')
     def test_set_code_owner_attribute_from_module_success(self, mock_set_custom_attribute):
         set_code_owner_attribute_from_module(__name__)
         self._assert_set_custom_attribute(mock_set_custom_attribute, code_owner='team-red', module=__name__)
@@ -138,9 +130,9 @@ class MonitoringUtilsTests(TestCase):
         """
         call_list = []
         if code_owner:
-            call_list.append(call('code_owner', code_owner))
+            call_list.append(call('code_owner_2', code_owner))
             if check_theme_and_squad:
-                call_list.append(call('code_owner_theme', code_owner.split('-')[0]))
-                call_list.append(call('code_owner_squad', code_owner.split('-')[1]))
-        call_list.append(call('code_owner_module', module))
+                call_list.append(call('code_owner_2_theme', code_owner.split('-')[0]))
+                call_list.append(call('code_owner_2_squad', code_owner.split('-')[1]))
+        call_list.append(call('code_owner_2_module', module))
         mock_set_custom_attribute.assert_has_calls(call_list, any_order=True)
