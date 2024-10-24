@@ -1,10 +1,10 @@
 """
 Tests for plugin app.
 """
-from unittest.mock import call, patch
+from unittest.mock import patch
 
 from ddtrace import tracer
-from django.test import TestCase, override_settings
+from django.test import TestCase
 
 from .. import apps
 
@@ -22,7 +22,9 @@ class TestDatadogMonitoringApp(TestCase):
     def setUp(self):
         # Remove custom span processor from previous runs.
         # pylint: disable=protected-access
-        tracer._span_processors = [sp for sp in tracer._span_processors if type(sp).__name__ != 'DatadogMonitoringSpanProcessor']
+        tracer._span_processors = [
+            sp for sp in tracer._span_processors if type(sp).__name__ != 'DatadogMonitoringSpanProcessor'
+        ]
 
     def test_add_processor(self):
         def initialize():
@@ -58,5 +60,15 @@ class TestDatadogMonitoringSpanProcessor(TestCase):
         celery_span = FakeSpan('other.span', 'test.resource.name')
 
         proc.on_span_start(celery_span)
+
+        mock_get_code_owner.assert_not_called()
+
+    @patch('edx_arch_experiments.datadog_monitoring.apps.get_code_owner_from_module')
+    def test_non_span(self, mock_get_code_owner):
+        """ Tests processor with an object that doesn't have span name or resource. """
+        proc = apps.DatadogMonitoringSpanProcessor()
+        non_span = object()
+
+        proc.on_span_start(non_span)
 
         mock_get_code_owner.assert_not_called()

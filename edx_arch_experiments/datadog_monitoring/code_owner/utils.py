@@ -6,7 +6,6 @@ import re
 from functools import wraps
 
 from django.conf import settings
-
 from edx_django_utils.monitoring import set_custom_attribute
 
 log = logging.getLogger(__name__)

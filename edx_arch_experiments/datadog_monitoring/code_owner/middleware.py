@@ -4,14 +4,9 @@ Middleware for code_owner_2 custom attribute
 import logging
 
 from django.urls import resolve
-
 from edx_django_utils.monitoring import set_custom_attribute
 
-from .utils import (
-    get_code_owner_from_module,
-    is_code_owner_mappings_configured,
-    set_code_owner_custom_attributes
-)
+from .utils import get_code_owner_from_module, is_code_owner_mappings_configured, set_code_owner_custom_attributes
 
 log = logging.getLogger(__name__)
 
@@ -90,5 +85,5 @@ class CodeOwnerMonitoringMiddleware:
             view_func, _, _ = resolve(request.path)
             module = view_func.__module__
             return module, None
-        except Exception as e:  # pragma: no cover
+        except Exception as e:  # pragma: no cover, pylint: disable=broad-exception-caught
             return None, str(e)
