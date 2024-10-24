@@ -128,10 +128,11 @@ class CodeOwnerMetricMiddlewareTests(TestCase):
         with self.assertRaises(TypeError):
             self.middleware(request)
 
-    def _assert_code_owner_custom_attributes(  # pylint: disable=too-many-positional-arguments
+    def _assert_code_owner_custom_attributes(
             self, mock_set_custom_attribute, expected_code_owner=None,
             path_module=None, has_path_error=False,
-            check_theme_and_squad=False):
+            check_theme_and_squad=False
+    ):
         """ Performs a set of assertions around having set the proper custom attributes. """
         call_list = []
         if expected_code_owner:

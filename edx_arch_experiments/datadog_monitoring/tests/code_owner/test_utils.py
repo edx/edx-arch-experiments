@@ -12,7 +12,7 @@ from edx_arch_experiments.datadog_monitoring.code_owner.utils import (
     clear_cached_mappings,
     get_code_owner_from_module,
     set_code_owner_attribute,
-    set_code_owner_attribute_from_module
+    set_code_owner_attribute_from_module,
 )
 
 

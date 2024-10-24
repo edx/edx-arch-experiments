@@ -15,7 +15,12 @@ class DatadogMonitoringSpanProcessor:
     """Datadog span processor that adds custom monitoring (e.g. code owner tags)."""
 
     def on_span_start(self, span):
-        if not span or not getattr(span, 'name') or not  getattr(span, 'resource'):
+        """
+        Adds custom monitoring at span creation time.
+
+        Specifically, adds code owner span tag for celery run spans.
+        """
+        if not span or not hasattr(span, 'name') or not hasattr(span, 'resource'):
             return
 
         if span.name == 'celery.run':
@@ -43,7 +48,7 @@ class DatadogMonitoring(AppConfig):
     def ready(self):
         try:
             from ddtrace import tracer  # pylint: disable=import-outside-toplevel
-            # QUESTION: Do we want to publish a base constraint that avoids DD major changes without first testing them?
+
             tracer._span_processors.append(DatadogMonitoringSpanProcessor())  # pylint: disable=protected-access
             log.info("Attached DatadogMonitoringSpanProcessor")
         except ImportError:
