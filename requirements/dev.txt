@@ -26,6 +26,10 @@ build==1.2.2
     # via
     #   -r requirements/pip-tools.txt
     #   pip-tools
+bytecode==0.15.1
+    # via
+    #   -r requirements/quality.txt
+    #   ddtrace
 cachetools==5.5.0
     # via
     #   -r requirements/ci.txt
@@ -81,6 +85,12 @@ cryptography==43.0.1
     #   secretstorage
 ddt==1.7.2
     # via -r requirements/quality.txt
+ddtrace==2.14.4
+    # via -r requirements/quality.txt
+deprecated==1.2.14
+    # via
+    #   -r requirements/quality.txt
+    #   opentelemetry-api
 diff-cover==9.2.0
     # via -r requirements/dev.in
 dill==0.3.8
@@ -150,6 +160,10 @@ edx-opaque-keys==2.11.0
     #   edx-drf-extensions
 edx-toggles==5.2.0
     # via -r requirements/quality.txt
+envier==0.6.1
+    # via
+    #   -r requirements/quality.txt
+    #   ddtrace
 filelock==3.16.1
     # via
     #   -r requirements/ci.txt
@@ -163,6 +177,7 @@ importlib-metadata==8.4.0
     # via
     #   -r requirements/quality.txt
     #   keyring
+    #   opentelemetry-api
     #   twine
 iniconfig==2.0.0
     # via
@@ -239,6 +254,10 @@ nh3==0.2.18
     # via
     #   -r requirements/quality.txt
     #   readme-renderer
+opentelemetry-api==1.27.0
+    # via
+    #   -r requirements/quality.txt
+    #   ddtrace
 packaging==24.1
     # via
     #   -r requirements/ci.txt
@@ -276,6 +295,10 @@ pluggy==1.5.0
     #   tox
 polib==1.2.0
     # via edx-i18n-tools
+protobuf==5.28.3
+    # via
+    #   -r requirements/quality.txt
+    #   ddtrace
 psutil==6.0.0
     # via
     #   -r requirements/quality.txt
@@ -431,6 +454,7 @@ twine==5.1.1
 typing-extensions==4.12.2
     # via
     #   -r requirements/quality.txt
+    #   ddtrace
     #   edx-opaque-keys
 urllib3==2.2.3
     # via
@@ -445,6 +469,15 @@ wheel==0.44.0
     # via
     #   -r requirements/pip-tools.txt
     #   pip-tools
+wrapt==1.16.0
+    # via
+    #   -r requirements/quality.txt
+    #   ddtrace
+    #   deprecated
+xmltodict==0.14.2
+    # via
+    #   -r requirements/quality.txt
+    #   ddtrace
 zipp==3.20.2
     # via
     #   -r requirements/quality.txt
