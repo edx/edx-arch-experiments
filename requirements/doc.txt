@@ -301,18 +301,13 @@ tomli==2.0.1
 typing-extensions==4.12.2
     # via
     #   -r requirements/test.txt
-    #   asgiref
-    #   bytecode
-    #   cattrs
-    #   ddtrace
-    #   edx-opaque-keys
-
     #   pydata-sphinx-theme
 tzdata==2024.1
     # via
     #   -r requirements/test.txt
     #   celery
     #   kombu
+    #   edx-opaque-keys
 urllib3==2.2.3
     # via
     #   -r requirements/test.txt
