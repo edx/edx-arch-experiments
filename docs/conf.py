@@ -90,8 +90,8 @@ top_level_doc = 'index'
 
 # General information about the project.
 project = 'edx-arch-experiments'
-copyright = f'{datetime.now().year}, edX Inc.'  # pylint: disable=redefined-builtin
-author ="edX Inc."
+copyright = f'{datetime.now().year}, edX LLC.'  # pylint: disable=redefined-builtin
+author ="edX LLC."
 project_title = 'edx-arch-experiments'
 documentation_title = f"{project_title}"
 
