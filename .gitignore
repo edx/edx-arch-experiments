@@ -8,3 +8,5 @@ build/
 .coverage
 dist/
 /pii_report/*.yaml
+docs/_build
+venv
