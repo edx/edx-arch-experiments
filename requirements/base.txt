@@ -105,7 +105,7 @@ referencing==0.35.1
     #   jsonschema-specifications
 requests==2.32.3
     # via edx-drf-extensions
-rpds-py==0.20.0
+rpds-py==0.20.1
     # via
     #   jsonschema
     #   referencing
@@ -128,5 +128,5 @@ urllib3==2.2.3
     # via requests
 
 # The following packages are considered to be unsafe in a requirements file:
-setuptools==75.2.0
+setuptools==75.3.0
     # via -r requirements/base.in
