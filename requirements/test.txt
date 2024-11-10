@@ -78,7 +78,7 @@ drf-jwt==1.19.2
     # via
     #   -r requirements/base.txt
     #   edx-drf-extensions
-edx-codejail==3.5.1
+edx-codejail==3.5.2
     # via -r requirements/base.txt
 edx-django-utils==7.0.0
     # via
@@ -117,7 +117,7 @@ newrelic==10.2.0
     # via
     #   -r requirements/base.txt
     #   edx-django-utils
-packaging==24.1
+packaging==24.2
     # via pytest
 pbr==6.1.0
     # via
@@ -151,7 +151,7 @@ pytest==8.3.3
     #   pytest-cov
     #   pytest-django
     #   pytest-randomly
-pytest-cov==5.0.0
+pytest-cov==6.0.0
     # via -r requirements/test.in
 pytest-django==4.9.0
     # via -r requirements/test.in
@@ -174,7 +174,7 @@ requests==2.32.3
     # via
     #   -r requirements/base.txt
     #   edx-drf-extensions
-rpds-py==0.20.0
+rpds-py==0.21.0
     # via
     #   -r requirements/base.txt
     #   jsonschema
@@ -211,5 +211,5 @@ urllib3==2.2.3
     #   requests
 
 # The following packages are considered to be unsafe in a requirements file:
-setuptools==75.2.0
+setuptools==75.3.0
     # via -r requirements/base.txt
