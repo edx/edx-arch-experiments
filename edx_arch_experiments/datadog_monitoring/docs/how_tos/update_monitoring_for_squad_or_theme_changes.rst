@@ -10,7 +10,7 @@ Understanding code owner custom attributes
 
 If you first need some background on the ``code_owner_2_squad`` and ``code_owner_2_theme`` custom attributes, see `Using Code_Owner Custom Span Tags`_.
 
-.. _Using Code_Owner Custom Span Tags: https://github.com/openedx/edx-arch-experiments/blob/master/edx_arch_experiments/datadog_monitoring/docs/how_tos/add_code_owner_custom_attribute_to_an_ida.rst
+.. _Using Code_Owner Custom Span Tags: https://github.com/edx/edx-arch-experiments/blob/main/edx_arch_experiments/datadog_monitoring/docs/how_tos/add_code_owner_custom_attribute_to_an_ida.rst
 
 Expand and contract name changes
 --------------------------------
@@ -24,7 +24,7 @@ Example expand phase::
     code_owner_2_squad:('old-squad-name', 'new-squad-name')
     code_owner_2_theme:('old-theme-name', 'new-theme-name')
 
-Example contract phase NRQL::
+Example contract phase::
 
     code_owner_2_squad:'new-squad-name'
     code_owner_2_theme:'new-theme-name'

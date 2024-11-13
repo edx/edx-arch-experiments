@@ -6,7 +6,7 @@ import logging
 
 from django.apps import AppConfig
 
-from .code_owner.utils import get_code_owner_from_module
+from .code_owner.utils import set_code_owner_attribute_from_module
 
 log = logging.getLogger(__name__)
 
@@ -27,7 +27,7 @@ class DatadogMonitoringSpanProcessor:
             # We can use this for celery spans, because the resource name is more predictable
             # and available from the start. For django requests, we'll instead continue to use
             # django middleware for setting code owner.
-            get_code_owner_from_module(span.resource)
+            set_code_owner_attribute_from_module(span.resource)
 
     def on_span_finish(self, span):
         pass

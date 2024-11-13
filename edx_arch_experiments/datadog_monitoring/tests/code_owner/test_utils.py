@@ -11,17 +11,8 @@ from django.test import override_settings
 from edx_arch_experiments.datadog_monitoring.code_owner.utils import (
     clear_cached_mappings,
     get_code_owner_from_module,
-    set_code_owner_attribute,
     set_code_owner_attribute_from_module,
 )
-
-
-@set_code_owner_attribute
-def decorated_function(pass_through):
-    """
-    For testing the set_code_owner_attribute decorator.
-    """
-    return pass_through
 
 
 @ddt.ddt
@@ -91,30 +82,6 @@ class MonitoringUtilsTests(TestCase):
             )
             average_time = time / call_iterations
             self.assertLess(average_time, 0.0005, f'Mapping takes {average_time}s which is too slow.')
-
-    @override_settings(
-        CODE_OWNER_MAPPINGS={'team-red': ['edx_arch_experiments.datadog_monitoring.tests.code_owner.test_utils']},
-        CODE_OWNER_THEMES={'team': ['team-red']},
-    )
-    @patch('edx_arch_experiments.datadog_monitoring.code_owner.utils.set_custom_attribute')
-    def test_set_code_owner_attribute_success(self, mock_set_custom_attribute):
-        self.assertEqual(decorated_function('test'), 'test')
-        self._assert_set_custom_attribute(
-            mock_set_custom_attribute, code_owner='team-red', module=__name__, check_theme_and_squad=True
-        )
-
-    @override_settings(
-        CODE_OWNER_MAPPINGS={'team-red': ['edx_arch_experiments.datadog_monitoring.tests.code_owner.test_utils']},
-        CODE_OWNER_THEMES='invalid-setting',
-    )
-    def test_set_code_owner_attribute_with_invalid_setting(self):
-        with self.assertRaises(TypeError):
-            decorated_function('test')
-
-    @patch('edx_arch_experiments.datadog_monitoring.code_owner.utils.set_custom_attribute')
-    def test_set_code_owner_attribute_no_mappings(self, mock_set_custom_attribute):
-        self.assertEqual(decorated_function('test'), 'test')
-        self._assert_set_custom_attribute(mock_set_custom_attribute, code_owner=None, module=__name__)
 
     @override_settings(CODE_OWNER_MAPPINGS={
         'team-red': ['edx_arch_experiments.datadog_monitoring.tests.code_owner.test_utils']

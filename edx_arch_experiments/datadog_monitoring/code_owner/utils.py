@@ -3,7 +3,6 @@ Utilities for monitoring code_owner_2
 """
 import logging
 import re
-from functools import wraps
 
 from django.conf import settings
 from edx_django_utils.monitoring import set_custom_attribute
@@ -146,34 +145,6 @@ def set_code_owner_custom_attributes(code_owner):
     squad = _get_squad_from_code_owner(code_owner)
     if squad:
         set_custom_attribute('code_owner_2_squad', squad)
-
-
-def set_code_owner_attribute(wrapped_function):
-    """
-    Decorator to set the code_owner_2 and code_owner_2_module custom attributes.
-
-    Celery tasks or other non-web functions do not use middleware, so we need
-        an alternative way to set the code_owner_2 custom attribute.
-
-    Usage::
-
-        @task()
-        @set_code_owner_2_attribute
-        def example_task():
-            ...
-
-    Note: If the decorator can't be used for some reason, call
-        ``set_code_owner_attribute_from_module`` directly.
-
-    An untested potential alternative is documented in the ADR covering this decision:
-        docs/decisions/0003-code-owner-for-celery-tasks.rst
-
-    """
-    @wraps(wrapped_function)
-    def new_function(*args, **kwargs):
-        set_code_owner_attribute_from_module(wrapped_function.__module__)
-        return wrapped_function(*args, **kwargs)
-    return new_function
 
 
 def clear_cached_mappings():
