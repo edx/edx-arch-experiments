@@ -26,6 +26,10 @@ build==1.2.2.post1
     # via
     #   -r requirements/pip-tools.txt
     #   pip-tools
+bytecode==0.16.0
+    # via
+    #   -r requirements/quality.txt
+    #   ddtrace
 cachetools==5.5.0
     # via
     #   -r requirements/ci.txt
@@ -61,7 +65,7 @@ click-log==0.4.0
     # via
     #   -r requirements/quality.txt
     #   edx-lint
-code-annotations==1.8.0
+code-annotations==1.8.1
     # via
     #   -r requirements/quality.txt
     #   edx-lint
@@ -70,7 +74,7 @@ colorama==0.4.6
     # via
     #   -r requirements/ci.txt
     #   tox
-coverage[toml]==7.6.4
+coverage[toml]==7.6.5
     # via
     #   -r requirements/quality.txt
     #   pytest-cov
@@ -81,6 +85,12 @@ cryptography==43.0.3
     #   secretstorage
 ddt==1.7.2
     # via -r requirements/quality.txt
+ddtrace==2.16.1
+    # via -r requirements/quality.txt
+deprecated==1.2.14
+    # via
+    #   -r requirements/quality.txt
+    #   opentelemetry-api
 diff-cover==9.2.0
     # via -r requirements/dev.in
 dill==0.3.9
@@ -131,7 +141,7 @@ drf-jwt==1.19.2
     # via
     #   -r requirements/quality.txt
     #   edx-drf-extensions
-edx-codejail==3.5.1
+edx-codejail==3.5.2
     # via -r requirements/quality.txt
 edx-django-utils==7.0.0
     # via
@@ -142,7 +152,7 @@ edx-drf-extensions==10.5.0
     # via -r requirements/quality.txt
 edx-i18n-tools==1.6.3
     # via -r requirements/dev.in
-edx-lint==5.4.0
+edx-lint==5.4.1
     # via -r requirements/quality.txt
 edx-opaque-keys==2.11.0
     # via
@@ -150,6 +160,10 @@ edx-opaque-keys==2.11.0
     #   edx-drf-extensions
 edx-toggles==5.2.0
     # via -r requirements/quality.txt
+envier==0.6.1
+    # via
+    #   -r requirements/quality.txt
+    #   ddtrace
 filelock==3.16.1
     # via
     #   -r requirements/ci.txt
@@ -163,6 +177,7 @@ importlib-metadata==8.5.0
     # via
     #   -r requirements/quality.txt
     #   keyring
+    #   opentelemetry-api
     #   twine
 iniconfig==2.0.0
     # via
@@ -208,7 +223,7 @@ lxml[html-clean,html_clean]==5.3.0
     # via
     #   edx-i18n-tools
     #   lxml-html-clean
-lxml-html-clean==0.3.1
+lxml-html-clean==0.4.0
     # via lxml
 markdown-it-py==3.0.0
     # via
@@ -239,7 +254,11 @@ nh3==0.2.18
     # via
     #   -r requirements/quality.txt
     #   readme-renderer
-packaging==24.1
+opentelemetry-api==1.28.1
+    # via
+    #   -r requirements/quality.txt
+    #   ddtrace
+packaging==24.2
     # via
     #   -r requirements/ci.txt
     #   -r requirements/pip-tools.txt
@@ -276,6 +295,10 @@ pluggy==1.5.0
     #   tox
 polib==1.2.0
     # via edx-i18n-tools
+protobuf==5.28.3
+    # via
+    #   -r requirements/quality.txt
+    #   ddtrace
 psutil==6.1.0
     # via
     #   -r requirements/quality.txt
@@ -342,7 +365,7 @@ pytest==8.3.3
     #   pytest-cov
     #   pytest-django
     #   pytest-randomly
-pytest-cov==5.0.0
+pytest-cov==6.0.0
     # via -r requirements/quality.txt
 pytest-django==4.9.0
     # via -r requirements/quality.txt
@@ -380,11 +403,11 @@ rfc3986==2.0.0
     # via
     #   -r requirements/quality.txt
     #   twine
-rich==13.9.3
+rich==13.9.4
     # via
     #   -r requirements/quality.txt
     #   twine
-rpds-py==0.20.0
+rpds-py==0.21.0
     # via
     #   -r requirements/quality.txt
     #   jsonschema
@@ -406,7 +429,7 @@ snowballstemmer==2.2.0
     # via
     #   -r requirements/quality.txt
     #   pydocstyle
-sqlparse==0.5.1
+sqlparse==0.5.2
     # via
     #   -r requirements/quality.txt
     #   django
@@ -431,21 +454,31 @@ twine==5.1.1
 typing-extensions==4.12.2
     # via
     #   -r requirements/quality.txt
+    #   ddtrace
     #   edx-opaque-keys
 urllib3==2.2.3
     # via
     #   -r requirements/quality.txt
     #   requests
     #   twine
-virtualenv==20.27.0
+virtualenv==20.27.1
     # via
     #   -r requirements/ci.txt
     #   tox
-wheel==0.44.0
+wheel==0.45.0
     # via
     #   -r requirements/pip-tools.txt
     #   pip-tools
-zipp==3.20.2
+wrapt==1.16.0
+    # via
+    #   -r requirements/quality.txt
+    #   ddtrace
+    #   deprecated
+xmltodict==0.14.2
+    # via
+    #   -r requirements/quality.txt
+    #   ddtrace
+zipp==3.21.0
     # via
     #   -r requirements/quality.txt
     #   importlib-metadata
@@ -453,9 +486,10 @@ zipp==3.20.2
 # The following packages are considered to be unsafe in a requirements file:
 pip==24.2
     # via
+    #   -c https://raw.githubusercontent.com/edx/edx-lint/master/edx_lint/files/common_constraints.txt
     #   -r requirements/pip-tools.txt
     #   pip-tools
-setuptools==75.2.0
+setuptools==75.5.0
     # via
     #   -r requirements/pip-tools.txt
     #   -r requirements/quality.txt
