@@ -22,7 +22,7 @@ click==8.1.7
     # via
     #   code-annotations
     #   edx-django-utils
-code-annotations==1.8.0
+code-annotations==1.8.1
     # via edx-toggles
 cryptography==43.0.3
     # via pyjwt
@@ -41,7 +41,7 @@ django-crum==0.7.9
     # via
     #   edx-django-utils
     #   edx-toggles
-django-waffle==4.1.0
+django-waffle==4.2.0
     # via
     #   -r requirements/base.in
     #   edx-django-utils
@@ -56,7 +56,7 @@ dnspython==2.7.0
     # via pymongo
 drf-jwt==1.19.2
     # via edx-drf-extensions
-edx-codejail==3.5.1
+edx-codejail==3.5.2
     # via -r requirements/base.in
 edx-django-utils==7.0.0
     # via
@@ -105,7 +105,7 @@ referencing==0.35.1
     #   jsonschema-specifications
 requests==2.32.3
     # via edx-drf-extensions
-rpds-py==0.20.0
+rpds-py==0.21.0
     # via
     #   jsonschema
     #   referencing
@@ -113,7 +113,7 @@ semantic-version==2.10.0
     # via edx-drf-extensions
 six==1.16.0
     # via edx-codejail
-sqlparse==0.5.1
+sqlparse==0.5.2
     # via django
 stevedore==5.3.0
     # via
@@ -128,5 +128,5 @@ urllib3==2.2.3
     # via requests
 
 # The following packages are considered to be unsafe in a requirements file:
-setuptools==75.2.0
+setuptools==75.5.0
     # via -r requirements/base.in
