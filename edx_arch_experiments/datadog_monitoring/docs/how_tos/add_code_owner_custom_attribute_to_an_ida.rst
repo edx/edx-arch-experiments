@@ -26,12 +26,14 @@ If you want to learn more about custom span tags in general, see `Enhanced Monit
 Setting up the Middleware
 -------------------------
 
-You simply need to add ``edx_arch_experiments/datadog_monitoring/code_owner/middleware.CodeOwnerMonitoringMiddleware`` to get code owner span tags on Django requests.
+You simply need to add ``edx_arch_experiments.datadog_monitoring.code_owner.middleware.CodeOwnerMonitoringMiddleware`` to get code owner span tags on Django requests.
 
 Handling celery tasks
 ---------------------
 
 For celery tasks, this plugin will automatically detect and add code owner span tags to any span with ``operation_name:celery.run``.
+
+This is accomplished by receiving signals from celery's worker_process_init for each process, and then adding a custom Datadog span processor to add the span tags as appropriate.
 
 Configuring your app settings
 -----------------------------
