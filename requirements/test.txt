@@ -4,6 +4,10 @@
 #
 #    make upgrade
 #
+amqp==5.3.1
+    # via
+    #   -r requirements/base.txt
+    #   kombu
 asgiref==3.8.1
     # via
     #   -r requirements/base.txt
@@ -13,8 +17,14 @@ attrs==24.2.0
     #   -r requirements/base.txt
     #   jsonschema
     #   referencing
+billiard==4.2.1
+    # via
+    #   -r requirements/base.txt
+    #   celery
 bytecode==0.16.0
     # via ddtrace
+celery==5.4.0
+    # via -r requirements/base.txt
 certifi==2024.8.30
     # via
     #   -r requirements/base.txt
@@ -31,14 +41,30 @@ charset-normalizer==3.4.0
 click==8.1.7
     # via
     #   -r requirements/base.txt
+    #   celery
+    #   click-didyoumean
+    #   click-plugins
+    #   click-repl
     #   code-annotations
     #   edx-django-utils
-code-annotations==1.8.1
+click-didyoumean==0.3.1
+    # via
+    #   -r requirements/base.txt
+    #   celery
+click-plugins==1.1.1
+    # via
+    #   -r requirements/base.txt
+    #   celery
+click-repl==0.3.0
+    # via
+    #   -r requirements/base.txt
+    #   celery
+code-annotations==1.8.2
     # via
     #   -r requirements/base.txt
     #   -r requirements/test.in
     #   edx-toggles
-coverage[toml]==7.6.5
+coverage[toml]==7.6.7
     # via pytest-cov
 cryptography==43.0.3
     # via
@@ -46,9 +72,9 @@ cryptography==43.0.3
     #   pyjwt
 ddt==1.7.2
     # via -r requirements/test.in
-ddtrace==2.16.1
+ddtrace==2.16.3
     # via -r requirements/test.in
-deprecated==1.2.14
+deprecated==1.2.15
     # via opentelemetry-api
     # via
     #   -c https://raw.githubusercontent.com/edx/edx-lint/master/edx_lint/files/common_constraints.txt
@@ -65,7 +91,7 @@ django-crum==0.7.9
     #   -r requirements/base.txt
     #   edx-django-utils
     #   edx-toggles
-django-waffle==4.1.0
+django-waffle==4.2.0
     # via
     #   -r requirements/base.txt
     #   edx-django-utils
@@ -119,15 +145,19 @@ jsonschema-specifications==2024.10.1
     # via
     #   -r requirements/base.txt
     #   jsonschema
+kombu==5.4.2
+    # via
+    #   -r requirements/base.txt
+    #   celery
 markupsafe==3.0.2
     # via
     #   -r requirements/base.txt
     #   jinja2
-newrelic==10.2.0
+newrelic==10.3.0
     # via
     #   -r requirements/base.txt
     #   edx-django-utils
-opentelemetry-api==1.28.1
+opentelemetry-api==1.28.2
     # via ddtrace
 packaging==24.2
     # via pytest
@@ -137,6 +167,10 @@ pbr==6.1.0
     #   stevedore
 pluggy==1.5.0
     # via pytest
+prompt-toolkit==3.0.48
+    # via
+    #   -r requirements/base.txt
+    #   click-repl
 protobuf==5.28.3
     # via ddtrace
 psutil==6.1.0
@@ -147,7 +181,7 @@ pycparser==2.22
     # via
     #   -r requirements/base.txt
     #   cffi
-pyjwt[crypto]==2.9.0
+pyjwt[crypto]==2.10.0
     # via
     #   -r requirements/base.txt
     #   drf-jwt
@@ -171,6 +205,10 @@ pytest-django==4.9.0
     # via -r requirements/test.in
 pytest-randomly==3.16.0
     # via -r requirements/test.in
+python-dateutil==2.9.0.post0
+    # via
+    #   -r requirements/base.txt
+    #   celery
 python-slugify==8.0.4
     # via
     #   -r requirements/base.txt
@@ -201,6 +239,7 @@ six==1.16.0
     # via
     #   -r requirements/base.txt
     #   edx-codejail
+    #   python-dateutil
 sqlparse==0.5.2
     # via
     #   -r requirements/base.txt
@@ -220,10 +259,25 @@ typing-extensions==4.12.2
     #   -r requirements/base.txt
     #   ddtrace
     #   edx-opaque-keys
+tzdata==2024.2
+    # via
+    #   -r requirements/base.txt
+    #   celery
+    #   kombu
 urllib3==2.2.3
     # via
     #   -r requirements/base.txt
     #   requests
+vine==5.1.0
+    # via
+    #   -r requirements/base.txt
+    #   amqp
+    #   celery
+    #   kombu
+wcwidth==0.2.13
+    # via
+    #   -r requirements/base.txt
+    #   prompt-toolkit
 wrapt==1.16.0
     # via
     #   ddtrace

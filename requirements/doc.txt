@@ -8,6 +8,10 @@ accessible-pygments==0.0.5
     # via pydata-sphinx-theme
 alabaster==1.0.0
     # via sphinx
+amqp==5.3.1
+    # via
+    #   -r requirements/test.txt
+    #   kombu
 asgiref==3.8.1
     # via
     #   -r requirements/test.txt
@@ -23,10 +27,16 @@ babel==2.16.0
     #   sphinx
 beautifulsoup4==4.12.3
     # via pydata-sphinx-theme
+billiard==4.2.1
+    # via
+    #   -r requirements/test.txt
+    #   celery
 bytecode==0.16.0
     # via
     #   -r requirements/test.txt
     #   ddtrace
+celery==5.4.0
+    # via -r requirements/test.txt
 certifi==2024.8.30
     # via
     #   -r requirements/test.txt
@@ -43,13 +53,29 @@ charset-normalizer==3.4.0
 click==8.1.7
     # via
     #   -r requirements/test.txt
+    #   celery
+    #   click-didyoumean
+    #   click-plugins
+    #   click-repl
     #   code-annotations
     #   edx-django-utils
-code-annotations==1.8.1
+click-didyoumean==0.3.1
+    # via
+    #   -r requirements/test.txt
+    #   celery
+click-plugins==1.1.1
+    # via
+    #   -r requirements/test.txt
+    #   celery
+click-repl==0.3.0
+    # via
+    #   -r requirements/test.txt
+    #   celery
+code-annotations==1.8.2
     # via
     #   -r requirements/test.txt
     #   edx-toggles
-coverage[toml]==7.6.5
+coverage[toml]==7.6.7
     # via
     #   -r requirements/test.txt
     #   pytest-cov
@@ -59,9 +85,9 @@ cryptography==43.0.3
     #   pyjwt
 ddt==1.7.2
     # via -r requirements/test.txt
-ddtrace==2.16.1
+ddtrace==2.16.3
     # via -r requirements/test.txt
-deprecated==1.2.14
+deprecated==1.2.15
     # via
     #   -r requirements/test.txt
     #   opentelemetry-api
@@ -81,7 +107,7 @@ django-crum==0.7.9
     #   -r requirements/test.txt
     #   edx-django-utils
     #   edx-toggles
-django-waffle==4.1.0
+django-waffle==4.2.0
     # via
     #   -r requirements/test.txt
     #   edx-django-utils
@@ -153,17 +179,21 @@ jsonschema-specifications==2024.10.1
     # via
     #   -r requirements/test.txt
     #   jsonschema
+kombu==5.4.2
+    # via
+    #   -r requirements/test.txt
+    #   celery
 markupsafe==3.0.2
     # via
     #   -r requirements/test.txt
     #   jinja2
-newrelic==10.2.0
+newrelic==10.3.0
     # via
     #   -r requirements/test.txt
     #   edx-django-utils
 nh3==0.2.18
     # via readme-renderer
-opentelemetry-api==1.28.1
+opentelemetry-api==1.28.2
     # via
     #   -r requirements/test.txt
     #   ddtrace
@@ -180,6 +210,10 @@ pluggy==1.5.0
     # via
     #   -r requirements/test.txt
     #   pytest
+prompt-toolkit==3.0.48
+    # via
+    #   -r requirements/test.txt
+    #   click-repl
 protobuf==5.28.3
     # via
     #   -r requirements/test.txt
@@ -201,7 +235,7 @@ pygments==2.18.0
     #   pydata-sphinx-theme
     #   readme-renderer
     #   sphinx
-pyjwt[crypto]==2.9.0
+pyjwt[crypto]==2.10.0
     # via
     #   -r requirements/test.txt
     #   drf-jwt
@@ -226,6 +260,10 @@ pytest-django==4.9.0
     # via -r requirements/test.txt
 pytest-randomly==3.16.0
     # via -r requirements/test.txt
+python-dateutil==2.9.0.post0
+    # via
+    #   -r requirements/test.txt
+    #   celery
 python-slugify==8.0.4
     # via
     #   -r requirements/test.txt
@@ -261,6 +299,7 @@ six==1.16.0
     # via
     #   -r requirements/test.txt
     #   edx-codejail
+    #   python-dateutil
 snowballstemmer==2.2.0
     # via sphinx
 soupsieve==2.6
@@ -305,10 +344,25 @@ typing-extensions==4.12.2
     #   ddtrace
     #   edx-opaque-keys
     #   pydata-sphinx-theme
+tzdata==2024.2
+    # via
+    #   -r requirements/test.txt
+    #   celery
+    #   kombu
 urllib3==2.2.3
     # via
     #   -r requirements/test.txt
     #   requests
+vine==5.1.0
+    # via
+    #   -r requirements/test.txt
+    #   amqp
+    #   celery
+    #   kombu
+wcwidth==0.2.13
+    # via
+    #   -r requirements/test.txt
+    #   prompt-toolkit
 wrapt==1.16.0
     # via
     #   -r requirements/test.txt

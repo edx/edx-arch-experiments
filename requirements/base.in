@@ -1,8 +1,9 @@
 # Core requirements for using this application
 -c constraints.txt
 
-Django             # Web application framework
-edx_django_utils
+celery                   # Asynchronous task execution library
+Django                   # Web application framework
+edx_django_utils         # Basic utilities for plugins, monitoring, and more
 django-waffle            # Configuration switches and flags -- used by config_watcher app
 edx-codejail             # Actual codejail library; used by codejail_service app
 djangorestframework      # Used by codejail_service app

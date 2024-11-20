@@ -4,6 +4,10 @@
 #
 #    make upgrade
 #
+amqp==5.3.1
+    # via
+    #   -r requirements/quality.txt
+    #   kombu
 asgiref==3.8.1
     # via
     #   -r requirements/quality.txt
@@ -22,6 +26,10 @@ backports-tarfile==1.2.0
     # via
     #   -r requirements/quality.txt
     #   jaraco-context
+billiard==4.2.1
+    # via
+    #   -r requirements/quality.txt
+    #   celery
 build==1.2.2.post1
     # via
     #   -r requirements/pip-tools.txt
@@ -34,6 +42,8 @@ cachetools==5.5.0
     # via
     #   -r requirements/ci.txt
     #   tox
+celery==5.4.0
+    # via -r requirements/quality.txt
 certifi==2024.8.30
     # via
     #   -r requirements/quality.txt
@@ -56,16 +66,32 @@ click==8.1.7
     # via
     #   -r requirements/pip-tools.txt
     #   -r requirements/quality.txt
+    #   celery
+    #   click-didyoumean
     #   click-log
+    #   click-plugins
+    #   click-repl
     #   code-annotations
     #   edx-django-utils
     #   edx-lint
     #   pip-tools
+click-didyoumean==0.3.1
+    # via
+    #   -r requirements/quality.txt
+    #   celery
 click-log==0.4.0
     # via
     #   -r requirements/quality.txt
     #   edx-lint
-code-annotations==1.8.1
+click-plugins==1.1.1
+    # via
+    #   -r requirements/quality.txt
+    #   celery
+click-repl==0.3.0
+    # via
+    #   -r requirements/quality.txt
+    #   celery
+code-annotations==1.8.2
     # via
     #   -r requirements/quality.txt
     #   edx-lint
@@ -74,7 +100,7 @@ colorama==0.4.6
     # via
     #   -r requirements/ci.txt
     #   tox
-coverage[toml]==7.6.5
+coverage[toml]==7.6.7
     # via
     #   -r requirements/quality.txt
     #   pytest-cov
@@ -82,12 +108,11 @@ cryptography==43.0.3
     # via
     #   -r requirements/quality.txt
     #   pyjwt
-    #   secretstorage
 ddt==1.7.2
     # via -r requirements/quality.txt
-ddtrace==2.16.1
+ddtrace==2.16.3
     # via -r requirements/quality.txt
-deprecated==1.2.14
+deprecated==1.2.15
     # via
     #   -r requirements/quality.txt
     #   opentelemetry-api
@@ -118,7 +143,7 @@ django-crum==0.7.9
     #   -r requirements/quality.txt
     #   edx-django-utils
     #   edx-toggles
-django-waffle==4.1.0
+django-waffle==4.2.0
     # via
     #   -r requirements/quality.txt
     #   edx-django-utils
@@ -199,11 +224,6 @@ jaraco-functools==4.1.0
     # via
     #   -r requirements/quality.txt
     #   keyring
-jeepney==0.8.0
-    # via
-    #   -r requirements/quality.txt
-    #   keyring
-    #   secretstorage
 jinja2==3.1.4
     # via
     #   -r requirements/quality.txt
@@ -219,11 +239,15 @@ keyring==25.5.0
     # via
     #   -r requirements/quality.txt
     #   twine
+kombu==5.4.2
+    # via
+    #   -r requirements/quality.txt
+    #   celery
 lxml[html-clean,html_clean]==5.3.0
     # via
     #   edx-i18n-tools
     #   lxml-html-clean
-lxml-html-clean==0.4.0
+lxml-html-clean==0.4.1
     # via lxml
 markdown-it-py==3.0.0
     # via
@@ -246,7 +270,7 @@ more-itertools==10.5.0
     #   -r requirements/quality.txt
     #   jaraco-classes
     #   jaraco-functools
-newrelic==10.2.0
+newrelic==10.3.0
     # via
     #   -r requirements/quality.txt
     #   edx-django-utils
@@ -254,7 +278,7 @@ nh3==0.2.18
     # via
     #   -r requirements/quality.txt
     #   readme-renderer
-opentelemetry-api==1.28.1
+opentelemetry-api==1.28.2
     # via
     #   -r requirements/quality.txt
     #   ddtrace
@@ -295,6 +319,10 @@ pluggy==1.5.0
     #   tox
 polib==1.2.0
     # via edx-i18n-tools
+prompt-toolkit==3.0.48
+    # via
+    #   -r requirements/quality.txt
+    #   click-repl
 protobuf==5.28.3
     # via
     #   -r requirements/quality.txt
@@ -317,7 +345,7 @@ pygments==2.18.0
     #   diff-cover
     #   readme-renderer
     #   rich
-pyjwt[crypto]==2.9.0
+pyjwt[crypto]==2.10.0
     # via
     #   -r requirements/quality.txt
     #   drf-jwt
@@ -371,6 +399,10 @@ pytest-django==4.9.0
     # via -r requirements/quality.txt
 pytest-randomly==3.16.0
     # via -r requirements/quality.txt
+python-dateutil==2.9.0.post0
+    # via
+    #   -r requirements/quality.txt
+    #   celery
 python-slugify==8.0.4
     # via
     #   -r requirements/quality.txt
@@ -412,10 +444,6 @@ rpds-py==0.21.0
     #   -r requirements/quality.txt
     #   jsonschema
     #   referencing
-secretstorage==3.3.3
-    # via
-    #   -r requirements/quality.txt
-    #   keyring
 semantic-version==2.10.0
     # via
     #   -r requirements/quality.txt
@@ -425,6 +453,7 @@ six==1.16.0
     #   -r requirements/quality.txt
     #   edx-codejail
     #   edx-lint
+    #   python-dateutil
 snowballstemmer==2.2.0
     # via
     #   -r requirements/quality.txt
@@ -456,15 +485,30 @@ typing-extensions==4.12.2
     #   -r requirements/quality.txt
     #   ddtrace
     #   edx-opaque-keys
+tzdata==2024.2
+    # via
+    #   -r requirements/quality.txt
+    #   celery
+    #   kombu
 urllib3==2.2.3
     # via
     #   -r requirements/quality.txt
     #   requests
     #   twine
+vine==5.1.0
+    # via
+    #   -r requirements/quality.txt
+    #   amqp
+    #   celery
+    #   kombu
 virtualenv==20.27.1
     # via
     #   -r requirements/ci.txt
     #   tox
+wcwidth==0.2.13
+    # via
+    #   -r requirements/quality.txt
+    #   prompt-toolkit
 wheel==0.45.0
     # via
     #   -r requirements/pip-tools.txt
