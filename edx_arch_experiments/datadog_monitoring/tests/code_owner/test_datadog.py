@@ -1,52 +1,32 @@
 """
-Tests for plugin app.
+Tests for datadog span processor.
 """
 from unittest.mock import patch
 
-from ddtrace import tracer
 from django.test import TestCase
 
-from .. import apps
+from edx_arch_experiments.datadog_monitoring.code_owner.datadog import CeleryCodeOwnerSpanProcessor
 
 
 class FakeSpan:
-    """A fake Span instance with span name and resource."""
+    """
+    A fake Span instance with span name and resource.
+    """
+
     def __init__(self, name, resource):
         self.name = name
         self.resource = resource
 
 
-class TestDatadogMonitoringApp(TestCase):
-    """Tests for TestDatadogMonitoringApp."""
-
-    def setUp(self):
-        # Remove custom span processor from previous runs.
-        # pylint: disable=protected-access
-        tracer._span_processors = [
-            sp for sp in tracer._span_processors if type(sp).__name__ != 'DatadogMonitoringSpanProcessor'
-        ]
-
-    def test_add_processor(self):
-        def initialize():
-            apps.DatadogMonitoring('edx_arch_experiments.datadog_monitoring', apps).ready()
-
-        def get_processor_list():
-            # pylint: disable=protected-access
-            return [type(sp).__name__ for sp in tracer._span_processors]
-
-        initialize()
-        assert sorted(get_processor_list()) == [
-            'DatadogMonitoringSpanProcessor', 'EndpointCallCounterProcessor', 'TopLevelSpanProcessor',
-        ]
-
-
-class TestDatadogMonitoringSpanProcessor(TestCase):
-    """Tests for DatadogMonitoringSpanProcessor."""
+class TestCeleryCodeOwnerSpanProcessor(TestCase):
+    """
+    Tests for CeleryCodeOwnerSpanProcessor.
+    """
 
     @patch('edx_arch_experiments.datadog_monitoring.code_owner.utils.set_custom_attribute')
     def test_celery_span(self, mock_set_custom_attribute):
         """ Tests processor with a celery span. """
-        proc = apps.DatadogMonitoringSpanProcessor()
+        proc = CeleryCodeOwnerSpanProcessor()
         celery_span = FakeSpan('celery.run', 'test.module.for.celery.task')
 
         proc.on_span_start(celery_span)
@@ -56,7 +36,7 @@ class TestDatadogMonitoringSpanProcessor(TestCase):
     @patch('edx_arch_experiments.datadog_monitoring.code_owner.utils.set_custom_attribute')
     def test_other_span(self, mock_set_custom_attribute):
         """ Tests processor with a non-celery span. """
-        proc = apps.DatadogMonitoringSpanProcessor()
+        proc = CeleryCodeOwnerSpanProcessor()
         celery_span = FakeSpan('other.span', 'test.resource.name')
 
         proc.on_span_start(celery_span)
@@ -66,7 +46,7 @@ class TestDatadogMonitoringSpanProcessor(TestCase):
     @patch('edx_arch_experiments.datadog_monitoring.code_owner.utils.set_custom_attribute')
     def test_non_span(self, mock_set_custom_attribute):
         """ Tests processor with an object that doesn't have span name or resource. """
-        proc = apps.DatadogMonitoringSpanProcessor()
+        proc = CeleryCodeOwnerSpanProcessor()
         non_span = object()
 
         proc.on_span_start(non_span)
