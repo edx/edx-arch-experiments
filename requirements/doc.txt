@@ -85,7 +85,7 @@ cryptography==43.0.3
     #   pyjwt
 ddt==1.7.2
     # via -r requirements/test.txt
-ddtrace==2.16.3
+ddtrace==2.16.4
     # via -r requirements/test.txt
 deprecated==1.2.15
     # via
@@ -327,7 +327,7 @@ sqlparse==0.5.2
     # via
     #   -r requirements/test.txt
     #   django
-stevedore==5.3.0
+stevedore==5.4.0
     # via
     #   -r requirements/test.txt
     #   code-annotations
@@ -378,5 +378,5 @@ zipp==3.21.0
     #   importlib-metadata
 
 # The following packages are considered to be unsafe in a requirements file:
-setuptools==75.5.0
+setuptools==75.6.0
     # via -r requirements/test.txt
