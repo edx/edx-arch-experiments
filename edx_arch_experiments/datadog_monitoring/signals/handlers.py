@@ -11,7 +11,7 @@ from edx_arch_experiments.datadog_monitoring.code_owner.datadog import CeleryCod
 log = logging.getLogger(__name__)
 
 
-@receiver(worker_process_init, weak=False)
+@receiver(worker_process_init)
 def init_worker_process(sender, **kwargs):
     """
     Adds a Datadog span processor to each worker process.
