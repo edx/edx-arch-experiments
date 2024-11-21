@@ -13,7 +13,7 @@ class CeleryCodeOwnerSpanProcessor:
         """
         Adds code owner span tag for celery run spans at span creation.
         """
-        if getattr(span, 'name') == 'celery.run':
+        if getattr(span, 'name', None) == 'celery.run':
             # We can use this for celery spans, because the resource name is more predictable
             # and available from the start. For django requests, we'll instead continue to use
             # django middleware for setting code owner.
