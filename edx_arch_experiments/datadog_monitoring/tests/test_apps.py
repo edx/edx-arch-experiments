@@ -20,4 +20,4 @@ class TestDatadogMonitoringApp(TestCase):
         was already imported.
         """
         # the name of the function is in the weakref __repr__
-        assert 'init_worker_process' in worker_process_init.receivers[0][1].__repr__()
+        assert 'init_worker_process' in repr(worker_process_init.receivers[0][1])
