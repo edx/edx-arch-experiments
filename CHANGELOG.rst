@@ -14,6 +14,17 @@ Change Log
 Unreleased
 ~~~~~~~~~~
 
+[5.1.0] - 2024-11-21
+~~~~~~~~~~~~~~~~~~~~
+Added
+-----
+* Added Datadog monitoring app which adds code owner monitoring. This is the first step in moving code owner code from edx-django-utils to this plugin.
+
+  * Adds near duplicate of code owner middleware from edx-django-utils.
+  * Adds code owner span tags for celery using Datadog span processing of celery.run spans.
+  * Uses temporary span tags names using ``_2``, like ``code_owner_2``, for rollout and comparison with the original span tags.
+  * Span tag code_owner_2_module includes the task name, where the original code_owner_module does not. In both cases, the code owner is computed the same, because it is based on a prefix match.
+
 [5.0.0] - 2024-10-22
 ~~~~~~~~~~~~~~~~~~~~
 Removed
