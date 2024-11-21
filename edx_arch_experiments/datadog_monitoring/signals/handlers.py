@@ -15,6 +15,9 @@ log = logging.getLogger(__name__)
 def init_worker_process(sender, **kwargs):
     """
     Adds a Datadog span processor to each worker process.
+    
+    We have to do this from inside the worker processes because they fork from the
+    parent process before the plugin app is initialized.
     """
     try:
         from ddtrace import tracer  # pylint: disable=import-outside-toplevel
