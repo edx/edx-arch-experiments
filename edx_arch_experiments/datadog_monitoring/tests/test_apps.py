@@ -19,4 +19,5 @@ class TestDatadogMonitoringApp(TestCase):
         to be re-added during a call to ready, presumably because the signal
         was already imported.
         """
-        assert worker_process_init.receivers[0][1].__name__ == 'init_worker_process'
+        # the name of the function is in the weakref __repr__
+        assert 'init_worker_process' in worker_process_init.receivers[0][1].__repr__()
