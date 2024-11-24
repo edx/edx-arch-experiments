@@ -74,7 +74,7 @@ drf-jwt==1.19.2
     # via edx-drf-extensions
 edx-codejail==3.5.2
     # via -r requirements/base.in
-edx-django-utils==7.0.0
+edx-django-utils==7.0.1
     # via
     #   -r requirements/base.in
     #   edx-drf-extensions
