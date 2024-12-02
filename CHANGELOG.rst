@@ -13,6 +13,9 @@ Change Log
 
 Unreleased
 ~~~~~~~~~~
+Added
+-----
+* Adds search script datadoc_search.py, for searching Datadog monitors and dashboards.
 
 [5.1.0] - 2024-11-21
 ~~~~~~~~~~~~~~~~~~~~
