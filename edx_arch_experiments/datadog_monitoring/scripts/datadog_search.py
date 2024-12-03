@@ -12,9 +12,14 @@ import re
 import types
 
 import click
-from datadog_api_client import ApiClient, Configuration
-from datadog_api_client.v1.api.dashboards_api import DashboardsApi
-from datadog_api_client.v1.api.monitors_api import MonitorsApi
+
+try:
+    import datadog_api_client
+    from datadog_api_client import ApiClient, Configuration
+    from datadog_api_client.v1.api.dashboards_api import DashboardsApi
+    from datadog_api_client.v1.api.monitors_api import MonitorsApi
+except ModuleNotFoundError:
+    datadog_api_client = None
 
 
 @click.command()
@@ -33,6 +38,7 @@ def main(regex):
 
     Note: The search ignores case since most features are case insensitive.
 
+    \b
     Pre-requisites:
     1. Install the client library:
         pip install datadog-api-client
@@ -41,15 +47,24 @@ def main(regex):
         export DD_APP_KEY=XXXXX
     See https://docs.datadoghq.com/api/latest/?code-lang=python for more details.
 
+    \b
     If you get a Forbidden error, you either didn't supply a proper DD_API_KEY and
-    DD_APP_KEY, or your DD_APP_KEY is missing certain required scopes:
+    DD_APP_KEY, or your DD_APP_KEY is missing these required scopes:
     - dashboards_read
     - monitors_read
 
     For developing with the datadog-api-client, see:
-    - https://github.com/DataDog/datadog-api-client-python
+    https://github.com/DataDog/datadog-api-client-python
 
     """
+    # Note: The \b's in the docstring above are for formatting help
+    # text in the click library output.
+
+    if datadog_api_client is None:
+        print('Missing required datadog client library. Please run:')
+        print('\n    pip install datadog-api-client')
+        exit(1)
+
     compiled_regex = re.compile(regex)
     configuration = Configuration()
     api_client = ApiClient(configuration)
@@ -66,25 +81,31 @@ def search_monitors(regex, api_client):
 
     Arguments:
         regex (re.Pattern): compiled regex used to find matches.
-        api_client (int): a Datadog client for making API requests.
+        api_client (ApiClient): a Datadog client for making API requests.
     """
     api_instance = MonitorsApi(api_client)
 
     print(f"Searching for regex {regex.pattern} in all monitors:")
-    match_found = False
+    total_match_count = 0
+    monitor_match_count = 0
     for monitor in api_instance.list_monitors_with_pagination():
         matches = find_matches(regex, monitor, 'monitor')
+        total_match_count += len(matches)
         if matches:
+            monitor_match_count += 1
             print('\n')
             print(f'- {monitor.id} "{monitor.name}" {monitor.tags}')
             for match in matches:
-                print(f'  - query_path: {match[1]}')
-                print(f'    - query: {match[0]}')
+                print(f'  - match_path: {match[1]}')
+                print(f'    - match: {match[0]}')
             match_found = True
         else:
             print('.', end='', flush=True)  # shows search progress
 
-    if not match_found:
+    if total_match_count:
+        print(f"\n\nFound {total_match_count} matches in "
+              f"{monitor_match_count} monitors.")
+    else:
         print("\n\nNo monitors matched.")
 
 
@@ -94,13 +115,14 @@ def search_dashboards(regex, api_client):
 
     Arguments:
         regex (re.Pattern): compiled regex used to find matches.
-        api_client (int): a Datadog client for making API requests.
+        api_client (ApiClient): a Datadog client for making API requests.
     """
     api_instance = DashboardsApi(api_client)
 
     print(f"Searching for regex {regex.pattern} in all dashboards:")
     errors = []
-    match_found = False
+    total_match_count = 0
+    dashboard_match_count = 0
     for dashboard in api_instance.list_dashboards_with_pagination():
         try:
             dashboard_details = api_instance.get_dashboard(dashboard.id)
@@ -109,7 +131,9 @@ def search_dashboards(regex, api_client):
             continue
 
         matches = find_matches(regex, dashboard_details, 'dashboard_details')
+        total_match_count += len(matches)
         if matches:
+            dashboard_match_count += 1
             if hasattr(dashboard_details, 'tags'):
                 tags = f' {dashboard_details.tags}'
             else:
@@ -117,8 +141,8 @@ def search_dashboards(regex, api_client):
             print('\n')
             print(f'- {dashboard.id} "{dashboard.title}"{tags}')
             for match in matches:
-                print(f'  - query_path: {match[1]}')
-                print(f'    - query: {match[0]}')
+                print(f'  - match_path: {match[1]}')
+                print(f'    - match: {match[0]}')
             match_found = True
         else:
             print('.', end='', flush=True)  # shows search progress
@@ -128,7 +152,10 @@ def search_dashboards(regex, api_client):
         for error in errors:
             print(f'Skipping {error[0]} due to error: {error[1]}')
 
-    if not match_found:
+    if total_match_count:
+        print(f"\n\nFound {total_match_count} matches in "
+              f"{dashboard_match_count} dashboards.")
+    else:
         print("\n\nNo dashboards matched.")
 
 
