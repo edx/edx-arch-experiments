@@ -34,4 +34,9 @@ To find relevant usage of these span tags, see `Searching Datadog monitors and d
 Searching Datadog monitors and dashboards
 -----------------------------------------
 
-TODO: This section needs to be updated as part of https://github.com/edx/edx-arch-experiments/issues/786, once the script has been migrated for use with Datadog.
+See :doc:`search_datadog` for general information about the datadog_search.py script.
+
+This script can be especially useful for helping with the expand/contract phase when changing squad names. For example, you could use the following::
+
+    ./datadog_search.py --regex old-squad-name
+    ./datadog_search.py --regex new-squad-name
