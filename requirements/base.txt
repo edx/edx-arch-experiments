@@ -38,11 +38,11 @@ click-plugins==1.1.1
     # via celery
 click-repl==0.3.0
     # via celery
-code-annotations==1.8.2
+code-annotations==2.0.0
     # via edx-toggles
-cryptography==43.0.3
+cryptography==44.0.0
     # via pyjwt
-django==4.2.16
+django==4.2.17
     # via
     #   -c https://raw.githubusercontent.com/edx/edx-lint/master/edx_lint/files/common_constraints.txt
     #   -r requirements/base.in
@@ -74,7 +74,7 @@ drf-jwt==1.19.2
     # via edx-drf-extensions
 edx-codejail==3.5.2
     # via -r requirements/base.in
-edx-django-utils==7.0.0
+edx-django-utils==7.1.0
     # via
     #   -r requirements/base.in
     #   edx-drf-extensions
@@ -97,7 +97,7 @@ kombu==5.4.2
     # via celery
 markupsafe==3.0.2
     # via jinja2
-newrelic==10.3.0
+newrelic==10.3.1
     # via edx-django-utils
 pbr==6.1.0
     # via stevedore
@@ -107,7 +107,7 @@ psutil==6.1.0
     # via edx-django-utils
 pycparser==2.22
     # via cffi
-pyjwt[crypto]==2.10.0
+pyjwt[crypto]==2.10.1
     # via
     #   drf-jwt
     #   edx-drf-extensions
@@ -127,13 +127,13 @@ referencing==0.35.1
     #   jsonschema-specifications
 requests==2.32.3
     # via edx-drf-extensions
-rpds-py==0.21.0
+rpds-py==0.22.3
     # via
     #   jsonschema
     #   referencing
 semantic-version==2.10.0
     # via edx-drf-extensions
-six==1.16.0
+six==1.17.0
     # via
     #   edx-codejail
     #   python-dateutil
