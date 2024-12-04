@@ -23,24 +23,18 @@ If you want to learn more about custom span tags in general, see `Enhanced Monit
 .. _ADR on monitoring by code owner: https://github.com/openedx/edx-platform/blob/master/lms/djangoapps/monitoring/docs/decisions/0001-monitoring-by-code-owner.rst
 .. _Enhanced Monitoring and Custom Attributes: https://edx.readthedocs.io/projects/edx-django-utils/en/latest/monitoring/how_tos/using_custom_attributes.html
 
-Setting up the Middleware
--------------------------
+What gets code_owner span tags
+------------------------------
 
-You simply need to add ``edx_arch_experiments.datadog_monitoring.code_owner.middleware.CodeOwnerMonitoringMiddleware`` to get code owner span tags on Django requests.
+Simply by installing the datadog_monitoring plugin, code owner span tags will automatically be added for:
 
-Handling celery tasks
----------------------
-
-For celery tasks, this plugin will automatically detect and add code owner span tags to any span with ``operation_name:celery.run``.
-
-This is accomplished by receiving signals from celery's worker_process_init for each process, and then adding a custom Datadog span processor to add the span tags as appropriate.
+* ``operation_name:django.request``: tags are added by using edx-django-utils monitoring signals, which are sent by its MonitoringSupportMiddleware.
+* ``operation_name:celery.run``: tags are added using celery's ``worker_process_init`` signal, and then adding a custom Datadog span processor to add the span tags as appropriate.
 
 Configuring your app settings
 -----------------------------
 
 Once the Middleware is made available, simply set the Django Settings ``CODE_OWNER_MAPPINGS`` and ``CODE_OWNER_THEMES`` appropriately.
-
-The following example shows how you can include an optional config for a catch-all using ``'*'``. Although you might expect this example to use Python, it is intentionally illustrated in YAML because the catch-all requires special care in YAML.
 
 ::
 
@@ -50,7 +44,7 @@ The following example shows how you can include an optional config for a catch-a
         - xblock_django
         - openedx.core.djangoapps.xblock
       theme-x-team-blue:
-      - '*'  # IMPORTANT: you must surround * with quotes in yml
+        - lms
 
     # YAML format of example CODE_OWNER_THEMES
     CODE_OWNER_THEMES:

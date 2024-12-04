@@ -17,6 +17,12 @@ Added
 -----
 * Adds search script datadog_search.py, for searching Datadog monitors and dashboards.
 
+[6.0.0] - 2024-11-05
+~~~~~~~~~~~~~~~~~~~~
+Removed
+-------
+- Removes CodeOwnerMonitoringMiddleware, in favor of using new signals semt from edx-django-utils's MonitoringSupportMiddleware.
+
 [5.1.0] - 2024-11-21
 ~~~~~~~~~~~~~~~~~~~~
 Added
