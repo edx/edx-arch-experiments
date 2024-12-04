@@ -91,7 +91,7 @@ click-repl==0.3.0
     # via
     #   -r requirements/quality.txt
     #   celery
-code-annotations==1.8.2
+code-annotations==2.0.0
     # via
     #   -r requirements/quality.txt
     #   edx-lint
@@ -100,18 +100,18 @@ colorama==0.4.6
     # via
     #   -r requirements/ci.txt
     #   tox
-coverage[toml]==7.6.7
+coverage[toml]==7.6.8
     # via
     #   -r requirements/quality.txt
     #   pytest-cov
-cryptography==43.0.3
+cryptography==44.0.0
     # via
     #   -r requirements/quality.txt
     #   pyjwt
     #   secretstorage
 ddt==1.7.2
     # via -r requirements/quality.txt
-ddtrace==2.16.4
+ddtrace==2.17.2
     # via -r requirements/quality.txt
 deprecated==1.2.15
     # via
@@ -127,7 +127,7 @@ distlib==0.3.9
     # via
     #   -r requirements/ci.txt
     #   virtualenv
-django==4.2.16
+django==4.2.17
     # via
     #   -c https://raw.githubusercontent.com/edx/edx-lint/master/edx_lint/files/common_constraints.txt
     #   -r requirements/quality.txt
@@ -169,7 +169,7 @@ drf-jwt==1.19.2
     #   edx-drf-extensions
 edx-codejail==3.5.2
     # via -r requirements/quality.txt
-edx-django-utils==7.0.0
+edx-django-utils==7.1.0
     # via
     #   -r requirements/quality.txt
     #   edx-drf-extensions
@@ -204,7 +204,6 @@ importlib-metadata==8.5.0
     #   -r requirements/quality.txt
     #   keyring
     #   opentelemetry-api
-    #   twine
 iniconfig==2.0.0
     # via
     #   -r requirements/quality.txt
@@ -276,11 +275,11 @@ more-itertools==10.5.0
     #   -r requirements/quality.txt
     #   jaraco-classes
     #   jaraco-functools
-newrelic==10.3.0
+newrelic==10.3.1
     # via
     #   -r requirements/quality.txt
     #   edx-django-utils
-nh3==0.2.18
+nh3==0.2.19
     # via
     #   -r requirements/quality.txt
     #   readme-renderer
@@ -297,6 +296,7 @@ packaging==24.2
     #   pyproject-api
     #   pytest
     #   tox
+    #   twine
 path==16.16.0
     # via edx-i18n-tools
 pbr==6.1.0
@@ -305,7 +305,7 @@ pbr==6.1.0
     #   stevedore
 pip-tools==7.4.1
     # via -r requirements/pip-tools.txt
-pkginfo==1.10.0
+pkginfo==1.12.0
     # via
     #   -r requirements/quality.txt
     #   twine
@@ -329,7 +329,7 @@ prompt-toolkit==3.0.48
     # via
     #   -r requirements/quality.txt
     #   click-repl
-protobuf==5.28.3
+protobuf==5.29.1
     # via
     #   -r requirements/quality.txt
     #   ddtrace
@@ -351,12 +351,12 @@ pygments==2.18.0
     #   diff-cover
     #   readme-renderer
     #   rich
-pyjwt[crypto]==2.10.0
+pyjwt[crypto]==2.10.1
     # via
     #   -r requirements/quality.txt
     #   drf-jwt
     #   edx-drf-extensions
-pylint==3.3.1
+pylint==3.3.2
     # via
     #   -r requirements/quality.txt
     #   edx-lint
@@ -393,7 +393,7 @@ pyproject-hooks==1.2.0
     #   -r requirements/pip-tools.txt
     #   build
     #   pip-tools
-pytest==8.3.3
+pytest==8.3.4
     # via
     #   -r requirements/quality.txt
     #   pytest-cov
@@ -445,7 +445,7 @@ rich==13.9.4
     # via
     #   -r requirements/quality.txt
     #   twine
-rpds-py==0.21.0
+rpds-py==0.22.3
     # via
     #   -r requirements/quality.txt
     #   jsonschema
@@ -458,7 +458,7 @@ semantic-version==2.10.0
     # via
     #   -r requirements/quality.txt
     #   edx-drf-extensions
-six==1.16.0
+six==1.17.0
     # via
     #   -r requirements/quality.txt
     #   edx-codejail
@@ -488,7 +488,7 @@ tomlkit==0.13.2
     #   pylint
 tox==4.23.2
     # via -r requirements/ci.txt
-twine==5.1.1
+twine==6.0.1
     # via -r requirements/quality.txt
 typing-extensions==4.12.2
     # via
@@ -511,7 +511,7 @@ vine==5.1.0
     #   amqp
     #   celery
     #   kombu
-virtualenv==20.27.1
+virtualenv==20.28.0
     # via
     #   -r requirements/ci.txt
     #   tox
@@ -519,11 +519,11 @@ wcwidth==0.2.13
     # via
     #   -r requirements/quality.txt
     #   prompt-toolkit
-wheel==0.45.0
+wheel==0.45.1
     # via
     #   -r requirements/pip-tools.txt
     #   pip-tools
-wrapt==1.16.0
+wrapt==1.17.0
     # via
     #   -r requirements/quality.txt
     #   ddtrace

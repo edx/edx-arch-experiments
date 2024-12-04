@@ -59,20 +59,20 @@ click-repl==0.3.0
     # via
     #   -r requirements/base.txt
     #   celery
-code-annotations==1.8.2
+code-annotations==2.0.0
     # via
     #   -r requirements/base.txt
     #   -r requirements/test.in
     #   edx-toggles
-coverage[toml]==7.6.7
+coverage[toml]==7.6.8
     # via pytest-cov
-cryptography==43.0.3
+cryptography==44.0.0
     # via
     #   -r requirements/base.txt
     #   pyjwt
 ddt==1.7.2
     # via -r requirements/test.in
-ddtrace==2.16.4
+ddtrace==2.17.2
     # via -r requirements/test.in
 deprecated==1.2.15
     # via opentelemetry-api
@@ -112,7 +112,7 @@ drf-jwt==1.19.2
     #   edx-drf-extensions
 edx-codejail==3.5.2
     # via -r requirements/base.txt
-edx-django-utils==7.0.0
+edx-django-utils==7.1.0
     # via
     #   -r requirements/base.txt
     #   edx-drf-extensions
@@ -153,7 +153,7 @@ markupsafe==3.0.2
     # via
     #   -r requirements/base.txt
     #   jinja2
-newrelic==10.3.0
+newrelic==10.3.1
     # via
     #   -r requirements/base.txt
     #   edx-django-utils
@@ -171,7 +171,7 @@ prompt-toolkit==3.0.48
     # via
     #   -r requirements/base.txt
     #   click-repl
-protobuf==5.28.3
+protobuf==5.29.1
     # via ddtrace
 psutil==6.1.0
     # via
@@ -181,7 +181,7 @@ pycparser==2.22
     # via
     #   -r requirements/base.txt
     #   cffi
-pyjwt[crypto]==2.10.0
+pyjwt[crypto]==2.10.1
     # via
     #   -r requirements/base.txt
     #   drf-jwt
@@ -194,7 +194,7 @@ pynacl==1.5.0
     # via
     #   -r requirements/base.txt
     #   edx-django-utils
-pytest==8.3.3
+pytest==8.3.4
     # via
     #   pytest-cov
     #   pytest-django
@@ -226,7 +226,7 @@ requests==2.32.3
     # via
     #   -r requirements/base.txt
     #   edx-drf-extensions
-rpds-py==0.21.0
+rpds-py==0.22.3
     # via
     #   -r requirements/base.txt
     #   jsonschema
@@ -235,7 +235,7 @@ semantic-version==2.10.0
     # via
     #   -r requirements/base.txt
     #   edx-drf-extensions
-six==1.16.0
+six==1.17.0
     # via
     #   -r requirements/base.txt
     #   edx-codejail
@@ -278,7 +278,7 @@ wcwidth==0.2.13
     # via
     #   -r requirements/base.txt
     #   prompt-toolkit
-wrapt==1.16.0
+wrapt==1.17.0
     # via
     #   ddtrace
     #   deprecated
