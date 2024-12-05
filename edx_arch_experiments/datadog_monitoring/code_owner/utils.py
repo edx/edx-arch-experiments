@@ -4,6 +4,7 @@ Utilities for monitoring code_owner_2
 import logging
 
 from django.conf import settings
+from django.urls import resolve
 from edx_django_utils.monitoring import set_custom_attribute
 
 log = logging.getLogger(__name__)
@@ -139,6 +140,62 @@ def set_code_owner_custom_attributes(code_owner):
     squad = _get_squad_from_code_owner(code_owner)
     if squad:
         set_custom_attribute('code_owner_2_squad', squad)
+
+
+def set_code_owner_attribute(request):
+    """
+    Sets the code_owner_2 custom attribute for the request.
+    """
+    code_owner = None
+    module = _get_module_from_request(request)
+    if module:
+        code_owner = get_code_owner_from_module(module)
+
+    if code_owner:
+        set_code_owner_custom_attributes(code_owner)
+
+
+def _get_module_from_request(request):
+    """
+    Get the module from the request path or the current transaction.
+
+    Side-effects:
+        Sets code_owner_2_module custom attribute, used to determine code_owner_2.
+        If module was not found, may set code_owner_2_path_error custom attribute
+            if applicable.
+
+    Returns:
+        str: module name or None if not found
+
+    """
+    if not is_code_owner_mappings_configured():
+        return None
+
+    module, path_error = _get_module_from_request_path(request)
+    if module:
+        set_custom_attribute('code_owner_2_module', module)
+        return module
+
+    # monitor errors if module was not found
+    if path_error:
+        set_custom_attribute('code_owner_2_path_error', path_error)
+    return None
+
+
+def _get_module_from_request_path(request):
+    """
+    Uses the request path to get the view_func module.
+
+    Returns:
+        (str, str): (module, error_message), where at least one of these should be None
+
+    """
+    try:
+        view_func, _, _ = resolve(request.path)
+        module = view_func.__module__
+        return module, None
+    except Exception as e:  # pragma: no cover, pylint: disable=broad-exception-caught
+        return None, str(e)
 
 
 def clear_cached_mappings():

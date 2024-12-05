@@ -13,6 +13,13 @@ Change Log
 
 Unreleased
 ~~~~~~~~~~
+
+[6.0.0] - 2024-12-05
+~~~~~~~~~~~~~~~~~~~~
+Removed
+-------
+- Removes CodeOwnerMonitoringMiddleware, in favor of using new signals sent from edx-django-utils's MonitoringSupportMiddleware.
+
 Added
 -----
 * Adds search script datadog_search.py, for searching Datadog monitors and dashboards.
