@@ -17,12 +17,6 @@ Added
 -----
 * Adds search script datadog_search.py, for searching Datadog monitors and dashboards.
 
-[5.2.0] - 2024-12-05
-~~~~~~~~~~~~~~~~~~~~
-Removed
--------
-* Removed code_owner optional path prefixes because edx-platform shims are no longer in use. See change for more details.
-
 [5.1.0] - 2024-11-21
 ~~~~~~~~~~~~~~~~~~~~
 Added
