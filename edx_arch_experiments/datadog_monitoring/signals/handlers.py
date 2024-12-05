@@ -18,24 +18,24 @@ log = logging.getLogger(__name__)
 
 
 @receiver(monitoring_support_process_response, dispatch_uid=f"datadog_monitoring_support_process_response")
-def datadog_monitoring_support_process_response(sender, **kwargs):
+def datadog_monitoring_support_process_response(sender, request=None, **kwargs):
     """
     Adds datadog monitoring at monitoring process response time.
     """
-    if 'request' in kwargs:
-        set_code_owner_attribute(kwargs['request'])
+    if request:
+        set_code_owner_attribute(request)
     else:
         log.warning('monitoring_support_process_response sent without '
                     'expected parameter: request.')
 
 
 @receiver(monitoring_support_process_exception, dispatch_uid=f"datadog_monitoring_support_process_exception")
-def datadog_monitoring_support_process_exception(sender, **kwargs):
+def datadog_monitoring_support_process_exception(sender, request=None, **kwargs):
     """
     Adds datadog monitoring at monitoring process exception time.
     """
-    if 'request' in kwargs:
-        set_code_owner_attribute(kwargs['request'])
+    if request:
+        set_code_owner_attribute(request)
     else:
         log.warning('monitoring_support_process_exception sent without '
                     'expected parameter: request.')
