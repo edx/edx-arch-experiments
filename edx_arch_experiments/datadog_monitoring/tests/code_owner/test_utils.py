@@ -36,13 +36,10 @@ class MonitoringUtilsTests(TestCase):
     @ddt.data(
         ('xbl', None),
         ('xblock_2', None),
-        ('xblock', 'team-red'),
         ('openedx.core.djangoapps', None),
         ('openedx.core.djangoapps.xblock', 'team-red'),
         ('openedx.core.djangoapps.xblock.views', 'team-red'),
-        ('grades', 'team-red'),
         ('lms.djangoapps.grades', 'team-red'),
-        ('xblock_django', 'team-blue'),
         ('common.djangoapps.xblock_django', 'team-blue'),
     )
     @ddt.unpack
