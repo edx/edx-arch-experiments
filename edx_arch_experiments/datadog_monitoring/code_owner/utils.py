@@ -2,7 +2,6 @@
 Utilities for monitoring code_owner_2
 """
 import logging
-import re
 
 from django.conf import settings
 from edx_django_utils.monitoring import set_custom_attribute
@@ -95,11 +94,6 @@ def get_code_owner_mappings():
             path_list = code_owner_mappings[code_owner]
             for path in path_list:
                 path_to_code_owner_mapping[path] = code_owner
-                optional_module_prefix_match = _OPTIONAL_MODULE_PREFIX_PATTERN.match(path)
-                # if path has an optional prefix, also add the module name without the prefix
-                if optional_module_prefix_match:
-                    path_without_prefix = path[optional_module_prefix_match.end():]
-                    path_to_code_owner_mapping[path_without_prefix] = code_owner
     except TypeError as e:
         log.exception(
             'Error processing CODE_OWNER_MAPPINGS. {}'.format(e)  # pylint: disable=logging-format-interpolation
@@ -155,12 +149,6 @@ def clear_cached_mappings():
     _PATH_TO_CODE_OWNER_MAPPINGS = None
     global _CODE_OWNER_TO_THEME_AND_SQUAD_MAPPINGS
     _CODE_OWNER_TO_THEME_AND_SQUAD_MAPPINGS = None
-
-
-# TODO: Retire this once edx-platform import_shims is no longer used.
-#   Note: This should be ready for removal because import_shims has been removed.
-#   See https://github.com/openedx/edx-platform/tree/854502b560bda74ef898501bb2a95ce238cf794c/import_shims
-_OPTIONAL_MODULE_PREFIX_PATTERN = re.compile(r'^(lms|common|openedx\.core)\.djangoapps\.')
 
 
 # Cached lookup table for code owner theme and squad given a code owner.
