@@ -138,6 +138,18 @@ class MonitoringUtilsTests(TestCase):
         )
 
     @override_settings(
+        CODE_OWNER_MAPPINGS={'team-red': ['lms.djangoapps.monitoring.tests.mock_views']},
+    )
+    @patch(
+        'edx_arch_experiments.datadog_monitoring.code_owner.utils.set_custom_attribute',
+    )
+    def test_set_code_owner_attribute_from_request_is_none(self, mock_set_custom_attribute):
+        set_code_owner_attribute(None)
+        self._assert_set_custom_attribute(
+            mock_set_custom_attribute, has_path_error=True
+        )
+
+    @override_settings(
         ROOT_URLCONF=__name__,
     )
     @patch('edx_arch_experiments.datadog_monitoring.code_owner.utils.set_custom_attribute')
