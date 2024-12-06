@@ -7,3 +7,4 @@
 
 diff-cover                # Changeset diff test coverage
 edx-i18n-tools            # For i18n_tool dummy
+datadog-api-client        # Datadog client API for datadog_search.py
