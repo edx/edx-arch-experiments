@@ -14,6 +14,19 @@ Change Log
 Unreleased
 ~~~~~~~~~~
 
+[6.1.0] - 2024-12-10
+~~~~~~~~~~~~~~~~~~~~
+Changed
+_______
+* Completes code owner monitoring updates, which drops owner theme and finalizes the code owner span tags. See doc and ADR updates for more details.
+
+    * The code_owner_theme_2 tag was dropped altogether.
+    * The temporary suffix (_2) was removed from other span tags.
+    * The code_owner (formerly code_owner_2) tag no longer includes the theme name.
+    * The new name for the django setting is CODE_OWNER_TO_PATH_MAPPINGS (formerly CODE_OWNER_MAPPINGS).
+    * The django setting CODE_OWNER_THEMES was dropped.
+    * Updates the generate_code_owner_mappings.py script accordingly.
+
 [6.0.0] - 2024-12-05
 ~~~~~~~~~~~~~~~~~~~~
 Removed

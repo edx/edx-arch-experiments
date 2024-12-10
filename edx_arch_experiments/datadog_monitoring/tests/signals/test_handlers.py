@@ -23,15 +23,15 @@ class TestHandlers(TestCase):
             sp for sp in tracer._span_processors if type(sp).__name__ != 'CeleryCodeOwnerSpanProcessor'
         ]
 
-    @patch('edx_arch_experiments.datadog_monitoring.signals.handlers.set_code_owner_attribute')
-    def test_datadog_monitoring_support_process_response(self, mock_set_code_owner_attribute):
+    @patch('edx_arch_experiments.datadog_monitoring.signals.handlers.set_code_owner_span_tags_from_request')
+    def test_datadog_monitoring_support_process_response(self, mock_set_code_owner_span_tags_from_request):
         datadog_monitoring_support_process_response(sender=None, request='fake request')
-        mock_set_code_owner_attribute.assert_called_once_with('fake request')
+        mock_set_code_owner_span_tags_from_request.assert_called_once_with('fake request')
 
-    @patch('edx_arch_experiments.datadog_monitoring.signals.handlers.set_code_owner_attribute')
-    def test_datadog_monitoring_support_process_exception(self, mock_set_code_owner_attribute):
+    @patch('edx_arch_experiments.datadog_monitoring.signals.handlers.set_code_owner_span_tags_from_request')
+    def test_datadog_monitoring_support_process_exception(self, mock_set_code_owner_span_tags_from_request):
         datadog_monitoring_support_process_exception(sender=None, request='fake request')
-        mock_set_code_owner_attribute.assert_called_once_with('fake request')
+        mock_set_code_owner_span_tags_from_request.assert_called_once_with('fake request')
 
     def test_init_worker_process(self):
         def get_processor_list():
