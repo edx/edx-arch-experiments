@@ -31,7 +31,7 @@ class TestCeleryCodeOwnerSpanProcessor(TestCase):
 
         proc.on_span_start(celery_span)
 
-        mock_set_custom_attribute.assert_called_once_with('code_owner_2_module', 'test.module.for.celery.task')
+        mock_set_custom_attribute.assert_called_once_with('code_owner_module', 'test.module.for.celery.task')
 
     @patch('edx_arch_experiments.datadog_monitoring.code_owner.utils.set_custom_attribute')
     def test_other_span(self, mock_set_custom_attribute):

@@ -12,7 +12,7 @@ from edx_django_utils.monitoring.signals import (
 )
 
 from edx_arch_experiments.datadog_monitoring.code_owner.datadog import CeleryCodeOwnerSpanProcessor
-from edx_arch_experiments.datadog_monitoring.code_owner.utils import set_code_owner_attribute
+from edx_arch_experiments.datadog_monitoring.code_owner.utils import set_code_owner_span_tags_from_request
 
 log = logging.getLogger(__name__)
 
@@ -22,11 +22,7 @@ def datadog_monitoring_support_process_response(sender, request=None, **kwargs):
     """
     Adds datadog monitoring at monitoring process response time.
     """
-    if request:
-        set_code_owner_attribute(request)
-    else:
-        log.warning('monitoring_support_process_response sent without '
-                    'expected parameter: request.')
+    set_code_owner_span_tags_from_request(request)
 
 
 @receiver(monitoring_support_process_exception, dispatch_uid=f"datadog_monitoring_support_process_exception")
@@ -34,11 +30,7 @@ def datadog_monitoring_support_process_exception(sender, request=None, **kwargs)
     """
     Adds datadog monitoring at monitoring process exception time.
     """
-    if request:
-        set_code_owner_attribute(request)
-    else:
-        log.warning('monitoring_support_process_exception sent without '
-                    'expected parameter: request.')
+    set_code_owner_span_tags_from_request(request)
 
 
 @receiver(worker_process_init, dispatch_uid=f"datadog_span_processor_worker_process_init")
