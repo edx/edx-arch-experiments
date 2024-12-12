@@ -169,7 +169,6 @@ class MonitoringUtilsTests(TestCase):
         if code_owner:
             call_list.append(call('code_owner', code_owner))
             call_list.append(call('code_owner_squad', code_owner))
-            call_list.append(call('code_owner_plugin', True))
         if module:
             call_list.append(call('code_owner_module', module))
         if has_path_error:
