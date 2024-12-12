@@ -136,15 +136,6 @@ def set_code_owner_custom_span_tags(code_owner):
     #     to the code_owner span tag.
     set_custom_attribute('code_owner_squad', code_owner)
 
-    # .. custom_attribute_name: code_owner_plugin
-    # .. custom_attribute_description: This is a temporary span tag to roll out the
-    #     the switch from edx-django-utils to this plugin. If this span tag is True,
-    #     the plugin has added the above custom span tags (possibly in addition to
-    #     edx-django-utils). If the code_owner_theme span tag is also seen, then
-    #     edx-django-utils is also adding these span tags. If not, only the plugin is
-    #     creating these tags.
-    set_custom_attribute('code_owner_plugin', True)
-
 
 def set_code_owner_span_tags_from_request(request):
     """
