@@ -13,6 +13,9 @@ Change Log
 
 Unreleased
 ~~~~~~~~~~
+Removed
+-------
+* Removed temporary rollout span tag ``code_owner_plugin`` used for the code owner monitoring move from edx-django-utils. Now that edx-django-utils monitoring has been disabled, this span tag serves no purpose.
 
 [6.1.0] - 2024-12-10
 ~~~~~~~~~~~~~~~~~~~~
