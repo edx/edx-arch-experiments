@@ -50,6 +50,6 @@ Once the datadog_monitoring plugin is installed, set the Django Settings ``CODE_
 Updating Datadog monitoring
 ---------------------------
 
-https://github.com/openedx/edx-platform/blob/master/lms/djangoapps/monitoring/docs/decisions/0001-monitoring-by-code-owner.rstTo update monitoring in the event of a squad name change, see `Update Monitoring for Squad Changes`_.
+To update monitoring in the event of a squad name change, see `Update Monitoring for Squad Changes`_.
 
 .. _Update Monitoring for Squad Changes: https://github.com/edx/edx-arch-experiments/blob/main/edx_arch_experiments/datadog_monitoring/docs/how_tos/update_monitoring_for_squad_changes.rst
