@@ -16,7 +16,7 @@ billiard==4.2.1
     # via celery
 celery==5.4.0
     # via -r requirements/base.in
-certifi==2024.8.30
+certifi==2024.12.14
     # via requests
 cffi==1.17.1
     # via
@@ -38,7 +38,7 @@ click-plugins==1.1.1
     # via celery
 click-repl==0.3.0
     # via celery
-code-annotations==2.0.0
+code-annotations==2.1.0
     # via edx-toggles
 cryptography==44.0.0
     # via pyjwt
@@ -97,7 +97,7 @@ kombu==5.4.2
     # via celery
 markupsafe==3.0.2
     # via jinja2
-newrelic==10.3.1
+newrelic==10.4.0
     # via edx-django-utils
 pbr==6.1.0
     # via stevedore
@@ -137,7 +137,7 @@ six==1.17.0
     # via
     #   edx-codejail
     #   python-dateutil
-sqlparse==0.5.2
+sqlparse==0.5.3
     # via django
 stevedore==5.4.0
     # via
