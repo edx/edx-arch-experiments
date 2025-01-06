@@ -42,7 +42,7 @@ EDX_REPO_APPS = {
     'enterprise': 'https://github.com/openedx/edx-enterprise',
     'enterprise_learner_portal': 'https://github.com/openedx/edx-enterprise',
     'eventtracking': 'https://github.com/openedx/event-tracking',
-    'federated-content-connector': 'https://github.com/edx/federated-content-connector',
+    'federated_content_connector': 'https://github.com/edx/federated-content-connector',
     'help_tokens': 'https://github.com/openedx/help-tokens',
     'integrated_channels': 'https://github.com/openedx/edx-enterprise',
     'learner_pathway_progress': 'https://github.com/edx/learner-pathway-progress',
