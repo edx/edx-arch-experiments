@@ -12,7 +12,7 @@ asgiref==3.8.1
     # via
     #   -r requirements/base.txt
     #   django
-attrs==24.2.0
+attrs==24.3.0
     # via
     #   -r requirements/base.txt
     #   jsonschema
@@ -25,7 +25,7 @@ bytecode==0.16.0
     # via ddtrace
 celery==5.4.0
     # via -r requirements/base.txt
-certifi==2024.8.30
+certifi==2024.12.14
     # via
     #   -r requirements/base.txt
     #   requests
@@ -34,11 +34,11 @@ cffi==1.17.1
     #   -r requirements/base.txt
     #   cryptography
     #   pynacl
-charset-normalizer==3.4.0
+charset-normalizer==3.4.1
     # via
     #   -r requirements/base.txt
     #   requests
-click==8.1.7
+click==8.1.8
     # via
     #   -r requirements/base.txt
     #   celery
@@ -59,12 +59,12 @@ click-repl==0.3.0
     # via
     #   -r requirements/base.txt
     #   celery
-code-annotations==2.0.0
+code-annotations==2.1.0
     # via
     #   -r requirements/base.txt
     #   -r requirements/test.in
     #   edx-toggles
-coverage[toml]==7.6.9
+coverage[toml]==7.6.10
     # via pytest-cov
 cryptography==44.0.0
     # via
@@ -72,7 +72,7 @@ cryptography==44.0.0
     #   pyjwt
 ddt==1.7.2
     # via -r requirements/test.in
-ddtrace==2.17.2
+ddtrace==2.18.1
     # via -r requirements/test.in
 deprecated==1.2.15
     # via opentelemetry-api
@@ -135,7 +135,7 @@ importlib-metadata==8.5.0
     # via opentelemetry-api
 iniconfig==2.0.0
     # via pytest
-jinja2==3.1.4
+jinja2==3.1.5
     # via
     #   -r requirements/base.txt
     #   code-annotations
@@ -153,11 +153,11 @@ markupsafe==3.0.2
     # via
     #   -r requirements/base.txt
     #   jinja2
-newrelic==10.3.1
+newrelic==10.4.0
     # via
     #   -r requirements/base.txt
     #   edx-django-utils
-opentelemetry-api==1.28.2
+opentelemetry-api==1.29.0
     # via ddtrace
 packaging==24.2
     # via pytest
@@ -171,9 +171,9 @@ prompt-toolkit==3.0.48
     # via
     #   -r requirements/base.txt
     #   click-repl
-protobuf==5.29.1
+protobuf==5.29.2
     # via ddtrace
-psutil==6.1.0
+psutil==6.1.1
     # via
     #   -r requirements/base.txt
     #   edx-django-utils
@@ -240,7 +240,7 @@ six==1.17.0
     #   -r requirements/base.txt
     #   edx-codejail
     #   python-dateutil
-sqlparse==0.5.2
+sqlparse==0.5.3
     # via
     #   -r requirements/base.txt
     #   django
@@ -264,7 +264,7 @@ tzdata==2024.2
     #   -r requirements/base.txt
     #   celery
     #   kombu
-urllib3==2.2.3
+urllib3==2.3.0
     # via
     #   -r requirements/base.txt
     #   requests
