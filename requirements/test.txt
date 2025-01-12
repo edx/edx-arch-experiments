@@ -171,7 +171,7 @@ prompt-toolkit==3.0.48
     # via
     #   -r requirements/base.txt
     #   click-repl
-protobuf==5.29.2
+protobuf==5.29.3
     # via ddtrace
 psutil==6.1.1
     # via
@@ -264,8 +264,9 @@ tzdata==2024.2
     #   -r requirements/base.txt
     #   celery
     #   kombu
-urllib3==2.3.0
+urllib3==2.2.3
     # via
+    #   -c https://raw.githubusercontent.com/edx/edx-lint/master/edx_lint/files/common_constraints.txt
     #   -r requirements/base.txt
     #   requests
 vine==5.1.0
@@ -278,7 +279,7 @@ wcwidth==0.2.13
     # via
     #   -r requirements/base.txt
     #   prompt-toolkit
-wrapt==1.17.0
+wrapt==1.17.1
     # via
     #   ddtrace
     #   deprecated
@@ -288,5 +289,5 @@ zipp==3.21.0
     # via importlib-metadata
 
 # The following packages are considered to be unsafe in a requirements file:
-setuptools==75.6.0
+setuptools==75.8.0
     # via -r requirements/base.txt
