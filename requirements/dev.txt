@@ -92,7 +92,7 @@ click-repl==0.3.0
     # via
     #   -r requirements/quality.txt
     #   celery
-code-annotations==2.1.0
+code-annotations==2.2.0
     # via
     #   -r requirements/quality.txt
     #   edx-lint
@@ -114,7 +114,7 @@ datadog-api-client==2.31.0
     # via -r requirements/dev.in
 ddt==1.7.2
     # via -r requirements/quality.txt
-ddtrace==2.18.1
+ddtrace==2.19.1
     # via -r requirements/quality.txt
 deprecated==1.2.15
     # via
@@ -130,7 +130,7 @@ distlib==0.3.9
     # via
     #   -r requirements/ci.txt
     #   virtualenv
-django==4.2.17
+django==4.2.18
     # via
     #   -c https://raw.githubusercontent.com/edx/edx-lint/master/edx_lint/files/common_constraints.txt
     #   -r requirements/quality.txt
@@ -273,7 +273,7 @@ mdurl==0.1.2
     # via
     #   -r requirements/quality.txt
     #   markdown-it-py
-more-itertools==10.5.0
+more-itertools==10.6.0
     # via
     #   -r requirements/quality.txt
     #   jaraco-classes
@@ -332,7 +332,7 @@ prompt-toolkit==3.0.48
     # via
     #   -r requirements/quality.txt
     #   click-repl
-protobuf==5.29.2
+protobuf==5.29.3
     # via
     #   -r requirements/quality.txt
     #   ddtrace
@@ -348,7 +348,7 @@ pycparser==2.22
     #   cffi
 pydocstyle==6.3.0
     # via -r requirements/quality.txt
-pygments==2.18.0
+pygments==2.19.1
     # via
     #   -r requirements/quality.txt
     #   diff-cover
@@ -426,7 +426,7 @@ readme-renderer==44.0
     # via
     #   -r requirements/quality.txt
     #   twine
-referencing==0.35.1
+referencing==0.36.1
     # via
     #   -r requirements/quality.txt
     #   jsonschema
@@ -500,13 +500,15 @@ typing-extensions==4.12.2
     #   datadog-api-client
     #   ddtrace
     #   edx-opaque-keys
+    #   referencing
 tzdata==2024.2
     # via
     #   -r requirements/quality.txt
     #   celery
     #   kombu
-urllib3==2.3.0
+urllib3==2.2.3
     # via
+    #   -c https://raw.githubusercontent.com/edx/edx-lint/master/edx_lint/files/common_constraints.txt
     #   -r requirements/quality.txt
     #   datadog-api-client
     #   requests
@@ -517,7 +519,7 @@ vine==5.1.0
     #   amqp
     #   celery
     #   kombu
-virtualenv==20.28.1
+virtualenv==20.29.1
     # via
     #   -r requirements/ci.txt
     #   tox
@@ -529,7 +531,7 @@ wheel==0.45.1
     # via
     #   -r requirements/pip-tools.txt
     #   pip-tools
-wrapt==1.17.0
+wrapt==1.17.2
     # via
     #   -r requirements/quality.txt
     #   ddtrace
@@ -549,7 +551,7 @@ pip==24.2
     #   -c https://raw.githubusercontent.com/edx/edx-lint/master/edx_lint/files/common_constraints.txt
     #   -r requirements/pip-tools.txt
     #   pip-tools
-setuptools==75.6.0
+setuptools==75.8.0
     # via
     #   -r requirements/pip-tools.txt
     #   -r requirements/quality.txt
