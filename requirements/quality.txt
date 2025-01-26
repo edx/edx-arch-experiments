@@ -16,7 +16,7 @@ astroid==3.3.8
     # via
     #   pylint
     #   pylint-celery
-attrs==24.3.0
+attrs==25.1.0
     # via
     #   -r requirements/test.txt
     #   jsonschema
@@ -27,7 +27,7 @@ billiard==4.2.1
     # via
     #   -r requirements/test.txt
     #   celery
-bytecode==0.16.0
+bytecode==0.16.1
     # via
     #   -r requirements/test.txt
     #   ddtrace
@@ -71,7 +71,7 @@ click-repl==0.3.0
     # via
     #   -r requirements/test.txt
     #   celery
-code-annotations==2.1.0
+code-annotations==2.2.0
     # via
     #   -r requirements/test.txt
     #   edx-lint
@@ -87,15 +87,15 @@ cryptography==44.0.0
     #   secretstorage
 ddt==1.7.2
     # via -r requirements/test.txt
-ddtrace==2.18.1
+ddtrace==2.20.0
     # via -r requirements/test.txt
-deprecated==1.2.15
+deprecated==1.2.17
     # via
     #   -r requirements/test.txt
     #   opentelemetry-api
 dill==0.3.9
     # via pylint
-django==4.2.17
+django==4.2.18
     # via
     #   -c https://raw.githubusercontent.com/edx/edx-lint/master/edx_lint/files/common_constraints.txt
     #   -r requirements/test.txt
@@ -141,7 +141,7 @@ edx-django-utils==7.1.0
     #   edx-toggles
 edx-drf-extensions==10.5.0
     # via -r requirements/test.txt
-edx-lint==5.4.1
+edx-lint==5.6.0
     # via -r requirements/quality.in
 edx-opaque-keys==2.11.0
     # via
@@ -153,6 +153,8 @@ envier==0.6.1
     # via
     #   -r requirements/test.txt
     #   ddtrace
+id==1.5.0
+    # via twine
 idna==3.10
     # via
     #   -r requirements/test.txt
@@ -206,7 +208,7 @@ mccabe==0.7.0
     # via pylint
 mdurl==0.1.2
     # via markdown-it-py
-more-itertools==10.5.0
+more-itertools==10.6.0
     # via
     #   jaraco-classes
     #   jaraco-functools
@@ -229,19 +231,17 @@ pbr==6.1.0
     # via
     #   -r requirements/test.txt
     #   stevedore
-pkginfo==1.12.0
-    # via twine
 platformdirs==4.3.6
     # via pylint
 pluggy==1.5.0
     # via
     #   -r requirements/test.txt
     #   pytest
-prompt-toolkit==3.0.48
+prompt-toolkit==3.0.50
     # via
     #   -r requirements/test.txt
     #   click-repl
-protobuf==5.29.2
+protobuf==5.29.3
     # via
     #   -r requirements/test.txt
     #   ddtrace
@@ -257,7 +257,7 @@ pycparser==2.22
     #   cffi
 pydocstyle==6.3.0
     # via -r requirements/quality.in
-pygments==2.18.0
+pygments==2.19.1
     # via
     #   readme-renderer
     #   rich
@@ -314,7 +314,7 @@ pyyaml==6.0.2
     #   code-annotations
 readme-renderer==44.0
     # via twine
-referencing==0.35.1
+referencing==0.36.2
     # via
     #   -r requirements/test.txt
     #   jsonschema
@@ -323,6 +323,7 @@ requests==2.32.3
     # via
     #   -r requirements/test.txt
     #   edx-drf-extensions
+    #   id
     #   requests-toolbelt
     #   twine
 requests-toolbelt==1.0.0
@@ -366,20 +367,22 @@ text-unidecode==1.3
     #   python-slugify
 tomlkit==0.13.2
     # via pylint
-twine==6.0.1
+twine==6.1.0
     # via -r requirements/quality.in
 typing-extensions==4.12.2
     # via
     #   -r requirements/test.txt
     #   ddtrace
     #   edx-opaque-keys
-tzdata==2024.2
+    #   referencing
+tzdata==2025.1
     # via
     #   -r requirements/test.txt
     #   celery
     #   kombu
-urllib3==2.3.0
+urllib3==2.2.3
     # via
+    #   -c https://raw.githubusercontent.com/edx/edx-lint/master/edx_lint/files/common_constraints.txt
     #   -r requirements/test.txt
     #   requests
     #   twine
@@ -393,7 +396,7 @@ wcwidth==0.2.13
     # via
     #   -r requirements/test.txt
     #   prompt-toolkit
-wrapt==1.17.0
+wrapt==1.17.2
     # via
     #   -r requirements/test.txt
     #   ddtrace
@@ -408,5 +411,5 @@ zipp==3.21.0
     #   importlib-metadata
 
 # The following packages are considered to be unsafe in a requirements file:
-setuptools==75.6.0
+setuptools==75.8.0
     # via -r requirements/test.txt

@@ -17,7 +17,7 @@ astroid==3.3.8
     #   -r requirements/quality.txt
     #   pylint
     #   pylint-celery
-attrs==24.3.0
+attrs==25.1.0
     # via
     #   -r requirements/quality.txt
     #   jsonschema
@@ -34,11 +34,11 @@ build==1.2.2.post1
     # via
     #   -r requirements/pip-tools.txt
     #   pip-tools
-bytecode==0.16.0
+bytecode==0.16.1
     # via
     #   -r requirements/quality.txt
     #   ddtrace
-cachetools==5.5.0
+cachetools==5.5.1
     # via
     #   -r requirements/ci.txt
     #   tox
@@ -92,7 +92,7 @@ click-repl==0.3.0
     # via
     #   -r requirements/quality.txt
     #   celery
-code-annotations==2.1.0
+code-annotations==2.2.0
     # via
     #   -r requirements/quality.txt
     #   edx-lint
@@ -114,9 +114,9 @@ datadog-api-client==2.31.0
     # via -r requirements/dev.in
 ddt==1.7.2
     # via -r requirements/quality.txt
-ddtrace==2.18.1
+ddtrace==2.20.0
     # via -r requirements/quality.txt
-deprecated==1.2.15
+deprecated==1.2.17
     # via
     #   -r requirements/quality.txt
     #   opentelemetry-api
@@ -130,7 +130,7 @@ distlib==0.3.9
     # via
     #   -r requirements/ci.txt
     #   virtualenv
-django==4.2.17
+django==4.2.18
     # via
     #   -c https://raw.githubusercontent.com/edx/edx-lint/master/edx_lint/files/common_constraints.txt
     #   -r requirements/quality.txt
@@ -181,7 +181,7 @@ edx-drf-extensions==10.5.0
     # via -r requirements/quality.txt
 edx-i18n-tools==1.6.3
     # via -r requirements/dev.in
-edx-lint==5.4.1
+edx-lint==5.6.0
     # via -r requirements/quality.txt
 edx-opaque-keys==2.11.0
     # via
@@ -193,11 +193,15 @@ envier==0.6.1
     # via
     #   -r requirements/quality.txt
     #   ddtrace
-filelock==3.16.1
+filelock==3.17.0
     # via
     #   -r requirements/ci.txt
     #   tox
     #   virtualenv
+id==1.5.0
+    # via
+    #   -r requirements/quality.txt
+    #   twine
 idna==3.10
     # via
     #   -r requirements/quality.txt
@@ -273,7 +277,7 @@ mdurl==0.1.2
     # via
     #   -r requirements/quality.txt
     #   markdown-it-py
-more-itertools==10.5.0
+more-itertools==10.6.0
     # via
     #   -r requirements/quality.txt
     #   jaraco-classes
@@ -308,10 +312,6 @@ pbr==6.1.0
     #   stevedore
 pip-tools==7.4.1
     # via -r requirements/pip-tools.txt
-pkginfo==1.12.0
-    # via
-    #   -r requirements/quality.txt
-    #   twine
 platformdirs==4.3.6
     # via
     #   -r requirements/ci.txt
@@ -328,11 +328,11 @@ pluggy==1.5.0
     #   tox
 polib==1.2.0
     # via edx-i18n-tools
-prompt-toolkit==3.0.48
+prompt-toolkit==3.0.50
     # via
     #   -r requirements/quality.txt
     #   click-repl
-protobuf==5.29.2
+protobuf==5.29.3
     # via
     #   -r requirements/quality.txt
     #   ddtrace
@@ -348,7 +348,7 @@ pycparser==2.22
     #   cffi
 pydocstyle==6.3.0
     # via -r requirements/quality.txt
-pygments==2.18.0
+pygments==2.19.1
     # via
     #   -r requirements/quality.txt
     #   diff-cover
@@ -387,7 +387,7 @@ pynacl==1.5.0
     # via
     #   -r requirements/quality.txt
     #   edx-django-utils
-pyproject-api==1.8.0
+pyproject-api==1.9.0
     # via
     #   -r requirements/ci.txt
     #   tox
@@ -426,7 +426,7 @@ readme-renderer==44.0
     # via
     #   -r requirements/quality.txt
     #   twine
-referencing==0.35.1
+referencing==0.36.2
     # via
     #   -r requirements/quality.txt
     #   jsonschema
@@ -435,6 +435,7 @@ requests==2.32.3
     # via
     #   -r requirements/quality.txt
     #   edx-drf-extensions
+    #   id
     #   requests-toolbelt
     #   twine
 requests-toolbelt==1.0.0
@@ -490,9 +491,9 @@ tomlkit==0.13.2
     # via
     #   -r requirements/quality.txt
     #   pylint
-tox==4.23.2
+tox==4.24.1
     # via -r requirements/ci.txt
-twine==6.0.1
+twine==6.1.0
     # via -r requirements/quality.txt
 typing-extensions==4.12.2
     # via
@@ -500,13 +501,15 @@ typing-extensions==4.12.2
     #   datadog-api-client
     #   ddtrace
     #   edx-opaque-keys
-tzdata==2024.2
+    #   referencing
+tzdata==2025.1
     # via
     #   -r requirements/quality.txt
     #   celery
     #   kombu
-urllib3==2.3.0
+urllib3==2.2.3
     # via
+    #   -c https://raw.githubusercontent.com/edx/edx-lint/master/edx_lint/files/common_constraints.txt
     #   -r requirements/quality.txt
     #   datadog-api-client
     #   requests
@@ -517,7 +520,7 @@ vine==5.1.0
     #   amqp
     #   celery
     #   kombu
-virtualenv==20.28.1
+virtualenv==20.29.1
     # via
     #   -r requirements/ci.txt
     #   tox
@@ -529,7 +532,7 @@ wheel==0.45.1
     # via
     #   -r requirements/pip-tools.txt
     #   pip-tools
-wrapt==1.17.0
+wrapt==1.17.2
     # via
     #   -r requirements/quality.txt
     #   ddtrace
@@ -549,7 +552,7 @@ pip==24.2
     #   -c https://raw.githubusercontent.com/edx/edx-lint/master/edx_lint/files/common_constraints.txt
     #   -r requirements/pip-tools.txt
     #   pip-tools
-setuptools==75.6.0
+setuptools==75.8.0
     # via
     #   -r requirements/pip-tools.txt
     #   -r requirements/quality.txt
