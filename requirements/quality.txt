@@ -16,11 +16,6 @@ astroid==3.3.8
     # via
     #   pylint
     #   pylint-celery
-attrs==24.3.0
-    # via
-    #   -r requirements/test.txt
-    #   jsonschema
-    #   referencing
 backports-tarfile==1.2.0
     # via jaraco-context
 billiard==4.2.1
@@ -34,18 +29,14 @@ bytecode==0.16.0
 celery==5.4.0
     # via -r requirements/test.txt
 certifi==2024.12.14
-    # via
-    #   -r requirements/test.txt
-    #   requests
+    # via requests
 cffi==1.17.1
     # via
     #   -r requirements/test.txt
     #   cryptography
     #   pynacl
 charset-normalizer==3.4.1
-    # via
-    #   -r requirements/test.txt
-    #   requests
+    # via requests
 click==8.1.8
     # via
     #   -r requirements/test.txt
@@ -75,16 +66,12 @@ code-annotations==2.1.0
     # via
     #   -r requirements/test.txt
     #   edx-lint
-    #   edx-toggles
 coverage[toml]==7.6.10
     # via
     #   -r requirements/test.txt
     #   pytest-cov
 cryptography==44.0.0
-    # via
-    #   -r requirements/test.txt
-    #   pyjwt
-    #   secretstorage
+    # via secretstorage
 ddt==1.7.2
     # via -r requirements/test.txt
 ddtrace==2.18.1
@@ -101,62 +88,27 @@ django==4.2.17
     #   -r requirements/test.txt
     #   django-crum
     #   django-waffle
-    #   djangorestframework
-    #   drf-jwt
     #   edx-django-utils
-    #   edx-drf-extensions
-    #   edx-toggles
 django-crum==0.7.9
     # via
     #   -r requirements/test.txt
     #   edx-django-utils
-    #   edx-toggles
 django-waffle==4.2.0
     # via
     #   -r requirements/test.txt
     #   edx-django-utils
-    #   edx-drf-extensions
-    #   edx-toggles
-djangorestframework==3.15.2
-    # via
-    #   -r requirements/test.txt
-    #   drf-jwt
-    #   edx-drf-extensions
-dnspython==2.7.0
-    # via
-    #   -r requirements/test.txt
-    #   pymongo
 docutils==0.21.2
     # via readme-renderer
-drf-jwt==1.19.2
-    # via
-    #   -r requirements/test.txt
-    #   edx-drf-extensions
-edx-codejail==3.5.2
-    # via -r requirements/test.txt
 edx-django-utils==7.1.0
-    # via
-    #   -r requirements/test.txt
-    #   edx-drf-extensions
-    #   edx-toggles
-edx-drf-extensions==10.5.0
     # via -r requirements/test.txt
 edx-lint==5.4.1
     # via -r requirements/quality.in
-edx-opaque-keys==2.11.0
-    # via
-    #   -r requirements/test.txt
-    #   edx-drf-extensions
-edx-toggles==5.2.0
-    # via -r requirements/test.txt
 envier==0.6.1
     # via
     #   -r requirements/test.txt
     #   ddtrace
 idna==3.10
-    # via
-    #   -r requirements/test.txt
-    #   requests
+    # via requests
 importlib-metadata==8.5.0
     # via
     #   -r requirements/test.txt
@@ -184,12 +136,6 @@ jinja2==3.1.5
     # via
     #   -r requirements/test.txt
     #   code-annotations
-jsonschema==4.23.0
-    # via -r requirements/test.txt
-jsonschema-specifications==2024.10.1
-    # via
-    #   -r requirements/test.txt
-    #   jsonschema
 keyring==25.6.0
     # via twine
 kombu==5.4.2
@@ -261,11 +207,6 @@ pygments==2.18.0
     # via
     #   readme-renderer
     #   rich
-pyjwt[crypto]==2.10.1
-    # via
-    #   -r requirements/test.txt
-    #   drf-jwt
-    #   edx-drf-extensions
 pylint==3.3.3
     # via
     #   edx-lint
@@ -280,10 +221,6 @@ pylint-plugin-utils==0.8.2
     # via
     #   pylint-celery
     #   pylint-django
-pymongo==4.10.1
-    # via
-    #   -r requirements/test.txt
-    #   edx-opaque-keys
 pynacl==1.5.0
     # via
     #   -r requirements/test.txt
@@ -314,15 +251,8 @@ pyyaml==6.0.2
     #   code-annotations
 readme-renderer==44.0
     # via twine
-referencing==0.35.1
-    # via
-    #   -r requirements/test.txt
-    #   jsonschema
-    #   jsonschema-specifications
 requests==2.32.3
     # via
-    #   -r requirements/test.txt
-    #   edx-drf-extensions
     #   requests-toolbelt
     #   twine
 requests-toolbelt==1.0.0
@@ -331,21 +261,11 @@ rfc3986==2.0.0
     # via twine
 rich==13.9.4
     # via twine
-rpds-py==0.22.3
-    # via
-    #   -r requirements/test.txt
-    #   jsonschema
-    #   referencing
 secretstorage==3.3.3
     # via keyring
-semantic-version==2.10.0
-    # via
-    #   -r requirements/test.txt
-    #   edx-drf-extensions
 six==1.17.0
     # via
     #   -r requirements/test.txt
-    #   edx-codejail
     #   edx-lint
     #   python-dateutil
 snowballstemmer==2.2.0
@@ -359,7 +279,6 @@ stevedore==5.4.0
     #   -r requirements/test.txt
     #   code-annotations
     #   edx-django-utils
-    #   edx-opaque-keys
 text-unidecode==1.3
     # via
     #   -r requirements/test.txt
@@ -372,15 +291,14 @@ typing-extensions==4.12.2
     # via
     #   -r requirements/test.txt
     #   ddtrace
-    #   edx-opaque-keys
 tzdata==2024.2
     # via
     #   -r requirements/test.txt
     #   celery
     #   kombu
-urllib3==2.3.0
+urllib3==2.2.3
     # via
-    #   -r requirements/test.txt
+    #   -c https://raw.githubusercontent.com/edx/edx-lint/master/edx_lint/files/common_constraints.txt
     #   requests
     #   twine
 vine==5.1.0

@@ -5,9 +5,4 @@ celery                   # Asynchronous task execution library
 Django                   # Web application framework
 edx-django-utils>=7.1.0  # Basic utilities for plugins, monitoring, and more
 django-waffle            # Configuration switches and flags -- used by config_watcher app
-edx-codejail             # Actual codejail library; used by codejail_service app
-djangorestframework      # Used by codejail_service app
-edx-drf-extensions       # Used by codejail_service app
-edx-toggles              # Used by codejail_service app
-jsonschema               # Parse and validate JSON; used by codejail_service app
 setuptools
