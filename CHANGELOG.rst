@@ -13,8 +13,13 @@ Change Log
 
 Unreleased
 ~~~~~~~~~~
+
+[7.0.0] - 2025-01-30
+~~~~~~~~~~~~~~~~~~~~
+
 Removed
--------
+_______
+* Removed ``codejail_service`` plugin app (unused experiment)
 * Removed temporary rollout span tag ``code_owner_plugin`` used for the code owner monitoring move from edx-django-utils. Now that edx-django-utils monitoring has been disabled, this span tag serves no purpose.
 
 [6.1.0] - 2024-12-10

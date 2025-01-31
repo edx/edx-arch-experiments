@@ -12,11 +12,6 @@ asgiref==3.8.1
     # via
     #   -r requirements/base.txt
     #   django
-attrs==24.3.0
-    # via
-    #   -r requirements/base.txt
-    #   jsonschema
-    #   referencing
 billiard==4.2.1
     # via
     #   -r requirements/base.txt
@@ -25,19 +20,10 @@ bytecode==0.16.0
     # via ddtrace
 celery==5.4.0
     # via -r requirements/base.txt
-certifi==2024.12.14
-    # via
-    #   -r requirements/base.txt
-    #   requests
 cffi==1.17.1
     # via
     #   -r requirements/base.txt
-    #   cryptography
     #   pynacl
-charset-normalizer==3.4.1
-    # via
-    #   -r requirements/base.txt
-    #   requests
 click==8.1.8
     # via
     #   -r requirements/base.txt
@@ -60,16 +46,9 @@ click-repl==0.3.0
     #   -r requirements/base.txt
     #   celery
 code-annotations==2.1.0
-    # via
-    #   -r requirements/base.txt
-    #   -r requirements/test.in
-    #   edx-toggles
+    # via -r requirements/test.in
 coverage[toml]==7.6.10
     # via pytest-cov
-cryptography==44.0.0
-    # via
-    #   -r requirements/base.txt
-    #   pyjwt
 ddt==1.7.2
     # via -r requirements/test.in
 ddtrace==2.18.1
@@ -81,78 +60,31 @@ deprecated==1.2.15
     #   -r requirements/base.txt
     #   django-crum
     #   django-waffle
-    #   djangorestframework
-    #   drf-jwt
     #   edx-django-utils
-    #   edx-drf-extensions
-    #   edx-toggles
 django-crum==0.7.9
     # via
     #   -r requirements/base.txt
     #   edx-django-utils
-    #   edx-toggles
 django-waffle==4.2.0
     # via
     #   -r requirements/base.txt
     #   edx-django-utils
-    #   edx-drf-extensions
-    #   edx-toggles
-djangorestframework==3.15.2
-    # via
-    #   -r requirements/base.txt
-    #   drf-jwt
-    #   edx-drf-extensions
-dnspython==2.7.0
-    # via
-    #   -r requirements/base.txt
-    #   pymongo
-drf-jwt==1.19.2
-    # via
-    #   -r requirements/base.txt
-    #   edx-drf-extensions
-edx-codejail==3.5.2
-    # via -r requirements/base.txt
 edx-django-utils==7.1.0
-    # via
-    #   -r requirements/base.txt
-    #   edx-drf-extensions
-    #   edx-toggles
-edx-drf-extensions==10.5.0
-    # via -r requirements/base.txt
-edx-opaque-keys==2.11.0
-    # via
-    #   -r requirements/base.txt
-    #   edx-drf-extensions
-edx-toggles==5.2.0
     # via -r requirements/base.txt
 envier==0.6.1
     # via ddtrace
-idna==3.10
-    # via
-    #   -r requirements/base.txt
-    #   requests
 importlib-metadata==8.5.0
     # via opentelemetry-api
 iniconfig==2.0.0
     # via pytest
 jinja2==3.1.5
-    # via
-    #   -r requirements/base.txt
-    #   code-annotations
-jsonschema==4.23.0
-    # via -r requirements/base.txt
-jsonschema-specifications==2024.10.1
-    # via
-    #   -r requirements/base.txt
-    #   jsonschema
+    # via code-annotations
 kombu==5.4.2
     # via
     #   -r requirements/base.txt
     #   celery
 markupsafe==3.0.2
-    # via
-    #   -r requirements/base.txt
-    #   jinja2
+    # via jinja2
 newrelic==10.4.0
     # via
     #   -r requirements/base.txt
@@ -181,15 +113,6 @@ pycparser==2.22
     # via
     #   -r requirements/base.txt
     #   cffi
-pyjwt[crypto]==2.10.1
-    # via
-    #   -r requirements/base.txt
-    #   drf-jwt
-    #   edx-drf-extensions
-pymongo==4.10.1
-    # via
-    #   -r requirements/base.txt
-    #   edx-opaque-keys
 pynacl==1.5.0
     # via
     #   -r requirements/base.txt
@@ -210,35 +133,12 @@ python-dateutil==2.9.0.post0
     #   -r requirements/base.txt
     #   celery
 python-slugify==8.0.4
-    # via
-    #   -r requirements/base.txt
-    #   code-annotations
+    # via code-annotations
 pyyaml==6.0.2
-    # via
-    #   -r requirements/base.txt
-    #   code-annotations
-referencing==0.35.1
-    # via
-    #   -r requirements/base.txt
-    #   jsonschema
-    #   jsonschema-specifications
-requests==2.32.3
-    # via
-    #   -r requirements/base.txt
-    #   edx-drf-extensions
-rpds-py==0.22.3
-    # via
-    #   -r requirements/base.txt
-    #   jsonschema
-    #   referencing
-semantic-version==2.10.0
-    # via
-    #   -r requirements/base.txt
-    #   edx-drf-extensions
+    # via code-annotations
 six==1.17.0
     # via
     #   -r requirements/base.txt
-    #   edx-codejail
     #   python-dateutil
 sqlparse==0.5.3
     # via
@@ -249,25 +149,15 @@ stevedore==5.4.0
     #   -r requirements/base.txt
     #   code-annotations
     #   edx-django-utils
-    #   edx-opaque-keys
 text-unidecode==1.3
-    # via
-    #   -r requirements/base.txt
-    #   python-slugify
+    # via python-slugify
 typing-extensions==4.12.2
-    # via
-    #   -r requirements/base.txt
-    #   ddtrace
-    #   edx-opaque-keys
+    # via ddtrace
 tzdata==2024.2
     # via
     #   -r requirements/base.txt
     #   celery
     #   kombu
-urllib3==2.3.0
-    # via
-    #   -r requirements/base.txt
-    #   requests
 vine==5.1.0
     # via
     #   -r requirements/base.txt
