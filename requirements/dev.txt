@@ -29,17 +29,17 @@ build==1.2.2.post1
     # via
     #   -r requirements/pip-tools.txt
     #   pip-tools
-bytecode==0.16.0
+bytecode==0.16.1
     # via
     #   -r requirements/quality.txt
     #   ddtrace
-cachetools==5.5.0
+cachetools==5.5.1
     # via
     #   -r requirements/ci.txt
     #   tox
 celery==5.4.0
     # via -r requirements/quality.txt
-certifi==2024.12.14
+certifi==2025.1.31
     # via
     #   -r requirements/quality.txt
     #   datadog-api-client
@@ -87,7 +87,7 @@ click-repl==0.3.0
     # via
     #   -r requirements/quality.txt
     #   celery
-code-annotations==2.1.0
+code-annotations==2.2.0
     # via
     #   -r requirements/quality.txt
     #   edx-lint
@@ -107,13 +107,13 @@ datadog-api-client==2.31.0
     # via -r requirements/dev.in
 ddt==1.7.2
     # via -r requirements/quality.txt
-ddtrace==2.18.1
+ddtrace==2.20.0
     # via -r requirements/quality.txt
-deprecated==1.2.15
+deprecated==1.2.18
     # via
     #   -r requirements/quality.txt
     #   opentelemetry-api
-diff-cover==9.2.1
+diff-cover==9.2.2
     # via -r requirements/dev.in
 dill==0.3.9
     # via
@@ -123,7 +123,7 @@ distlib==0.3.9
     # via
     #   -r requirements/ci.txt
     #   virtualenv
-django==4.2.17
+django==4.2.18
     # via
     #   -c https://raw.githubusercontent.com/edx/edx-lint/master/edx_lint/files/common_constraints.txt
     #   -r requirements/quality.txt
@@ -147,17 +147,21 @@ edx-django-utils==7.1.0
     # via -r requirements/quality.txt
 edx-i18n-tools==1.6.3
     # via -r requirements/dev.in
-edx-lint==5.4.1
+edx-lint==5.6.0
     # via -r requirements/quality.txt
 envier==0.6.1
     # via
     #   -r requirements/quality.txt
     #   ddtrace
-filelock==3.16.1
+filelock==3.17.0
     # via
     #   -r requirements/ci.txt
     #   tox
     #   virtualenv
+id==1.5.0
+    # via
+    #   -r requirements/quality.txt
+    #   twine
 idna==3.10
     # via
     #   -r requirements/quality.txt
@@ -171,7 +175,7 @@ iniconfig==2.0.0
     # via
     #   -r requirements/quality.txt
     #   pytest
-isort==5.13.2
+isort==6.0.0
     # via
     #   -r requirements/quality.txt
     #   pylint
@@ -227,12 +231,12 @@ mdurl==0.1.2
     # via
     #   -r requirements/quality.txt
     #   markdown-it-py
-more-itertools==10.5.0
+more-itertools==10.6.0
     # via
     #   -r requirements/quality.txt
     #   jaraco-classes
     #   jaraco-functools
-newrelic==10.4.0
+newrelic==10.5.0
     # via
     #   -r requirements/quality.txt
     #   edx-django-utils
@@ -262,10 +266,6 @@ pbr==6.1.0
     #   stevedore
 pip-tools==7.4.1
     # via -r requirements/pip-tools.txt
-pkginfo==1.12.0
-    # via
-    #   -r requirements/quality.txt
-    #   twine
 platformdirs==4.3.6
     # via
     #   -r requirements/ci.txt
@@ -282,11 +282,11 @@ pluggy==1.5.0
     #   tox
 polib==1.2.0
     # via edx-i18n-tools
-prompt-toolkit==3.0.48
+prompt-toolkit==3.0.50
     # via
     #   -r requirements/quality.txt
     #   click-repl
-protobuf==5.29.2
+protobuf==5.29.3
     # via
     #   -r requirements/quality.txt
     #   ddtrace
@@ -302,13 +302,13 @@ pycparser==2.22
     #   cffi
 pydocstyle==6.3.0
     # via -r requirements/quality.txt
-pygments==2.18.0
+pygments==2.19.1
     # via
     #   -r requirements/quality.txt
     #   diff-cover
     #   readme-renderer
     #   rich
-pylint==3.3.3
+pylint==3.3.4
     # via
     #   -r requirements/quality.txt
     #   edx-lint
@@ -332,7 +332,7 @@ pynacl==1.5.0
     # via
     #   -r requirements/quality.txt
     #   edx-django-utils
-pyproject-api==1.8.0
+pyproject-api==1.9.0
     # via
     #   -r requirements/ci.txt
     #   tox
@@ -374,6 +374,7 @@ readme-renderer==44.0
 requests==2.32.3
     # via
     #   -r requirements/quality.txt
+    #   id
     #   requests-toolbelt
     #   twine
 requests-toolbelt==1.0.0
@@ -418,16 +419,16 @@ tomlkit==0.13.2
     # via
     #   -r requirements/quality.txt
     #   pylint
-tox==4.23.2
+tox==4.24.1
     # via -r requirements/ci.txt
-twine==6.0.1
+twine==6.1.0
     # via -r requirements/quality.txt
 typing-extensions==4.12.2
     # via
     #   -r requirements/quality.txt
     #   datadog-api-client
     #   ddtrace
-tzdata==2024.2
+tzdata==2025.1
     # via
     #   -r requirements/quality.txt
     #   celery
@@ -445,7 +446,7 @@ vine==5.1.0
     #   amqp
     #   celery
     #   kombu
-virtualenv==20.28.1
+virtualenv==20.29.1
     # via
     #   -r requirements/ci.txt
     #   tox
@@ -457,7 +458,7 @@ wheel==0.45.1
     # via
     #   -r requirements/pip-tools.txt
     #   pip-tools
-wrapt==1.17.0
+wrapt==1.17.2
     # via
     #   -r requirements/quality.txt
     #   ddtrace
@@ -477,7 +478,7 @@ pip==24.2
     #   -c https://raw.githubusercontent.com/edx/edx-lint/master/edx_lint/files/common_constraints.txt
     #   -r requirements/pip-tools.txt
     #   pip-tools
-setuptools==75.6.0
+setuptools==75.8.0
     # via
     #   -r requirements/pip-tools.txt
     #   -r requirements/quality.txt
