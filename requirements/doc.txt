@@ -16,23 +16,23 @@ asgiref==3.8.1
     # via
     #   -r requirements/test.txt
     #   django
-babel==2.16.0
+babel==2.17.0
     # via
     #   pydata-sphinx-theme
     #   sphinx
-beautifulsoup4==4.12.3
+beautifulsoup4==4.13.3
     # via pydata-sphinx-theme
 billiard==4.2.1
     # via
     #   -r requirements/test.txt
     #   celery
-bytecode==0.16.0
+bytecode==0.16.1
     # via
     #   -r requirements/test.txt
     #   ddtrace
 celery==5.4.0
     # via -r requirements/test.txt
-certifi==2024.12.14
+certifi==2025.1.31
     # via requests
 cffi==1.17.1
     # via
@@ -61,21 +61,21 @@ click-repl==0.3.0
     # via
     #   -r requirements/test.txt
     #   celery
-code-annotations==2.1.0
+code-annotations==2.2.0
     # via -r requirements/test.txt
-coverage[toml]==7.6.10
+coverage[toml]==7.6.11
     # via
     #   -r requirements/test.txt
     #   pytest-cov
 ddt==1.7.2
     # via -r requirements/test.txt
-ddtrace==2.18.1
+ddtrace==2.20.0
     # via -r requirements/test.txt
-deprecated==1.2.15
+deprecated==1.2.18
     # via
     #   -r requirements/test.txt
     #   opentelemetry-api
-django==4.2.17
+django==4.2.19
     # via
     #   -c https://raw.githubusercontent.com/edx/edx-lint/master/edx_lint/files/common_constraints.txt
     #   -r requirements/test.txt
@@ -130,13 +130,13 @@ markupsafe==3.0.2
     # via
     #   -r requirements/test.txt
     #   jinja2
-newrelic==10.4.0
+newrelic==10.6.0
     # via
     #   -r requirements/test.txt
     #   edx-django-utils
 nh3==0.2.20
     # via readme-renderer
-opentelemetry-api==1.29.0
+opentelemetry-api==1.30.0
     # via
     #   -r requirements/test.txt
     #   ddtrace
@@ -145,7 +145,7 @@ packaging==24.2
     #   -r requirements/test.txt
     #   pytest
     #   sphinx
-pbr==6.1.0
+pbr==6.1.1
     # via
     #   -r requirements/test.txt
     #   stevedore
@@ -153,11 +153,11 @@ pluggy==1.5.0
     # via
     #   -r requirements/test.txt
     #   pytest
-prompt-toolkit==3.0.48
+prompt-toolkit==3.0.50
     # via
     #   -r requirements/test.txt
     #   click-repl
-protobuf==5.29.2
+protobuf==5.29.3
     # via
     #   -r requirements/test.txt
     #   ddtrace
@@ -171,7 +171,7 @@ pycparser==2.22
     #   cffi
 pydata-sphinx-theme==0.16.1
     # via sphinx-book-theme
-pygments==2.18.0
+pygments==2.19.1
     # via
     #   accessible-pygments
     #   doc8
@@ -256,9 +256,10 @@ text-unidecode==1.3
 typing-extensions==4.12.2
     # via
     #   -r requirements/test.txt
+    #   beautifulsoup4
     #   ddtrace
     #   pydata-sphinx-theme
-tzdata==2024.2
+tzdata==2025.1
     # via
     #   -r requirements/test.txt
     #   celery
@@ -277,7 +278,7 @@ wcwidth==0.2.13
     # via
     #   -r requirements/test.txt
     #   prompt-toolkit
-wrapt==1.17.0
+wrapt==1.17.2
     # via
     #   -r requirements/test.txt
     #   ddtrace
@@ -292,5 +293,7 @@ zipp==3.21.0
     #   importlib-metadata
 
 # The following packages are considered to be unsafe in a requirements file:
-setuptools==75.6.0
-    # via -r requirements/test.txt
+setuptools==75.8.0
+    # via
+    #   -r requirements/test.txt
+    #   pbr
