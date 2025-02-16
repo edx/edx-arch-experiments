@@ -8,13 +8,13 @@ amqp==5.3.1
     # via
     #   -r requirements/base.txt
     #   kombu
-anyio==4.7.0
+anyio==4.8.0
     # via httpx
 asgiref==3.8.1
     # via
     #   -r requirements/base.txt
     #   django
-attrs==24.3.0
+attrs==25.1.0
     # via
     #   confluent-kafka
     #   openedx-events
@@ -24,11 +24,11 @@ billiard==4.2.1
     # via
     #   -r requirements/base.txt
     #   celery
-cachetools==5.5.0
+cachetools==5.5.1
     # via confluent-kafka
 celery==5.4.0
     # via -r requirements/base.txt
-certifi==2024.12.14
+certifi==2025.1.31
     # via
     #   httpcore
     #   httpx
@@ -60,11 +60,11 @@ click-repl==0.3.0
     # via
     #   -r requirements/base.txt
     #   celery
-code-annotations==2.1.0
+code-annotations==2.2.0
     # via edx-toggles
-confluent-kafka[avro]==2.7.0
+confluent-kafka[avro]==2.8.0
     # via -r requirements/scripts.in
-django==4.2.17
+django==4.2.19
     # via
     #   -c https://raw.githubusercontent.com/edx/edx-lint/master/edx_lint/files/common_constraints.txt
     #   -r requirements/base.txt
@@ -100,7 +100,7 @@ edx-opaque-keys[django]==2.11.0
     # via
     #   edx-ccx-keys
     #   openedx-events
-edx-toggles==5.2.0
+edx-toggles==5.3.0
     # via edx-event-bus-kafka
 fastavro==1.10.0
     # via
@@ -110,7 +110,7 @@ h11==0.14.0
     # via httpcore
 httpcore==1.0.7
     # via httpx
-httpx==0.27.2
+httpx==0.28.1
     # via confluent-kafka
 idna==3.10
     # via
@@ -125,21 +125,21 @@ kombu==5.4.2
     #   celery
 markupsafe==3.0.2
     # via jinja2
-newrelic==10.4.0
+newrelic==10.6.0
     # via
     #   -r requirements/base.txt
     #   edx-django-utils
-openedx-events==9.15.0
+openedx-events==9.18.1
     # via edx-event-bus-kafka
-pbr==6.1.0
+pbr==6.1.1
     # via
     #   -r requirements/base.txt
     #   stevedore
-prompt-toolkit==3.0.48
+prompt-toolkit==3.0.50
     # via
     #   -r requirements/base.txt
     #   click-repl
-psutil==6.1.1
+psutil==7.0.0
     # via
     #   -r requirements/base.txt
     #   edx-django-utils
@@ -147,7 +147,7 @@ pycparser==2.22
     # via
     #   -r requirements/base.txt
     #   cffi
-pymongo==4.10.1
+pymongo==4.11.1
     # via edx-opaque-keys
 pynacl==1.5.0
     # via
@@ -169,9 +169,7 @@ six==1.17.0
     #   edx-ccx-keys
     #   python-dateutil
 sniffio==1.3.1
-    # via
-    #   anyio
-    #   httpx
+    # via anyio
 sqlparse==0.5.3
     # via
     #   -r requirements/base.txt
@@ -188,7 +186,7 @@ typing-extensions==4.12.2
     # via
     #   anyio
     #   edx-opaque-keys
-tzdata==2024.2
+tzdata==2025.1
     # via
     #   -r requirements/base.txt
     #   celery
@@ -209,5 +207,8 @@ wcwidth==0.2.13
     #   prompt-toolkit
 
 # The following packages are considered to be unsafe in a requirements file:
-setuptools==75.6.0
-    # via -r requirements/base.txt
+setuptools==75.8.0
+    # via
+    #   -r requirements/base.txt
+    #   openedx-events
+    #   pbr
