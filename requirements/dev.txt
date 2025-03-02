@@ -99,7 +99,7 @@ coverage[toml]==7.6.12
     # via
     #   -r requirements/quality.txt
     #   pytest-cov
-cryptography==44.0.1
+cryptography==44.0.2
     # via
     #   -r requirements/quality.txt
     #   secretstorage
@@ -107,7 +107,7 @@ datadog-api-client==2.32.0
     # via -r requirements/dev.in
 ddt==1.7.2
     # via -r requirements/quality.txt
-ddtrace==3.0.0
+ddtrace==3.1.0
     # via -r requirements/quality.txt
 deprecated==1.2.18
     # via
@@ -143,7 +143,7 @@ docutils==0.21.2
     # via
     #   -r requirements/quality.txt
     #   readme-renderer
-edx-django-utils==7.1.0
+edx-django-utils==7.2.0
     # via -r requirements/quality.txt
 edx-i18n-tools==1.6.3
     # via -r requirements/dev.in
@@ -175,7 +175,7 @@ iniconfig==2.0.0
     # via
     #   -r requirements/quality.txt
     #   pytest
-isort==6.0.0
+isort==6.0.1
     # via
     #   -r requirements/quality.txt
     #   pylint
@@ -191,7 +191,7 @@ jaraco-functools==4.1.0
     # via
     #   -r requirements/quality.txt
     #   keyring
-jeepney==0.8.0
+jeepney==0.9.0
     # via
     #   -r requirements/quality.txt
     #   keyring
@@ -240,7 +240,7 @@ newrelic==10.6.0
     # via
     #   -r requirements/quality.txt
     #   edx-django-utils
-nh3==0.2.20
+nh3==0.2.21
     # via
     #   -r requirements/quality.txt
     #   readme-renderer
@@ -478,7 +478,7 @@ pip==24.2
     #   -c https://raw.githubusercontent.com/edx/edx-lint/master/edx_lint/files/common_constraints.txt
     #   -r requirements/pip-tools.txt
     #   pip-tools
-setuptools==75.8.0
+setuptools==75.8.2
     # via
     #   -r requirements/pip-tools.txt
     #   -r requirements/quality.txt
