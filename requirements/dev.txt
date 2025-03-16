@@ -12,7 +12,7 @@ asgiref==3.8.1
     # via
     #   -r requirements/quality.txt
     #   django
-astroid==3.3.8
+astroid==3.3.9
     # via
     #   -r requirements/quality.txt
     #   pylint
@@ -103,17 +103,17 @@ cryptography==44.0.2
     # via
     #   -r requirements/quality.txt
     #   secretstorage
-datadog-api-client==2.32.0
+datadog-api-client==2.33.1
     # via -r requirements/dev.in
 ddt==1.7.2
     # via -r requirements/quality.txt
-ddtrace==3.1.0
+ddtrace==3.2.1
     # via -r requirements/quality.txt
 deprecated==1.2.18
     # via
     #   -r requirements/quality.txt
     #   opentelemetry-api
-diff-cover==9.2.3
+diff-cover==9.2.4
     # via -r requirements/dev.in
 dill==0.3.9
     # via
@@ -123,7 +123,7 @@ distlib==0.3.9
     # via
     #   -r requirements/ci.txt
     #   virtualenv
-django==4.2.19
+django==4.2.20
     # via
     #   -c https://raw.githubusercontent.com/edx/edx-lint/master/edx_lint/files/common_constraints.txt
     #   -r requirements/quality.txt
@@ -153,7 +153,7 @@ envier==0.6.1
     # via
     #   -r requirements/quality.txt
     #   ddtrace
-filelock==3.17.0
+filelock==3.18.0
     # via
     #   -r requirements/ci.txt
     #   tox
@@ -166,7 +166,7 @@ idna==3.10
     # via
     #   -r requirements/quality.txt
     #   requests
-importlib-metadata==8.5.0
+importlib-metadata==8.6.1
     # via
     #   -r requirements/quality.txt
     #   keyring
@@ -196,7 +196,7 @@ jeepney==0.9.0
     #   -r requirements/quality.txt
     #   keyring
     #   secretstorage
-jinja2==3.1.5
+jinja2==3.1.6
     # via
     #   -r requirements/quality.txt
     #   code-annotations
@@ -205,7 +205,7 @@ keyring==25.6.0
     # via
     #   -r requirements/quality.txt
     #   twine
-kombu==5.4.2
+kombu==5.5.0
     # via
     #   -r requirements/quality.txt
     #   celery
@@ -236,7 +236,7 @@ more-itertools==10.6.0
     #   -r requirements/quality.txt
     #   jaraco-classes
     #   jaraco-functools
-newrelic==10.6.0
+newrelic==10.7.0
     # via
     #   -r requirements/quality.txt
     #   edx-django-utils
@@ -244,7 +244,7 @@ nh3==0.2.21
     # via
     #   -r requirements/quality.txt
     #   readme-renderer
-opentelemetry-api==1.30.0
+opentelemetry-api==1.31.0
     # via
     #   -r requirements/quality.txt
     #   ddtrace
@@ -286,7 +286,7 @@ prompt-toolkit==3.0.50
     # via
     #   -r requirements/quality.txt
     #   click-repl
-protobuf==5.29.3
+protobuf==6.30.1
     # via
     #   -r requirements/quality.txt
     #   ddtrace
@@ -308,7 +308,7 @@ pygments==2.19.1
     #   diff-cover
     #   readme-renderer
     #   rich
-pylint==3.3.4
+pylint==3.3.5
     # via
     #   -r requirements/quality.txt
     #   edx-lint
@@ -341,7 +341,7 @@ pyproject-hooks==1.2.0
     #   -r requirements/pip-tools.txt
     #   build
     #   pip-tools
-pytest==8.3.4
+pytest==8.3.5
     # via
     #   -r requirements/quality.txt
     #   pytest-cov
@@ -419,7 +419,7 @@ tomlkit==0.13.2
     # via
     #   -r requirements/quality.txt
     #   pylint
-tox==4.24.1
+tox==4.24.2
     # via -r requirements/ci.txt
 twine==6.1.0
     # via -r requirements/quality.txt
@@ -446,7 +446,7 @@ vine==5.1.0
     #   amqp
     #   celery
     #   kombu
-virtualenv==20.29.2
+virtualenv==20.29.3
     # via
     #   -r requirements/ci.txt
     #   tox
@@ -478,7 +478,7 @@ pip==24.2
     #   -c https://raw.githubusercontent.com/edx/edx-lint/master/edx_lint/files/common_constraints.txt
     #   -r requirements/pip-tools.txt
     #   pip-tools
-setuptools==75.8.2
+setuptools==76.0.0
     # via
     #   -r requirements/pip-tools.txt
     #   -r requirements/quality.txt
