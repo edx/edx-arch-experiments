@@ -12,7 +12,7 @@ asgiref==3.8.1
     # via
     #   -r requirements/test.txt
     #   django
-astroid==3.3.8
+astroid==3.3.9
     # via
     #   pylint
     #   pylint-celery
@@ -74,7 +74,7 @@ cryptography==44.0.2
     # via secretstorage
 ddt==1.7.2
     # via -r requirements/test.txt
-ddtrace==3.1.0
+ddtrace==3.2.1
     # via -r requirements/test.txt
 deprecated==1.2.18
     # via
@@ -82,7 +82,7 @@ deprecated==1.2.18
     #   opentelemetry-api
 dill==0.3.9
     # via pylint
-django==4.2.19
+django==4.2.20
     # via
     #   -c https://raw.githubusercontent.com/edx/edx-lint/master/edx_lint/files/common_constraints.txt
     #   -r requirements/test.txt
@@ -111,7 +111,7 @@ id==1.5.0
     # via twine
 idna==3.10
     # via requests
-importlib-metadata==8.5.0
+importlib-metadata==8.6.1
     # via
     #   -r requirements/test.txt
     #   keyring
@@ -134,13 +134,13 @@ jeepney==0.9.0
     # via
     #   keyring
     #   secretstorage
-jinja2==3.1.5
+jinja2==3.1.6
     # via
     #   -r requirements/test.txt
     #   code-annotations
 keyring==25.6.0
     # via twine
-kombu==5.4.2
+kombu==5.5.0
     # via
     #   -r requirements/test.txt
     #   celery
@@ -158,13 +158,13 @@ more-itertools==10.6.0
     # via
     #   jaraco-classes
     #   jaraco-functools
-newrelic==10.6.0
+newrelic==10.7.0
     # via
     #   -r requirements/test.txt
     #   edx-django-utils
 nh3==0.2.21
     # via readme-renderer
-opentelemetry-api==1.30.0
+opentelemetry-api==1.31.0
     # via
     #   -r requirements/test.txt
     #   ddtrace
@@ -187,7 +187,7 @@ prompt-toolkit==3.0.50
     # via
     #   -r requirements/test.txt
     #   click-repl
-protobuf==5.29.3
+protobuf==6.30.1
     # via
     #   -r requirements/test.txt
     #   ddtrace
@@ -207,7 +207,7 @@ pygments==2.19.1
     # via
     #   readme-renderer
     #   rich
-pylint==3.3.4
+pylint==3.3.5
     # via
     #   edx-lint
     #   pylint-celery
@@ -225,7 +225,7 @@ pynacl==1.5.0
     # via
     #   -r requirements/test.txt
     #   edx-django-utils
-pytest==8.3.4
+pytest==8.3.5
     # via
     #   -r requirements/test.txt
     #   pytest-cov
@@ -327,7 +327,7 @@ zipp==3.21.0
     #   importlib-metadata
 
 # The following packages are considered to be unsafe in a requirements file:
-setuptools==75.8.2
+setuptools==76.0.0
     # via
     #   -r requirements/test.txt
     #   pbr

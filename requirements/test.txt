@@ -51,7 +51,7 @@ coverage[toml]==7.6.12
     # via pytest-cov
 ddt==1.7.2
     # via -r requirements/test.in
-ddtrace==3.1.0
+ddtrace==3.2.1
     # via -r requirements/test.in
 deprecated==1.2.18
     # via opentelemetry-api
@@ -73,23 +73,23 @@ edx-django-utils==7.2.0
     # via -r requirements/base.txt
 envier==0.6.1
     # via ddtrace
-importlib-metadata==8.5.0
+importlib-metadata==8.6.1
     # via opentelemetry-api
 iniconfig==2.0.0
     # via pytest
-jinja2==3.1.5
+jinja2==3.1.6
     # via code-annotations
-kombu==5.4.2
+kombu==5.5.0
     # via
     #   -r requirements/base.txt
     #   celery
 markupsafe==3.0.2
     # via jinja2
-newrelic==10.6.0
+newrelic==10.7.0
     # via
     #   -r requirements/base.txt
     #   edx-django-utils
-opentelemetry-api==1.30.0
+opentelemetry-api==1.31.0
     # via ddtrace
 packaging==24.2
     # via pytest
@@ -103,7 +103,7 @@ prompt-toolkit==3.0.50
     # via
     #   -r requirements/base.txt
     #   click-repl
-protobuf==5.29.3
+protobuf==6.30.1
     # via ddtrace
 psutil==7.0.0
     # via
@@ -117,7 +117,7 @@ pynacl==1.5.0
     # via
     #   -r requirements/base.txt
     #   edx-django-utils
-pytest==8.3.4
+pytest==8.3.5
     # via
     #   pytest-cov
     #   pytest-django
@@ -178,7 +178,7 @@ zipp==3.21.0
     # via importlib-metadata
 
 # The following packages are considered to be unsafe in a requirements file:
-setuptools==75.8.2
+setuptools==76.0.0
     # via
     #   -r requirements/base.txt
     #   pbr
