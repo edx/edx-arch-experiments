@@ -18,7 +18,7 @@ billiard==4.2.1
     #   celery
 bytecode==0.16.1
     # via ddtrace
-celery==5.4.0
+celery==5.5.0
     # via -r requirements/base.txt
 cffi==1.17.1
     # via
@@ -47,11 +47,11 @@ click-repl==0.3.0
     #   celery
 code-annotations==2.2.0
     # via -r requirements/test.in
-coverage[toml]==7.7.1
+coverage[toml]==7.8.0
     # via pytest-cov
 ddt==1.7.2
     # via -r requirements/test.in
-ddtrace==3.3.0
+ddtrace==3.3.1
     # via -r requirements/test.in
 deprecated==1.2.18
     # via opentelemetry-api
@@ -79,13 +79,13 @@ iniconfig==2.1.0
     # via pytest
 jinja2==3.1.6
     # via code-annotations
-kombu==5.5.1
+kombu==5.5.2
     # via
     #   -r requirements/base.txt
     #   celery
 markupsafe==3.0.2
     # via jinja2
-newrelic==10.8.0
+newrelic==10.8.1
     # via
     #   -r requirements/base.txt
     #   edx-django-utils
@@ -122,9 +122,9 @@ pytest==8.3.5
     #   pytest-cov
     #   pytest-django
     #   pytest-randomly
-pytest-cov==6.0.0
+pytest-cov==6.1.1
     # via -r requirements/test.in
-pytest-django==4.10.0
+pytest-django==4.11.1
     # via -r requirements/test.in
 pytest-randomly==3.16.0
     # via -r requirements/test.in
@@ -151,12 +151,11 @@ stevedore==5.4.1
     #   edx-django-utils
 text-unidecode==1.3
     # via python-slugify
-typing-extensions==4.13.0
+typing-extensions==4.13.1
     # via ddtrace
-tzdata==2025.1
+tzdata==2025.2
     # via
     #   -r requirements/base.txt
-    #   celery
     #   kombu
 vine==5.1.0
     # via
