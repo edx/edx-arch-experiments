@@ -10,7 +10,7 @@ asgiref==3.8.1
     # via django
 billiard==4.2.1
     # via celery
-celery==5.4.0
+celery==5.5.1
     # via -r requirements/base.in
 cffi==1.17.1
     # via pynacl
@@ -40,11 +40,11 @@ django-waffle==4.2.0
     # via
     #   -r requirements/base.in
     #   edx-django-utils
-edx-django-utils==7.2.0
+edx-django-utils==7.4.0
     # via -r requirements/base.in
-kombu==5.5.1
+kombu==5.5.2
     # via celery
-newrelic==10.8.0
+newrelic==10.9.0
     # via edx-django-utils
 pbr==6.1.1
     # via stevedore
@@ -64,10 +64,8 @@ sqlparse==0.5.3
     # via django
 stevedore==5.4.1
     # via edx-django-utils
-tzdata==2025.1
-    # via
-    #   celery
-    #   kombu
+tzdata==2025.2
+    # via kombu
 vine==5.1.0
     # via
     #   amqp
