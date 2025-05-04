@@ -18,7 +18,7 @@ attrs==25.3.0
     # via
     #   confluent-kafka
     #   openedx-events
-authlib==1.5.1
+authlib==1.5.2
     # via confluent-kafka
 avro==1.12.0
     # via confluent-kafka
@@ -28,9 +28,9 @@ billiard==4.2.1
     #   celery
 cachetools==5.5.2
     # via confluent-kafka
-celery==5.4.0
+celery==5.5.2
     # via -r requirements/base.txt
-certifi==2025.1.31
+certifi==2025.4.26
     # via
     #   httpcore
     #   httpx
@@ -40,7 +40,7 @@ cffi==1.17.1
     #   -r requirements/base.txt
     #   cryptography
     #   pynacl
-charset-normalizer==3.4.1
+charset-normalizer==3.4.2
     # via requests
 click==8.1.8
     # via
@@ -63,11 +63,11 @@ click-repl==0.3.0
     # via
     #   -r requirements/base.txt
     #   celery
-code-annotations==2.2.0
+code-annotations==2.3.0
     # via edx-toggles
-confluent-kafka[avro]==2.9.0
+confluent-kafka[avro]==2.10.0
     # via -r requirements/scripts.in
-cryptography==44.0.2
+cryptography==44.0.3
     # via authlib
 django==4.2.20
     # via
@@ -93,15 +93,15 @@ dnspython==2.7.0
     # via pymongo
 edx-ccx-keys==2.0.2
     # via openedx-events
-edx-django-utils==7.2.0
+edx-django-utils==7.4.0
     # via
     #   -r requirements/base.txt
     #   edx-event-bus-kafka
     #   edx-toggles
     #   openedx-events
-edx-event-bus-kafka==6.0.0
+edx-event-bus-kafka==6.1.0
     # via -r requirements/scripts.in
-edx-opaque-keys[django]==2.12.0
+edx-opaque-keys[django]==3.0.0
     # via
     #   edx-ccx-keys
     #   openedx-events
@@ -111,9 +111,9 @@ fastavro==1.10.0
     # via
     #   confluent-kafka
     #   openedx-events
-h11==0.14.0
+h11==0.16.0
     # via httpcore
-httpcore==1.0.7
+httpcore==1.0.9
     # via httpx
 httpx==0.28.1
     # via confluent-kafka
@@ -124,23 +124,23 @@ idna==3.10
     #   requests
 jinja2==3.1.6
     # via code-annotations
-kombu==5.5.1
+kombu==5.5.3
     # via
     #   -r requirements/base.txt
     #   celery
 markupsafe==3.0.2
     # via jinja2
-newrelic==10.8.0
+newrelic==10.11.0
     # via
     #   -r requirements/base.txt
     #   edx-django-utils
-openedx-events==9.20.0
+openedx-events==10.1.0
     # via edx-event-bus-kafka
 pbr==6.1.1
     # via
     #   -r requirements/base.txt
     #   stevedore
-prompt-toolkit==3.0.50
+prompt-toolkit==3.0.51
     # via
     #   -r requirements/base.txt
     #   click-repl
@@ -152,7 +152,7 @@ pycparser==2.22
     # via
     #   -r requirements/base.txt
     #   cffi
-pymongo==4.11.3
+pymongo==4.12.1
     # via edx-opaque-keys
 pynacl==1.5.0
     # via
@@ -187,14 +187,13 @@ stevedore==5.4.1
     #   edx-opaque-keys
 text-unidecode==1.3
     # via python-slugify
-typing-extensions==4.13.0
+typing-extensions==4.13.2
     # via
     #   anyio
     #   edx-opaque-keys
-tzdata==2025.1
+tzdata==2025.2
     # via
     #   -r requirements/base.txt
-    #   celery
     #   kombu
 urllib3==2.2.3
     # via
@@ -212,7 +211,7 @@ wcwidth==0.2.13
     #   prompt-toolkit
 
 # The following packages are considered to be unsafe in a requirements file:
-setuptools==78.1.0
+setuptools==80.3.0
     # via
     #   -r requirements/base.txt
     #   openedx-events
