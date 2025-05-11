@@ -10,11 +10,11 @@ asgiref==3.8.1
     # via django
 billiard==4.2.1
     # via celery
-celery==5.4.0
+celery==5.5.2
     # via -r requirements/base.in
 cffi==1.17.1
     # via pynacl
-click==8.1.8
+click==8.2.0
     # via
     #   celery
     #   click-didyoumean
@@ -27,7 +27,7 @@ click-plugins==1.1.1
     # via celery
 click-repl==0.3.0
     # via celery
-django==4.2.20
+django==4.2.21
     # via
     #   -c https://raw.githubusercontent.com/edx/edx-lint/master/edx_lint/files/common_constraints.txt
     #   -r requirements/base.in
@@ -40,15 +40,15 @@ django-waffle==4.2.0
     # via
     #   -r requirements/base.in
     #   edx-django-utils
-edx-django-utils==7.2.0
+edx-django-utils==7.4.0
     # via -r requirements/base.in
-kombu==5.5.1
+kombu==5.5.3
     # via celery
-newrelic==10.8.0
+newrelic==10.11.0
     # via edx-django-utils
 pbr==6.1.1
     # via stevedore
-prompt-toolkit==3.0.50
+prompt-toolkit==3.0.51
     # via click-repl
 psutil==7.0.0
     # via edx-django-utils
@@ -64,10 +64,8 @@ sqlparse==0.5.3
     # via django
 stevedore==5.4.1
     # via edx-django-utils
-tzdata==2025.1
-    # via
-    #   celery
-    #   kombu
+tzdata==2025.2
+    # via kombu
 vine==5.1.0
     # via
     #   amqp
@@ -77,7 +75,7 @@ wcwidth==0.2.13
     # via prompt-toolkit
 
 # The following packages are considered to be unsafe in a requirements file:
-setuptools==78.1.0
+setuptools==80.4.0
     # via
     #   -r requirements/base.in
     #   pbr
