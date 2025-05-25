@@ -16,15 +16,15 @@ billiard==4.2.1
     # via
     #   -r requirements/base.txt
     #   celery
-bytecode==0.16.1
+bytecode==0.16.2
     # via ddtrace
-celery==5.4.0
+celery==5.5.2
     # via -r requirements/base.txt
 cffi==1.17.1
     # via
     #   -r requirements/base.txt
     #   pynacl
-click==8.1.8
+click==8.2.1
     # via
     #   -r requirements/base.txt
     #   celery
@@ -45,13 +45,13 @@ click-repl==0.3.0
     # via
     #   -r requirements/base.txt
     #   celery
-code-annotations==2.2.0
+code-annotations==2.3.0
     # via -r requirements/test.in
-coverage[toml]==7.7.1
+coverage[toml]==7.8.2
     # via pytest-cov
 ddt==1.7.2
     # via -r requirements/test.in
-ddtrace==3.3.0
+ddtrace==3.8.0
     # via -r requirements/test.in
 deprecated==1.2.18
     # via opentelemetry-api
@@ -69,7 +69,7 @@ django-waffle==4.2.0
     # via
     #   -r requirements/base.txt
     #   edx-django-utils
-edx-django-utils==7.2.0
+edx-django-utils==8.0.0
     # via -r requirements/base.txt
 envier==0.6.1
     # via ddtrace
@@ -79,31 +79,27 @@ iniconfig==2.1.0
     # via pytest
 jinja2==3.1.6
     # via code-annotations
-kombu==5.5.1
+kombu==5.5.3
     # via
     #   -r requirements/base.txt
     #   celery
 markupsafe==3.0.2
     # via jinja2
-newrelic==10.8.0
-    # via
-    #   -r requirements/base.txt
-    #   edx-django-utils
-opentelemetry-api==1.31.1
+opentelemetry-api==1.33.1
     # via ddtrace
-packaging==24.2
+packaging==25.0
     # via pytest
 pbr==6.1.1
     # via
     #   -r requirements/base.txt
     #   stevedore
-pluggy==1.5.0
+pluggy==1.6.0
     # via pytest
-prompt-toolkit==3.0.50
+prompt-toolkit==3.0.51
     # via
     #   -r requirements/base.txt
     #   click-repl
-protobuf==6.30.2
+protobuf==6.31.0
     # via ddtrace
 psutil==7.0.0
     # via
@@ -122,9 +118,9 @@ pytest==8.3.5
     #   pytest-cov
     #   pytest-django
     #   pytest-randomly
-pytest-cov==6.0.0
+pytest-cov==6.1.1
     # via -r requirements/test.in
-pytest-django==4.10.0
+pytest-django==4.11.1
     # via -r requirements/test.in
 pytest-randomly==3.16.0
     # via -r requirements/test.in
@@ -151,12 +147,11 @@ stevedore==5.4.1
     #   edx-django-utils
 text-unidecode==1.3
     # via python-slugify
-typing-extensions==4.13.0
+typing-extensions==4.13.2
     # via ddtrace
-tzdata==2025.1
+tzdata==2025.2
     # via
     #   -r requirements/base.txt
-    #   celery
     #   kombu
 vine==5.1.0
     # via
@@ -178,7 +173,7 @@ zipp==3.21.0
     # via importlib-metadata
 
 # The following packages are considered to be unsafe in a requirements file:
-setuptools==78.1.0
+setuptools==80.8.0
     # via
     #   -r requirements/base.txt
     #   pbr
