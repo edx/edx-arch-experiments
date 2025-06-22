@@ -16,15 +16,15 @@ billiard==4.2.1
     # via
     #   -r requirements/base.txt
     #   celery
-bytecode==0.16.1
+bytecode==0.16.2
     # via ddtrace
-celery==5.4.0
+celery==5.5.3
     # via -r requirements/base.txt
 cffi==1.17.1
     # via
     #   -r requirements/base.txt
     #   pynacl
-click==8.1.8
+click==8.2.1
     # via
     #   -r requirements/base.txt
     #   celery
@@ -45,16 +45,14 @@ click-repl==0.3.0
     # via
     #   -r requirements/base.txt
     #   celery
-code-annotations==2.2.0
+code-annotations==2.3.0
     # via -r requirements/test.in
-coverage[toml]==7.7.1
+coverage[toml]==7.9.1
     # via pytest-cov
 ddt==1.7.2
     # via -r requirements/test.in
-ddtrace==3.3.0
+ddtrace==3.9.3
     # via -r requirements/test.in
-deprecated==1.2.18
-    # via opentelemetry-api
     # via
     #   -c https://raw.githubusercontent.com/edx/edx-lint/master/edx_lint/files/common_constraints.txt
     #   -r requirements/base.txt
@@ -65,45 +63,46 @@ django-crum==0.7.9
     # via
     #   -r requirements/base.txt
     #   edx-django-utils
-django-waffle==4.2.0
+django-waffle==5.0.0
     # via
     #   -r requirements/base.txt
     #   edx-django-utils
-edx-django-utils==7.2.0
+edx-django-utils==8.0.0
     # via -r requirements/base.txt
 envier==0.6.1
     # via ddtrace
-importlib-metadata==8.6.1
+importlib-metadata==8.7.0
     # via opentelemetry-api
 iniconfig==2.1.0
     # via pytest
 jinja2==3.1.6
     # via code-annotations
-kombu==5.5.1
+kombu==5.5.4
     # via
     #   -r requirements/base.txt
     #   celery
 markupsafe==3.0.2
     # via jinja2
-newrelic==10.8.0
+opentelemetry-api==1.34.1
+    # via ddtrace
+packaging==25.0
     # via
     #   -r requirements/base.txt
-    #   edx-django-utils
-opentelemetry-api==1.31.1
-    # via ddtrace
-packaging==24.2
-    # via pytest
+    #   kombu
+    #   pytest
 pbr==6.1.1
     # via
     #   -r requirements/base.txt
     #   stevedore
-pluggy==1.5.0
-    # via pytest
-prompt-toolkit==3.0.50
+pluggy==1.6.0
+    # via
+    #   pytest
+    #   pytest-cov
+prompt-toolkit==3.0.51
     # via
     #   -r requirements/base.txt
     #   click-repl
-protobuf==6.30.2
+protobuf==6.31.1
     # via ddtrace
 psutil==7.0.0
     # via
@@ -113,18 +112,20 @@ pycparser==2.22
     # via
     #   -r requirements/base.txt
     #   cffi
+pygments==2.19.2
+    # via pytest
 pynacl==1.5.0
     # via
     #   -r requirements/base.txt
     #   edx-django-utils
-pytest==8.3.5
+pytest==8.4.1
     # via
     #   pytest-cov
     #   pytest-django
     #   pytest-randomly
-pytest-cov==6.0.0
+pytest-cov==6.2.1
     # via -r requirements/test.in
-pytest-django==4.10.0
+pytest-django==4.11.1
     # via -r requirements/test.in
 pytest-randomly==3.16.0
     # via -r requirements/test.in
@@ -151,12 +152,13 @@ stevedore==5.4.1
     #   edx-django-utils
 text-unidecode==1.3
     # via python-slugify
-typing-extensions==4.13.0
-    # via ddtrace
-tzdata==2025.1
+typing-extensions==4.14.0
+    # via
+    #   ddtrace
+    #   opentelemetry-api
+tzdata==2025.2
     # via
     #   -r requirements/base.txt
-    #   celery
     #   kombu
 vine==5.1.0
     # via
@@ -169,16 +171,14 @@ wcwidth==0.2.13
     #   -r requirements/base.txt
     #   prompt-toolkit
 wrapt==1.17.2
-    # via
-    #   ddtrace
-    #   deprecated
+    # via ddtrace
 xmltodict==0.14.2
     # via ddtrace
-zipp==3.21.0
+zipp==3.23.0
     # via importlib-metadata
 
 # The following packages are considered to be unsafe in a requirements file:
-setuptools==78.1.0
+setuptools==80.9.0
     # via
     #   -r requirements/base.txt
     #   pbr
