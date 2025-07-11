@@ -29,6 +29,7 @@ import click
 # These applications are the ones which contain views we want to monitor
 EDX_REPO_APPS = {
     'bulk_grades': 'https://github.com/openedx/edx-bulk-grades',
+    'channel_integrations': 'https://github.com/openedx/enterprise-integrated-channels',
     'coaching': 'https://github.com/edx/platform-plugin-coaching',
     'completion': 'https://github.com/openedx/completion',
     'config_models': 'https://github.com/openedx/django-config-models',
