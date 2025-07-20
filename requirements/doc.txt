@@ -32,7 +32,7 @@ bytecode==0.16.2
     #   ddtrace
 celery==5.5.3
     # via -r requirements/test.txt
-certifi==2025.7.9
+certifi==2025.7.14
     # via requests
 cffi==1.17.1
     # via
@@ -126,7 +126,7 @@ markupsafe==3.0.2
     # via
     #   -r requirements/test.txt
     #   jinja2
-nh3==0.2.21
+nh3==0.3.0
     # via readme-renderer
 opentelemetry-api==1.35.0
     # via
