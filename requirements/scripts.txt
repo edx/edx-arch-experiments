@@ -18,7 +18,7 @@ attrs==25.3.0
     # via
     #   confluent-kafka
     #   openedx-events
-authlib==1.6.0
+authlib==1.6.1
     # via confluent-kafka
 avro==1.12.0
     # via confluent-kafka
@@ -30,7 +30,7 @@ cachetools==6.1.0
     # via confluent-kafka
 celery==5.5.3
     # via -r requirements/base.txt
-certifi==2025.7.9
+certifi==2025.7.14
     # via
     #   httpcore
     #   httpx
@@ -130,7 +130,7 @@ kombu==5.5.4
     #   celery
 markupsafe==3.0.2
     # via jinja2
-openedx-events==10.3.0
+openedx-events==10.4.0
     # via edx-event-bus-kafka
 packaging==25.0
     # via
