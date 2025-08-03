@@ -18,7 +18,7 @@ attrs==25.3.0
     # via
     #   confluent-kafka
     #   openedx-events
-authlib==1.6.0
+authlib==1.6.1
     # via confluent-kafka
 avro==1.12.0
     # via confluent-kafka
@@ -30,7 +30,7 @@ cachetools==6.1.0
     # via confluent-kafka
 celery==5.5.3
     # via -r requirements/base.txt
-certifi==2025.7.9
+certifi==2025.8.3
     # via
     #   httpcore
     #   httpx
@@ -71,7 +71,7 @@ cryptography==45.0.5
     # via authlib
 django==4.2.23
     # via
-    #   -c https://raw.githubusercontent.com/edx/edx-lint/master/edx_lint/files/common_constraints.txt
+    #   -c https:/raw.githubusercontent.com/edx/edx-lint/master/edx_lint/files/common_constraints.txt
     #   -r requirements/base.txt
     #   django-crum
     #   django-waffle
@@ -105,9 +105,9 @@ edx-opaque-keys[django]==3.0.0
     # via
     #   edx-ccx-keys
     #   openedx-events
-edx-toggles==5.3.0
+edx-toggles==5.4.1
     # via edx-event-bus-kafka
-fastavro==1.11.1
+fastavro==1.12.0
     # via
     #   confluent-kafka
     #   openedx-events
@@ -130,7 +130,7 @@ kombu==5.5.4
     #   celery
 markupsafe==3.0.2
     # via jinja2
-openedx-events==10.3.0
+openedx-events==10.4.0
     # via edx-event-bus-kafka
 packaging==25.0
     # via
@@ -195,10 +195,8 @@ tzdata==2025.2
     # via
     #   -r requirements/base.txt
     #   kombu
-urllib3==2.2.3
-    # via
-    #   -c https://raw.githubusercontent.com/edx/edx-lint/master/edx_lint/files/common_constraints.txt
-    #   requests
+urllib3==2.5.0
+    # via requests
 vine==5.1.0
     # via
     #   -r requirements/base.txt
