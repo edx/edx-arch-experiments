@@ -32,13 +32,13 @@ bytecode==0.16.2
     #   ddtrace
 celery==5.5.3
     # via -r requirements/test.txt
-certifi==2025.7.9
+certifi==2025.8.3
     # via requests
 cffi==1.17.1
     # via
     #   -r requirements/test.txt
     #   pynacl
-charset-normalizer==3.4.2
+charset-normalizer==3.4.3
     # via requests
 click==8.2.1
     # via
@@ -63,17 +63,17 @@ click-repl==0.3.0
     #   celery
 code-annotations==2.3.0
     # via -r requirements/test.txt
-coverage[toml]==7.9.2
+coverage[toml]==7.10.4
     # via
     #   -r requirements/test.txt
     #   pytest-cov
 ddt==1.7.2
     # via -r requirements/test.txt
-ddtrace==3.10.2
+ddtrace==3.12.1
     # via -r requirements/test.txt
 django==4.2.23
     # via
-    #   -c https://raw.githubusercontent.com/edx/edx-lint/master/edx_lint/files/common_constraints.txt
+    #   -c https:/raw.githubusercontent.com/edx/edx-lint/master/edx_lint/files/common_constraints.txt
     #   -r requirements/test.txt
     #   django-crum
     #   django-waffle
@@ -126,9 +126,9 @@ markupsafe==3.0.2
     # via
     #   -r requirements/test.txt
     #   jinja2
-nh3==0.2.21
+nh3==0.3.0
     # via readme-renderer
-opentelemetry-api==1.35.0
+opentelemetry-api==1.36.0
     # via
     #   -r requirements/test.txt
     #   ddtrace
@@ -139,7 +139,7 @@ packaging==25.0
     #   pydata-sphinx-theme
     #   pytest
     #   sphinx
-pbr==6.1.1
+pbr==7.0.0
     # via
     #   -r requirements/test.txt
     #   stevedore
@@ -152,7 +152,7 @@ prompt-toolkit==3.0.51
     # via
     #   -r requirements/test.txt
     #   click-repl
-protobuf==6.31.1
+protobuf==6.32.0
     # via
     #   -r requirements/test.txt
     #   ddtrace
@@ -263,10 +263,8 @@ tzdata==2025.2
     # via
     #   -r requirements/test.txt
     #   kombu
-urllib3==2.2.3
-    # via
-    #   -c https://raw.githubusercontent.com/edx/edx-lint/master/edx_lint/files/common_constraints.txt
-    #   requests
+urllib3==2.5.0
+    # via requests
 vine==5.1.0
     # via
     #   -r requirements/test.txt
@@ -277,11 +275,7 @@ wcwidth==0.2.13
     # via
     #   -r requirements/test.txt
     #   prompt-toolkit
-wrapt==1.17.2
-    # via
-    #   -r requirements/test.txt
-    #   ddtrace
-xmltodict==0.14.2
+wrapt==1.17.3
     # via
     #   -r requirements/test.txt
     #   ddtrace
