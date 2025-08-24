@@ -8,7 +8,7 @@ amqp==5.3.1
     # via
     #   -r requirements/base.txt
     #   kombu
-anyio==4.9.0
+anyio==4.10.0
     # via httpx
 asgiref==3.9.1
     # via
@@ -18,7 +18,7 @@ attrs==25.3.0
     # via
     #   confluent-kafka
     #   openedx-events
-authlib==1.6.0
+authlib==1.6.2
     # via confluent-kafka
 avro==1.12.0
     # via confluent-kafka
@@ -30,7 +30,7 @@ cachetools==6.1.0
     # via confluent-kafka
 celery==5.5.3
     # via -r requirements/base.txt
-certifi==2025.7.9
+certifi==2025.8.3
     # via
     #   httpcore
     #   httpx
@@ -40,7 +40,7 @@ cffi==1.17.1
     #   -r requirements/base.txt
     #   cryptography
     #   pynacl
-charset-normalizer==3.4.2
+charset-normalizer==3.4.3
     # via requests
 click==8.2.1
     # via
@@ -65,13 +65,13 @@ click-repl==0.3.0
     #   celery
 code-annotations==2.3.0
     # via edx-toggles
-confluent-kafka[avro]==2.11.0
+confluent-kafka[avro]==2.11.1
     # via -r requirements/scripts.in
-cryptography==45.0.5
+cryptography==45.0.6
     # via authlib
 django==4.2.23
     # via
-    #   -c https://raw.githubusercontent.com/edx/edx-lint/master/edx_lint/files/common_constraints.txt
+    #   -c https:/raw.githubusercontent.com/edx/edx-lint/master/edx_lint/files/common_constraints.txt
     #   -r requirements/base.txt
     #   django-crum
     #   django-waffle
@@ -105,9 +105,9 @@ edx-opaque-keys[django]==3.0.0
     # via
     #   edx-ccx-keys
     #   openedx-events
-edx-toggles==5.3.0
+edx-toggles==5.4.1
     # via edx-event-bus-kafka
-fastavro==1.11.1
+fastavro==1.12.0
     # via
     #   confluent-kafka
     #   openedx-events
@@ -130,13 +130,15 @@ kombu==5.5.4
     #   celery
 markupsafe==3.0.2
     # via jinja2
-openedx-events==10.3.0
+openedx-events==10.5.0
     # via edx-event-bus-kafka
+orjson==3.11.2
+    # via confluent-kafka
 packaging==25.0
     # via
     #   -r requirements/base.txt
     #   kombu
-pbr==6.1.1
+pbr==7.0.1
     # via
     #   -r requirements/base.txt
     #   stevedore
@@ -152,7 +154,7 @@ pycparser==2.22
     # via
     #   -r requirements/base.txt
     #   cffi
-pymongo==4.13.2
+pymongo==4.14.1
     # via edx-opaque-keys
 pynacl==1.5.0
     # via
@@ -166,7 +168,7 @@ python-slugify==8.0.4
     # via code-annotations
 pyyaml==6.0.2
     # via code-annotations
-requests==2.32.4
+requests==2.32.5
     # via confluent-kafka
 six==1.17.0
     # via
@@ -195,10 +197,8 @@ tzdata==2025.2
     # via
     #   -r requirements/base.txt
     #   kombu
-urllib3==2.2.3
-    # via
-    #   -c https://raw.githubusercontent.com/edx/edx-lint/master/edx_lint/files/common_constraints.txt
-    #   requests
+urllib3==2.5.0
+    # via requests
 vine==5.1.0
     # via
     #   -r requirements/base.txt
