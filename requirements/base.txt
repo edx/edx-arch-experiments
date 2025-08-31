@@ -29,7 +29,7 @@ click-repl==0.3.0
     # via celery
 django==4.2.23
     # via
-    #   -c https://raw.githubusercontent.com/edx/edx-lint/master/edx_lint/files/common_constraints.txt
+    #   -c https:/raw.githubusercontent.com/edx/edx-lint/master/edx_lint/files/common_constraints.txt
     #   -r requirements/base.in
     #   django-crum
     #   django-waffle
@@ -46,9 +46,7 @@ kombu==5.5.4
     # via celery
 packaging==25.0
     # via kombu
-pbr==6.1.1
-    # via stevedore
-prompt-toolkit==3.0.51
+prompt-toolkit==3.0.52
     # via click-repl
 psutil==7.0.0
     # via edx-django-utils
@@ -62,7 +60,7 @@ six==1.17.0
     # via python-dateutil
 sqlparse==0.5.3
     # via django
-stevedore==5.4.1
+stevedore==5.5.0
     # via edx-django-utils
 tzdata==2025.2
     # via kombu
@@ -76,6 +74,4 @@ wcwidth==0.2.13
 
 # The following packages are considered to be unsafe in a requirements file:
 setuptools==80.9.0
-    # via
-    #   -r requirements/base.in
-    #   pbr
+    # via -r requirements/base.in
