@@ -16,11 +16,11 @@ billiard==4.2.1
     # via
     #   -r requirements/base.txt
     #   celery
-bytecode==0.16.2
+bytecode==0.17.0
     # via ddtrace
 celery==5.5.3
     # via -r requirements/base.txt
-cffi==1.17.1
+cffi==2.0.0
     # via
     #   -r requirements/base.txt
     #   pynacl
@@ -47,14 +47,14 @@ click-repl==0.3.0
     #   celery
 code-annotations==2.3.0
     # via -r requirements/test.in
-coverage[toml]==7.9.2
+coverage[toml]==7.10.6
     # via pytest-cov
 ddt==1.7.2
     # via -r requirements/test.in
-ddtrace==3.10.2
+ddtrace==3.14.0
     # via -r requirements/test.in
     # via
-    #   -c https://raw.githubusercontent.com/edx/edx-lint/master/edx_lint/files/common_constraints.txt
+    #   -c https:/raw.githubusercontent.com/edx/edx-lint/master/edx_lint/files/common_constraints.txt
     #   -r requirements/base.txt
     #   django-crum
     #   django-waffle
@@ -83,51 +83,47 @@ kombu==5.5.4
     #   celery
 markupsafe==3.0.2
     # via jinja2
-opentelemetry-api==1.35.0
+opentelemetry-api==1.37.0
     # via ddtrace
 packaging==25.0
     # via
     #   -r requirements/base.txt
     #   kombu
     #   pytest
-pbr==6.1.1
-    # via
-    #   -r requirements/base.txt
-    #   stevedore
 pluggy==1.6.0
     # via
     #   pytest
     #   pytest-cov
-prompt-toolkit==3.0.51
+prompt-toolkit==3.0.52
     # via
     #   -r requirements/base.txt
     #   click-repl
-protobuf==6.31.1
+protobuf==6.32.1
     # via ddtrace
 psutil==7.0.0
     # via
     #   -r requirements/base.txt
     #   edx-django-utils
-pycparser==2.22
+pycparser==2.23
     # via
     #   -r requirements/base.txt
     #   cffi
 pygments==2.19.2
     # via pytest
-pynacl==1.5.0
+pynacl==1.6.0
     # via
     #   -r requirements/base.txt
     #   edx-django-utils
-pytest==8.4.1
+pytest==8.4.2
     # via
     #   pytest-cov
     #   pytest-django
     #   pytest-randomly
-pytest-cov==6.2.1
+pytest-cov==7.0.0
     # via -r requirements/test.in
 pytest-django==4.11.1
     # via -r requirements/test.in
-pytest-randomly==3.16.0
+pytest-randomly==4.0.1
     # via -r requirements/test.in
 python-dateutil==2.9.0.post0
     # via
@@ -145,14 +141,14 @@ sqlparse==0.5.3
     # via
     #   -r requirements/base.txt
     #   django
-stevedore==5.4.1
+stevedore==5.5.0
     # via
     #   -r requirements/base.txt
     #   code-annotations
     #   edx-django-utils
 text-unidecode==1.3
     # via python-slugify
-typing-extensions==4.14.1
+typing-extensions==4.15.0
     # via
     #   ddtrace
     #   opentelemetry-api
@@ -170,15 +166,11 @@ wcwidth==0.2.13
     # via
     #   -r requirements/base.txt
     #   prompt-toolkit
-wrapt==1.17.2
-    # via ddtrace
-xmltodict==0.14.2
+wrapt==1.17.3
     # via ddtrace
 zipp==3.23.0
     # via importlib-metadata
 
 # The following packages are considered to be unsafe in a requirements file:
 setuptools==80.9.0
-    # via
-    #   -r requirements/base.txt
-    #   pbr
+    # via -r requirements/base.txt
