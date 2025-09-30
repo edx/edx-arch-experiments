@@ -12,7 +12,7 @@ amqp==5.3.1
     # via
     #   -r requirements/test.txt
     #   kombu
-asgiref==3.9.1
+asgiref==3.9.2
     # via
     #   -r requirements/test.txt
     #   django
@@ -20,27 +20,27 @@ babel==2.17.0
     # via
     #   pydata-sphinx-theme
     #   sphinx
-beautifulsoup4==4.13.4
+beautifulsoup4==4.14.2
     # via pydata-sphinx-theme
-billiard==4.2.1
+billiard==4.2.2
     # via
     #   -r requirements/test.txt
     #   celery
-bytecode==0.16.2
+bytecode==0.17.0
     # via
     #   -r requirements/test.txt
     #   ddtrace
 celery==5.5.3
     # via -r requirements/test.txt
-certifi==2025.7.9
+certifi==2025.8.3
     # via requests
-cffi==1.17.1
+cffi==2.0.0
     # via
     #   -r requirements/test.txt
     #   pynacl
-charset-normalizer==3.4.2
+charset-normalizer==3.4.3
     # via requests
-click==8.2.1
+click==8.3.0
     # via
     #   -r requirements/test.txt
     #   celery
@@ -63,17 +63,17 @@ click-repl==0.3.0
     #   celery
 code-annotations==2.3.0
     # via -r requirements/test.txt
-coverage[toml]==7.9.2
+coverage[toml]==7.10.7
     # via
     #   -r requirements/test.txt
     #   pytest-cov
 ddt==1.7.2
     # via -r requirements/test.txt
-ddtrace==3.10.2
+ddtrace==3.15.0
     # via -r requirements/test.txt
-django==4.2.23
+django==4.2.24
     # via
-    #   -c https://raw.githubusercontent.com/edx/edx-lint/master/edx_lint/files/common_constraints.txt
+    #   -c https:/raw.githubusercontent.com/edx/edx-lint/master/edx_lint/files/common_constraints.txt
     #   -r requirements/test.txt
     #   django-crum
     #   django-waffle
@@ -95,7 +95,7 @@ docutils==0.21.2
     #   readme-renderer
     #   restructuredtext-lint
     #   sphinx
-edx-django-utils==8.0.0
+edx-django-utils==8.0.1
     # via -r requirements/test.txt
 envier==0.6.1
     # via
@@ -122,13 +122,13 @@ kombu==5.5.4
     # via
     #   -r requirements/test.txt
     #   celery
-markupsafe==3.0.2
+markupsafe==3.0.3
     # via
     #   -r requirements/test.txt
     #   jinja2
-nh3==0.2.21
+nh3==0.3.0
     # via readme-renderer
-opentelemetry-api==1.35.0
+opentelemetry-api==1.37.0
     # via
     #   -r requirements/test.txt
     #   ddtrace
@@ -139,28 +139,24 @@ packaging==25.0
     #   pydata-sphinx-theme
     #   pytest
     #   sphinx
-pbr==6.1.1
-    # via
-    #   -r requirements/test.txt
-    #   stevedore
 pluggy==1.6.0
     # via
     #   -r requirements/test.txt
     #   pytest
     #   pytest-cov
-prompt-toolkit==3.0.51
+prompt-toolkit==3.0.52
     # via
     #   -r requirements/test.txt
     #   click-repl
-protobuf==6.31.1
+protobuf==6.32.1
     # via
     #   -r requirements/test.txt
     #   ddtrace
-psutil==7.0.0
+psutil==7.1.0
     # via
     #   -r requirements/test.txt
     #   edx-django-utils
-pycparser==2.22
+pycparser==2.23
     # via
     #   -r requirements/test.txt
     #   cffi
@@ -175,21 +171,21 @@ pygments==2.19.2
     #   pytest
     #   readme-renderer
     #   sphinx
-pynacl==1.5.0
+pynacl==1.6.0
     # via
     #   -r requirements/test.txt
     #   edx-django-utils
-pytest==8.4.1
+pytest==8.4.2
     # via
     #   -r requirements/test.txt
     #   pytest-cov
     #   pytest-django
     #   pytest-randomly
-pytest-cov==6.2.1
+pytest-cov==7.0.0
     # via -r requirements/test.txt
 pytest-django==4.11.1
     # via -r requirements/test.txt
-pytest-randomly==3.16.0
+pytest-randomly==4.0.1
     # via -r requirements/test.txt
 python-dateutil==2.9.0.post0
     # via
@@ -199,13 +195,13 @@ python-slugify==8.0.4
     # via
     #   -r requirements/test.txt
     #   code-annotations
-pyyaml==6.0.2
+pyyaml==6.0.3
     # via
     #   -r requirements/test.txt
     #   code-annotations
 readme-renderer==44.0
     # via -r requirements/doc.in
-requests==2.32.4
+requests==2.32.5
     # via sphinx
 restructuredtext-lint==1.4.0
     # via doc8
@@ -217,7 +213,7 @@ six==1.17.0
     #   python-dateutil
 snowballstemmer==3.0.1
     # via sphinx
-soupsieve==2.7
+soupsieve==2.8
     # via beautifulsoup4
 sphinx==8.2.3
     # via
@@ -242,7 +238,7 @@ sqlparse==0.5.3
     # via
     #   -r requirements/test.txt
     #   django
-stevedore==5.4.1
+stevedore==5.5.0
     # via
     #   -r requirements/test.txt
     #   code-annotations
@@ -252,36 +248,29 @@ text-unidecode==1.3
     # via
     #   -r requirements/test.txt
     #   python-slugify
-typing-extensions==4.14.1
+typing-extensions==4.15.0
     # via
     #   -r requirements/test.txt
     #   beautifulsoup4
-    #   ddtrace
     #   opentelemetry-api
     #   pydata-sphinx-theme
 tzdata==2025.2
     # via
     #   -r requirements/test.txt
     #   kombu
-urllib3==2.2.3
-    # via
-    #   -c https://raw.githubusercontent.com/edx/edx-lint/master/edx_lint/files/common_constraints.txt
-    #   requests
+urllib3==2.5.0
+    # via requests
 vine==5.1.0
     # via
     #   -r requirements/test.txt
     #   amqp
     #   celery
     #   kombu
-wcwidth==0.2.13
+wcwidth==0.2.14
     # via
     #   -r requirements/test.txt
     #   prompt-toolkit
-wrapt==1.17.2
-    # via
-    #   -r requirements/test.txt
-    #   ddtrace
-xmltodict==0.14.2
+wrapt==1.17.3
     # via
     #   -r requirements/test.txt
     #   ddtrace
@@ -292,6 +281,4 @@ zipp==3.23.0
 
 # The following packages are considered to be unsafe in a requirements file:
 setuptools==80.9.0
-    # via
-    #   -r requirements/test.txt
-    #   pbr
+    # via -r requirements/test.txt
