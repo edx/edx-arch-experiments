@@ -99,11 +99,11 @@ coverage[toml]==7.10.7
     # via
     #   -r requirements/quality.txt
     #   pytest-cov
-cryptography==46.0.1
+cryptography==46.0.2
     # via
     #   -r requirements/quality.txt
     #   secretstorage
-datadog-api-client==2.43.0
+datadog-api-client==2.44.0
     # via -r requirements/dev.in
 ddt==1.7.2
     # via -r requirements/quality.txt
@@ -119,9 +119,9 @@ distlib==0.4.0
     # via
     #   -r requirements/ci.txt
     #   virtualenv
-django==4.2.24
+django==4.2.25
     # via
-    #   -c https:/raw.githubusercontent.com/edx/edx-lint/master/edx_lint/files/common_constraints.txt
+    #   -c https://raw.githubusercontent.com/edx/edx-lint/master/edx_lint/files/common_constraints.txt
     #   -r requirements/quality.txt
     #   django-crum
     #   django-waffle
@@ -171,7 +171,7 @@ iniconfig==2.1.0
     # via
     #   -r requirements/quality.txt
     #   pytest
-isort==6.0.1
+isort==6.1.0
     # via
     #   -r requirements/quality.txt
     #   pylint
@@ -209,7 +209,7 @@ lxml[html-clean]==6.0.2
     # via
     #   edx-i18n-tools
     #   lxml-html-clean
-lxml-html-clean==0.4.2
+lxml-html-clean==0.4.3
     # via lxml
 markdown-it-py==4.0.0
     # via
@@ -253,7 +253,7 @@ packaging==25.0
     #   twine
 path==16.16.0
     # via edx-i18n-tools
-pip-tools==7.5.0
+pip-tools==7.5.1
     # via -r requirements/pip-tools.txt
 platformdirs==4.4.0
     # via
@@ -410,7 +410,7 @@ tomlkit==0.13.3
     # via
     #   -r requirements/quality.txt
     #   pylint
-tox==4.30.2
+tox==4.30.3
     # via -r requirements/ci.txt
 twine==6.2.0
     # via -r requirements/quality.txt
@@ -457,9 +457,8 @@ zipp==3.23.0
     #   importlib-metadata
 
 # The following packages are considered to be unsafe in a requirements file:
-pip==24.2
+pip==25.2
     # via
-    #   -c https:/raw.githubusercontent.com/edx/edx-lint/master/edx_lint/files/common_constraints.txt
     #   -r requirements/pip-tools.txt
     #   pip-tools
 setuptools==80.9.0
