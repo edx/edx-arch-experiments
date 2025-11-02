@@ -69,7 +69,7 @@ coverage[toml]==7.11.0
     #   pytest-cov
 ddt==1.7.2
     # via -r requirements/test.txt
-ddtrace==3.16.0
+ddtrace==3.17.2
     # via -r requirements/test.txt
 django==4.2.25
     # via
@@ -126,7 +126,7 @@ markupsafe==3.0.3
     # via
     #   -r requirements/test.txt
     #   jinja2
-nh3==0.3.1
+nh3==0.3.2
     # via readme-renderer
 opentelemetry-api==1.38.0
     # via
@@ -152,7 +152,7 @@ protobuf==6.33.0
     # via
     #   -r requirements/test.txt
     #   ddtrace
-psutil==7.1.0
+psutil==7.1.2
     # via
     #   -r requirements/test.txt
     #   edx-django-utils
