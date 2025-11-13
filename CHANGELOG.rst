@@ -14,6 +14,12 @@ Change Log
 Unreleased
 **********
 
+[7.1.0] - 2025-11-17
+********************
+Added
+=====
+* Dummy model for testing migrations and rollback.
+
 [7.0.0] - 2025-01-30
 ********************
 
