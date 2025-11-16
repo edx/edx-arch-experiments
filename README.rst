@@ -1,5 +1,5 @@
 edx-arch-experiments
-====================
+####################
 
 |pypi-badge| |ci-badge| |codecov-badge| |pyversions-badge|
 |license-badge|
@@ -7,16 +7,16 @@ edx-arch-experiments
 A plugin to include applications under development by and useful utility scripts for the architecture team at 2U.
 
 Overview
-------------------------
+********
 
 This plugin is meant to house experimental and in-development applications from the edX architecture team at 2U that are either not appropriate (i.e. 2U-specific) or not yet ready for community consumption.
 It also includes some one-off scripts meant to reduce toil for the team.
 
 Development Workflow
---------------------
+********************
 
 One Time Setup
-~~~~~~~~~~~~~~
+==============
 .. code-block::
 
   # Clone the repository
@@ -27,7 +27,7 @@ One Time Setup
   mkvirtualenv -p python3.11 edx-arch-experiments
 
 Local testing
-~~~~~~~~~~~~~
+=============
 Two options are available for testing changes locally:
 
 First, via `make test-shell` a dockerized development envrionment can be launched to run `pytest` and do basic migration work.
@@ -36,7 +36,7 @@ Second, a local copy of the package can be installed into edx-platform. For exam
 
 
 Every time you develop something in this repo
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+=============================================
 .. code-block::
 
   # Activate the virtualenv
@@ -71,7 +71,7 @@ Every time you develop something in this repo
   # Open a PR and ask for review.
 
 License
--------
+*******
 
 The code in this repository is licensed under the AGPL 3.0 unless
 otherwise noted.
@@ -79,7 +79,7 @@ otherwise noted.
 Please see `LICENSE.txt <LICENSE.txt>`_ for details.
 
 How To Contribute
------------------
+*****************
 
 Contributions are very welcome.
 Please read `How To Contribute <https://github.com/edx/edx-platform/blob/master/CONTRIBUTING.rst>`_ for details.
@@ -93,12 +93,12 @@ The issue report template should be automatically applied if you are creating an
 can find it at `ISSUE_TEMPLATE.md <.github/ISSUE_TEMPLATE.md>`_.
 
 Reporting Security Issues
--------------------------
+*************************
 
 Please do not report security issues in public. Please email security@edx.org.
 
 Getting Help
-------------
+************
 
 If you're having trouble, we have discussion forums at https://discuss.openedx.org where you can connect with others in the community.
 
