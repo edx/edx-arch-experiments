@@ -8,7 +8,7 @@ amqp==5.3.1
     # via
     #   -r requirements/quality.txt
     #   kombu
-asgiref==3.10.0
+asgiref==3.11.0
     # via
     #   -r requirements/quality.txt
     #   django
@@ -21,7 +21,7 @@ backports-tarfile==1.2.0
     # via
     #   -r requirements/quality.txt
     #   jaraco-context
-billiard==4.2.2
+billiard==4.2.3
     # via
     #   -r requirements/quality.txt
     #   celery
@@ -33,13 +33,13 @@ bytecode==0.17.0
     # via
     #   -r requirements/quality.txt
     #   ddtrace
-cachetools==6.2.1
+cachetools==6.2.2
     # via
     #   -r requirements/ci.txt
     #   tox
 celery==5.5.3
     # via -r requirements/quality.txt
-certifi==2025.10.5
+certifi==2025.11.12
     # via
     #   -r requirements/quality.txt
     #   datadog-api-client
@@ -58,7 +58,7 @@ charset-normalizer==3.4.4
     # via
     #   -r requirements/quality.txt
     #   requests
-click==8.3.0
+click==8.3.1
     # via
     #   -r requirements/pip-tools.txt
     #   -r requirements/quality.txt
@@ -95,7 +95,7 @@ colorama==0.4.6
     # via
     #   -r requirements/ci.txt
     #   tox
-coverage[toml]==7.11.2
+coverage[toml]==7.12.0
     # via
     #   -r requirements/quality.txt
     #   pytest-cov
@@ -103,13 +103,13 @@ cryptography==46.0.3
     # via
     #   -r requirements/quality.txt
     #   secretstorage
-datadog-api-client==2.45.0
+datadog-api-client==2.46.0
     # via -r requirements/dev.in
 ddt==1.7.2
     # via -r requirements/quality.txt
-ddtrace==3.18.1
+ddtrace==4.0.0
     # via -r requirements/quality.txt
-diff-cover==9.7.1
+diff-cover==9.7.2
     # via -r requirements/dev.in
 dill==0.4.0
     # via
@@ -197,7 +197,7 @@ jinja2==3.1.6
     #   -r requirements/quality.txt
     #   code-annotations
     #   diff-cover
-keyring==25.6.0
+keyring==25.7.0
     # via
     #   -r requirements/quality.txt
     #   twine
@@ -253,7 +253,7 @@ packaging==25.0
     #   twine
 path==16.16.0
     # via edx-i18n-tools
-pip-tools==7.5.1
+pip-tools==7.5.2
     # via -r requirements/pip-tools.txt
 platformdirs==4.5.0
     # via
@@ -276,10 +276,6 @@ prompt-toolkit==3.0.52
     # via
     #   -r requirements/quality.txt
     #   click-repl
-protobuf==6.33.0
-    # via
-    #   -r requirements/quality.txt
-    #   ddtrace
 psutil==7.1.3
     # via
     #   -r requirements/quality.txt
@@ -319,7 +315,7 @@ pylint-plugin-utils==0.9.0
     #   -r requirements/quality.txt
     #   pylint-celery
     #   pylint-django
-pynacl==1.6.0
+pynacl==1.6.1
     # via
     #   -r requirements/quality.txt
     #   edx-django-utils
@@ -332,7 +328,7 @@ pyproject-hooks==1.2.0
     #   -r requirements/pip-tools.txt
     #   build
     #   pip-tools
-pytest==9.0.0
+pytest==9.0.1
     # via
     #   -r requirements/quality.txt
     #   pytest-cov
@@ -380,7 +376,7 @@ rich==14.2.0
     # via
     #   -r requirements/quality.txt
     #   twine
-secretstorage==3.4.0
+secretstorage==3.4.1
     # via
     #   -r requirements/quality.txt
     #   keyring
@@ -397,7 +393,7 @@ sqlparse==0.5.3
     # via
     #   -r requirements/quality.txt
     #   django
-stevedore==5.5.0
+stevedore==5.6.0
     # via
     #   -r requirements/quality.txt
     #   code-annotations
