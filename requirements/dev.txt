@@ -376,7 +376,7 @@ rich==14.2.0
     # via
     #   -r requirements/quality.txt
     #   twine
-secretstorage==3.4.1
+secretstorage==3.5.0
     # via
     #   -r requirements/quality.txt
     #   keyring
@@ -389,7 +389,7 @@ snowballstemmer==3.0.1
     # via
     #   -r requirements/quality.txt
     #   pydocstyle
-sqlparse==0.5.3
+sqlparse==0.5.4
     # via
     #   -r requirements/quality.txt
     #   django

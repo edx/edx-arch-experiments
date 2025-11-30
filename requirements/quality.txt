@@ -250,7 +250,7 @@ rfc3986==2.0.0
     # via twine
 rich==14.2.0
     # via twine
-secretstorage==3.4.1
+secretstorage==3.5.0
     # via keyring
 six==1.17.0
     # via
@@ -259,7 +259,7 @@ six==1.17.0
     #   python-dateutil
 snowballstemmer==3.0.1
     # via pydocstyle
-sqlparse==0.5.3
+sqlparse==0.5.4
     # via
     #   -r requirements/test.txt
     #   django
