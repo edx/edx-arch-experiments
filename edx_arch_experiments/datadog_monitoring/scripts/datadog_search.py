@@ -45,6 +45,8 @@ def main(regex):
     2. Set the following environment variables (in a safe way):
         export DD_API_KEY=XXXXX
         export DD_APP_KEY=XXXXX
+    See Create API and APP keys here: https://docs.datadoghq.com/account_management/api-app-keys
+    (API key creation requires elevated Datadog permissions—raise a helpdesk ticket or contact a Datadog admin.)
     See https://docs.datadoghq.com/api/latest/?code-lang=python for more details.
 
     \b
