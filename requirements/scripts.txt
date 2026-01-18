@@ -8,7 +8,7 @@ amqp==5.3.1
     # via
     #   -r requirements/base.txt
     #   kombu
-anyio==4.12.0
+anyio==4.12.1
     # via httpx
 asgiref==3.11.0
     # via
@@ -28,7 +28,7 @@ billiard==4.2.4
     #   celery
 cachetools==6.2.4
     # via confluent-kafka
-celery==5.6.1
+celery==5.6.2
     # via -r requirements/base.txt
 certifi==2026.1.4
     # via
@@ -66,11 +66,11 @@ click-repl==0.3.0
     #   celery
 code-annotations==2.3.0
     # via edx-toggles
-confluent-kafka[avro]==2.12.2
+confluent-kafka[avro]==2.13.0
     # via -r requirements/scripts.in
 cryptography==46.0.3
     # via authlib
-django==5.2.9
+django==5.2.10
     # via
     #   -c https://raw.githubusercontent.com/edx/edx-lint/master/edx_lint/files/common_constraints.txt
     #   -r requirements/base.txt
@@ -149,7 +149,7 @@ pycparser==2.23
     # via
     #   -r requirements/base.txt
     #   cffi
-pymongo==4.15.5
+pymongo==4.16.0
     # via edx-opaque-keys
 pynacl==1.6.2
     # via
@@ -194,7 +194,7 @@ tzlocal==5.3.1
     # via
     #   -r requirements/base.txt
     #   celery
-urllib3==2.6.2
+urllib3==2.6.3
     # via requests
 vine==5.1.0
     # via

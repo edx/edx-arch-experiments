@@ -25,7 +25,7 @@ billiard==4.2.4
     # via
     #   -r requirements/quality.txt
     #   celery
-build==1.3.0
+build==1.4.0
     # via
     #   -r requirements/pip-tools.txt
     #   pip-tools
@@ -37,7 +37,7 @@ cachetools==6.2.4
     # via
     #   -r requirements/ci.txt
     #   tox
-celery==5.6.1
+celery==5.6.2
     # via -r requirements/quality.txt
 certifi==2026.1.4
     # via
@@ -103,13 +103,13 @@ cryptography==46.0.3
     # via
     #   -r requirements/quality.txt
     #   secretstorage
-datadog-api-client==2.48.0
+datadog-api-client==2.50.0
     # via -r requirements/dev.in
 ddt==1.7.2
     # via -r requirements/quality.txt
-ddtrace==4.1.1
+ddtrace==4.2.1
     # via -r requirements/quality.txt
-diff-cover==10.1.0
+diff-cover==10.2.0
     # via -r requirements/dev.in
 dill==0.4.0
     # via
@@ -119,7 +119,7 @@ distlib==0.4.0
     # via
     #   -r requirements/ci.txt
     #   virtualenv
-django==5.2.9
+django==5.2.10
     # via
     #   -c https://raw.githubusercontent.com/edx/edx-lint/master/edx_lint/files/common_constraints.txt
     #   -r requirements/quality.txt
@@ -149,7 +149,7 @@ envier==0.6.1
     # via
     #   -r requirements/quality.txt
     #   ddtrace
-filelock==3.20.2
+filelock==3.20.3
     # via
     #   -r requirements/ci.txt
     #   tox
@@ -179,7 +179,7 @@ jaraco-classes==3.4.0
     # via
     #   -r requirements/quality.txt
     #   keyring
-jaraco-context==6.0.2
+jaraco-context==6.1.0
     # via
     #   -r requirements/quality.txt
     #   keyring
@@ -402,11 +402,11 @@ text-unidecode==1.3
     # via
     #   -r requirements/quality.txt
     #   python-slugify
-tomlkit==0.13.3
+tomlkit==0.14.0
     # via
     #   -r requirements/quality.txt
     #   pylint
-tox==4.33.0
+tox==4.34.1
     # via -r requirements/ci.txt
 twine==6.2.0
     # via -r requirements/quality.txt
@@ -423,7 +423,7 @@ tzlocal==5.3.1
     # via
     #   -r requirements/quality.txt
     #   celery
-urllib3==2.6.2
+urllib3==2.6.3
     # via
     #   -r requirements/quality.txt
     #   datadog-api-client
@@ -435,7 +435,7 @@ vine==5.1.0
     #   amqp
     #   celery
     #   kombu
-virtualenv==20.35.4
+virtualenv==20.36.1
     # via
     #   -r requirements/ci.txt
     #   tox
