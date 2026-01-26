@@ -133,7 +133,7 @@ markupsafe==3.0.3
     # via jinja2
 openedx-events==10.5.0
     # via edx-event-bus-kafka
-packaging==25.0
+packaging==26.0
     # via
     #   -r requirements/base.txt
     #   kombu
@@ -145,7 +145,7 @@ psutil==7.2.1
     # via
     #   -r requirements/base.txt
     #   edx-django-utils
-pycparser==2.23
+pycparser==3.0
     # via
     #   -r requirements/base.txt
     #   cffi
@@ -202,13 +202,13 @@ vine==5.1.0
     #   amqp
     #   celery
     #   kombu
-wcwidth==0.2.14
+wcwidth==0.3.4
     # via
     #   -r requirements/base.txt
     #   prompt-toolkit
 
 # The following packages are considered to be unsafe in a requirements file:
-setuptools==80.9.0
+setuptools==80.10.1
     # via
     #   -r requirements/base.txt
     #   openedx-events

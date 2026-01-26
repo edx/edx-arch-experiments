@@ -44,13 +44,13 @@ edx-django-utils==8.0.1
     # via -r requirements/base.in
 kombu==5.6.2
     # via celery
-packaging==25.0
+packaging==26.0
     # via kombu
 prompt-toolkit==3.0.52
     # via click-repl
 psutil==7.2.1
     # via edx-django-utils
-pycparser==2.23
+pycparser==3.0
     # via cffi
 pynacl==1.6.2
     # via edx-django-utils
@@ -71,9 +71,9 @@ vine==5.1.0
     #   amqp
     #   celery
     #   kombu
-wcwidth==0.2.14
+wcwidth==0.3.4
     # via prompt-toolkit
 
 # The following packages are considered to be unsafe in a requirements file:
-setuptools==80.9.0
+setuptools==80.10.1
     # via -r requirements/base.in

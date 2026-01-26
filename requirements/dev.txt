@@ -107,11 +107,11 @@ datadog-api-client==2.50.0
     # via -r requirements/dev.in
 ddt==1.7.2
     # via -r requirements/quality.txt
-ddtrace==4.2.1
+ddtrace==4.2.2
     # via -r requirements/quality.txt
 diff-cover==10.2.0
     # via -r requirements/dev.in
-dill==0.4.0
+dill==0.4.1
     # via
     #   -r requirements/quality.txt
     #   pylint
@@ -240,7 +240,7 @@ opentelemetry-api==1.39.1
     # via
     #   -r requirements/quality.txt
     #   ddtrace
-packaging==25.0
+packaging==26.0
     # via
     #   -r requirements/ci.txt
     #   -r requirements/pip-tools.txt
@@ -251,6 +251,7 @@ packaging==25.0
     #   pytest
     #   tox
     #   twine
+    #   wheel
 path==16.16.0
     # via edx-i18n-tools
 pip-tools==7.5.2
@@ -282,7 +283,7 @@ psutil==7.2.1
     #   edx-django-utils
 pycodestyle==2.14.0
     # via -r requirements/quality.txt
-pycparser==2.23
+pycparser==3.0
     # via
     #   -r requirements/quality.txt
     #   cffi
@@ -372,7 +373,7 @@ rfc3986==2.0.0
     # via
     #   -r requirements/quality.txt
     #   twine
-rich==14.2.0
+rich==14.3.1
     # via
     #   -r requirements/quality.txt
     #   twine
@@ -439,11 +440,11 @@ virtualenv==20.36.1
     # via
     #   -r requirements/ci.txt
     #   tox
-wcwidth==0.2.14
+wcwidth==0.3.4
     # via
     #   -r requirements/quality.txt
     #   prompt-toolkit
-wheel==0.45.1
+wheel==0.46.3
     # via
     #   -r requirements/pip-tools.txt
     #   pip-tools
@@ -461,7 +462,7 @@ pip==25.3
     # via
     #   -r requirements/pip-tools.txt
     #   pip-tools
-setuptools==80.9.0
+setuptools==80.10.1
     # via
     #   -r requirements/pip-tools.txt
     #   -r requirements/quality.txt
