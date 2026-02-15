@@ -8,11 +8,11 @@ amqp==5.3.1
     # via
     #   -r requirements/quality.txt
     #   kombu
-asgiref==3.11.0
+asgiref==3.11.1
     # via
     #   -r requirements/quality.txt
     #   django
-astroid==4.0.3
+astroid==4.0.4
     # via
     #   -r requirements/quality.txt
     #   pylint
@@ -33,7 +33,7 @@ bytecode==0.17.0
     # via
     #   -r requirements/quality.txt
     #   ddtrace
-cachetools==6.2.4
+cachetools==7.0.1
     # via
     #   -r requirements/ci.txt
     #   tox
@@ -95,11 +95,11 @@ colorama==0.4.6
     # via
     #   -r requirements/ci.txt
     #   tox
-coverage[toml]==7.13.1
+coverage[toml]==7.13.4
     # via
     #   -r requirements/quality.txt
     #   pytest-cov
-cryptography==46.0.3
+cryptography==46.0.5
     # via
     #   -r requirements/quality.txt
     #   secretstorage
@@ -107,7 +107,7 @@ datadog-api-client==2.50.0
     # via -r requirements/dev.in
 ddt==1.7.2
     # via -r requirements/quality.txt
-ddtrace==4.2.2
+ddtrace==4.4.0
     # via -r requirements/quality.txt
 diff-cover==10.2.0
     # via -r requirements/dev.in
@@ -119,7 +119,7 @@ distlib==0.4.0
     # via
     #   -r requirements/ci.txt
     #   virtualenv
-django==5.2.10
+django==5.2.11
     # via
     #   -c https://raw.githubusercontent.com/edx/edx-lint/master/edx_lint/files/common_constraints.txt
     #   -r requirements/quality.txt
@@ -149,12 +149,12 @@ envier==0.6.1
     # via
     #   -r requirements/quality.txt
     #   ddtrace
-filelock==3.20.3
+filelock==3.24.0
     # via
     #   -r requirements/ci.txt
     #   tox
     #   virtualenv
-id==1.5.0
+id==1.6.1
     # via
     #   -r requirements/quality.txt
     #   twine
@@ -232,7 +232,7 @@ more-itertools==10.8.0
     #   -r requirements/quality.txt
     #   jaraco-classes
     #   jaraco-functools
-nh3==0.3.2
+nh3==0.3.3
     # via
     #   -r requirements/quality.txt
     #   readme-renderer
@@ -254,9 +254,9 @@ packaging==26.0
     #   wheel
 path==16.16.0
     # via edx-i18n-tools
-pip-tools==7.5.2
+pip-tools==7.5.3
     # via -r requirements/pip-tools.txt
-platformdirs==4.5.1
+platformdirs==4.9.1
     # via
     #   -r requirements/ci.txt
     #   -r requirements/quality.txt
@@ -277,7 +277,7 @@ prompt-toolkit==3.0.52
     # via
     #   -r requirements/quality.txt
     #   click-repl
-psutil==7.2.1
+psutil==7.2.2
     # via
     #   -r requirements/quality.txt
     #   edx-django-utils
@@ -337,7 +337,7 @@ pytest==9.0.2
     #   pytest-randomly
 pytest-cov==7.0.0
     # via -r requirements/quality.txt
-pytest-django==4.11.1
+pytest-django==4.12.0
     # via -r requirements/quality.txt
 pytest-randomly==4.0.1
     # via -r requirements/quality.txt
@@ -362,7 +362,6 @@ readme-renderer==44.0
 requests==2.32.5
     # via
     #   -r requirements/quality.txt
-    #   id
     #   requests-toolbelt
     #   twine
 requests-toolbelt==1.0.0
@@ -373,7 +372,7 @@ rfc3986==2.0.0
     # via
     #   -r requirements/quality.txt
     #   twine
-rich==14.3.1
+rich==14.3.2
     # via
     #   -r requirements/quality.txt
     #   twine
@@ -407,7 +406,7 @@ tomlkit==0.14.0
     # via
     #   -r requirements/quality.txt
     #   pylint
-tox==4.34.1
+tox==4.35.0
     # via -r requirements/ci.txt
 twine==6.2.0
     # via -r requirements/quality.txt
@@ -428,6 +427,7 @@ urllib3==2.6.3
     # via
     #   -r requirements/quality.txt
     #   datadog-api-client
+    #   id
     #   requests
     #   twine
 vine==5.1.0
@@ -440,7 +440,7 @@ virtualenv==20.36.1
     # via
     #   -r requirements/ci.txt
     #   tox
-wcwidth==0.3.4
+wcwidth==0.6.0
     # via
     #   -r requirements/quality.txt
     #   prompt-toolkit
@@ -448,7 +448,7 @@ wheel==0.46.3
     # via
     #   -r requirements/pip-tools.txt
     #   pip-tools
-wrapt==2.0.1
+wrapt==2.1.1
     # via
     #   -r requirements/quality.txt
     #   ddtrace
@@ -460,9 +460,10 @@ zipp==3.23.0
 # The following packages are considered to be unsafe in a requirements file:
 pip==25.3
     # via
+    #   -c https://raw.githubusercontent.com/edx/edx-lint/master/edx_lint/files/common_constraints.txt
     #   -r requirements/pip-tools.txt
     #   pip-tools
-setuptools==80.10.1
+setuptools==82.0.0
     # via
     #   -r requirements/pip-tools.txt
     #   -r requirements/quality.txt
