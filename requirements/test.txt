@@ -8,7 +8,7 @@ amqp==5.3.1
     # via
     #   -r requirements/base.txt
     #   kombu
-asgiref==3.11.0
+asgiref==3.11.1
     # via
     #   -r requirements/base.txt
     #   django
@@ -47,11 +47,11 @@ click-repl==0.3.0
     #   celery
 code-annotations==2.3.0
     # via -r requirements/test.in
-coverage[toml]==7.13.1
+coverage[toml]==7.13.4
     # via pytest-cov
 ddt==1.7.2
     # via -r requirements/test.in
-ddtrace==4.2.2
+ddtrace==4.4.0
     # via -r requirements/test.in
     # via
     #   -c https://raw.githubusercontent.com/edx/edx-lint/master/edx_lint/files/common_constraints.txt
@@ -98,7 +98,7 @@ prompt-toolkit==3.0.52
     # via
     #   -r requirements/base.txt
     #   click-repl
-psutil==7.2.1
+psutil==7.2.2
     # via
     #   -r requirements/base.txt
     #   edx-django-utils
@@ -119,7 +119,7 @@ pytest==9.0.2
     #   pytest-randomly
 pytest-cov==7.0.0
     # via -r requirements/test.in
-pytest-django==4.11.1
+pytest-django==4.12.0
     # via -r requirements/test.in
 pytest-randomly==4.0.1
     # via -r requirements/test.in
@@ -139,7 +139,7 @@ sqlparse==0.5.5
     # via
     #   -r requirements/base.txt
     #   django
-stevedore==5.6.0
+stevedore==5.7.0
     # via
     #   -r requirements/base.txt
     #   code-annotations
@@ -162,15 +162,15 @@ vine==5.1.0
     #   amqp
     #   celery
     #   kombu
-wcwidth==0.3.4
+wcwidth==0.6.0
     # via
     #   -r requirements/base.txt
     #   prompt-toolkit
-wrapt==2.0.1
+wrapt==2.1.1
     # via ddtrace
 zipp==3.23.0
     # via importlib-metadata
 
 # The following packages are considered to be unsafe in a requirements file:
-setuptools==80.10.1
+setuptools==82.0.0
     # via -r requirements/base.txt
