@@ -30,7 +30,7 @@ cachetools==7.0.1
     # via confluent-kafka
 celery==5.6.2
     # via -r requirements/base.txt
-certifi==2026.1.4
+certifi==2026.2.25
     # via
     #   confluent-kafka
     #   httpcore
@@ -102,7 +102,7 @@ edx-django-utils==8.0.1
     #   openedx-events
 edx-event-bus-kafka==6.1.0
     # via -r requirements/scripts.in
-edx-opaque-keys[django]==3.0.0
+edx-opaque-keys[django]==3.1.0
     # via
     #   edx-ccx-keys
     #   openedx-events
