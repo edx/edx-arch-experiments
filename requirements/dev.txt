@@ -39,7 +39,7 @@ cachetools==7.0.1
     #   tox
 celery==5.6.2
     # via -r requirements/quality.txt
-certifi==2026.1.4
+certifi==2026.2.25
     # via
     #   -r requirements/quality.txt
     #   datadog-api-client
@@ -49,11 +49,8 @@ cffi==2.0.0
     #   -r requirements/quality.txt
     #   cryptography
     #   pynacl
-chardet==6.0.0
-    # via
-    #   -r requirements/ci.txt
-    #   diff-cover
-    #   tox
+chardet==6.0.0.post1
+    # via diff-cover
 charset-normalizer==3.4.4
     # via
     #   -r requirements/quality.txt
@@ -107,7 +104,7 @@ datadog-api-client==2.51.0
     # via -r requirements/dev.in
 ddt==1.7.2
     # via -r requirements/quality.txt
-ddtrace==4.4.0
+ddtrace==4.5.0
     # via -r requirements/quality.txt
 diff-cover==10.2.0
     # via -r requirements/dev.in
@@ -152,6 +149,7 @@ envier==0.6.1
 filelock==3.24.3
     # via
     #   -r requirements/ci.txt
+    #   python-discovery
     #   tox
     #   virtualenv
 id==1.6.1
@@ -171,7 +169,7 @@ iniconfig==2.3.0
     # via
     #   -r requirements/quality.txt
     #   pytest
-isort==8.0.0
+isort==8.0.1
     # via
     #   -r requirements/quality.txt
     #   pylint
@@ -209,7 +207,7 @@ lxml[html-clean]==6.0.2
     # via
     #   edx-i18n-tools
     #   lxml-html-clean
-lxml-html-clean==0.4.3
+lxml-html-clean==0.4.4
     # via lxml
 markdown-it-py==4.0.0
     # via
@@ -261,6 +259,7 @@ platformdirs==4.9.2
     #   -r requirements/ci.txt
     #   -r requirements/quality.txt
     #   pylint
+    #   python-discovery
     #   tox
     #   virtualenv
 pluggy==1.6.0
@@ -346,6 +345,10 @@ python-dateutil==2.9.0.post0
     #   -r requirements/quality.txt
     #   celery
     #   datadog-api-client
+python-discovery==1.1.0
+    # via
+    #   -r requirements/ci.txt
+    #   virtualenv
 python-slugify==8.0.4
     # via
     #   -r requirements/quality.txt
@@ -406,7 +409,7 @@ tomlkit==0.14.0
     # via
     #   -r requirements/quality.txt
     #   pylint
-tox==4.44.0
+tox==4.46.3
     # via -r requirements/ci.txt
 twine==6.2.0
     # via -r requirements/quality.txt
@@ -436,7 +439,7 @@ vine==5.1.0
     #   amqp
     #   celery
     #   kombu
-virtualenv==20.38.0
+virtualenv==21.1.0
     # via
     #   -r requirements/ci.txt
     #   tox

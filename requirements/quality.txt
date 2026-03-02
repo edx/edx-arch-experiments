@@ -28,7 +28,7 @@ bytecode==0.17.0
     #   ddtrace
 celery==5.6.2
     # via -r requirements/test.txt
-certifi==2026.1.4
+certifi==2026.2.25
     # via requests
 cffi==2.0.0
     # via
@@ -74,7 +74,7 @@ cryptography==46.0.5
     # via secretstorage
 ddt==1.7.2
     # via -r requirements/test.txt
-ddtrace==4.4.0
+ddtrace==4.5.0
     # via -r requirements/test.txt
 dill==0.4.1
     # via pylint
@@ -116,7 +116,7 @@ iniconfig==2.3.0
     # via
     #   -r requirements/test.txt
     #   pytest
-isort==8.0.0
+isort==8.0.1
     # via
     #   -r requirements/quality.in
     #   pylint
