@@ -18,7 +18,7 @@ attrs==25.4.0
     # via
     #   confluent-kafka
     #   openedx-events
-authlib==1.6.8
+authlib==1.6.9
     # via confluent-kafka
 avro==1.12.1
     # via confluent-kafka
@@ -26,7 +26,7 @@ billiard==4.2.4
     # via
     #   -r requirements/base.txt
     #   celery
-cachetools==7.0.1
+cachetools==7.0.3
     # via confluent-kafka
 celery==5.6.2
     # via -r requirements/base.txt
@@ -41,7 +41,7 @@ cffi==2.0.0
     #   -r requirements/base.txt
     #   cryptography
     #   pynacl
-charset-normalizer==3.4.4
+charset-normalizer==3.4.5
     # via requests
 click==8.3.1
     # via
@@ -64,13 +64,13 @@ click-repl==0.3.0
     # via
     #   -r requirements/base.txt
     #   celery
-code-annotations==2.3.0
+code-annotations==2.3.2
     # via edx-toggles
-confluent-kafka[avro]==2.13.0
+confluent-kafka[avro]==2.13.2
     # via -r requirements/scripts.in
 cryptography==46.0.5
     # via authlib
-django==5.2.11
+django==5.2.12
     # via
     #   -c https://raw.githubusercontent.com/edx/edx-lint/master/edx_lint/files/common_constraints.txt
     #   -r requirements/base.txt
