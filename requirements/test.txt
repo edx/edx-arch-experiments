@@ -45,13 +45,13 @@ click-repl==0.3.0
     # via
     #   -r requirements/base.txt
     #   celery
-code-annotations==2.3.0
+code-annotations==2.3.2
     # via -r requirements/test.in
 coverage[toml]==7.13.4
     # via pytest-cov
 ddt==1.7.2
     # via -r requirements/test.in
-ddtrace==4.5.0
+ddtrace==4.5.1
     # via -r requirements/test.in
     # via
     #   -c https://raw.githubusercontent.com/edx/edx-lint/master/edx_lint/files/common_constraints.txt
@@ -83,7 +83,7 @@ kombu==5.6.2
     #   celery
 markupsafe==3.0.3
     # via jinja2
-opentelemetry-api==1.39.1
+opentelemetry-api==1.40.0
     # via ddtrace
 packaging==26.0
     # via
@@ -166,7 +166,7 @@ wcwidth==0.6.0
     # via
     #   -r requirements/base.txt
     #   prompt-toolkit
-wrapt==2.1.1
+wrapt==2.1.2
     # via ddtrace
 zipp==3.23.0
     # via importlib-metadata
