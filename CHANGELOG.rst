@@ -14,6 +14,12 @@ Change Log
 Unreleased
 **********
 
+[7.2.0] - 2026-03-11
+********************
+Changed
+=======
+* Updated dummy model for testing migrations (``0002_rename_dummy_field_boms227_dummy_field2``)
+
 [7.1.0] - 2025-11-17
 ********************
 Added
