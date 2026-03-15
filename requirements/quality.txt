@@ -74,7 +74,7 @@ cryptography==46.0.5
     # via secretstorage
 ddt==1.7.2
     # via -r requirements/test.txt
-ddtrace==4.5.1
+ddtrace==4.5.4
     # via -r requirements/test.txt
 dill==0.4.1
     # via pylint
@@ -97,7 +97,7 @@ docutils==0.22.4
     # via readme-renderer
 edx-django-utils==8.0.1
     # via -r requirements/test.txt
-edx-lint==5.6.0
+edx-lint==6.0.0
     # via -r requirements/quality.in
 envier==0.6.1
     # via
@@ -312,5 +312,5 @@ zipp==3.23.0
     #   importlib-metadata
 
 # The following packages are considered to be unsafe in a requirements file:
-setuptools==82.0.0
+setuptools==82.0.1
     # via -r requirements/test.txt
