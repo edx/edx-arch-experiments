@@ -15,4 +15,4 @@ class Boms227(models.Model):
     .. no_pii: No data should actually be stored in this table.
     """
 
-    dummy_field2 = models.CharField(max_length=50)
+    dummy_field3 = models.CharField(max_length=50)
