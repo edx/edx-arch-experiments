@@ -164,7 +164,6 @@ setup(
             "arch_experiments = edx_arch_experiments.apps:EdxArchExperimentsConfig",
             "config_watcher = edx_arch_experiments.config_watcher.apps:ConfigWatcher",
             "datadog_monitoring = edx_arch_experiments.datadog_monitoring.apps:DatadogMonitoring",
-            "pdf_cert_purge = edx_arch_experiments.pdf_cert_purge.apps:PDFCertPurge",
         ],
         "cms.djangoapp": [
             "config_watcher = edx_arch_experiments.config_watcher.apps:ConfigWatcher",
