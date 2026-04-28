@@ -14,6 +14,17 @@ Change Log
 Unreleased
 **********
 
+[7.4.0] - 2026-04-28
+********************
+Added
+=====
+* Added ``RetireCertificatesS3View`` (``POST /api/certificates/v1/retire_certs_s3``) to handle
+  deletion of retired learners' PDF certificate files from S3 and mark the corresponding
+  ``GeneratedCertificate`` records as deleted. This removes the need for the ``CheckRetireUsers``
+  Jenkins job to hold direct RDS database credentials — authentication is now via OAuth token.
+  Supports ``?dry_run=true`` query parameter. Returns HTTP 207 on partial failure so unprocessed
+  certificates are retried on the next scheduled run.
+
 [7.3.0] - 2026-03-16
 ********************
 Changed
