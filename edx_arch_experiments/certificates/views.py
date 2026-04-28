@@ -27,6 +27,10 @@ from rest_framework.views import APIView
 log = logging.getLogger(__name__)
 
 MAX_S3_ATTEMPTS = 5
+_EXPECTED_S3_HOST = 's3.amazonaws.com'
+
+
+_S3_DELETE_BATCH_SIZE = 1000
 
 
 class S3Client:
@@ -39,11 +43,32 @@ class S3Client:
     def delete_object(self, bucket, key):
         return self.client.delete_object(Bucket=bucket, Key=key)
 
+    @backoff.on_exception(backoff.expo, ClientError, max_tries=MAX_S3_ATTEMPTS)
+    def _delete_objects_batch(self, bucket, keys):
+        """Delete up to 1000 keys in a single S3 DeleteObjects call."""
+        response = self.client.delete_objects(
+            Bucket=bucket,
+            Delete={'Objects': [{'Key': k} for k in keys], 'Quiet': True},
+        )
+        errors = response.get('Errors', [])
+        if errors:
+            raise ClientError(
+                {'Error': {'Code': errors[0]['Code'], 'Message': errors[0]['Message']}},
+                'DeleteObjects',
+            )
+
     def delete_objects_by_prefix(self, bucket, prefix):
+        """List all keys under prefix and delete them in batches of 1000."""
         paginator = self.client.get_paginator('list_objects_v2')
+        batch = []
         for page in paginator.paginate(Bucket=bucket, Prefix=prefix):
             for obj in page.get('Contents', []):
-                self.delete_object(bucket, obj['Key'])
+                batch.append(obj['Key'])
+                if len(batch) == _S3_DELETE_BATCH_SIZE:
+                    self._delete_objects_batch(bucket, batch)
+                    batch = []
+        if batch:
+            self._delete_objects_batch(bucket, batch)
 
 
 def _fetch_certs_to_delete():
@@ -51,10 +76,8 @@ def _fetch_certs_to_delete():
     Returns a queryset of GeneratedCertificate records belonging to retired
     users that still have a downloadable PDF certificate URL.
 
-    Mirrors the SQL query in the legacy retired_user_cert_remover.py:
-        WHERE au.username LIKE 'retired__user_%'
-          AND gc.download_url LIKE '%https://%'
-          AND gc.status = 'downloadable'
+    Matches usernames starting with 'retired_user_' (the prefix applied by the
+    retirement pipeline), combined with a downloadable status and an HTTPS URL.
     """
     return GeneratedCertificate.objects.filter(
         user__username__startswith='retired_user_',
@@ -67,13 +90,23 @@ def _s3_keys_from_cert(cert):
     """
     Derives S3 bucket name, verify prefix, and download key from a certificate.
 
-    Returns (bucket, verify_prefix, download_key) or raises ValueError if the
-    download_url cannot be parsed.
+    Only path-style S3 URLs are accepted:
+        https://s3.amazonaws.com/<bucket>/<key>
+
+    Raises ValueError for any other host (virtual-hosted style, CDN, etc.) to
+    prevent accidental deletions against an unintended bucket.
+
+    Returns (bucket, verify_prefix, download_key).
     """
     parsed = urlparse(cert.download_url)
+    if parsed.netloc != _EXPECTED_S3_HOST:
+        raise ValueError(
+            f'Unexpected S3 host {parsed.netloc!r} in download_url {cert.download_url!r}; '
+            f'expected {_EXPECTED_S3_HOST!r} (path-style URLs only).'
+        )
     parts = parsed.path.lstrip('/').split('/', 1)
     if not parts or not parts[0]:
-        raise ValueError(f'Cannot derive S3 bucket from download_url: {cert.download_url}')
+        raise ValueError(f'Cannot derive S3 bucket from download_url: {cert.download_url!r}')
     bucket = parts[0]
     verify_prefix = f'cert/{cert.verify_uuid}/'
     download_key = f'downloads/{cert.download_uuid}/Certificate.pdf'
@@ -121,7 +154,7 @@ class RetireCertificatesS3View(APIView):
         s3 = S3Client()
 
         try:
-            certs = list(_fetch_certs_to_delete())
+            certs = _fetch_certs_to_delete().iterator(chunk_size=100)
         except Exception as exc:  # pylint: disable=broad-except
             log.exception('retire_certs_s3: failed to query certificates: %s', exc)
             return Response(
@@ -129,7 +162,7 @@ class RetireCertificatesS3View(APIView):
                 status=status.HTTP_500_INTERNAL_SERVER_ERROR,
             )
 
-        log.info('retire_certs_s3: found %d certificate(s) to process (dry_run=%s)', len(certs), dry_run)
+        log.info('retire_certs_s3: starting certificate retirement (dry_run=%s)', dry_run)
 
         processed = 0
         failed_ids = []
@@ -186,9 +219,10 @@ class RetireCertificatesS3View(APIView):
 
         if failed_ids:
             log.warning(
-                'retire_certs_s3: completed with %d failure(s): cert_ids=%s',
-                len(failed_ids), failed_ids,
+                'retire_certs_s3: completed %d certificate(s) with %d failure(s): cert_ids=%s',
+                processed + len(failed_ids), len(failed_ids), failed_ids,
             )
             return Response(response_data, status=status.HTTP_207_MULTI_STATUS)
 
+        log.info('retire_certs_s3: completed %d certificate(s) successfully', processed)
         return Response(response_data, status=status.HTTP_200_OK)
