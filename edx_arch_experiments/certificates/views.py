@@ -76,11 +76,11 @@ def _fetch_certs_to_delete():
     Returns a queryset of GeneratedCertificate records belonging to retired
     users that still have a downloadable PDF certificate URL.
 
-    Matches usernames starting with 'retired_user_' (the prefix applied by the
+    Matches usernames starting with 'retired__user_' (the prefix applied by the
     retirement pipeline), combined with a downloadable status and an HTTPS URL.
     """
     return GeneratedCertificate.objects.filter(
-        user__username__startswith='retired_user_',
+        user__username__startswith='retired__user_',
         download_url__icontains='https://',
         status=CertificateStatuses.downloadable,
     ).select_related('user').order_by('user_id', 'course_id')
