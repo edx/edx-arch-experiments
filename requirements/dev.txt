@@ -17,10 +17,19 @@ astroid==4.0.4
     #   -r requirements/quality.txt
     #   pylint
     #   pylint-celery
+backoff==2.2.1
+    # via -r requirements/quality.txt
 billiard==4.2.4
     # via
     #   -r requirements/quality.txt
     #   celery
+boto3==1.42.97
+    # via -r requirements/quality.txt
+botocore==1.42.97
+    # via
+    #   -r requirements/quality.txt
+    #   boto3
+    #   s3transfer
 build==1.4.4
     # via
     #   -r requirements/pip-tools.txt
@@ -118,6 +127,7 @@ django==5.2.13
     #   -r requirements/quality.txt
     #   django-crum
     #   django-waffle
+    #   djangorestframework
     #   edx-django-utils
     #   edx-i18n-tools
 django-crum==0.7.9
@@ -128,6 +138,8 @@ django-waffle==5.0.0
     # via
     #   -r requirements/quality.txt
     #   edx-django-utils
+djangorestframework==3.17.1
+    # via -r requirements/quality.txt
 docutils==0.22.4
     # via
     #   -r requirements/quality.txt
@@ -136,7 +148,7 @@ edx-django-utils==8.0.1
     # via -r requirements/quality.txt
 edx-i18n-tools==2.0.0
     # via -r requirements/dev.in
-edx-lint==6.0.0
+edx-lint==6.1.0
     # via -r requirements/quality.txt
 envier==0.6.1
     # via
@@ -190,6 +202,11 @@ jinja2==3.1.6
     #   -r requirements/quality.txt
     #   code-annotations
     #   diff-cover
+jmespath==1.1.0
+    # via
+    #   -r requirements/quality.txt
+    #   boto3
+    #   botocore
 keyring==25.7.0
     # via
     #   -r requirements/quality.txt
@@ -338,6 +355,7 @@ pytest-randomly==4.1.0
 python-dateutil==2.9.0.post0
     # via
     #   -r requirements/quality.txt
+    #   botocore
     #   celery
     #   datadog-api-client
 python-discovery==1.2.2
@@ -375,6 +393,10 @@ rich==15.0.0
     # via
     #   -r requirements/quality.txt
     #   twine
+s3transfer==0.16.1
+    # via
+    #   -r requirements/quality.txt
+    #   boto3
 secretstorage==3.5.0
     # via
     #   -r requirements/quality.txt
@@ -408,6 +430,7 @@ tomli-w==1.2.0
 tomlkit==0.14.0
     # via
     #   -r requirements/quality.txt
+    #   edx-lint
     #   pylint
 tox==4.53.0
     # via -r requirements/ci.txt
@@ -429,6 +452,7 @@ tzlocal==5.3.1
 urllib3==2.6.3
     # via
     #   -r requirements/quality.txt
+    #   botocore
     #   datadog-api-client
     #   id
     #   requests
@@ -439,7 +463,7 @@ vine==5.1.0
     #   amqp
     #   celery
     #   kombu
-virtualenv==21.2.4
+virtualenv==21.3.0
     # via
     #   -r requirements/ci.txt
     #   tox
@@ -461,7 +485,7 @@ zipp==3.23.1
     #   importlib-metadata
 
 # The following packages are considered to be unsafe in a requirements file:
-pip==26.0.1
+pip==26.1
     # via
     #   -r requirements/pip-tools.txt
     #   pip-tools

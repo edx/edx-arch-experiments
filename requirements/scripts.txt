@@ -22,10 +22,19 @@ authlib==1.7.0
     # via confluent-kafka
 avro==1.12.1
     # via confluent-kafka
+backoff==2.2.1
+    # via -r requirements/base.txt
 billiard==4.2.4
     # via
     #   -r requirements/base.txt
     #   celery
+boto3==1.42.97
+    # via -r requirements/base.txt
+botocore==1.42.97
+    # via
+    #   -r requirements/base.txt
+    #   boto3
+    #   s3transfer
 cachetools==7.0.6
     # via confluent-kafka
 celery==5.6.3
@@ -78,6 +87,7 @@ django==5.2.13
     #   -r requirements/base.txt
     #   django-crum
     #   django-waffle
+    #   djangorestframework
     #   edx-django-utils
     #   edx-event-bus-kafka
     #   edx-toggles
@@ -92,6 +102,8 @@ django-waffle==5.0.0
     #   -r requirements/base.txt
     #   edx-django-utils
     #   edx-toggles
+djangorestframework==3.17.1
+    # via -r requirements/base.txt
 dnspython==2.8.0
     # via pymongo
 edx-ccx-keys==2.0.2
@@ -127,6 +139,11 @@ idna==3.13
     #   requests
 jinja2==3.1.6
     # via code-annotations
+jmespath==1.1.0
+    # via
+    #   -r requirements/base.txt
+    #   boto3
+    #   botocore
 joserfc==1.6.4
     # via authlib
 kombu==5.6.2
@@ -162,6 +179,7 @@ pynacl==1.6.2
 python-dateutil==2.9.0.post0
     # via
     #   -r requirements/base.txt
+    #   botocore
     #   celery
 python-slugify==8.0.4
     # via code-annotations
@@ -169,6 +187,10 @@ pyyaml==6.0.3
     # via code-annotations
 requests==2.33.1
     # via confluent-kafka
+s3transfer==0.16.1
+    # via
+    #   -r requirements/base.txt
+    #   boto3
 six==1.17.0
     # via
     #   -r requirements/base.txt
@@ -199,7 +221,10 @@ tzlocal==5.3.1
     #   -r requirements/base.txt
     #   celery
 urllib3==2.6.3
-    # via requests
+    # via
+    #   -r requirements/base.txt
+    #   botocore
+    #   requests
 vine==5.1.0
     # via
     #   -r requirements/base.txt

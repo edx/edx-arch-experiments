@@ -21,9 +21,9 @@ from rest_framework.parsers import JSONParser
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from lms.djangoapps.certificates.data import CertificateStatuses
-from lms.djangoapps.certificates.models import GeneratedCertificate
-from openedx.core.djangoapps.user_api.accounts.permissions import CanRetireUser
+from lms.djangoapps.certificates.data import CertificateStatuses  # pylint: disable=import-error
+from lms.djangoapps.certificates.models import GeneratedCertificate  # pylint: disable=import-error
+from openedx.core.djangoapps.user_api.accounts.permissions import CanRetireUser  # pylint: disable=import-error
 
 log = logging.getLogger(__name__)
 
@@ -114,6 +114,10 @@ class RetireCertificatesS3View(APIView):
     parser_classes = (JSONParser,)
 
     def post(self, request):
+        """
+        Delete S3 certificate files for retired learners and mark the
+        corresponding GeneratedCertificate records as deleted in the database.
+        """
         dry_run = request.query_params.get('dry_run', 'false').lower() == 'true'
         s3 = S3Client()
 

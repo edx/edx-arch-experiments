@@ -1,8 +1,12 @@
 # Core requirements for using this application
 -c constraints.txt
 
+backoff                  # Exponential backoff for retries
+boto3                    # AWS SDK -- used by certificates retirement endpoint
+botocore                 # Low-level AWS SDK foundation
 celery                   # Asynchronous task execution library
 Django                   # Web application framework
+djangorestframework      # REST API framework -- used by certificates retirement endpoint
 edx-django-utils>=7.1.0  # Basic utilities for plugins, monitoring, and more
 django-waffle            # Configuration switches and flags -- used by config_watcher app
 setuptools
