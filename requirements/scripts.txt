@@ -8,17 +8,17 @@ amqp==5.3.1
     # via
     #   -r requirements/base.txt
     #   kombu
-anyio==4.12.1
+anyio==4.13.0
     # via httpx
 asgiref==3.11.1
     # via
     #   -r requirements/base.txt
     #   django
-attrs==25.4.0
+attrs==26.1.0
     # via
     #   confluent-kafka
     #   openedx-events
-authlib==1.6.9
+authlib==1.7.0
     # via confluent-kafka
 avro==1.12.1
     # via confluent-kafka
@@ -26,11 +26,11 @@ billiard==4.2.4
     # via
     #   -r requirements/base.txt
     #   celery
-cachetools==7.0.5
+cachetools==7.0.6
     # via confluent-kafka
-celery==5.6.2
+celery==5.6.3
     # via -r requirements/base.txt
-certifi==2026.2.25
+certifi==2026.4.22
     # via
     #   confluent-kafka
     #   httpcore
@@ -41,9 +41,9 @@ cffi==2.0.0
     #   -r requirements/base.txt
     #   cryptography
     #   pynacl
-charset-normalizer==3.4.5
+charset-normalizer==3.4.7
     # via requests
-click==8.3.1
+click==8.3.3
     # via
     #   -r requirements/base.txt
     #   celery
@@ -65,12 +65,16 @@ click-repl==0.3.0
     #   -r requirements/base.txt
     #   celery
 code-annotations==2.3.2
-    # via edx-toggles
-confluent-kafka[avro]==2.13.2
+    # via
+    #   -c requirements/constraints.txt
+    #   edx-toggles
+confluent-kafka[avro]==2.14.0
     # via -r requirements/scripts.in
-cryptography==46.0.5
-    # via authlib
-django==5.2.12
+cryptography==47.0.0
+    # via
+    #   authlib
+    #   joserfc
+django==5.2.13
     # via
     #   -c https://raw.githubusercontent.com/edx/edx-lint/master/edx_lint/files/common_constraints.txt
     #   -r requirements/base.txt
@@ -104,11 +108,14 @@ edx-event-bus-kafka==6.1.0
     # via -r requirements/scripts.in
 edx-opaque-keys[django]==3.1.0
     # via
+    #   -c requirements/constraints.txt
     #   edx-ccx-keys
     #   openedx-events
 edx-toggles==5.4.1
-    # via edx-event-bus-kafka
-fastavro==1.12.1
+    # via
+    #   -c requirements/constraints.txt
+    #   edx-event-bus-kafka
+fastavro==1.12.2
     # via
     #   confluent-kafka
     #   openedx-events
@@ -118,13 +125,15 @@ httpcore==1.0.9
     # via httpx
 httpx==0.28.1
     # via confluent-kafka
-idna==3.11
+idna==3.13
     # via
     #   anyio
     #   httpx
     #   requests
 jinja2==3.1.6
     # via code-annotations
+joserfc==1.6.4
+    # via authlib
 kombu==5.6.2
     # via
     #   -r requirements/base.txt
@@ -132,8 +141,10 @@ kombu==5.6.2
 markupsafe==3.0.3
     # via jinja2
 openedx-events==10.5.0
-    # via edx-event-bus-kafka
-packaging==26.0
+    # via
+    #   -c requirements/constraints.txt
+    #   edx-event-bus-kafka
+packaging==26.2
     # via
     #   -r requirements/base.txt
     #   kombu
@@ -149,7 +160,7 @@ pycparser==3.0
     # via
     #   -r requirements/base.txt
     #   cffi
-pymongo==4.16.0
+pymongo==4.17.0
     # via edx-opaque-keys
 pynacl==1.6.2
     # via
@@ -163,7 +174,7 @@ python-slugify==8.0.4
     # via code-annotations
 pyyaml==6.0.3
     # via code-annotations
-requests==2.32.5
+requests==2.33.1
     # via confluent-kafka
 six==1.17.0
     # via
@@ -186,7 +197,7 @@ typing-extensions==4.15.0
     # via
     #   anyio
     #   edx-opaque-keys
-tzdata==2025.3
+tzdata==2026.2
     # via
     #   -r requirements/base.txt
     #   kombu

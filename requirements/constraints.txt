@@ -10,3 +10,14 @@
 
 # Common constraints for edx repos
 -c https://raw.githubusercontent.com/edx/edx-lint/master/edx_lint/files/common_constraints.txt
+
+# The following packages dropped Python 3.11 support in their latest major version.
+# Pin them until this repo drops Python 3.11 support.
+# https://github.com/openedx/code-annotations/releases/tag/v3.0.0
+code-annotations<3.0.0
+# https://github.com/openedx/opaque-keys/releases/tag/4.0.0
+edx-opaque-keys<4.0.0
+# https://github.com/openedx/edx-toggles (dropped 3.11 in 6.0.0)
+edx-toggles<6.0.0
+# https://github.com/openedx/openedx-events/releases/tag/v11.2.0
+openedx-events<11.2.0
