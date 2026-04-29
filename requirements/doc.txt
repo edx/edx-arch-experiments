@@ -20,12 +20,21 @@ babel==2.18.0
     # via
     #   pydata-sphinx-theme
     #   sphinx
+backoff==2.2.1
+    # via -r requirements/test.txt
 beautifulsoup4==4.14.3
     # via pydata-sphinx-theme
 billiard==4.2.4
     # via
     #   -r requirements/test.txt
     #   celery
+boto3==1.42.97
+    # via -r requirements/test.txt
+botocore==1.42.97
+    # via
+    #   -r requirements/test.txt
+    #   boto3
+    #   s3transfer
 bytecode==0.17.0
     # via
     #   -r requirements/test.txt
@@ -79,6 +88,7 @@ django==5.2.13
     #   -r requirements/test.txt
     #   django-crum
     #   django-waffle
+    #   djangorestframework
     #   edx-django-utils
 django-crum==0.7.9
     # via
@@ -88,6 +98,8 @@ django-waffle==5.0.0
     # via
     #   -r requirements/test.txt
     #   edx-django-utils
+djangorestframework==3.17.1
+    # via -r requirements/test.txt
 doc8==2.0.0
     # via -r requirements/doc.in
 docutils==0.21.2
@@ -120,6 +132,11 @@ jinja2==3.1.6
     #   -r requirements/test.txt
     #   code-annotations
     #   sphinx
+jmespath==1.1.0
+    # via
+    #   -r requirements/test.txt
+    #   boto3
+    #   botocore
 kombu==5.6.2
     # via
     #   -r requirements/test.txt
@@ -187,6 +204,7 @@ pytest-randomly==4.1.0
 python-dateutil==2.9.0.post0
     # via
     #   -r requirements/test.txt
+    #   botocore
     #   celery
 python-slugify==8.0.4
     # via
@@ -204,6 +222,10 @@ restructuredtext-lint==2.0.2
     # via doc8
 roman-numerals==4.1.0
     # via sphinx
+s3transfer==0.16.1
+    # via
+    #   -r requirements/test.txt
+    #   boto3
 six==1.17.0
     # via
     #   -r requirements/test.txt
@@ -260,7 +282,10 @@ tzlocal==5.3.1
     #   -r requirements/test.txt
     #   celery
 urllib3==2.6.3
-    # via requests
+    # via
+    #   -r requirements/test.txt
+    #   botocore
+    #   requests
 vine==5.1.0
     # via
     #   -r requirements/test.txt

@@ -17,6 +17,8 @@ astroid==4.0.4
     #   -r requirements/quality.txt
     #   pylint
     #   pylint-celery
+backoff==2.2.1
+    # via -r requirements/quality.txt
 backports-tarfile==1.2.0
     # via
     #   -r requirements/quality.txt
@@ -25,6 +27,13 @@ billiard==4.2.4
     # via
     #   -r requirements/quality.txt
     #   celery
+boto3==1.42.97
+    # via -r requirements/quality.txt
+botocore==1.42.97
+    # via
+    #   -r requirements/quality.txt
+    #   boto3
+    #   s3transfer
 build==1.4.4
     # via
     #   -r requirements/pip-tools.txt
@@ -123,6 +132,7 @@ django==5.2.13
     #   -r requirements/quality.txt
     #   django-crum
     #   django-waffle
+    #   djangorestframework
     #   edx-django-utils
     #   edx-i18n-tools
 django-crum==0.7.9
@@ -133,6 +143,8 @@ django-waffle==5.0.0
     # via
     #   -r requirements/quality.txt
     #   edx-django-utils
+djangorestframework==3.17.1
+    # via -r requirements/quality.txt
 docutils==0.22.4
     # via
     #   -r requirements/quality.txt
@@ -196,6 +208,11 @@ jinja2==3.1.6
     #   -r requirements/quality.txt
     #   code-annotations
     #   diff-cover
+jmespath==1.1.0
+    # via
+    #   -r requirements/quality.txt
+    #   boto3
+    #   botocore
 keyring==25.7.0
     # via
     #   -r requirements/quality.txt
@@ -344,6 +361,7 @@ pytest-randomly==4.1.0
 python-dateutil==2.9.0.post0
     # via
     #   -r requirements/quality.txt
+    #   botocore
     #   celery
     #   datadog-api-client
 python-discovery==1.2.2
@@ -381,6 +399,10 @@ rich==15.0.0
     # via
     #   -r requirements/quality.txt
     #   twine
+s3transfer==0.16.1
+    # via
+    #   -r requirements/quality.txt
+    #   boto3
 secretstorage==3.5.0
     # via
     #   -r requirements/quality.txt
@@ -436,6 +458,7 @@ tzlocal==5.3.1
 urllib3==2.6.3
     # via
     #   -r requirements/quality.txt
+    #   botocore
     #   datadog-api-client
     #   id
     #   requests

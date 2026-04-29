@@ -16,12 +16,21 @@ astroid==4.0.4
     # via
     #   pylint
     #   pylint-celery
+backoff==2.2.1
+    # via -r requirements/test.txt
 backports-tarfile==1.2.0
     # via jaraco-context
 billiard==4.2.4
     # via
     #   -r requirements/test.txt
     #   celery
+boto3==1.42.97
+    # via -r requirements/test.txt
+botocore==1.42.97
+    # via
+    #   -r requirements/test.txt
+    #   boto3
+    #   s3transfer
 bytecode==0.17.0
     # via
     #   -r requirements/test.txt
@@ -85,6 +94,7 @@ django==5.2.13
     #   -r requirements/test.txt
     #   django-crum
     #   django-waffle
+    #   djangorestframework
     #   edx-django-utils
 django-crum==0.7.9
     # via
@@ -94,6 +104,8 @@ django-waffle==5.0.0
     # via
     #   -r requirements/test.txt
     #   edx-django-utils
+djangorestframework==3.17.1
+    # via -r requirements/test.txt
 docutils==0.22.4
     # via readme-renderer
 edx-django-utils==8.0.1
@@ -135,6 +147,11 @@ jinja2==3.1.6
     # via
     #   -r requirements/test.txt
     #   code-annotations
+jmespath==1.1.0
+    # via
+    #   -r requirements/test.txt
+    #   boto3
+    #   botocore
 keyring==25.7.0
     # via twine
 kombu==5.6.2
@@ -229,6 +246,7 @@ pytest-randomly==4.1.0
 python-dateutil==2.9.0.post0
     # via
     #   -r requirements/test.txt
+    #   botocore
     #   celery
 python-slugify==8.0.4
     # via
@@ -250,6 +268,10 @@ rfc3986==2.0.0
     # via twine
 rich==15.0.0
     # via twine
+s3transfer==0.16.1
+    # via
+    #   -r requirements/test.txt
+    #   boto3
 secretstorage==3.5.0
     # via keyring
 six==1.17.0
@@ -292,6 +314,8 @@ tzlocal==5.3.1
     #   celery
 urllib3==2.6.3
     # via
+    #   -r requirements/test.txt
+    #   botocore
     #   id
     #   requests
     #   twine
