@@ -28,6 +28,7 @@ log = logging.getLogger(__name__)
 
 MAX_S3_ATTEMPTS = 5
 _EXPECTED_S3_HOST = 's3.amazonaws.com'
+_RETIRED_USERNAME_PREFIX = 'retired__user_'
 
 
 _S3_DELETE_BATCH_SIZE = 1000
@@ -78,6 +79,7 @@ def _fetch_certs_to_delete_for_user(username):
     """
     return GeneratedCertificate.objects.filter(
         user__username=username,
+        user__username__startswith=_RETIRED_USERNAME_PREFIX,
         download_url__icontains='https://',
         status=CertificateStatuses.downloadable,
     ).select_related('user').order_by('course_id')
@@ -205,6 +207,11 @@ class RetireCertificatesS3ForUserView(APIView):
                 {'error': 'username is required in the request body.'},
                 status=status.HTTP_400_BAD_REQUEST,
             )
+        if not username.startswith(_RETIRED_USERNAME_PREFIX):
+            return Response(
+                {'error': f'username must start with {_RETIRED_USERNAME_PREFIX!r}.'},
+                status=status.HTTP_400_BAD_REQUEST,
+            )
 
         s3 = S3Client()
 
@@ -297,11 +304,16 @@ class RetireCertificatesS3View(APIView):
 
         for cert in certs:
             if dry_run:
-                log.info(
-                    '[dry_run] Would delete s3 objects for cert_id=%s user_id=%s',
-                    cert.id, cert.user_id,
-                )
-                processed += 1
+                try:
+                    bucket, verify_prefix, download_key = _s3_keys_from_cert(cert)
+                    log.info(
+                        '[dry_run] Would delete s3://%s/%s* and s3://%s/%s for cert_id=%s user_id=%s',
+                        bucket, verify_prefix, bucket, download_key, cert.id, cert.user_id,
+                    )
+                    processed += 1
+                except ValueError as exc:
+                    log.error('[dry_run] cert_id=%s user_id=%s would fail: %s', cert.id, cert.user_id, exc)
+                    failed_ids.append(cert.id)
                 continue
 
             if _retire_single_cert(s3, cert, 'retire_certs_s3'):

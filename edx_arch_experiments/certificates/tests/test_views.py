@@ -21,8 +21,29 @@ from rest_framework import status
 
 # ---------------------------------------------------------------------------
 # Stub out LMS modules that views.py imports at module load time.
-# These must be installed before importing the views module.
+# These must be installed before importing the views module, so the stubs are
+# created at module scope.  We snapshot sys.modules first and restore it in a
+# module-scoped autouse fixture so the fake entries don't leak into unrelated
+# tests running in the same pytest session.
 # ---------------------------------------------------------------------------
+
+_STUB_KEYS = [
+    'lms',
+    'lms.djangoapps',
+    'lms.djangoapps.certificates',
+    'lms.djangoapps.certificates.data',
+    'lms.djangoapps.certificates.models',
+    'openedx',
+    'openedx.core',
+    'openedx.core.djangoapps',
+    'openedx.core.djangoapps.user_api',
+    'openedx.core.djangoapps.user_api.accounts',
+    'openedx.core.djangoapps.user_api.accounts.permissions',
+]
+
+# Snapshot whatever was already registered before we install the stubs.
+_sys_modules_snapshot = {k: sys.modules.get(k) for k in _STUB_KEYS}
+
 
 def _make_module(name):
     mod = ModuleType(name)
@@ -42,18 +63,29 @@ _user_api_perms = _make_module('openedx.core.djangoapps.user_api.accounts.permis
 _user_api_perms.CanRetireUser = MagicMock()
 
 # Ensure parent packages exist in sys.modules
-for pkg in ('lms', 'lms.djangoapps', 'lms.djangoapps.certificates',
-            'openedx', 'openedx.core', 'openedx.core.djangoapps'):
-    if pkg not in sys.modules:
-        sys.modules[pkg] = ModuleType(pkg)
+for _pkg in ('lms', 'lms.djangoapps', 'lms.djangoapps.certificates',
+             'openedx', 'openedx.core', 'openedx.core.djangoapps'):
+    if _pkg not in sys.modules:
+        sys.modules[_pkg] = ModuleType(_pkg)
 
 # Now import the module under test
 from edx_arch_experiments.certificates import views  # noqa: E402  pylint: disable=wrong-import-position
 
+
+@pytest.fixture(scope='module', autouse=True)
+def _restore_sys_modules():
+    """Remove stub modules from sys.modules after all tests in this file run."""
+    yield
+    for key, original in _sys_modules_snapshot.items():
+        if original is None:
+            sys.modules.pop(key, None)
+        else:
+            sys.modules[key] = original
+
 # Patch target strings — centralised so a rename only needs changing here.
 _PATCH_FETCH_USER = 'edx_arch_experiments.certificates.views._fetch_certs_to_delete_for_user'
-_PATCH_FETCH_ALL  = 'edx_arch_experiments.certificates.views._fetch_certs_to_delete'
-_PATCH_S3         = 'edx_arch_experiments.certificates.views.S3Client'
+_PATCH_FETCH_ALL = 'edx_arch_experiments.certificates.views._fetch_certs_to_delete'
+_PATCH_S3 = 'edx_arch_experiments.certificates.views.S3Client'
 
 
 # ---------------------------------------------------------------------------
@@ -210,6 +242,7 @@ class TestRetireCertificatesS3ForUserView(_BaseViewTestCase):
     @ddt.data(
         {},                          # username key absent entirely
         {'username': '   '},         # username present but blank after strip
+        {'username': 'active_user'}, # not a retired username
     )
     def test_bad_username_returns_400(self, body):
         response = self._post(body)
@@ -326,8 +359,20 @@ class TestRetireCertificatesS3View(_BaseViewTestCase):
         response = self._post('?dry_run=true')
         assert response.status_code == status.HTTP_200_OK
         assert response.data['processed'] == 1
+        assert response.data['failed'] == []
         MockS3.return_value.delete_objects_by_prefix.assert_not_called()
         MockS3.return_value.delete_object.assert_not_called()
+        cert.save.assert_not_called()
+
+    @patch(_PATCH_FETCH_ALL)
+    def test_dry_run_bad_url_counts_as_failure(self, mock_fetch):
+        """Dry-run calls _s3_keys_from_cert; invalid URL → 207, no S3 calls."""
+        cert = _make_cert(1, 10, 'https://cdn.example.com/bad')
+        mock_fetch.return_value.iterator.return_value = iter([cert])
+        response = self._post('?dry_run=true')
+        assert response.status_code == status.HTTP_207_MULTI_STATUS
+        assert response.data['processed'] == 0
+        assert response.data['failed'] == [1]
         cert.save.assert_not_called()
 
     @patch(_PATCH_FETCH_ALL, side_effect=RuntimeError('db error'))
@@ -359,6 +404,7 @@ class TestFetchCertsToDeleteForUser(TestCase):
         result = views._fetch_certs_to_delete_for_user('retired__user_abc')
         views.GeneratedCertificate.objects.filter.assert_called_once_with(
             user__username='retired__user_abc',
+            user__username__startswith=views._RETIRED_USERNAME_PREFIX,
             download_url__icontains='https://',
             status=views.CertificateStatuses.downloadable,
         )
