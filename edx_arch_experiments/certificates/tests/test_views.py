@@ -4,11 +4,14 @@ Unit tests for edx_arch_experiments.certificates.views.
 All LMS-internal models and permissions are mocked at the module level so
 these tests run standalone without an LMS Django environment.
 """
+# Tests intentionally access private module helpers (leading-underscore functions)
+# and constants from the views module under test.
+# pylint: disable=protected-access
 
 import json
 import sys
 from types import ModuleType
-from unittest.mock import MagicMock, Mock, patch
+from unittest.mock import MagicMock, patch
 
 import ddt
 import pytest
@@ -57,7 +60,10 @@ _PATCH_S3         = 'edx_arch_experiments.certificates.views.S3Client'
 # Helpers
 # ---------------------------------------------------------------------------
 
-def _make_cert(cert_id, user_id, download_url, verify_uuid='abc', download_uuid='def', course_id='course-v1:edX+Test+2026'):
+def _make_cert(  # pylint: disable=too-many-positional-arguments
+    cert_id, user_id, download_url,
+    verify_uuid='abc', download_uuid='def', course_id='course-v1:edX+Test+2026',
+):
     """Return a MagicMock mimicking a GeneratedCertificate instance."""
     cert = MagicMock()
     cert.id = cert_id
@@ -171,22 +177,14 @@ class _BaseViewTestCase(TestCase):
         super().setUp()
         self.factory = RequestFactory()
         # Strip permissions from both view classes for the duration of each test.
-        from edx_arch_experiments.certificates.views import (
-            RetireCertificatesS3ForUserView,
-            RetireCertificatesS3View,
-        )
         self._saved = {
-            RetireCertificatesS3ForUserView: RetireCertificatesS3ForUserView.permission_classes,
-            RetireCertificatesS3View: RetireCertificatesS3View.permission_classes,
+            views.RetireCertificatesS3ForUserView: views.RetireCertificatesS3ForUserView.permission_classes,
+            views.RetireCertificatesS3View: views.RetireCertificatesS3View.permission_classes,
         }
-        RetireCertificatesS3ForUserView.permission_classes = []
-        RetireCertificatesS3View.permission_classes = []
+        views.RetireCertificatesS3ForUserView.permission_classes = []
+        views.RetireCertificatesS3View.permission_classes = []
 
     def tearDown(self):
-        from edx_arch_experiments.certificates.views import (
-            RetireCertificatesS3ForUserView,
-            RetireCertificatesS3View,
-        )
         for cls, original in self._saved.items():
             cls.permission_classes = original
         super().tearDown()
@@ -201,13 +199,13 @@ class TestRetireCertificatesS3ForUserView(_BaseViewTestCase):
     """Tests for POST /api/certificates/v1/retire_certs_s3_for_user."""
 
     def _post(self, data=None):
-        from edx_arch_experiments.certificates.views import RetireCertificatesS3ForUserView
+        """POST to retire_certs_s3_for_user and return the DRF Response."""
         request = self.factory.post(
             '/api/certificates/v1/retire_certs_s3_for_user',
             data=json.dumps(data or {}),
             content_type='application/json',
         )
-        return RetireCertificatesS3ForUserView.as_view()(request)
+        return views.RetireCertificatesS3ForUserView.as_view()(request)
 
     @ddt.data(
         {},                          # username key absent entirely
@@ -278,12 +276,12 @@ class TestRetireCertificatesS3View(_BaseViewTestCase):
     """Tests for POST /api/certificates/v1/retire_certs_s3."""
 
     def _post(self, query_string=''):
-        from edx_arch_experiments.certificates.views import RetireCertificatesS3View
+        """POST to retire_certs_s3 (with optional query string) and return the DRF Response."""
         request = self.factory.post(
             f'/api/certificates/v1/retire_certs_s3{query_string}',
             content_type='application/json',
         )
-        return RetireCertificatesS3View.as_view()(request)
+        return views.RetireCertificatesS3View.as_view()(request)
 
     @patch(_PATCH_FETCH_ALL)
     def test_no_certs_returns_200(self, mock_fetch):
@@ -356,7 +354,8 @@ class TestFetchCertsToDeleteForUser(TestCase):
 
     def test_calls_filter_with_correct_username(self):
         mock_qs = MagicMock()
-        views.GeneratedCertificate.objects.filter.return_value.select_related.return_value.order_by.return_value = mock_qs
+        filter_mock = views.GeneratedCertificate.objects.filter.return_value
+        filter_mock.select_related.return_value.order_by.return_value = mock_qs
         result = views._fetch_certs_to_delete_for_user('retired__user_abc')
         views.GeneratedCertificate.objects.filter.assert_called_once_with(
             user__username='retired__user_abc',
