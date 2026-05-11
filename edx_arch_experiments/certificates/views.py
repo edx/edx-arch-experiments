@@ -28,6 +28,7 @@ log = logging.getLogger(__name__)
 
 MAX_S3_ATTEMPTS = 5
 _EXPECTED_S3_HOST = 's3.amazonaws.com'
+_RETIRED_USERNAME_PREFIX = 'retired__user_'
 
 
 _S3_DELETE_BATCH_SIZE = 1000
@@ -71,6 +72,19 @@ class S3Client:
             self._delete_objects_batch(bucket, batch)
 
 
+def _fetch_certs_to_delete_for_user(username):
+    """
+    Returns a queryset of GeneratedCertificate records for the given retired
+    user that still have a downloadable PDF certificate URL.
+    """
+    return GeneratedCertificate.objects.filter(
+        user__username=username,
+        user__username__startswith=_RETIRED_USERNAME_PREFIX,
+        download_url__icontains='https://',
+        status=CertificateStatuses.downloadable,
+    ).select_related('user').order_by('course_id')
+
+
 def _fetch_certs_to_delete():
     """
     Returns a queryset of GeneratedCertificate records belonging to retired
@@ -111,6 +125,127 @@ def _s3_keys_from_cert(cert):
     verify_prefix = f'cert/{cert.verify_uuid}/'
     download_key = f'downloads/{cert.download_uuid}/Certificate.pdf'
     return bucket, verify_prefix, download_key
+
+
+def _retire_single_cert(s3, cert, log_prefix):
+    """
+    Delete S3 objects for a single certificate and mark it as deleted in the DB.
+
+    Returns True on success, False on failure (already logged).
+    The caller is responsible for appending cert.id to failed_ids on False.
+    """
+    try:
+        bucket, verify_prefix, download_key = _s3_keys_from_cert(cert)
+    except ValueError as exc:
+        log.error(
+            '%s: skipping cert %s (user %s) — bad download_url: %s',
+            log_prefix, cert.id, cert.user_id, exc,
+        )
+        return False
+
+    try:
+        s3.delete_objects_by_prefix(bucket, verify_prefix)
+        s3.delete_object(bucket, download_key)
+
+        cert.status = CertificateStatuses.deleted
+        cert.download_url = ''
+        cert.download_uuid = ''
+        cert.save(update_fields=['status', 'download_url', 'download_uuid'])
+
+        log.info(
+            '%s: cert %s (user %s) deleted from S3 and marked deleted in DB',
+            log_prefix, cert.id, cert.user_id,
+        )
+        return True
+
+    except ClientError as exc:
+        log.error('%s: S3 error for cert %s (user %s): %s', log_prefix, cert.id, cert.user_id, exc)
+        return False
+    except Exception as exc:  # pylint: disable=broad-except
+        log.exception('%s: unexpected error for cert %s (user %s): %s', log_prefix, cert.id, cert.user_id, exc)
+        return False
+
+
+class RetireCertificatesS3ForUserView(APIView):
+    """
+    POST /api/certificates/v1/retire_certs_s3_for_user
+
+    Finds all GeneratedCertificate records for a single retired user that still
+    have a downloadable PDF URL, deletes the corresponding S3 objects, then
+    marks the DB record as deleted.
+
+    This endpoint is designed to be called per-user as a step in the
+    retirement pipeline (``retire_one_learner.py``), unlike
+    ``RetireCertificatesS3View`` which processes all pending users in one batch.
+
+    Request body (JSON):
+        username (str): the retired username to process (e.g. ``retired__user_...``).
+
+    Auth: requires a JWT/OAuth token for a user with the
+    ``accounts.can_retire_user`` permission.
+
+    Responses:
+        200  All certificates for the user processed successfully.
+             Body: {"username": <str>, "processed": <int>, "failed": []}
+        207  Partial success — some certificates failed.
+             Body: {"username": <str>, "processed": <int>, "failed": [<cert_id>, ...]}
+        400  Missing or empty ``username`` in request body.
+        500  Unexpected error before any processing began.
+    """
+
+    permission_classes = (permissions.IsAuthenticated, CanRetireUser)
+    parser_classes = (JSONParser,)
+
+    def post(self, request):
+        """
+        Delete S3 certificate files for a single retired learner and mark the
+        corresponding GeneratedCertificate records as deleted in the database.
+        """
+        username = request.data.get('username', '').strip()
+        if not username:
+            return Response(
+                {'error': 'username is required in the request body.'},
+                status=status.HTTP_400_BAD_REQUEST,
+            )
+        if not username.startswith(_RETIRED_USERNAME_PREFIX):
+            return Response(
+                {'error': f'username must start with {_RETIRED_USERNAME_PREFIX!r}.'},
+                status=status.HTTP_400_BAD_REQUEST,
+            )
+
+        s3 = S3Client()
+
+        try:
+            certs = list(_fetch_certs_to_delete_for_user(username))
+        except Exception as exc:  # pylint: disable=broad-except
+            log.exception('retire_certs_s3_for_user: failed to query certificates for user %s: %s', username, exc)
+            return Response(
+                {'error': 'Failed to query certificates from database.'},
+                status=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            )
+
+        log.info('retire_certs_s3_for_user: processing %d certificate(s) for user %s', len(certs), username)
+
+        processed = 0
+        failed_ids = []
+
+        for cert in certs:
+            if _retire_single_cert(s3, cert, 'retire_certs_s3_for_user'):
+                processed += 1
+            else:
+                failed_ids.append(cert.id)
+
+        response_data = {'username': username, 'processed': processed, 'failed': failed_ids}
+
+        if failed_ids:
+            log.warning(
+                'retire_certs_s3_for_user: completed %d certificate(s) for user %s with %d failure(s): cert_ids=%s',
+                processed + len(failed_ids), username, len(failed_ids), failed_ids,
+            )
+            return Response(response_data, status=status.HTTP_207_MULTI_STATUS)
+
+        log.info('retire_certs_s3_for_user: completed %d certificate(s) for user %s successfully', processed, username)
+        return Response(response_data, status=status.HTTP_200_OK)
 
 
 class RetireCertificatesS3View(APIView):
@@ -168,51 +303,22 @@ class RetireCertificatesS3View(APIView):
         failed_ids = []
 
         for cert in certs:
-            try:
-                bucket, verify_prefix, download_key = _s3_keys_from_cert(cert)
-            except ValueError as exc:
-                log.error(
-                    'retire_certs_s3: skipping cert %s (user %s) — bad download_url: %s',
-                    cert.id, cert.user_id, exc,
-                )
-                failed_ids.append(cert.id)
-                continue
-
             if dry_run:
-                log.info(
-                    '[dry_run] Would delete s3://%s/%s*, s3://%s/%s  |  cert_id=%s user_id=%s',
-                    bucket, verify_prefix, bucket, download_key, cert.id, cert.user_id,
-                )
-                processed += 1
+                try:
+                    bucket, verify_prefix, download_key = _s3_keys_from_cert(cert)
+                    log.info(
+                        '[dry_run] Would delete s3://%s/%s* and s3://%s/%s for cert_id=%s user_id=%s',
+                        bucket, verify_prefix, bucket, download_key, cert.id, cert.user_id,
+                    )
+                    processed += 1
+                except ValueError as exc:
+                    log.error('[dry_run] cert_id=%s user_id=%s would fail: %s', cert.id, cert.user_id, exc)
+                    failed_ids.append(cert.id)
                 continue
 
-            try:
-                # Delete S3 objects first. Only update the DB on success.
-                s3.delete_objects_by_prefix(bucket, verify_prefix)
-                s3.delete_object(bucket, download_key)
-
-                cert.status = CertificateStatuses.deleted
-                cert.download_url = ''
-                cert.download_uuid = ''
-                cert.save(update_fields=['status', 'download_url', 'download_uuid'])
-
-                log.info(
-                    'retire_certs_s3: cert %s (user %s) deleted from S3 and marked deleted in DB',
-                    cert.id, cert.user_id,
-                )
+            if _retire_single_cert(s3, cert, 'retire_certs_s3'):
                 processed += 1
-
-            except ClientError as exc:
-                log.error(
-                    'retire_certs_s3: S3 error for cert %s (user %s): %s',
-                    cert.id, cert.user_id, exc,
-                )
-                failed_ids.append(cert.id)
-            except Exception as exc:  # pylint: disable=broad-except
-                log.exception(
-                    'retire_certs_s3: unexpected error for cert %s (user %s): %s',
-                    cert.id, cert.user_id, exc,
-                )
+            else:
                 failed_ids.append(cert.id)
 
         response_data = {'processed': processed, 'failed': failed_ids}
