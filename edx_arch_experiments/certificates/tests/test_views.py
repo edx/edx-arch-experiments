@@ -82,6 +82,7 @@ def _restore_sys_modules():
         else:
             sys.modules[key] = original
 
+
 # Patch target strings — centralised so a rename only needs changing here.
 _PATCH_FETCH_USER = 'edx_arch_experiments.certificates.views._fetch_certs_to_delete_for_user'
 _PATCH_FETCH_ALL = 'edx_arch_experiments.certificates.views._fetch_certs_to_delete'
@@ -240,9 +241,9 @@ class TestRetireCertificatesS3ForUserView(_BaseViewTestCase):
         return views.RetireCertificatesS3ForUserView.as_view()(request)
 
     @ddt.data(
-        {},                          # username key absent entirely
-        {'username': '   '},         # username present but blank after strip
-        {'username': 'active_user'}, # not a retired username
+        {},                            # username key absent entirely
+        {'username': '   '},           # username present but blank after strip
+        {'username': 'active_user'},   # not a retired username
     )
     def test_bad_username_returns_400(self, body):
         response = self._post(body)
