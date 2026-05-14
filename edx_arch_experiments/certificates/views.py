@@ -158,6 +158,11 @@ class RetireCertificatesS3View(APIView):
             batch_size = int(request.query_params.get('batch_size', 0))
         except (ValueError, TypeError):
             batch_size = 0
+        if batch_size < 0:
+            return Response(
+                {'error': 'batch_size must be a non-negative integer (0 = no limit).'},
+                status=status.HTTP_400_BAD_REQUEST,
+            )
         s3 = S3Client()
 
         try:
@@ -172,7 +177,10 @@ class RetireCertificatesS3View(APIView):
                 status=status.HTTP_500_INTERNAL_SERVER_ERROR,
             )
 
-        log.info('retire_certs_s3: starting certificate retirement (dry_run=%s, batch_size=%s)', dry_run, batch_size or 'unlimited')
+        log.info(
+            'retire_certs_s3: starting certificate retirement (dry_run=%s, batch_size=%s)',
+            dry_run, batch_size or 'unlimited',
+        )
 
         processed = 0
         failed_ids = []
