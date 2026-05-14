@@ -129,6 +129,9 @@ class RetireCertificatesS3View(APIView):
     Query parameters:
         dry_run (bool, default false): when true, logs actions but makes no
             changes to S3 or the database.
+        batch_size (int, default 0): when non-zero, limits the number of
+            certificates processed in a single call. Use with a scheduled job
+            to drain the queue incrementally.
 
     Auth: requires a JWT/OAuth token for a user with the
     ``accounts.can_retire_user`` permission (same permission used by all other
@@ -151,10 +154,17 @@ class RetireCertificatesS3View(APIView):
         corresponding GeneratedCertificate records as deleted in the database.
         """
         dry_run = request.query_params.get('dry_run', 'false').lower() == 'true'
+        try:
+            batch_size = int(request.query_params.get('batch_size', 0))
+        except (ValueError, TypeError):
+            batch_size = 0
         s3 = S3Client()
 
         try:
-            certs = _fetch_certs_to_delete().iterator(chunk_size=100)
+            certs = _fetch_certs_to_delete()
+            if batch_size > 0:
+                certs = certs[:batch_size]
+            certs = certs.iterator(chunk_size=100)
         except Exception as exc:  # pylint: disable=broad-except
             log.exception('retire_certs_s3: failed to query certificates: %s', exc)
             return Response(
@@ -162,7 +172,7 @@ class RetireCertificatesS3View(APIView):
                 status=status.HTTP_500_INTERNAL_SERVER_ERROR,
             )
 
-        log.info('retire_certs_s3: starting certificate retirement (dry_run=%s)', dry_run)
+        log.info('retire_certs_s3: starting certificate retirement (dry_run=%s, batch_size=%s)', dry_run, batch_size or 'unlimited')
 
         processed = 0
         failed_ids = []

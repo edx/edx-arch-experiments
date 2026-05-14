@@ -14,6 +14,12 @@ Change Log
 Unreleased
 **********
 
+[7.5.0] - 2026-05-14
+********************
+Added
+=====
+* Added optional ``?batch_size=N`` query parameter to ``retire_certs_s3`` to limit certificates processed per call.
+
 [7.4.0] - 2026-04-28
 ********************
 Added
