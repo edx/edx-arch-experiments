@@ -14,7 +14,7 @@ Change Log
 Unreleased
 **********
 
-[7.5.0] - 2026-05-11
+[7.6.0] - 2026-05-11
 ********************
 Added
 =====
@@ -22,6 +22,12 @@ Added
   for per-user certificate retirement as a step in ``retire_one_learner.py``. Returns HTTP 207
   on partial failure.
 * Added unit tests for ``edx_arch_experiments.certificates.views``.
+
+[7.5.0] - 2026-05-14
+********************
+Added
+=====
+* Added optional ``?batch_size=N`` query parameter to ``retire_certs_s3`` to limit certificates processed per call.
 
 [7.4.0] - 2026-04-28
 ********************
