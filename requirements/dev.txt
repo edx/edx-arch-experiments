@@ -23,9 +23,9 @@ billiard==4.2.4
     # via
     #   -r requirements/quality.txt
     #   celery
-boto3==1.43.9
+boto3==1.43.14
     # via -r requirements/quality.txt
-botocore==1.43.9
+botocore==1.43.14
     # via
     #   -r requirements/quality.txt
     #   boto3
@@ -38,13 +38,13 @@ bytecode==0.17.0
     # via
     #   -r requirements/quality.txt
     #   ddtrace
-cachetools==7.1.2
+cachetools==7.1.4
     # via
     #   -r requirements/ci.txt
     #   tox
 celery==5.6.3
     # via -r requirements/quality.txt
-certifi==2026.4.22
+certifi==2026.5.20
     # via
     #   -r requirements/quality.txt
     #   datadog-api-client
@@ -60,7 +60,7 @@ charset-normalizer==3.4.7
     # via
     #   -r requirements/quality.txt
     #   requests
-click==8.4.0
+click==8.4.1
     # via
     #   -r requirements/pip-tools.txt
     #   -r requirements/quality.txt
@@ -110,9 +110,9 @@ datadog-api-client==2.55.0
     # via -r requirements/dev.in
 ddt==1.7.2
     # via -r requirements/quality.txt
-ddtrace==4.8.4
+ddtrace==4.8.7
     # via -r requirements/quality.txt
-diff-cover==10.2.0
+diff-cover==10.2.1
     # via -r requirements/dev.in
 dill==0.4.1
     # via
@@ -165,14 +165,10 @@ id==1.6.1
     # via
     #   -r requirements/quality.txt
     #   twine
-idna==3.15
+idna==3.16
     # via
     #   -r requirements/quality.txt
     #   requests
-importlib-metadata==8.7.1
-    # via
-    #   -r requirements/quality.txt
-    #   opentelemetry-api
 iniconfig==2.3.0
     # via
     #   -r requirements/quality.txt
@@ -216,11 +212,11 @@ kombu==5.6.2
     # via
     #   -r requirements/quality.txt
     #   celery
-lxml[html-clean]==6.1.0
+lxml[html-clean]==6.1.1
     # via
     #   edx-i18n-tools
     #   lxml-html-clean
-lxml-html-clean==0.4.4
+lxml-html-clean==0.4.5
     # via lxml
 markdown-it-py==4.2.0
     # via
@@ -238,7 +234,7 @@ mdurl==0.1.2
     # via
     #   -r requirements/quality.txt
     #   markdown-it-py
-more-itertools==11.0.2
+more-itertools==11.1.0
     # via
     #   -r requirements/quality.txt
     #   jaraco-classes
@@ -247,7 +243,7 @@ nh3==0.3.5
     # via
     #   -r requirements/quality.txt
     #   readme-renderer
-opentelemetry-api==1.41.1
+opentelemetry-api==1.42.1
     # via
     #   -r requirements/quality.txt
     #   ddtrace
@@ -415,7 +411,7 @@ sqlparse==0.5.5
     # via
     #   -r requirements/quality.txt
     #   django
-stevedore==5.7.0
+stevedore==5.8.0
     # via
     #   -r requirements/quality.txt
     #   code-annotations
@@ -476,14 +472,10 @@ wheel==0.47.0
     # via
     #   -r requirements/pip-tools.txt
     #   pip-tools
-wrapt==2.1.2
+wrapt==2.2.1
     # via
     #   -r requirements/quality.txt
     #   ddtrace
-zipp==3.23.1
-    # via
-    #   -r requirements/quality.txt
-    #   importlib-metadata
 
 # The following packages are considered to be unsafe in a requirements file:
 pip==26.1.1
