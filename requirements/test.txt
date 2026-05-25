@@ -18,9 +18,9 @@ billiard==4.2.4
     # via
     #   -r requirements/base.txt
     #   celery
-boto3==1.43.9
+boto3==1.43.14
     # via -r requirements/base.txt
-botocore==1.43.9
+botocore==1.43.14
     # via
     #   -r requirements/base.txt
     #   boto3
@@ -33,7 +33,7 @@ cffi==2.0.0
     # via
     #   -r requirements/base.txt
     #   pynacl
-click==8.4.0
+click==8.4.1
     # via
     #   -r requirements/base.txt
     #   celery
@@ -62,7 +62,7 @@ coverage[toml]==7.14.0
     # via pytest-cov
 ddt==1.7.2
     # via -r requirements/test.in
-ddtrace==4.8.4
+ddtrace==4.8.7
     # via -r requirements/test.in
     # via
     #   -c https://raw.githubusercontent.com/edx/edx-lint/master/edx_lint/files/common_constraints.txt
@@ -85,8 +85,6 @@ edx-django-utils==8.0.1
     # via -r requirements/base.txt
 envier==0.6.1
     # via ddtrace
-importlib-metadata==8.7.1
-    # via opentelemetry-api
 iniconfig==2.3.0
     # via pytest
 jinja2==3.1.6
@@ -102,7 +100,7 @@ kombu==5.6.2
     #   celery
 markupsafe==3.0.3
     # via jinja2
-opentelemetry-api==1.41.1
+opentelemetry-api==1.42.1
     # via ddtrace
 packaging==26.2
     # via
@@ -163,7 +161,7 @@ sqlparse==0.5.5
     # via
     #   -r requirements/base.txt
     #   django
-stevedore==5.7.0
+stevedore==5.8.0
     # via
     #   -r requirements/base.txt
     #   code-annotations
@@ -194,10 +192,8 @@ wcwidth==0.7.0
     # via
     #   -r requirements/base.txt
     #   prompt-toolkit
-wrapt==2.1.2
+wrapt==2.2.1
     # via ddtrace
-zipp==3.23.1
-    # via importlib-metadata
 
 # The following packages are considered to be unsafe in a requirements file:
 setuptools==82.0.1
