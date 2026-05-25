@@ -14,6 +14,15 @@ Change Log
 Unreleased
 **********
 
+[7.6.0] - 2026-05-11
+********************
+Added
+=====
+* Added ``RetireCertificatesS3ForUserView`` (``POST /api/certificates/v1/retire_certs_s3_for_user``)
+  for per-user certificate retirement as a step in ``retire_one_learner.py``. Returns HTTP 207
+  on partial failure.
+* Added unit tests for ``edx_arch_experiments.certificates.views``.
+
 [7.5.0] - 2026-05-14
 ********************
 Added
