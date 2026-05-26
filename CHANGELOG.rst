@@ -318,17 +318,3 @@ Added
 =====
 
 * First release on PyPI.
-use bridge and signals
-
-[0.1.1] - 2022-03-16
-********************
-
-* Fix GitHub actions
-
-[0.1.0] - 2022-02-22
-********************
-
-Added
-=====
-
-* First release on PyPI.
