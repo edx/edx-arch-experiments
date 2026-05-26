@@ -8,5 +8,5 @@ from edx_arch_experiments.certificates.views import RetireCertificatesS3ForUserV
 
 urlpatterns = [
     path('retire_certs_s3', RetireCertificatesS3View.as_view(), name='retire_certs_s3'),
-    path('retire_certs_s3_for_user', RetireCertificatesS3ForUserView.as_view(), name='retire_certs_s3_for_user'),
+    path('retire_certs_s3_for_user/', RetireCertificatesS3ForUserView.as_view(), name='retire_certs_s3_for_user'),
 ]

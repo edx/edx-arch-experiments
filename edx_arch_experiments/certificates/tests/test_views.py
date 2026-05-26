@@ -234,7 +234,7 @@ class TestRetireCertificatesS3ForUserView(_BaseViewTestCase):
     def _post(self, data=None):
         """POST to retire_certs_s3_for_user and return the DRF Response."""
         request = self.factory.post(
-            '/api/certificates/v1/retire_certs_s3_for_user',
+            '/api/certificates/v1/retire_certs_s3_for_user/',
             data=json.dumps(data or {}),
             content_type='application/json',
         )

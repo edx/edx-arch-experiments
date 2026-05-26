@@ -14,6 +14,12 @@ Change Log
 Unreleased
 **********
 
+[7.7.0] - 2026-05-26
+********************
+Fixed
+=====
+* Added trailing slash to ``retire_certs_s3_for_user/`` URL pattern.
+
 [7.6.0] - 2026-05-11
 ********************
 Added
