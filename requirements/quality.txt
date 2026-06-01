@@ -22,9 +22,9 @@ billiard==4.2.4
     # via
     #   -r requirements/test.txt
     #   celery
-boto3==1.43.14
+boto3==1.43.18
     # via -r requirements/test.txt
-botocore==1.43.14
+botocore==1.43.18
     # via
     #   -r requirements/test.txt
     #   boto3
@@ -74,7 +74,7 @@ code-annotations==2.3.2
     #   -c requirements/constraints.txt
     #   -r requirements/test.txt
     #   edx-lint
-coverage[toml]==7.14.0
+coverage[toml]==7.14.1
     # via
     #   -r requirements/test.txt
     #   pytest-cov
@@ -82,7 +82,7 @@ cryptography==48.0.0
     # via secretstorage
 ddt==1.7.2
     # via -r requirements/test.txt
-ddtrace==4.8.7
+ddtrace==4.10.0
     # via -r requirements/test.txt
 dill==0.4.1
     # via pylint
@@ -104,7 +104,7 @@ django-waffle==5.0.0
     #   edx-django-utils
 djangorestframework==3.17.1
     # via -r requirements/test.txt
-docutils==0.22.4
+docutils==0.23
     # via readme-renderer
 edx-django-utils==8.0.1
     # via -r requirements/test.txt
@@ -116,7 +116,7 @@ envier==0.6.1
     #   ddtrace
 id==1.6.1
     # via twine
-idna==3.16
+idna==3.17
     # via requests
 iniconfig==2.3.0
     # via
@@ -177,7 +177,7 @@ packaging==26.2
     #   kombu
     #   pytest
     #   twine
-platformdirs==4.9.6
+platformdirs==4.10.0
     # via pylint
 pluggy==1.6.0
     # via
@@ -261,7 +261,7 @@ rfc3986==2.0.0
     # via twine
 rich==15.0.0
     # via twine
-s3transfer==0.17.0
+s3transfer==0.18.0
     # via
     #   -r requirements/test.txt
     #   boto3
@@ -272,7 +272,7 @@ six==1.17.0
     #   -r requirements/test.txt
     #   edx-lint
     #   python-dateutil
-snowballstemmer==3.0.1
+snowballstemmer==3.1.0
     # via pydocstyle
 sqlparse==0.5.5
     # via
