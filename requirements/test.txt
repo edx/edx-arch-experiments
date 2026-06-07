@@ -18,14 +18,14 @@ billiard==4.2.4
     # via
     #   -r requirements/base.txt
     #   celery
-boto3==1.43.18
+boto3==1.43.24
     # via -r requirements/base.txt
-botocore==1.43.18
+botocore==1.43.24
     # via
     #   -r requirements/base.txt
     #   boto3
     #   s3transfer
-bytecode==0.17.0
+bytecode==0.18.1
     # via ddtrace
 celery==5.6.3
     # via -r requirements/base.txt
@@ -62,7 +62,7 @@ coverage[toml]==7.14.1
     # via pytest-cov
 ddt==1.7.2
     # via -r requirements/test.in
-ddtrace==4.10.0
+ddtrace==4.10.2
     # via -r requirements/test.in
     # via
     #   -c https://raw.githubusercontent.com/edx/edx-lint/master/edx_lint/files/common_constraints.txt
@@ -188,7 +188,7 @@ vine==5.1.0
     #   amqp
     #   celery
     #   kombu
-wcwidth==0.7.0
+wcwidth==0.8.0
     # via
     #   -r requirements/base.txt
     #   prompt-toolkit
