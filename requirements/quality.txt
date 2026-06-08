@@ -22,14 +22,14 @@ billiard==4.2.4
     # via
     #   -r requirements/test.txt
     #   celery
-boto3==1.43.18
+boto3==1.43.24
     # via -r requirements/test.txt
-botocore==1.43.18
+botocore==1.43.24
     # via
     #   -r requirements/test.txt
     #   boto3
     #   s3transfer
-bytecode==0.17.0
+bytecode==0.18.1
     # via
     #   -r requirements/test.txt
     #   ddtrace
@@ -82,11 +82,11 @@ cryptography==48.0.0
     # via secretstorage
 ddt==1.7.2
     # via -r requirements/test.txt
-ddtrace==4.10.0
+ddtrace==4.10.2
     # via -r requirements/test.txt
 dill==0.4.1
     # via pylint
-django==5.2.14
+django==5.2.15
     # via
     #   -c https://raw.githubusercontent.com/edx/edx-lint/master/edx_lint/files/common_constraints.txt
     #   -r requirements/test.txt
@@ -116,7 +116,7 @@ envier==0.6.1
     #   ddtrace
 id==1.6.1
     # via twine
-idna==3.17
+idna==3.18
     # via requests
 iniconfig==2.3.0
     # via
@@ -272,7 +272,7 @@ six==1.17.0
     #   -r requirements/test.txt
     #   edx-lint
     #   python-dateutil
-snowballstemmer==3.1.0
+snowballstemmer==3.1.1
     # via pydocstyle
 sqlparse==0.5.5
     # via
@@ -318,7 +318,7 @@ vine==5.1.0
     #   amqp
     #   celery
     #   kombu
-wcwidth==0.7.0
+wcwidth==0.8.0
     # via
     #   -r requirements/test.txt
     #   prompt-toolkit
