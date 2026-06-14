@@ -18,9 +18,9 @@ billiard==4.2.4
     # via
     #   -r requirements/base.txt
     #   celery
-boto3==1.43.24
+boto3==1.43.29
     # via -r requirements/base.txt
-botocore==1.43.24
+botocore==1.43.29
     # via
     #   -r requirements/base.txt
     #   boto3
@@ -62,7 +62,7 @@ coverage[toml]==7.14.1
     # via pytest-cov
 ddt==1.7.2
     # via -r requirements/test.in
-ddtrace==4.10.2
+ddtrace==4.10.4
     # via -r requirements/test.in
     # via
     #   -c https://raw.githubusercontent.com/edx/edx-lint/master/edx_lint/files/common_constraints.txt
@@ -129,7 +129,7 @@ pynacl==1.6.2
     # via
     #   -r requirements/base.txt
     #   edx-django-utils
-pytest==9.0.3
+pytest==9.1.0
     # via
     #   pytest-cov
     #   pytest-django
@@ -188,7 +188,7 @@ vine==5.1.0
     #   amqp
     #   celery
     #   kombu
-wcwidth==0.8.0
+wcwidth==0.8.1
     # via
     #   -r requirements/base.txt
     #   prompt-toolkit
