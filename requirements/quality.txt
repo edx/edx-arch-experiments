@@ -22,9 +22,9 @@ billiard==4.2.4
     # via
     #   -r requirements/test.txt
     #   celery
-boto3==1.43.24
+boto3==1.43.29
     # via -r requirements/test.txt
-botocore==1.43.24
+botocore==1.43.29
     # via
     #   -r requirements/test.txt
     #   boto3
@@ -78,11 +78,11 @@ coverage[toml]==7.14.1
     # via
     #   -r requirements/test.txt
     #   pytest-cov
-cryptography==48.0.0
+cryptography==49.0.0
     # via secretstorage
 ddt==1.7.2
     # via -r requirements/test.txt
-ddtrace==4.10.2
+ddtrace==4.10.4
     # via -r requirements/test.txt
 dill==0.4.1
     # via pylint
@@ -224,7 +224,7 @@ pynacl==1.6.2
     # via
     #   -r requirements/test.txt
     #   edx-django-utils
-pytest==9.0.3
+pytest==9.1.0
     # via
     #   -r requirements/test.txt
     #   pytest-cov
@@ -249,7 +249,7 @@ pyyaml==6.0.3
     # via
     #   -r requirements/test.txt
     #   code-annotations
-readme-renderer==44.0
+readme-renderer==45.0
     # via twine
 requests==2.34.2
     # via
@@ -318,7 +318,7 @@ vine==5.1.0
     #   amqp
     #   celery
     #   kombu
-wcwidth==0.8.0
+wcwidth==0.8.1
     # via
     #   -r requirements/test.txt
     #   prompt-toolkit
