@@ -18,9 +18,9 @@ billiard==4.2.4
     # via
     #   -r requirements/base.txt
     #   celery
-boto3==1.43.34
+boto3==1.43.36
     # via -r requirements/base.txt
-botocore==1.43.34
+botocore==1.43.36
     # via
     #   -r requirements/base.txt
     #   boto3
@@ -33,7 +33,7 @@ cffi==2.0.0
     # via
     #   -r requirements/base.txt
     #   pynacl
-click==8.4.1
+click==8.4.2
     # via
     #   -r requirements/base.txt
     #   celery
@@ -58,7 +58,7 @@ code-annotations==2.3.2
     # via
     #   -c requirements/constraints.txt
     #   -r requirements/test.in
-coverage[toml]==7.14.2
+coverage[toml]==7.14.3
     # via pytest-cov
 ddt==1.7.2
     # via -r requirements/test.in
@@ -100,7 +100,7 @@ kombu==5.6.2
     #   celery
 markupsafe==3.0.3
     # via jinja2
-opentelemetry-api==1.42.1
+opentelemetry-api==1.43.0
     # via ddtrace
 packaging==26.2
     # via
