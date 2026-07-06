@@ -14,6 +14,13 @@ Change Log
 Unreleased
 **********
 
+[7.7.1] - 2026-07-06
+********************
+Fixed
+=====
+* Accept plain or ``retired__user_``-prefixed usernames when retiring per-user certificates.
+
+
 [7.7.0] - 2026-05-26
 ********************
 Fixed
