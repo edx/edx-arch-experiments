@@ -19,6 +19,7 @@ from botocore.exceptions import ClientError
 from lms.djangoapps.certificates.data import CertificateStatuses  # pylint: disable=import-error
 from lms.djangoapps.certificates.models import GeneratedCertificate  # pylint: disable=import-error
 from openedx.core.djangoapps.user_api.accounts.permissions import CanRetireUser  # pylint: disable=import-error
+from django.db.models import Q
 from rest_framework import permissions, status
 from rest_framework.parsers import JSONParser
 from rest_framework.response import Response
@@ -77,9 +78,11 @@ def _fetch_certs_to_delete_for_user(username):
     Returns a queryset of GeneratedCertificate records for the given retired
     user that still have a downloadable PDF certificate URL.
     """
+    # The retirement pipeline may pass a hashed username; rather than
+    # constructing an expected prefixed username, match either the exact
+    # username or any username already rewritten with the retired prefix.
     return GeneratedCertificate.objects.filter(
-        user__username=username,
-        user__username__startswith=_RETIRED_USERNAME_PREFIX,
+        (Q(user__username=username) | Q(user__username__startswith=_RETIRED_USERNAME_PREFIX)),
         download_url__icontains='https://',
         status=CertificateStatuses.downloadable,
     ).select_related('user').order_by('course_id')
