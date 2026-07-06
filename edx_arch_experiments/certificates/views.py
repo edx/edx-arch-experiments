@@ -210,11 +210,6 @@ class RetireCertificatesS3ForUserView(APIView):
                 {'error': 'username is required in the request body.'},
                 status=status.HTTP_400_BAD_REQUEST,
             )
-        if not username.startswith(_RETIRED_USERNAME_PREFIX):
-            return Response(
-                {'error': f'username must start with {_RETIRED_USERNAME_PREFIX!r}.'},
-                status=status.HTTP_400_BAD_REQUEST,
-            )
 
         s3 = S3Client()
 

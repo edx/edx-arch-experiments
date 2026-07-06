@@ -243,7 +243,6 @@ class TestRetireCertificatesS3ForUserView(_BaseViewTestCase):
     @ddt.data(
         {},                            # username key absent entirely
         {'username': '   '},           # username present but blank after strip
-        {'username': 'active_user'},   # not a retired username
     )
     def test_bad_username_returns_400(self, body):
         response = self._post(body)
