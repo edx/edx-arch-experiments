@@ -19,11 +19,11 @@ from botocore.exceptions import ClientError
 from lms.djangoapps.certificates.data import CertificateStatuses  # pylint: disable=import-error
 from lms.djangoapps.certificates.models import GeneratedCertificate  # pylint: disable=import-error
 from openedx.core.djangoapps.user_api.accounts.permissions import CanRetireUser  # pylint: disable=import-error
-from django.db.models import Q
 from rest_framework import permissions, status
 from rest_framework.parsers import JSONParser
 from rest_framework.response import Response
 from rest_framework.views import APIView
+from django.db.models import Q
 
 log = logging.getLogger(__name__)
 
