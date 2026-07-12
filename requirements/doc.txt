@@ -28,9 +28,9 @@ billiard==4.2.4
     # via
     #   -r requirements/test.txt
     #   celery
-boto3==1.43.40
+boto3==1.43.46
     # via -r requirements/test.txt
-botocore==1.43.40
+botocore==1.43.46
     # via
     #   -r requirements/test.txt
     #   boto3
@@ -43,11 +43,11 @@ celery==5.6.3
     # via -r requirements/test.txt
 certifi==2026.6.17
     # via requests
-cffi==2.0.0
+cffi==2.1.0
     # via
     #   -r requirements/test.txt
     #   pynacl
-charset-normalizer==3.4.7
+charset-normalizer==3.4.9
     # via requests
 click==8.4.2
     # via
@@ -80,9 +80,9 @@ coverage[toml]==7.15.0
     #   pytest-cov
 ddt==1.7.2
     # via -r requirements/test.txt
-ddtrace==4.10.6
+ddtrace==4.11.0
     # via -r requirements/test.txt
-django==5.2.15
+django==5.2.16
     # via
     #   -c https://raw.githubusercontent.com/edx/edx-lint/master/edx_lint/files/common_constraints.txt
     #   -r requirements/test.txt
@@ -218,7 +218,7 @@ restructuredtext-lint==2.0.2
     # via doc8
 roman-numerals==4.1.0
     # via sphinx
-s3transfer==0.19.0
+s3transfer==0.19.1
     # via
     #   -r requirements/test.txt
     #   boto3
@@ -269,7 +269,7 @@ typing-extensions==4.16.0
     #   beautifulsoup4
     #   opentelemetry-api
     #   pydata-sphinx-theme
-tzdata==2026.2
+tzdata==2026.3
     # via
     #   -r requirements/test.txt
     #   kombu
