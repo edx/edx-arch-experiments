@@ -12,7 +12,7 @@ amqp==5.3.1
     # via
     #   -r requirements/test.txt
     #   kombu
-asgiref==3.11.1
+asgiref==3.12.1
     # via
     #   -r requirements/test.txt
     #   django
@@ -28,9 +28,9 @@ billiard==4.2.4
     # via
     #   -r requirements/test.txt
     #   celery
-boto3==1.43.46
+boto3==1.43.51
     # via -r requirements/test.txt
-botocore==1.43.46
+botocore==1.43.51
     # via
     #   -r requirements/test.txt
     #   boto3
@@ -74,13 +74,13 @@ code-annotations==2.3.2
     # via
     #   -c requirements/constraints.txt
     #   -r requirements/test.txt
-coverage[toml]==7.15.0
+coverage[toml]==7.15.2
     # via
     #   -r requirements/test.txt
     #   pytest-cov
 ddt==1.7.2
     # via -r requirements/test.txt
-ddtrace==4.11.0
+ddtrace==4.11.1
     # via -r requirements/test.txt
 django==5.2.16
     # via
@@ -143,7 +143,7 @@ markupsafe==3.0.3
     #   jinja2
 nh3==0.3.6
     # via readme-renderer
-opentelemetry-api==1.43.0
+opentelemetry-api==1.44.0
     # via
     #   -r requirements/test.txt
     #   ddtrace
@@ -228,7 +228,7 @@ six==1.17.0
     #   python-dateutil
 snowballstemmer==3.1.1
     # via sphinx
-soupsieve==2.8.4
+soupsieve==2.9
     # via beautifulsoup4
 sphinx==9.1.0
     # via
