@@ -8,7 +8,7 @@ amqp==5.3.1
     # via
     #   -r requirements/quality.txt
     #   kombu
-asgiref==3.11.1
+asgiref==3.12.1
     # via
     #   -r requirements/quality.txt
     #   django
@@ -23,14 +23,14 @@ billiard==4.2.4
     # via
     #   -r requirements/quality.txt
     #   celery
-boto3==1.43.46
+boto3==1.43.51
     # via -r requirements/quality.txt
-botocore==1.43.46
+botocore==1.43.51
     # via
     #   -r requirements/quality.txt
     #   boto3
     #   s3transfer
-build==1.5.1
+build==1.5.0
     # via
     #   -r requirements/pip-tools.txt
     #   pip-tools
@@ -98,7 +98,7 @@ colorama==0.4.6
     # via
     #   -r requirements/ci.txt
     #   tox
-coverage[toml]==7.15.0
+coverage[toml]==7.15.2
     # via
     #   -r requirements/quality.txt
     #   pytest-cov
@@ -110,7 +110,7 @@ datadog-api-client==2.57.0
     # via -r requirements/dev.in
 ddt==1.7.2
     # via -r requirements/quality.txt
-ddtrace==4.11.0
+ddtrace==4.11.1
     # via -r requirements/quality.txt
 diff-cover==10.3.0
     # via -r requirements/dev.in
@@ -155,7 +155,7 @@ envier==0.6.1
     # via
     #   -r requirements/quality.txt
     #   ddtrace
-filelock==3.29.7
+filelock==3.31.0
     # via
     #   -r requirements/ci.txt
     #   python-discovery
@@ -185,7 +185,7 @@ jaraco-context==6.1.2
     # via
     #   -r requirements/quality.txt
     #   keyring
-jaraco-functools==4.5.0
+jaraco-functools==4.6.0
     # via
     #   -r requirements/quality.txt
     #   keyring
@@ -243,7 +243,7 @@ nh3==0.3.6
     # via
     #   -r requirements/quality.txt
     #   readme-renderer
-opentelemetry-api==1.43.0
+opentelemetry-api==1.44.0
     # via
     #   -r requirements/quality.txt
     #   ddtrace
@@ -261,9 +261,9 @@ packaging==26.2
     #   wheel
 path==16.16.0
     # via edx-i18n-tools
-pip-tools==7.5.3
+pip-tools==7.6.0
     # via -r requirements/pip-tools.txt
-platformdirs==4.10.0
+platformdirs==4.10.1
     # via
     #   -r requirements/ci.txt
     #   -r requirements/quality.txt
@@ -424,12 +424,12 @@ tomli-w==1.2.0
     # via
     #   -r requirements/ci.txt
     #   tox
-tomlkit==0.15.0
+tomlkit==0.15.1
     # via
     #   -r requirements/quality.txt
     #   edx-lint
     #   pylint
-tox==4.56.4
+tox==4.57.0
     # via -r requirements/ci.txt
 twine==6.2.0
     # via -r requirements/quality.txt
