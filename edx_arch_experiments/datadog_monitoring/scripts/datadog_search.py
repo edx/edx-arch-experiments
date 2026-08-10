@@ -1,6 +1,10 @@
 """
 This script takes a regex to search through the Datadog monitors
-and dashboards.`
+and dashboards.
+
+Known limitations:
+- This script does not search APM generated metrics.
+- This script does not search APM retention filters.
 
 For help::
 
@@ -37,6 +41,12 @@ def main(regex):
         python datadog_search.py --regex tnl
 
     Note: The search ignores case since most features are case insensitive.
+
+    \b
+    Known limitations:
+    This script only searches Datadog monitors and dashboards. It does not search:
+    - APM generated metrics: https://app.datadoghq.com/apm/traces/generate-metrics
+    - APM retention filters: https://app.datadoghq.com/apm/traces/retention-filters
 
     \b
     Pre-requisites:
