@@ -5,8 +5,7 @@ and dashboards.
 Known limitations:
 - This script only searches monitors and dashboards.
 - This script is not a complete search across all Datadog products or configuration.
-- Examples of areas it does not search include APM Generated Metrics, APM Retention
-  Filters, SLOs, Notebooks, Synthetic Tests, and Metric Tag Configurations.
+- Run with --help for examples of Datadog areas that are not searched.
 
 For help::
 
