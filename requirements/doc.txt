@@ -28,9 +28,9 @@ billiard==4.2.4
     # via
     #   -r requirements/test.txt
     #   celery
-boto3==1.43.56
+boto3==1.43.72
     # via -r requirements/test.txt
-botocore==1.43.56
+botocore==1.43.72
     # via
     #   -r requirements/test.txt
     #   boto3
@@ -43,11 +43,11 @@ celery==5.6.3
     # via -r requirements/test.txt
 certifi==2026.7.22
     # via requests
-cffi==2.1.0
+cffi==2.1.1
     # via
     #   -r requirements/test.txt
     #   pynacl
-charset-normalizer==3.4.9
+charset-normalizer==3.5.1
     # via requests
 click==8.4.2
     # via
@@ -74,15 +74,15 @@ code-annotations==2.3.2
     # via
     #   -c requirements/constraints.txt
     #   -r requirements/test.txt
-coverage[toml]==7.15.2
+coverage[toml]==7.15.4
     # via
     #   -r requirements/test.txt
     #   pytest-cov
 ddt==1.7.2
     # via -r requirements/test.txt
-ddtrace==4.11.1
+ddtrace==4.13.1
     # via -r requirements/test.txt
-django==5.2.16
+django==5.2.17
     # via
     #   -c https://raw.githubusercontent.com/edx/edx-lint/master/edx_lint/files/common_constraints.txt
     #   -r requirements/test.txt
@@ -98,7 +98,7 @@ django-waffle==5.0.0
     # via
     #   -r requirements/test.txt
     #   edx-django-utils
-djangorestframework==3.17.1
+djangorestframework==3.18.0
     # via -r requirements/test.txt
 doc8==2.0.0
     # via -r requirements/doc.in
@@ -148,7 +148,7 @@ opentelemetry-api==1.44.0
     # via
     #   -r requirements/test.txt
     #   ddtrace
-packaging==26.2
+packaging==26.3
     # via
     #   -r requirements/test.txt
     #   kombu
@@ -159,7 +159,7 @@ pluggy==1.6.0
     #   -r requirements/test.txt
     #   pytest
     #   pytest-cov
-prompt-toolkit==3.0.52
+prompt-toolkit==3.0.53
     # via
     #   -r requirements/test.txt
     #   click-repl
@@ -194,7 +194,7 @@ pytest==9.1.1
     #   pytest-randomly
 pytest-cov==7.1.0
     # via -r requirements/test.txt
-pytest-django==4.12.0
+pytest-django==4.14.0
     # via -r requirements/test.txt
 pytest-randomly==4.1.0
     # via -r requirements/test.txt
@@ -231,7 +231,7 @@ six==1.17.0
     #   python-dateutil
 snowballstemmer==3.1.1
     # via sphinx
-soupsieve==2.9.1
+soupsieve==2.9.2
     # via beautifulsoup4
 sphinx==9.1.0
     # via
@@ -252,7 +252,7 @@ sphinxcontrib-qthelp==2.0.0
     # via sphinx
 sphinxcontrib-serializinghtml==2.0.0
     # via sphinx
-sqlparse==0.5.5
+sqlparse==0.6.0
     # via
     #   -r requirements/test.txt
     #   django
@@ -294,11 +294,11 @@ wcwidth==0.8.2
     # via
     #   -r requirements/test.txt
     #   prompt-toolkit
-wrapt==2.2.2
+wrapt==2.3.0
     # via
     #   -r requirements/test.txt
     #   ddtrace
 
 # The following packages are considered to be unsafe in a requirements file:
-setuptools==83.0.0
+setuptools==84.0.0
     # via -r requirements/test.txt
