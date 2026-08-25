@@ -14,7 +14,7 @@
 # Date: 2026-04-29
 # Reason: The following packages dropped Python 3.11 support in their latest major version.
 # Pin them until this repo drops Python 3.11 support.
-# Unpin Ticket: https://openedx.atlassian.net/browse/BOMS-743
+# Unpin Ticket: https://2u-internal.atlassian.net/browse/BOMS-743
 # https://github.com/openedx/code-annotations/releases/tag/v3.0.0
 code-annotations<3.0.0
 # https://github.com/openedx/opaque-keys/releases/tag/4.0.0
