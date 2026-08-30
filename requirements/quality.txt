@@ -22,14 +22,14 @@ billiard==4.2.4
     # via
     #   -r requirements/test.txt
     #   celery
-boto3==1.43.56
+boto3==1.43.83
     # via -r requirements/test.txt
-botocore==1.43.56
+botocore==1.43.83
     # via
     #   -r requirements/test.txt
     #   boto3
     #   s3transfer
-bytecode==0.18.1
+bytecode==0.19.0
     # via
     #   -r requirements/test.txt
     #   ddtrace
@@ -37,14 +37,14 @@ celery==5.6.3
     # via -r requirements/test.txt
 certifi==2026.7.22
     # via requests
-cffi==2.1.0
+cffi==2.1.1
     # via
     #   -r requirements/test.txt
     #   cryptography
     #   pynacl
-charset-normalizer==3.4.9
+charset-normalizer==3.5.1
     # via requests
-click==8.4.2
+click==8.5.0
     # via
     #   -r requirements/test.txt
     #   celery
@@ -74,19 +74,19 @@ code-annotations==2.3.2
     #   -c requirements/constraints.txt
     #   -r requirements/test.txt
     #   edx-lint
-coverage[toml]==7.15.2
+coverage[toml]==7.16.0
     # via
     #   -r requirements/test.txt
     #   pytest-cov
-cryptography==49.0.0
+cryptography==50.0.1
     # via secretstorage
 ddt==1.7.2
     # via -r requirements/test.txt
-ddtrace==4.11.1
+ddtrace==4.14.0
     # via -r requirements/test.txt
 dill==0.4.1
     # via pylint
-django==5.2.16
+django==5.2.17
     # via
     #   -c https://raw.githubusercontent.com/edx/edx-lint/master/edx_lint/files/common_constraints.txt
     #   -r requirements/test.txt
@@ -102,13 +102,13 @@ django-waffle==5.0.0
     # via
     #   -r requirements/test.txt
     #   edx-django-utils
-djangorestframework==3.17.1
+djangorestframework==3.18.0
     # via -r requirements/test.txt
 docutils==0.23
     # via readme-renderer
-edx-django-utils==8.0.1
+edx-django-utils==8.0.2
     # via -r requirements/test.txt
-edx-lint==6.1.0
+edx-lint==6.2.0
     # via -r requirements/quality.in
 envier==0.6.1
     # via
@@ -116,13 +116,13 @@ envier==0.6.1
     #   ddtrace
 id==1.6.1
     # via twine
-idna==3.18
+idna==3.19
     # via requests
 iniconfig==2.3.0
     # via
     #   -r requirements/test.txt
     #   pytest
-isort==8.0.1
+isort==9.0.1
     # via
     #   -r requirements/quality.in
     #   pylint
@@ -165,26 +165,28 @@ more-itertools==11.1.0
     # via
     #   jaraco-classes
     #   jaraco-functools
-nh3==0.3.6
+mypy-extensions==1.1.0
+    # via isort
+nh3==0.3.7
     # via readme-renderer
 opentelemetry-api==1.44.0
     # via
     #   -r requirements/test.txt
     #   ddtrace
-packaging==26.2
+packaging==26.3
     # via
     #   -r requirements/test.txt
     #   kombu
     #   pytest
     #   twine
-platformdirs==4.11.0
+platformdirs==4.11.5
     # via pylint
 pluggy==1.6.0
     # via
     #   -r requirements/test.txt
     #   pytest
     #   pytest-cov
-prompt-toolkit==3.0.52
+prompt-toolkit==3.0.53
     # via
     #   -r requirements/test.txt
     #   click-repl
@@ -200,13 +202,13 @@ pycparser==3.0
     #   cffi
 pydocstyle==6.3.0
     # via -r requirements/quality.in
-pygments==2.20.0
+pygments==2.21.0
     # via
     #   -r requirements/test.txt
     #   pytest
     #   readme-renderer
     #   rich
-pylint==4.0.6
+pylint==4.0.8
     # via
     #   edx-lint
     #   pylint-celery
@@ -232,7 +234,7 @@ pytest==9.1.1
     #   pytest-randomly
 pytest-cov==7.1.0
     # via -r requirements/test.txt
-pytest-django==4.12.0
+pytest-django==4.14.0
     # via -r requirements/test.txt
 pytest-randomly==4.1.0
     # via -r requirements/test.txt
@@ -249,7 +251,7 @@ pyyaml==6.0.3
     # via
     #   -r requirements/test.txt
     #   code-annotations
-readme-renderer==45.0
+readme-renderer==46.0
     # via twine
 requests==2.34.2
     # via
@@ -274,11 +276,11 @@ six==1.17.0
     #   python-dateutil
 snowballstemmer==3.1.1
     # via pydocstyle
-sqlparse==0.5.5
+sqlparse==0.6.0
     # via
     #   -r requirements/test.txt
     #   django
-stevedore==5.9.0
+stevedore==5.9.1
     # via
     #   -r requirements/test.txt
     #   code-annotations
@@ -291,7 +293,7 @@ tomlkit==0.15.1
     # via
     #   edx-lint
     #   pylint
-twine==6.2.0
+twine==7.0.0
     # via -r requirements/quality.in
 typing-extensions==4.16.0
     # via
@@ -318,15 +320,15 @@ vine==5.1.0
     #   amqp
     #   celery
     #   kombu
-wcwidth==0.8.2
+wcwidth==0.8.3
     # via
     #   -r requirements/test.txt
     #   prompt-toolkit
-wrapt==2.2.2
+wrapt==2.3.0
     # via
     #   -r requirements/test.txt
     #   ddtrace
 
 # The following packages are considered to be unsafe in a requirements file:
-setuptools==83.0.0
+setuptools==84.0.0
     # via -r requirements/test.txt
