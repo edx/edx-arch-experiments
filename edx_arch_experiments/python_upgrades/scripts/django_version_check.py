@@ -18,7 +18,6 @@ import requests
 from requests.adapters import HTTPAdapter
 from urllib3.util.retry import Retry
 
-
 # Load repos, orgs, owners, and maintainers from Excel input file
 EXCEL_INPUT = "repos.xlsx"
 
