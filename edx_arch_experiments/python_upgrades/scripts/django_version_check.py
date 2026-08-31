@@ -100,6 +100,7 @@ def make_session() -> requests.Session:
 
     return session
 
+
 SESSION = make_session()
 
 # Locks and result storage
