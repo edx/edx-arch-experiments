@@ -1,41 +1,9 @@
 """
 Audit Django versions and upgrade readiness across a list of GitHub repos.
 
-INSTRUCTIONS
-------------
-
-1. Export the "Own:Repos" sheet from the following Google Sheet in .xlsx
-   format:
-   https://docs.google.com/spreadsheets/d/1qpWfbPYLSaE_deaumWSEZfz91CshWd3v3B7xhOk5M4U/edit?gid=1990273504#gid=1990273504
-
-2. Refer to the following Confluence page for the audit details and
-   documentation:
-   https://2u-internal.atlassian.net/wiki/spaces/AT/pages/4088659996/Django+5.2+spreadsheet+generation
-
-3. Save the exported file as "repos.xlsx" and keep it in the same directory
-   as this script.
-
-4. Run this script from the directory containing both this script and
-   "repos.xlsx".
-
-5. The input Excel file must contain the following columns:
-   - repo url
-   - repo org
-   - owner.squad
-   - Repo Maintainer
-
-6. Set the GITHUB_TOKEN environment variable if GitHub API authentication
-   is required, especially when scanning private repositories.
-
-The script generates an Excel report showing Django versions, Django
-constraints, Django imports/usages, and potential Django upgrade risks
-against the target version configured below.
-
-NOTE FOR LINTING: this docstring must stay the first statement in the file,
-and the imports below must stay directly beneath it. Only comments, a single
-module docstring, and __future__ imports may precede module-level imports --
-anything else (a sys.path tweak, an assignment, a second string literal)
-makes pycodestyle report E402 for every import that follows it.
+Refer to the following Confluence page for the audit details and
+documentation:
+https://2u-internal.atlassian.net/wiki/spaces/AT/pages/4088659996/Django+5.2+spreadsheet+generation
 """
 
 import math
@@ -50,11 +18,8 @@ import requests
 from requests.adapters import HTTPAdapter
 from urllib3.util.retry import Retry
 
-# =============================================================================
-# CONFIG
-# =============================================================================
 
-# 1) Load repos, orgs, owners, and maintainers from Excel input file
+# Load repos, orgs, owners, and maintainers from Excel input file
 EXCEL_INPUT = "repos.xlsx"
 
 df_input = pd.read_excel(EXCEL_INPUT)
@@ -77,49 +42,9 @@ assert (
 print(f"Loaded {len(repos)} repos from '{EXCEL_INPUT}'")
 
 
-# -----------------------------------------------------------------------------
-# 2) TARGET DJANGO VERSION
-# -----------------------------------------------------------------------------
-#
-# HOW TO RUN THIS AUDIT FOR A DIFFERENT DJANGO VERSION
-# ----------------------------------------------------
-# Change TARGET_DJANGO_VERSION below and nothing else. For example, when the
-# fleet later needs to move to Django 6.0, set:
-#
-#     TARGET_DJANGO_VERSION = "6.0"
-#
-# Everything downstream is derived from this single value:
-#   - the risk verdict text in the "upgrade_to_<target>_risk" column
-#   - the comparison used against a pinned "django==X.Y.Z" version
-#   - the specifier evaluation used against constraints such as
-#     "Django<5.2", "Django<=5.1", "Django~=4.2" and so on
-#   - the output filename and the worksheet name
-#
-# The value must be a plain dotted release number ("5.2", "6.0", "4.2.11").
-# Do NOT add an operator here -- write "5.2", not ">=5.2".
-#
-# There is deliberately no hardcoded version literal anywhere else in this
-# script, so a future upgrade wave only ever needs to touch this one line.
-# -----------------------------------------------------------------------------
-
 TARGET_DJANGO_VERSION = "5.2"
-
-
-# 3) Batching and cooldown
 BATCH_SIZE = 10
 COOLDOWN_SECONDS = 20
-
-
-# -----------------------------------------------------------------------------
-# 4) Output
-# -----------------------------------------------------------------------------
-#
-# The filename is derived from the target version plus the run timestamp, so
-# every run produces its own uniquely named report and nothing is silently
-# overwritten.
-#
-# Example: django_5_2_upgrade_audit_20260828_143015.xlsx
-# -----------------------------------------------------------------------------
 
 REPORT_RUN_TIMESTAMP = time.strftime("%Y%m%d_%H%M%S")
 
@@ -133,22 +58,14 @@ OUTPUT_XLSX = (
 # Excel caps worksheet names at 31 characters, so keep this short.
 OUTPUT_SHEET_NAME = f"Django {TARGET_DJANGO_VERSION} Audit"[:31]
 
-
-# 5) Network / GitHub
+# Network / GitHub
 API_BASE = "https://api.github.com/repos"
 GITHUB_TOKEN = os.getenv("GITHUB_TOKEN", "")
 DEFAULT_TIMEOUT = 15
 
-
-# 6) Search API
-#    Search calls are serialized through search_lock to avoid hitting
-#    GitHub Search API rate limits when multiple threads are running.
+# Serialize GitHub Search API calls to avoid rate limits.
 SEARCH_API_SLEEP = 2.5
 
-
-# =============================================================================
-# Session with retries
-# =============================================================================
 
 def make_session() -> requests.Session:
     session = requests.Session()
@@ -183,26 +100,15 @@ def make_session() -> requests.Session:
 
     return session
 
-
 SESSION = make_session()
 
-
-# =============================================================================
 # Locks and result storage
-# =============================================================================
-
 results_lock = threading.Lock()
 
-# Serializes GitHub Search API calls across threads to avoid hitting
-# the Search API rate limit when multiple workers run concurrently.
+# Serialize GitHub Search API calls across threads to avoid rate limits.
 search_lock = threading.Lock()
 
 results_rows = []
-
-
-# =============================================================================
-# Regex
-# =============================================================================
 
 DJANGO_VERSION_RE = re.compile(
     r"(?<![\w\-])django==\s*([\d\.]+)(?![\w\-])",
@@ -214,21 +120,12 @@ DJANGO_CONSTRAINT_RE = re.compile(
     re.IGNORECASE,
 )
 
-# Splits a captured constraint such as "Django>=4.2" into operator and
-# version so it can be evaluated against TARGET_DJANGO_VERSION.
+# Splits a Django constraint into its operator and version for target evaluation.
 CONSTRAINT_PARTS_RE = re.compile(
     r"^django\s*(===|==|>=|<=|!=|~=|<|>)\s*([\d\.\*xX]+)$",
     re.IGNORECASE,
 )
 
-
-# =============================================================================
-# Version helpers
-#
-# These keep the script dependency-free: no "packaging" import is required,
-# and they are the only place version semantics live. TARGET_DJANGO_VERSION
-# flows through here and nowhere else.
-# =============================================================================
 
 def parse_version(version_text) -> tuple:
     """
@@ -366,10 +263,7 @@ assert TARGET_VERSION_TUPLE is not None, (
 )
 
 
-# =============================================================================
 # Helper to extract owner/repo from GitHub URL
-# =============================================================================
-
 def extract_repo_path(url_or_path: str) -> str:
     url_or_path = url_or_path.rstrip("/")
 
@@ -382,10 +276,7 @@ def extract_repo_path(url_or_path: str) -> str:
     return url_or_path
 
 
-# =============================================================================
 # Thread-safe result store and Excel writer
-# =============================================================================
-
 def write_excel_safely(
     filename: str,
     rows: list,
@@ -443,10 +334,7 @@ def write_excel_safely(
     )
 
 
-# =============================================================================
 # Helper: GitHub GET wrappers
-# =============================================================================
-
 def get_json(url: str):
     response = SESSION.get(url, timeout=DEFAULT_TIMEOUT)
     response.raise_for_status()
@@ -461,19 +349,7 @@ def get_text(url: str):
     return response.text, response
 
 
-# GitHub returns this exact message when the caller is a GitHub App
-# installation token -- including the automatic GITHUB_TOKEN available inside
-# GitHub Actions -- whose permissions do not cover the target repository.
-#
-# A classic or fine-grained PAT never produces it: for a repo it cannot see,
-# GitHub answers 404 Not Found instead, precisely so the API does not leak the
-# existence of private repositories.
-#
-# So this branch only fires when the script runs under Actions or as an App.
-# It is kept because that is a supported way to run this audit, and because
-# the remediation differs from the other 403 cases: the fix is to widen the
-# workflow's `permissions:` block or the App installation, not to re-authorize
-# a token.
+# Handles GitHub App authentication errors when repository access is restricted.
 INTEGRATION_403_MESSAGE = "resource not accessible by integration"
 
 
@@ -539,10 +415,7 @@ def is_repo_archived(repo: str) -> tuple:
         return False, f"NETWORK_ERR:{exc}"
 
 
-# =============================================================================
 # Check for .py files using Git Tree API
-# =============================================================================
-
 def check_py_files(repo: str) -> tuple:
     url = f"{API_BASE}/{repo}/git/trees/HEAD?recursive=1"
 
@@ -578,10 +451,7 @@ def check_py_files(repo: str) -> tuple:
         return None, f"NETWORK_ERR:{exc}"
 
 
-# =============================================================================
 # GitHub Code Search API helper
-# =============================================================================
-
 def search_github_code(repo: str, query: str) -> tuple:
     with search_lock:
         url = "https://api.github.com/search/code"
@@ -653,10 +523,7 @@ def search_github_code(repo: str, query: str) -> tuple:
         return total > 0, None
 
 
-# =============================================================================
 # Check Django imports in Python files
-# =============================================================================
-
 def check_has_django_imports(repo: str) -> tuple:
     # Both spellings count as a Django import, so short-circuit on the first
     # hit. Add further spellings to this tuple rather than to the body.
@@ -675,10 +542,7 @@ def check_has_django_imports(repo: str) -> tuple:
     return False, None
 
 
-# =============================================================================
 # Check for any Django keyword in the repository
-# =============================================================================
-
 def check_has_django_keyword(repo: str) -> tuple:
     return search_github_code(
         repo,
@@ -686,14 +550,7 @@ def check_has_django_keyword(repo: str) -> tuple:
     )
 
 
-# =============================================================================
-# Shared runner for the per-repo boolean checks
-#
-# Each check function returns a (value, error) pair, and each one previously
-# carried its own near-identical if/else block that logged the outcome and
-# built the display string. That duplication now lives here once.
-# =============================================================================
-
+# Shared runner for per-repository checks and result formatting.
 def run_repo_check(repo: str, label: str, check_fn) -> str:
     print(f"[{repo}] {label}: checking...")
 
@@ -706,10 +563,7 @@ def run_repo_check(repo: str, label: str, check_fn) -> str:
     return display
 
 
-# =============================================================================
 # Core scan functions
-# =============================================================================
-
 def get_requirements_files(repo: str):
     url = f"{API_BASE}/{repo}/contents/requirements"
 
@@ -789,12 +643,8 @@ def evaluate_upgrade_risk(
     constraints: set,
 ) -> str:
     """
-    Decide whether a repo can move to TARGET_DJANGO_VERSION.
-
-    Every verdict below is phrased against the configured target, and the
-    constraint check evaluates operators rather than matching hardcoded
-    strings, so changing TARGET_DJANGO_VERSION at the top of this file is all
-    that is needed to re-target the audit at a future Django release.
+    Decide whether a repo can move to TARGET_DJANGO_VERSION; changing the target
+    version is sufficient to retarget the audit for a future Django release.
     """
     target_label = TARGET_DJANGO_VERSION
 
@@ -847,10 +697,7 @@ def evaluate_upgrade_risk(
     return "Unknown – manual review"
 
 
-# =============================================================================
 # Main per-repo scan
-# =============================================================================
-
 def scan_single_repo(
     repo: str,
     org: str,
@@ -865,10 +712,7 @@ def scan_single_repo(
     print(f"Scanning: {repo} (Org: {org})")
     print("-" * 78)
 
-    # =========================================================================
     # FAST FAIL: Check if we have API access to the repository
-    # =========================================================================
-
     is_archived, archive_check_error = is_repo_archived(repo)
 
     if is_archived:
@@ -894,10 +738,7 @@ def scan_single_repo(
             f"Error ({archive_check_error})",
         )
 
-    # =========================================================================
     # CHECKS 1-3: .py files, Django imports, Django keyword
-    # =========================================================================
-
     has_py_display = run_repo_check(
         repo,
         "Has *.py files",
@@ -916,10 +757,7 @@ def scan_single_repo(
         check_has_django_keyword,
     )
 
-    # =========================================================================
     # CHECK 4: requirements/ scan
-    # =========================================================================
-
     status, files = get_requirements_files(repo)
 
     # get_requirements_files returns None as the status on success, so
@@ -941,10 +779,7 @@ def scan_single_repo(
         has_django_keyword_display,
     )
 
-    # Error statuses are tested BEFORE the empty-list case on purpose: every
-    # error path in get_requirements_files also returns an empty file list, so
-    # checking `not files` first would report a 403 or a network failure as
-    # "Not Found" and hide the real reason from the report.
+    # Check error statuses before empty-file handling to preserve the actual error.
     if status.startswith("HTTP_403"):
         print(f"[{repo}] Summary: 403 – {status}")
 
@@ -1056,10 +891,7 @@ def scan_single_repo(
     )
 
 
-# =============================================================================
 # Batching runner
-# =============================================================================
-
 def chunked(seq, size):
     for index in range(0, len(seq), size):
         yield seq[index:index + size]
@@ -1133,10 +965,6 @@ def process_batch(batch_items: list):
 
     print("Batch complete.")
 
-
-# =============================================================================
-# Main
-# =============================================================================
 
 if __name__ == "__main__":
     # Filter out blank repository URLs from the input spreadsheet.
