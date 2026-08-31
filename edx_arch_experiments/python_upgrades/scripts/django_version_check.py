@@ -8,19 +8,23 @@ INSTRUCTIONS
    format:
    https://docs.google.com/spreadsheets/d/1qpWfbPYLSaE_deaumWSEZfz91CshWd3v3B7xhOk5M4U/edit?gid=1990273504#gid=1990273504
 
-2. Save the exported file as "repos.xlsx" and keep it in the same directory
+2. Refer to the following Confluence page for the audit details and
+   documentation:
+   https://2u-internal.atlassian.net/wiki/spaces/AT/pages/4088659996/Django+5.2+spreadsheet+generation
+
+3. Save the exported file as "repos.xlsx" and keep it in the same directory
    as this script.
 
-3. Run this script from the directory containing both this script and
+4. Run this script from the directory containing both this script and
    "repos.xlsx".
 
-4. The input Excel file must contain the following columns:
+5. The input Excel file must contain the following columns:
    - repo url
    - repo org
    - owner.squad
    - Repo Maintainer
 
-5. Set the GITHUB_TOKEN environment variable if GitHub API authentication
+6. Set the GITHUB_TOKEN environment variable if GitHub API authentication
    is required, especially when scanning private repositories.
 
 The script generates an Excel report showing Django versions, Django
@@ -112,9 +116,7 @@ COOLDOWN_SECONDS = 20
 #
 # The filename is derived from the target version plus the run timestamp, so
 # every run produces its own uniquely named report and nothing is silently
-# overwritten. This replaces the old manually incremented suffix
-# ("..._14.xlsx"), which had to be bumped by hand before each run and carried
-# no information about what the file actually contained.
+# overwritten.
 #
 # Example: django_5_2_upgrade_audit_20260828_143015.xlsx
 # -----------------------------------------------------------------------------
@@ -1194,4 +1196,4 @@ if __name__ == "__main__":
 
     print(
         f"\nAll done. Final Excel: {OUTPUT_XLSX}"
-    )
+    )   
