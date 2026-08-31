@@ -1196,4 +1196,4 @@ if __name__ == "__main__":
 
     print(
         f"\nAll done. Final Excel: {OUTPUT_XLSX}"
-    )   
+    )
