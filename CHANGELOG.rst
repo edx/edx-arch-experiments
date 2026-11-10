@@ -14,6 +14,17 @@ Change Log
 Unreleased
 **********
 
+[8.0.0] - 2026-11-10
+********************
+Added
+=====
+* Added support for Django 5.2.
+* Added support for Python 3.12 (Python 3.11 remains supported).
+
+Removed
+=======
+* Dropped support for Django 4.2.
+
 [7.7.1] - 2026-07-06
 ********************
 Fixed
