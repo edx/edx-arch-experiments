@@ -11,7 +11,7 @@ jobs:
     strategy:
       matrix:
         python-version: ['3.11', '3.12']
-        tox-env: [quality, django42]
+        tox-env: [quality, django52]
     steps:
     - uses: actions/checkout@v5
     - uses: actions/setup-python@v6
