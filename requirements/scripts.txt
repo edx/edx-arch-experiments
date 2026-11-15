@@ -18,7 +18,7 @@ attrs==26.1.0
     # via
     #   confluent-kafka
     #   openedx-events
-authlib==1.9.5
+authlib==1.9.6
     # via confluent-kafka
 avro==1.12.2
     # via confluent-kafka
@@ -28,9 +28,9 @@ billiard==4.3.2
     # via
     #   -r requirements/base.txt
     #   celery
-boto3==1.43.126
+boto3==1.44.3
     # via -r requirements/base.txt
-botocore==1.43.126
+botocore==1.44.3
     # via
     #   -r requirements/base.txt
     #   boto3
@@ -108,7 +108,7 @@ dnspython==2.9.2
     # via pymongo
 edx-ccx-keys==2.1.0
     # via openedx-events
-edx-django-utils==8.1.0
+edx-django-utils==8.2.0
     # via
     #   -r requirements/base.txt
     #   edx-event-bus-kafka
@@ -171,7 +171,7 @@ pycparser==3.12
     # via
     #   -r requirements/base.txt
     #   cffi
-pymongo==4.19.0
+pymongo==4.20.0
     # via edx-opaque-keys
 pynacl==1.6.2
     # via
@@ -201,7 +201,7 @@ sqlparse==0.6.1
     # via
     #   -r requirements/base.txt
     #   django
-stevedore==5.9.1
+stevedore==5.10.0
     # via
     #   -r requirements/base.txt
     #   code-annotations
