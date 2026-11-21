@@ -6,7 +6,6 @@ on:
   workflow_dispatch:
     inputs:
       branch:
-      python_version: "3.11"  # match edx.org production (edx-platform runs Python 3.11)
         description: "Target branch to create requirements PR against"
         required: true
         default: main
@@ -16,6 +15,7 @@ jobs:
     uses: openedx/.github/.github/workflows/upgrade-python-requirements.yml@master
     with:
        branch: ${{ github.event.inputs.branch }}
+       python_version: "3.11"  # match edx.org production (edx-platform runs Python 3.11)
        team_reviewers: "orbi-bom"
        email_address: orbi-bom-upgrade-prs@2u-internal.jsmalerts.atlassian.net
        send_success_notification: true
